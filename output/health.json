@@ -1,10 +1,10 @@
 {
-  "run_at": "2026-06-14T14:50:10.922173+00:00",
+  "run_at": "2026-06-14T15:46:53.576549+00:00",
   "window_days": 16,
   "channels_ok": 20,
   "channels_total": 20,
-  "raw_events": 423,
-  "deduped_events": 293,
+  "raw_events": 367,
+  "deduped_events": 287,
   "channels": [
     {
       "source": "Palo Alto City Library",
@@ -104,7 +104,7 @@
     {
       "source": "Hidden Villa Farm",
       "status": "ok",
-      "count": 60
+      "count": 4
     }
   ]
 }
