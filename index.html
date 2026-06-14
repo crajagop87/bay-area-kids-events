@@ -217,6 +217,37 @@ footer a { color: var(--ink-3); text-decoration: underline; }
 .modal-close:hover { color: var(--ink); }
 .modal-version { font-size: 0.68rem; color: var(--ink-3); margin-top: 0.5rem; }
 
+/* ── Roadmap modal ── */
+.modal-tabs { display: flex; gap: 0; border-bottom: 2px solid var(--rule); margin-bottom: 1rem; }
+.modal-tab {
+  font-family: var(--sans); font-size: 0.8rem; font-weight: 700;
+  padding: 6px 16px; border: none; background: none; cursor: pointer;
+  color: var(--ink-3); border-bottom: 2.5px solid transparent; margin-bottom: -2px;
+  transition: color 0.12s;
+}
+.modal-tab:hover { color: var(--ink); }
+.modal-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+.roadmap-list { display: flex; flex-direction: column; gap: 0.6rem; max-height: 340px; overflow-y: auto; }
+.roadmap-item {
+  border: 1.5px solid var(--rule); border-radius: 10px;
+  padding: 0.6rem 0.8rem; display: flex; flex-direction: column; gap: 3px;
+}
+.roadmap-item-title { font-size: 0.82rem; font-weight: 700; color: var(--ink); }
+.roadmap-item-meta { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
+.roadmap-item-date { font-size: 0.68rem; color: var(--ink-3); }
+.roadmap-item-note { font-size: 0.75rem; color: var(--ink-2); font-style: italic; margin-top: 2px; }
+.label-chip {
+  font-size: 0.62rem; font-weight: 700; padding: 1px 7px; border-radius: 99px;
+}
+.label-bug      { background: #fee2e2; color: #991b1b; }
+.label-feature  { background: #dbeafe; color: #1e40af; }
+.label-feedback { background: #f3e8ff; color: #6b21a8; }
+.label-shipped  { background: #d1fae5; color: #065f46; }
+.label-default  { background: var(--tag-bg); color: var(--ink-2); }
+.roadmap-empty  { font-size: 0.8rem; color: var(--ink-3); text-align: center; padding: 1.5rem 0; }
+.roadmap-loading { font-size: 0.8rem; color: var(--ink-3); text-align: center; padding: 1rem 0; }
+
 /* ── Feedback modal ── */
 .feedback-textarea {
   width: 100%; min-height: 100px; font-family: var(--sans); font-size: 0.82rem;
@@ -279,6 +310,21 @@ footer a { color: var(--ink-3); text-decoration: underline; }
 </head>
 <body>
 
+<!-- ── Roadmap modal ── -->
+<div class="modal-overlay" id="roadmap-modal">
+  <div class="modal" style="max-width:500px">
+    <button class="modal-close" onclick="closeModal('roadmap-modal')">✕</button>
+    <h2>🗺 What we're working on</h2>
+    <p style="font-size:0.78rem;color:var(--ink-2);margin-bottom:0.9rem">Feedback from the community, tracked publicly. Open issues are on our radar; closed ones have shipped.</p>
+    <div class="modal-tabs">
+      <button class="modal-tab active" id="tab-backlog" onclick="switchRoadmapTab('backlog')">📋 Backlog</button>
+      <button class="modal-tab" id="tab-shipped" onclick="switchRoadmapTab('shipped')">✅ Shipped</button>
+    </div>
+    <div id="roadmap-backlog" class="roadmap-list"></div>
+    <div id="roadmap-shipped" class="roadmap-list" style="display:none"></div>
+  </div>
+</div>
+
 <!-- ── Info modal ── -->
 <div class="modal-overlay" id="info-modal">
   <div class="modal">
@@ -329,6 +375,7 @@ footer a { color: var(--ink-3); text-decoration: underline; }
     <div class="header-right">
       <span class="header-meta" id="meta">loading…</span>
       <button class="info-btn" onclick="openModal('info-modal')">ℹ︎ sources</button>
+      <button class="info-btn" onclick="openRoadmap()">🗺 Roadmap</button>
       <button class="feedback-btn" onclick="openModal('feedback-modal')">Feedback</button>
     </div>
   </div>
@@ -691,6 +738,99 @@ function esc(s) {
   const d = document.createElement('div');
   d.textContent = String(s);
   return d.innerHTML;
+}
+
+// ── Roadmap ────────────────────────────────────────────────────────────────
+const REPO = 'crajagop87/bay-area-kids-events';
+let roadmapLoaded = false;
+
+function openRoadmap() {
+  openModal('roadmap-modal');
+  if (!roadmapLoaded) loadRoadmap();
+}
+
+function switchRoadmapTab(tab) {
+  document.getElementById('tab-backlog').classList.toggle('active', tab === 'backlog');
+  document.getElementById('tab-shipped').classList.toggle('active', tab === 'shipped');
+  document.getElementById('roadmap-backlog').style.display = tab === 'backlog' ? 'flex' : 'none';
+  document.getElementById('roadmap-shipped').style.display = tab === 'shipped' ? 'flex' : 'none';
+}
+
+function labelChip(label) {
+  const name = label.name.toLowerCase();
+  let cls = 'label-default';
+  if (name === 'bug') cls = 'label-bug';
+  else if (name === 'feature' || name === 'enhancement') cls = 'label-feature';
+  else if (name === 'feedback') cls = 'label-feedback';
+  else if (name.startsWith('shipped') || name.startsWith('v1.') || name.startsWith('v2.')) cls = 'label-shipped';
+  return `<span class="label-chip ${cls}">${esc(label.name)}</span>`;
+}
+
+function relativeDate(iso) {
+  const d = new Date(iso);
+  const days = Math.floor((Date.now() - d) / 86400000);
+  if (days === 0) return 'today';
+  if (days === 1) return 'yesterday';
+  if (days < 30) return `${days}d ago`;
+  if (days < 365) return `${Math.floor(days/30)}mo ago`;
+  return `${Math.floor(days/365)}y ago`;
+}
+
+function renderIssues(issues, containerId, isShipped) {
+  const el = document.getElementById(containerId);
+  if (!issues.length) {
+    el.innerHTML = `<div class="roadmap-empty">${isShipped ? 'Nothing shipped yet — check back soon!' : 'No open issues right now 🎉'}</div>`;
+    return;
+  }
+  el.innerHTML = issues.map(issue => {
+    const labels = (issue.labels || []).map(labelChip).join('');
+    // For shipped items, look for a "dev note" label like "shipped: v1.2.0"
+    const shippedLabel = (issue.labels || []).find(l => l.name.toLowerCase().startsWith('shipped'));
+    const noteHtml = isShipped && issue.body
+      ? `<div class="roadmap-item-note">${esc(extractDevNote(issue.body))}</div>` : '';
+    const dateLabel = isShipped
+      ? `Closed ${relativeDate(issue.closed_at)}`
+      : `Opened ${relativeDate(issue.created_at)}`;
+    return `<div class="roadmap-item">
+      <div class="roadmap-item-title">${esc(issue.title)}</div>
+      <div class="roadmap-item-meta">
+        ${labels}
+        <span class="roadmap-item-date">${dateLabel}</span>
+      </div>
+      ${noteHtml}
+    </div>`;
+  }).join('');
+}
+
+function extractDevNote(body) {
+  // Pull the last non-empty line after "---" separator (our dev note convention)
+  const parts = body.split('---');
+  if (parts.length < 2) return '';
+  // The content before --- is the user's text; look for a "Dev note:" line if present
+  const meta = parts[parts.length - 1];
+  const noteMatch = meta.match(/Dev note:\s*(.+)/i);
+  return noteMatch ? noteMatch[1].trim() : '';
+}
+
+async function loadRoadmap() {
+  ['roadmap-backlog','roadmap-shipped'].forEach(id => {
+    document.getElementById(id).innerHTML = '<div class="roadmap-loading">Loading…</div>';
+  });
+  try {
+    const [openRes, closedRes] = await Promise.all([
+      fetch(`https://api.github.com/repos/${REPO}/issues?state=open&per_page=30`),
+      fetch(`https://api.github.com/repos/${REPO}/issues?state=closed&per_page=30`),
+    ]);
+    const openIssues   = (await openRes.json()).filter(i => !i.pull_request);
+    const closedIssues = (await closedRes.json()).filter(i => !i.pull_request);
+    renderIssues(openIssues,   'roadmap-backlog', false);
+    renderIssues(closedIssues, 'roadmap-shipped', true);
+    roadmapLoaded = true;
+  } catch(err) {
+    ['roadmap-backlog','roadmap-shipped'].forEach(id => {
+      document.getElementById(id).innerHTML = '<div class="roadmap-empty">Couldn\'t load — check your connection.</div>';
+    });
+  }
 }
 
 load();
