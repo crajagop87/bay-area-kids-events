@@ -1,10 +1,10 @@
 {
-  "run_at": "2026-06-14T05:38:10.732108+00:00",
+  "run_at": "2026-06-14T05:46:05.937767+00:00",
   "window_days": 16,
   "channels_ok": 20,
   "channels_total": 20,
-  "raw_events": 435,
-  "deduped_events": 295,
+  "raw_events": 380,
+  "deduped_events": 289,
   "channels": [
     {
       "source": "Palo Alto City Library",
@@ -34,7 +34,7 @@
     {
       "source": "Eventbrite/San Jose",
       "status": "ok",
-      "count": 14
+      "count": 15
     },
     {
       "source": "Eventbrite/Mountain View",
@@ -104,7 +104,7 @@
     {
       "source": "Hidden Villa Farm",
       "status": "ok",
-      "count": 60
+      "count": 4
     }
   ]
 }

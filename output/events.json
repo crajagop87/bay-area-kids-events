@@ -15,7 +15,7 @@
     "source_channel": "eventbrite",
     "source_name": "Eventbrite / Mountain View",
     "source_url": "https://www.eventbrite.com/d/ca--mountain-view/family/",
-    "last_verified": "2026-06-14T05:38:47.174054+00:00",
+    "last_verified": "2026-06-14T05:46:30.779883+00:00",
     "dedupe_key": "82ce95781f38",
     "is_camp": false
   },
@@ -35,7 +35,7 @@
     "source_channel": "venue",
     "source_name": "Cantor Arts Center",
     "source_url": "https://museum.stanford.edu/events",
-    "last_verified": "2026-06-14T05:39:01.258260+00:00",
+    "last_verified": "2026-06-14T05:46:45.188168+00:00",
     "dedupe_key": "34d38e580490",
     "is_camp": false
   },
@@ -55,7 +55,7 @@
     "source_channel": "venue",
     "source_name": "CuriOdyssey",
     "source_url": "https://curiodyssey.org/events/",
-    "last_verified": "2026-06-14T05:39:00.762705+00:00",
+    "last_verified": "2026-06-14T05:46:43.407094+00:00",
     "dedupe_key": "e6a83df61ae0",
     "is_camp": false
   },
@@ -75,14 +75,14 @@
     "source_channel": "venue",
     "source_name": "Hiller Aviation Museum",
     "source_url": "https://www.hiller.org/events/",
-    "last_verified": "2026-06-14T05:39:01.110519+00:00",
+    "last_verified": "2026-06-14T05:46:43.596847+00:00",
     "dedupe_key": "63e9081b7c8d",
     "is_camp": false
   },
   {
     "title": "Palo Alto Junior Museum & Zoo \u2014 Open",
-    "start_datetime": "2026-06-14T10:00:00.361702+00:00",
-    "end_datetime": "2026-06-14T17:00:00.361702+00:00",
+    "start_datetime": "2026-06-14T10:00:00.976061+00:00",
+    "end_datetime": "2026-06-14T17:00:00.976061+00:00",
     "venue": "Palo Alto Junior Museum & Zoo",
     "city": "Palo Alto",
     "county": "Santa Clara",
@@ -95,7 +95,7 @@
     "source_channel": "venue",
     "source_name": "Palo Alto Junior Museum & Zoo",
     "source_url": "https://www.paloaltozoo.org/visit",
-    "last_verified": "2026-06-14T05:38:59.222482+00:00",
+    "last_verified": "2026-06-14T05:46:41.743003+00:00",
     "dedupe_key": "ae8ae5111fd3",
     "is_camp": false
   },
@@ -115,7 +115,7 @@
     "source_channel": "library",
     "source_name": "San Mateo County Library",
     "source_url": "https://smcl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:19.525995+00:00",
+    "last_verified": "2026-06-14T05:46:12.150547+00:00",
     "dedupe_key": "822271fa6fe1",
     "is_camp": false
   },
@@ -135,7 +135,7 @@
     "source_channel": "eventbrite",
     "source_name": "Eventbrite / Palo Alto",
     "source_url": "https://www.eventbrite.com/d/ca--palo-alto/family/",
-    "last_verified": "2026-06-14T05:38:44.073229+00:00",
+    "last_verified": "2026-06-14T05:46:27.778810+00:00",
     "dedupe_key": "235bbe605b22",
     "is_camp": false
   },
@@ -155,7 +155,7 @@
     "source_channel": "venue",
     "source_name": "Hiller Aviation Museum",
     "source_url": "https://www.hiller.org/events/",
-    "last_verified": "2026-06-14T05:39:01.110552+00:00",
+    "last_verified": "2026-06-14T05:46:43.596888+00:00",
     "dedupe_key": "032431ef15f2",
     "is_camp": false
   },
@@ -175,7 +175,7 @@
     "source_channel": "library",
     "source_name": "Palo Alto City Library",
     "source_url": "https://paloalto.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:10.732390+00:00",
+    "last_verified": "2026-06-14T05:46:05.937987+00:00",
     "dedupe_key": "907b68edd18d",
     "is_camp": false
   },
@@ -195,7 +195,7 @@
     "source_channel": "library",
     "source_name": "Palo Alto City Library",
     "source_url": "https://paloalto.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:10.732390+00:00",
+    "last_verified": "2026-06-14T05:46:05.937987+00:00",
     "dedupe_key": "91060397e20a",
     "is_camp": false
   },
@@ -215,7 +215,7 @@
     "source_channel": "venue",
     "source_name": "Hiller Aviation Museum",
     "source_url": "https://www.hiller.org/events/",
-    "last_verified": "2026-06-14T05:39:01.110562+00:00",
+    "last_verified": "2026-06-14T05:46:43.596902+00:00",
     "dedupe_key": "7b5a366c28d9",
     "is_camp": false
   },
@@ -235,7 +235,7 @@
     "source_channel": "library",
     "source_name": "Palo Alto City Library",
     "source_url": "https://paloalto.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:10.732390+00:00",
+    "last_verified": "2026-06-14T05:46:05.937987+00:00",
     "dedupe_key": "8cbd8a84d618",
     "is_camp": false
   },
@@ -255,7 +255,7 @@
     "source_channel": "eventbrite",
     "source_name": "Eventbrite / Palo Alto",
     "source_url": "https://www.eventbrite.com/d/ca--palo-alto/family/",
-    "last_verified": "2026-06-14T05:38:44.073229+00:00",
+    "last_verified": "2026-06-14T05:46:27.778810+00:00",
     "dedupe_key": "ddecf886b1c8",
     "is_camp": false
   },
@@ -275,7 +275,7 @@
     "source_channel": "venue",
     "source_name": "CuriOdyssey",
     "source_url": "https://curiodyssey.org/events/",
-    "last_verified": "2026-06-14T05:39:00.762734+00:00",
+    "last_verified": "2026-06-14T05:46:43.407136+00:00",
     "dedupe_key": "cfec4c94f9af",
     "is_camp": false
   },
@@ -295,7 +295,7 @@
     "source_channel": "venue",
     "source_name": "Hiller Aviation Museum",
     "source_url": "https://www.hiller.org/events/",
-    "last_verified": "2026-06-14T05:39:01.110569+00:00",
+    "last_verified": "2026-06-14T05:46:43.596912+00:00",
     "dedupe_key": "b44f1ed21d38",
     "is_camp": false
   },
@@ -315,7 +315,7 @@
     "source_channel": "library",
     "source_name": "San Mateo County Library",
     "source_url": "https://smcl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:19.525995+00:00",
+    "last_verified": "2026-06-14T05:46:12.150547+00:00",
     "dedupe_key": "826c8d82bb00",
     "is_camp": false
   },
@@ -335,7 +335,7 @@
     "source_channel": "library",
     "source_name": "Palo Alto City Library",
     "source_url": "https://paloalto.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:10.732390+00:00",
+    "last_verified": "2026-06-14T05:46:05.937987+00:00",
     "dedupe_key": "729019887bd0",
     "is_camp": false
   },
@@ -355,7 +355,7 @@
     "source_channel": "library",
     "source_name": "San Jose Public Library",
     "source_url": "https://sjpl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:27.249400+00:00",
+    "last_verified": "2026-06-14T05:46:16.466624+00:00",
     "dedupe_key": "3808fbbaaac6",
     "is_camp": false
   },
@@ -373,9 +373,9 @@
     "ticket_url": "https://www.eventbrite.com/e/family-paint-party-tickets-1987594085414",
     "category": "eventbrite",
     "source_channel": "eventbrite",
-    "source_name": "Eventbrite / San Jose",
-    "source_url": "https://www.eventbrite.com/d/ca--san-jose/family/",
-    "last_verified": "2026-06-14T05:38:45.595393+00:00",
+    "source_name": "Eventbrite / Palo Alto",
+    "source_url": "https://www.eventbrite.com/d/ca--palo-alto/family/",
+    "last_verified": "2026-06-14T05:46:27.778810+00:00",
     "dedupe_key": "12e99890fcaa",
     "is_camp": false
   },
@@ -395,7 +395,7 @@
     "source_channel": "venue",
     "source_name": "Hiller Aviation Museum",
     "source_url": "https://www.hiller.org/events/",
-    "last_verified": "2026-06-14T05:39:01.110575+00:00",
+    "last_verified": "2026-06-14T05:46:43.596922+00:00",
     "dedupe_key": "527af4bc0223",
     "is_camp": false
   },
@@ -415,7 +415,7 @@
     "source_channel": "library",
     "source_name": "San Mateo County Library",
     "source_url": "https://smcl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:19.525995+00:00",
+    "last_verified": "2026-06-14T05:46:12.150547+00:00",
     "dedupe_key": "41638f62cd2f",
     "is_camp": false
   },
@@ -435,7 +435,7 @@
     "source_channel": "library",
     "source_name": "San Mateo County Library",
     "source_url": "https://smcl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:19.525995+00:00",
+    "last_verified": "2026-06-14T05:46:12.150547+00:00",
     "dedupe_key": "9ade8877d89b",
     "is_camp": false
   },
@@ -455,7 +455,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:35.872377+00:00",
+    "last_verified": "2026-06-14T05:46:22.764744+00:00",
     "dedupe_key": "511d48a65e27",
     "is_camp": false
   },
@@ -475,7 +475,7 @@
     "source_channel": "library",
     "source_name": "San Jose Public Library",
     "source_url": "https://sjpl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:27.249400+00:00",
+    "last_verified": "2026-06-14T05:46:16.466624+00:00",
     "dedupe_key": "072277111d91",
     "is_camp": false
   },
@@ -495,7 +495,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:35.872377+00:00",
+    "last_verified": "2026-06-14T05:46:22.764744+00:00",
     "dedupe_key": "164a80cd3914",
     "is_camp": false
   },
@@ -515,7 +515,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:35.872377+00:00",
+    "last_verified": "2026-06-14T05:46:22.764744+00:00",
     "dedupe_key": "b33265aa655a",
     "is_camp": false
   },
@@ -535,7 +535,7 @@
     "source_channel": "library",
     "source_name": "Palo Alto City Library",
     "source_url": "https://paloalto.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:10.732390+00:00",
+    "last_verified": "2026-06-14T05:46:05.937987+00:00",
     "dedupe_key": "77529105192b",
     "is_camp": false
   },
@@ -555,7 +555,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:35.872377+00:00",
+    "last_verified": "2026-06-14T05:46:22.764744+00:00",
     "dedupe_key": "8a90d4c0c5ed",
     "is_camp": false
   },
@@ -575,7 +575,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:35.872377+00:00",
+    "last_verified": "2026-06-14T05:46:22.764744+00:00",
     "dedupe_key": "593616f50cb2",
     "is_camp": false
   },
@@ -595,8 +595,28 @@
     "source_channel": "venue",
     "source_name": "Hiller Aviation Museum",
     "source_url": "https://www.hiller.org/events/",
-    "last_verified": "2026-06-14T05:39:01.110582+00:00",
+    "last_verified": "2026-06-14T05:46:43.596932+00:00",
     "dedupe_key": "97911ea09e03",
+    "is_camp": false
+  },
+  {
+    "title": "Farm Volunteer Day",
+    "start_datetime": "2026-06-17T09:00:00-07:00",
+    "end_datetime": "2026-06-17T12:00:00-07:00",
+    "venue": "Hidden Villa Farm",
+    "city": "Los Altos Hills",
+    "county": "Santa Clara",
+    "age_range": "Families",
+    "cost": "Paid",
+    "cost_amount": 8.0,
+    "ticket_status": "some tours require registration",
+    "ticket_url": "https://www.hiddenvilla.org/programs/catalog/468-farm-volunteer-day/region-HV/",
+    "category": "venue",
+    "source_channel": "venue",
+    "source_name": "Hidden Villa Farm",
+    "source_url": "https://www.hiddenvilla.org/calendar/individuals-families/region-HV/",
+    "last_verified": "2026-06-14T05:46:45.696989+00:00",
+    "dedupe_key": "a13a3af127e8",
     "is_camp": false
   },
   {
@@ -615,7 +635,7 @@
     "source_channel": "venue",
     "source_name": "Hiller Aviation Museum",
     "source_url": "https://www.hiller.org/events/",
-    "last_verified": "2026-06-14T05:39:01.110589+00:00",
+    "last_verified": "2026-06-14T05:46:43.596941+00:00",
     "dedupe_key": "ff85a04590bf",
     "is_camp": false
   },
@@ -635,7 +655,7 @@
     "source_channel": "library",
     "source_name": "San Mateo County Library",
     "source_url": "https://smcl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:19.525995+00:00",
+    "last_verified": "2026-06-14T05:46:12.150547+00:00",
     "dedupe_key": "d23eebcab33e",
     "is_camp": false
   },
@@ -655,7 +675,7 @@
     "source_channel": "library",
     "source_name": "San Mateo County Library",
     "source_url": "https://smcl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:19.525995+00:00",
+    "last_verified": "2026-06-14T05:46:12.150547+00:00",
     "dedupe_key": "82788bdfcbc9",
     "is_camp": false
   },
@@ -675,7 +695,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:35.872377+00:00",
+    "last_verified": "2026-06-14T05:46:22.764744+00:00",
     "dedupe_key": "0a092229c1e1",
     "is_camp": false
   },
@@ -695,7 +715,7 @@
     "source_channel": "library",
     "source_name": "Palo Alto City Library",
     "source_url": "https://paloalto.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:10.732390+00:00",
+    "last_verified": "2026-06-14T05:46:05.937987+00:00",
     "dedupe_key": "b6a19cb204f9",
     "is_camp": false
   },
@@ -715,7 +735,7 @@
     "source_channel": "library",
     "source_name": "San Mateo County Library",
     "source_url": "https://smcl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:19.525995+00:00",
+    "last_verified": "2026-06-14T05:46:12.150547+00:00",
     "dedupe_key": "29188a6e67de",
     "is_camp": false
   },
@@ -735,7 +755,7 @@
     "source_channel": "library",
     "source_name": "San Jose Public Library",
     "source_url": "https://sjpl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:27.249400+00:00",
+    "last_verified": "2026-06-14T05:46:16.466624+00:00",
     "dedupe_key": "b5f272cf1f83",
     "is_camp": false
   },
@@ -755,7 +775,7 @@
     "source_channel": "eventbrite",
     "source_name": "Eventbrite / San Jose",
     "source_url": "https://www.eventbrite.com/d/ca--san-jose/family/",
-    "last_verified": "2026-06-14T05:38:45.595393+00:00",
+    "last_verified": "2026-06-14T05:46:29.325589+00:00",
     "dedupe_key": "de20a7d9cc7e",
     "is_camp": false
   },
@@ -775,7 +795,7 @@
     "source_channel": "library",
     "source_name": "Palo Alto City Library",
     "source_url": "https://paloalto.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:10.732390+00:00",
+    "last_verified": "2026-06-14T05:46:05.937987+00:00",
     "dedupe_key": "fe98a754f8d9",
     "is_camp": false
   },
@@ -795,7 +815,7 @@
     "source_channel": "eventbrite",
     "source_name": "Eventbrite / San Jose",
     "source_url": "https://www.eventbrite.com/d/ca--san-jose/family/",
-    "last_verified": "2026-06-14T05:38:45.595393+00:00",
+    "last_verified": "2026-06-14T05:46:29.325589+00:00",
     "dedupe_key": "ac47441c9788",
     "is_camp": false
   },
@@ -815,7 +835,7 @@
     "source_channel": "venue",
     "source_name": "Hiller Aviation Museum",
     "source_url": "https://www.hiller.org/events/",
-    "last_verified": "2026-06-14T05:39:01.110595+00:00",
+    "last_verified": "2026-06-14T05:46:43.596951+00:00",
     "dedupe_key": "72ef92ea4a7d",
     "is_camp": false
   },
@@ -835,7 +855,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:35.872377+00:00",
+    "last_verified": "2026-06-14T05:46:22.764744+00:00",
     "dedupe_key": "d2447fa4704d",
     "is_camp": false
   },
@@ -855,7 +875,7 @@
     "source_channel": "library",
     "source_name": "San Jose Public Library",
     "source_url": "https://sjpl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:27.249400+00:00",
+    "last_verified": "2026-06-14T05:46:16.466624+00:00",
     "dedupe_key": "d43dbda506ed",
     "is_camp": false
   },
@@ -875,7 +895,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:35.872377+00:00",
+    "last_verified": "2026-06-14T05:46:22.764744+00:00",
     "dedupe_key": "a3c043abb5ab",
     "is_camp": false
   },
@@ -895,7 +915,7 @@
     "source_channel": "eventbrite",
     "source_name": "Eventbrite / Palo Alto",
     "source_url": "https://www.eventbrite.com/d/ca--palo-alto/family/",
-    "last_verified": "2026-06-14T05:38:44.073229+00:00",
+    "last_verified": "2026-06-14T05:46:27.778810+00:00",
     "dedupe_key": "a409d2b92e74",
     "is_camp": false
   },
@@ -915,7 +935,7 @@
     "source_channel": "eventbrite",
     "source_name": "Eventbrite / San Jose",
     "source_url": "https://www.eventbrite.com/d/ca--san-jose/family/",
-    "last_verified": "2026-06-14T05:38:45.595393+00:00",
+    "last_verified": "2026-06-14T05:46:29.325589+00:00",
     "dedupe_key": "750ba841c423",
     "is_camp": false
   },
@@ -935,7 +955,7 @@
     "source_channel": "venue",
     "source_name": "Hiller Aviation Museum",
     "source_url": "https://www.hiller.org/events/",
-    "last_verified": "2026-06-14T05:39:01.110602+00:00",
+    "last_verified": "2026-06-14T05:46:43.596971+00:00",
     "dedupe_key": "8f1bf4080864",
     "is_camp": false
   },
@@ -955,7 +975,7 @@
     "source_channel": "library",
     "source_name": "Palo Alto City Library",
     "source_url": "https://paloalto.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:10.732390+00:00",
+    "last_verified": "2026-06-14T05:46:05.937987+00:00",
     "dedupe_key": "a2119f028900",
     "is_camp": false
   },
@@ -975,7 +995,7 @@
     "source_channel": "eventbrite",
     "source_name": "Eventbrite / Palo Alto",
     "source_url": "https://www.eventbrite.com/d/ca--palo-alto/family/",
-    "last_verified": "2026-06-14T05:38:44.073229+00:00",
+    "last_verified": "2026-06-14T05:46:27.778810+00:00",
     "dedupe_key": "3380bbff1fae",
     "is_camp": false
   },
@@ -995,7 +1015,7 @@
     "source_channel": "library",
     "source_name": "Palo Alto City Library",
     "source_url": "https://paloalto.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:10.732390+00:00",
+    "last_verified": "2026-06-14T05:46:05.937987+00:00",
     "dedupe_key": "2c626b95d2c7",
     "is_camp": false
   },
@@ -1015,7 +1035,7 @@
     "source_channel": "library",
     "source_name": "Palo Alto City Library",
     "source_url": "https://paloalto.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:10.732390+00:00",
+    "last_verified": "2026-06-14T05:46:05.937987+00:00",
     "dedupe_key": "276288cf21a1",
     "is_camp": false
   },
@@ -1035,7 +1055,7 @@
     "source_channel": "eventbrite",
     "source_name": "Eventbrite / Mountain View",
     "source_url": "https://www.eventbrite.com/d/ca--mountain-view/family/",
-    "last_verified": "2026-06-14T05:38:47.174054+00:00",
+    "last_verified": "2026-06-14T05:46:30.779883+00:00",
     "dedupe_key": "69c2b305b6dd",
     "is_camp": false
   },
@@ -1055,7 +1075,7 @@
     "source_channel": "eventbrite",
     "source_name": "Eventbrite / San Jose",
     "source_url": "https://www.eventbrite.com/d/ca--san-jose/family/",
-    "last_verified": "2026-06-14T05:38:45.595393+00:00",
+    "last_verified": "2026-06-14T05:46:29.325589+00:00",
     "dedupe_key": "73be1cddfc2f",
     "is_camp": false
   },
@@ -1075,8 +1095,28 @@
     "source_channel": "venue",
     "source_name": "Hiller Aviation Museum",
     "source_url": "https://www.hiller.org/events/",
-    "last_verified": "2026-06-14T05:39:01.110609+00:00",
+    "last_verified": "2026-06-14T05:46:43.596982+00:00",
     "dedupe_key": "5faae6fb8298",
+    "is_camp": false
+  },
+  {
+    "title": "Farm Volunteer Day",
+    "start_datetime": "2026-06-20T09:00:00-07:00",
+    "end_datetime": "2026-06-20T12:00:00-07:00",
+    "venue": "Hidden Villa Farm",
+    "city": "Los Altos Hills",
+    "county": "Santa Clara",
+    "age_range": "Families",
+    "cost": "Paid",
+    "cost_amount": 8.0,
+    "ticket_status": "some tours require registration",
+    "ticket_url": "https://www.hiddenvilla.org/programs/catalog/468-farm-volunteer-day/region-HV/",
+    "category": "venue",
+    "source_channel": "venue",
+    "source_name": "Hidden Villa Farm",
+    "source_url": "https://www.hiddenvilla.org/calendar/individuals-families/region-HV/",
+    "last_verified": "2026-06-14T05:46:45.697045+00:00",
+    "dedupe_key": "f2d674ed1158",
     "is_camp": false
   },
   {
@@ -1095,7 +1135,7 @@
     "source_channel": "library",
     "source_name": "San Jose Public Library",
     "source_url": "https://sjpl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:27.249400+00:00",
+    "last_verified": "2026-06-14T05:46:16.466624+00:00",
     "dedupe_key": "3a4ea032575c",
     "is_camp": false
   },
@@ -1115,14 +1155,14 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:35.872377+00:00",
+    "last_verified": "2026-06-14T05:46:22.764744+00:00",
     "dedupe_key": "ef2fe6c865d3",
     "is_camp": false
   },
   {
     "title": "Palo Alto Junior Museum & Zoo \u2014 Open",
-    "start_datetime": "2026-06-20T10:00:00.361702+00:00",
-    "end_datetime": "2026-06-20T17:00:00.361702+00:00",
+    "start_datetime": "2026-06-20T10:00:00.976061+00:00",
+    "end_datetime": "2026-06-20T17:00:00.976061+00:00",
     "venue": "Palo Alto Junior Museum & Zoo",
     "city": "Palo Alto",
     "county": "Santa Clara",
@@ -1135,7 +1175,7 @@
     "source_channel": "venue",
     "source_name": "Palo Alto Junior Museum & Zoo",
     "source_url": "https://www.paloaltozoo.org/visit",
-    "last_verified": "2026-06-14T05:38:59.222543+00:00",
+    "last_verified": "2026-06-14T05:46:41.743055+00:00",
     "dedupe_key": "2373440649a6",
     "is_camp": false
   },
@@ -1155,7 +1195,7 @@
     "source_channel": "library",
     "source_name": "San Jose Public Library",
     "source_url": "https://sjpl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:27.249400+00:00",
+    "last_verified": "2026-06-14T05:46:16.466624+00:00",
     "dedupe_key": "625625b4c007",
     "is_camp": false
   },
@@ -1175,7 +1215,7 @@
     "source_channel": "library",
     "source_name": "Palo Alto City Library",
     "source_url": "https://paloalto.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:10.732390+00:00",
+    "last_verified": "2026-06-14T05:46:05.937987+00:00",
     "dedupe_key": "1f39629c5f82",
     "is_camp": false
   },
@@ -1195,7 +1235,7 @@
     "source_channel": "venue",
     "source_name": "Hiller Aviation Museum",
     "source_url": "https://www.hiller.org/events/",
-    "last_verified": "2026-06-14T05:39:01.110617+00:00",
+    "last_verified": "2026-06-14T05:46:43.596991+00:00",
     "dedupe_key": "58f7a08c3df9",
     "is_camp": false
   },
@@ -1215,7 +1255,7 @@
     "source_channel": "library",
     "source_name": "San Jose Public Library",
     "source_url": "https://sjpl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:27.249400+00:00",
+    "last_verified": "2026-06-14T05:46:16.466624+00:00",
     "dedupe_key": "c6c050751851",
     "is_camp": false
   },
@@ -1235,7 +1275,7 @@
     "source_channel": "library",
     "source_name": "San Mateo County Library",
     "source_url": "https://smcl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:19.525995+00:00",
+    "last_verified": "2026-06-14T05:46:12.150547+00:00",
     "dedupe_key": "e31c621b69af",
     "is_camp": false
   },
@@ -1255,7 +1295,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:35.872377+00:00",
+    "last_verified": "2026-06-14T05:46:22.764744+00:00",
     "dedupe_key": "1b8473048c2f",
     "is_camp": false
   },
@@ -1275,7 +1315,7 @@
     "source_channel": "library",
     "source_name": "Palo Alto City Library",
     "source_url": "https://paloalto.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:10.732390+00:00",
+    "last_verified": "2026-06-14T05:46:05.937987+00:00",
     "dedupe_key": "146c889d69df",
     "is_camp": false
   },
@@ -1295,8 +1335,28 @@
     "source_channel": "library",
     "source_name": "San Jose Public Library",
     "source_url": "https://sjpl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:27.249400+00:00",
+    "last_verified": "2026-06-14T05:46:16.466624+00:00",
     "dedupe_key": "440a363d55fb",
+    "is_camp": false
+  },
+  {
+    "title": "Daddy Daughter Date Night",
+    "start_datetime": "2026-06-20T17:00:00+00:00",
+    "end_datetime": "2026-06-20T18:00:00+00:00",
+    "venue": "Chick-fil-A",
+    "city": "San Jose",
+    "county": "Santa Clara",
+    "age_range": "Families",
+    "cost": "Paid",
+    "cost_amount": 1.0,
+    "ticket_status": "book ahead",
+    "ticket_url": "https://www.eventbrite.com/e/daddy-daughter-date-night-tickets-1990666648533",
+    "category": "eventbrite",
+    "source_channel": "eventbrite",
+    "source_name": "Eventbrite / San Jose",
+    "source_url": "https://www.eventbrite.com/d/ca--san-jose/family/",
+    "last_verified": "2026-06-14T05:46:29.325589+00:00",
+    "dedupe_key": "fa98d11c61e9",
     "is_camp": false
   },
   {
@@ -1315,7 +1375,7 @@
     "source_channel": "venue",
     "source_name": "Hiller Aviation Museum",
     "source_url": "https://www.hiller.org/events/",
-    "last_verified": "2026-06-14T05:39:01.110625+00:00",
+    "last_verified": "2026-06-14T05:46:43.597001+00:00",
     "dedupe_key": "34fa42ac150c",
     "is_camp": false
   },
@@ -1335,14 +1395,14 @@
     "source_channel": "venue",
     "source_name": "Cantor Arts Center",
     "source_url": "https://museum.stanford.edu/events",
-    "last_verified": "2026-06-14T05:39:01.258319+00:00",
+    "last_verified": "2026-06-14T05:46:45.188416+00:00",
     "dedupe_key": "553371a88ae0",
     "is_camp": false
   },
   {
     "title": "Palo Alto Junior Museum & Zoo \u2014 Open",
-    "start_datetime": "2026-06-21T10:00:00.361702+00:00",
-    "end_datetime": "2026-06-21T17:00:00.361702+00:00",
+    "start_datetime": "2026-06-21T10:00:00.976061+00:00",
+    "end_datetime": "2026-06-21T17:00:00.976061+00:00",
     "venue": "Palo Alto Junior Museum & Zoo",
     "city": "Palo Alto",
     "county": "Santa Clara",
@@ -1355,7 +1415,7 @@
     "source_channel": "venue",
     "source_name": "Palo Alto Junior Museum & Zoo",
     "source_url": "https://www.paloaltozoo.org/visit",
-    "last_verified": "2026-06-14T05:38:59.222556+00:00",
+    "last_verified": "2026-06-14T05:46:41.743069+00:00",
     "dedupe_key": "513fad721aea",
     "is_camp": false
   },
@@ -1375,7 +1435,7 @@
     "source_channel": "library",
     "source_name": "Palo Alto City Library",
     "source_url": "https://paloalto.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:10.732390+00:00",
+    "last_verified": "2026-06-14T05:46:05.937987+00:00",
     "dedupe_key": "c0668cb3f6a8",
     "is_camp": false
   },
@@ -1395,7 +1455,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:35.872377+00:00",
+    "last_verified": "2026-06-14T05:46:22.764744+00:00",
     "dedupe_key": "d924f78e764a",
     "is_camp": false
   },
@@ -1415,7 +1475,7 @@
     "source_channel": "eventbrite",
     "source_name": "Eventbrite / San Jose",
     "source_url": "https://www.eventbrite.com/d/ca--san-jose/family/",
-    "last_verified": "2026-06-14T05:38:45.595393+00:00",
+    "last_verified": "2026-06-14T05:46:29.325589+00:00",
     "dedupe_key": "f26f651ddf42",
     "is_camp": false
   },
@@ -1435,7 +1495,7 @@
     "source_channel": "library",
     "source_name": "San Jose Public Library",
     "source_url": "https://sjpl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:27.249400+00:00",
+    "last_verified": "2026-06-14T05:46:16.466624+00:00",
     "dedupe_key": "5670c3afa236",
     "is_camp": false
   },
@@ -1455,7 +1515,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:35.872377+00:00",
+    "last_verified": "2026-06-14T05:46:22.764744+00:00",
     "dedupe_key": "c622d84df09c",
     "is_camp": false
   },
@@ -1475,7 +1535,7 @@
     "source_channel": "eventbrite",
     "source_name": "Eventbrite / Palo Alto",
     "source_url": "https://www.eventbrite.com/d/ca--palo-alto/family/",
-    "last_verified": "2026-06-14T05:38:44.073229+00:00",
+    "last_verified": "2026-06-14T05:46:27.778810+00:00",
     "dedupe_key": "4fe3b3e9d924",
     "is_camp": false
   },
@@ -1495,7 +1555,7 @@
     "source_channel": "library",
     "source_name": "San Jose Public Library",
     "source_url": "https://sjpl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:27.249400+00:00",
+    "last_verified": "2026-06-14T05:46:16.466624+00:00",
     "dedupe_key": "a202a8627bc7",
     "is_camp": false
   },
@@ -1515,7 +1575,7 @@
     "source_channel": "library",
     "source_name": "San Mateo County Library",
     "source_url": "https://smcl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:19.525995+00:00",
+    "last_verified": "2026-06-14T05:46:12.150547+00:00",
     "dedupe_key": "0fa62121c28b",
     "is_camp": false
   },
@@ -1535,7 +1595,7 @@
     "source_channel": "library",
     "source_name": "San Mateo County Library",
     "source_url": "https://smcl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:19.525995+00:00",
+    "last_verified": "2026-06-14T05:46:12.150547+00:00",
     "dedupe_key": "b582c7b6b8d3",
     "is_camp": false
   },
@@ -1555,7 +1615,7 @@
     "source_channel": "library",
     "source_name": "San Mateo County Library",
     "source_url": "https://smcl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:19.525995+00:00",
+    "last_verified": "2026-06-14T05:46:12.150547+00:00",
     "dedupe_key": "6771a495d480",
     "is_camp": false
   },
@@ -1575,28 +1635,8 @@
     "source_channel": "library",
     "source_name": "San Jose Public Library",
     "source_url": "https://sjpl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:27.249400+00:00",
+    "last_verified": "2026-06-14T05:46:16.466624+00:00",
     "dedupe_key": "de57e1c57ece",
-    "is_camp": false
-  },
-  {
-    "title": "Family Paint Party",
-    "start_datetime": "2026-06-22T18:30:00+00:00",
-    "end_datetime": "2026-06-22T20:30:00+00:00",
-    "venue": "PF Changs Sunnyvale",
-    "city": "Sunnyvale",
-    "county": "Santa Clara",
-    "age_range": "Families",
-    "cost": "Paid",
-    "cost_amount": 1.0,
-    "ticket_status": "book ahead",
-    "ticket_url": "https://www.eventbrite.com/e/family-paint-party-tickets-1987594088423",
-    "category": "eventbrite",
-    "source_channel": "eventbrite",
-    "source_name": "Eventbrite / Palo Alto",
-    "source_url": "https://www.eventbrite.com/d/ca--palo-alto/family/",
-    "last_verified": "2026-06-14T05:38:44.073229+00:00",
-    "dedupe_key": "c71a43364b20",
     "is_camp": false
   },
   {
@@ -1615,7 +1655,7 @@
     "source_channel": "library",
     "source_name": "San Mateo County Library",
     "source_url": "https://smcl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:19.525995+00:00",
+    "last_verified": "2026-06-14T05:46:12.150547+00:00",
     "dedupe_key": "ffc10bce88af",
     "is_camp": false
   },
@@ -1635,7 +1675,7 @@
     "source_channel": "library",
     "source_name": "San Jose Public Library",
     "source_url": "https://sjpl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:27.249400+00:00",
+    "last_verified": "2026-06-14T05:46:16.466624+00:00",
     "dedupe_key": "734a87423f21",
     "is_camp": false
   },
@@ -1655,7 +1695,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:35.872377+00:00",
+    "last_verified": "2026-06-14T05:46:22.764744+00:00",
     "dedupe_key": "02125fbbe88c",
     "is_camp": false
   },
@@ -1675,7 +1715,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:35.872377+00:00",
+    "last_verified": "2026-06-14T05:46:22.764744+00:00",
     "dedupe_key": "25bcb88fc243",
     "is_camp": false
   },
@@ -1695,7 +1735,7 @@
     "source_channel": "eventbrite",
     "source_name": "Eventbrite / Palo Alto",
     "source_url": "https://www.eventbrite.com/d/ca--palo-alto/family/",
-    "last_verified": "2026-06-14T05:38:44.073229+00:00",
+    "last_verified": "2026-06-14T05:46:27.778810+00:00",
     "dedupe_key": "5006411efe9b",
     "is_camp": false
   },
@@ -1715,7 +1755,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:35.872377+00:00",
+    "last_verified": "2026-06-14T05:46:22.764744+00:00",
     "dedupe_key": "1db67f2cac4e",
     "is_camp": false
   },
@@ -1735,7 +1775,7 @@
     "source_channel": "library",
     "source_name": "San Mateo County Library",
     "source_url": "https://smcl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:19.525995+00:00",
+    "last_verified": "2026-06-14T05:46:12.150547+00:00",
     "dedupe_key": "be7f14adf901",
     "is_camp": false
   },
@@ -1755,7 +1795,7 @@
     "source_channel": "library",
     "source_name": "Palo Alto City Library",
     "source_url": "https://paloalto.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:10.732390+00:00",
+    "last_verified": "2026-06-14T05:46:05.937987+00:00",
     "dedupe_key": "6f1d159dd955",
     "is_camp": false
   },
@@ -1775,7 +1815,7 @@
     "source_channel": "library",
     "source_name": "San Jose Public Library",
     "source_url": "https://sjpl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:27.249400+00:00",
+    "last_verified": "2026-06-14T05:46:16.466624+00:00",
     "dedupe_key": "819b957e3c9b",
     "is_camp": false
   },
@@ -1795,7 +1835,7 @@
     "source_channel": "library",
     "source_name": "San Jose Public Library",
     "source_url": "https://sjpl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:27.249400+00:00",
+    "last_verified": "2026-06-14T05:46:16.466624+00:00",
     "dedupe_key": "3896935b3f41",
     "is_camp": false
   },
@@ -1815,8 +1855,28 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:35.872377+00:00",
+    "last_verified": "2026-06-14T05:46:22.764744+00:00",
     "dedupe_key": "e8570ac5fca3",
+    "is_camp": false
+  },
+  {
+    "title": "Farm Volunteer Day",
+    "start_datetime": "2026-06-24T09:00:00-07:00",
+    "end_datetime": "2026-06-24T12:00:00-07:00",
+    "venue": "Hidden Villa Farm",
+    "city": "Los Altos Hills",
+    "county": "Santa Clara",
+    "age_range": "Families",
+    "cost": "Paid",
+    "cost_amount": 8.0,
+    "ticket_status": "some tours require registration",
+    "ticket_url": "https://www.hiddenvilla.org/programs/catalog/468-farm-volunteer-day/region-HV/",
+    "category": "venue",
+    "source_channel": "venue",
+    "source_name": "Hidden Villa Farm",
+    "source_url": "https://www.hiddenvilla.org/calendar/individuals-families/region-HV/",
+    "last_verified": "2026-06-14T05:46:45.697070+00:00",
+    "dedupe_key": "1eb21acb7d68",
     "is_camp": false
   },
   {
@@ -1835,7 +1895,7 @@
     "source_channel": "library",
     "source_name": "San Mateo County Library",
     "source_url": "https://smcl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:19.525995+00:00",
+    "last_verified": "2026-06-14T05:46:12.150547+00:00",
     "dedupe_key": "6ae9ba00fa2b",
     "is_camp": false
   },
@@ -1855,7 +1915,7 @@
     "source_channel": "library",
     "source_name": "San Mateo County Library",
     "source_url": "https://smcl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:19.525995+00:00",
+    "last_verified": "2026-06-14T05:46:12.150547+00:00",
     "dedupe_key": "888de572d593",
     "is_camp": false
   },
@@ -1875,7 +1935,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:35.872377+00:00",
+    "last_verified": "2026-06-14T05:46:22.764744+00:00",
     "dedupe_key": "81ec00a09d57",
     "is_camp": false
   },
@@ -1895,7 +1955,7 @@
     "source_channel": "library",
     "source_name": "San Mateo County Library",
     "source_url": "https://smcl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:19.525995+00:00",
+    "last_verified": "2026-06-14T05:46:12.150547+00:00",
     "dedupe_key": "211117562452",
     "is_camp": false
   },
@@ -1915,7 +1975,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:35.872377+00:00",
+    "last_verified": "2026-06-14T05:46:22.764744+00:00",
     "dedupe_key": "5140b63dbfaf",
     "is_camp": false
   },
@@ -1935,7 +1995,7 @@
     "source_channel": "library",
     "source_name": "San Jose Public Library",
     "source_url": "https://sjpl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:27.249400+00:00",
+    "last_verified": "2026-06-14T05:46:16.466624+00:00",
     "dedupe_key": "d403fbef2dfb",
     "is_camp": false
   },
@@ -1955,7 +2015,7 @@
     "source_channel": "eventbrite",
     "source_name": "Eventbrite / Palo Alto",
     "source_url": "https://www.eventbrite.com/d/ca--palo-alto/family/",
-    "last_verified": "2026-06-14T05:38:44.073229+00:00",
+    "last_verified": "2026-06-14T05:46:27.778810+00:00",
     "dedupe_key": "9dfc5d6b286c",
     "is_camp": false
   },
@@ -1975,7 +2035,7 @@
     "source_channel": "library",
     "source_name": "Palo Alto City Library",
     "source_url": "https://paloalto.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:10.732390+00:00",
+    "last_verified": "2026-06-14T05:46:05.937987+00:00",
     "dedupe_key": "e62ae8d98a7b",
     "is_camp": false
   },
@@ -1995,7 +2055,7 @@
     "source_channel": "eventbrite",
     "source_name": "Eventbrite / Mountain View",
     "source_url": "https://www.eventbrite.com/d/ca--mountain-view/family/",
-    "last_verified": "2026-06-14T05:38:47.174054+00:00",
+    "last_verified": "2026-06-14T05:46:30.779883+00:00",
     "dedupe_key": "bef9b1787ba7",
     "is_camp": false
   },
@@ -2015,7 +2075,7 @@
     "source_channel": "library",
     "source_name": "San Mateo County Library",
     "source_url": "https://smcl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:19.525995+00:00",
+    "last_verified": "2026-06-14T05:46:12.150547+00:00",
     "dedupe_key": "d78f9765219a",
     "is_camp": false
   },
@@ -2035,7 +2095,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:35.872377+00:00",
+    "last_verified": "2026-06-14T05:46:22.764744+00:00",
     "dedupe_key": "a82076208ff3",
     "is_camp": false
   },
@@ -2055,7 +2115,7 @@
     "source_channel": "library",
     "source_name": "San Mateo County Library",
     "source_url": "https://smcl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:19.525995+00:00",
+    "last_verified": "2026-06-14T05:46:12.150547+00:00",
     "dedupe_key": "e01ba2b906b9",
     "is_camp": false
   },
@@ -2075,7 +2135,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:35.872377+00:00",
+    "last_verified": "2026-06-14T05:46:22.764744+00:00",
     "dedupe_key": "2e3cfd12eb21",
     "is_camp": false
   },
@@ -2095,7 +2155,7 @@
     "source_channel": "library",
     "source_name": "San Jose Public Library",
     "source_url": "https://sjpl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:27.249400+00:00",
+    "last_verified": "2026-06-14T05:46:16.466624+00:00",
     "dedupe_key": "55bc601b2619",
     "is_camp": false
   },
@@ -2115,7 +2175,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:35.872377+00:00",
+    "last_verified": "2026-06-14T05:46:22.764744+00:00",
     "dedupe_key": "bf864f6270c4",
     "is_camp": false
   },
@@ -2135,7 +2195,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:35.872377+00:00",
+    "last_verified": "2026-06-14T05:46:22.764744+00:00",
     "dedupe_key": "5742b0fdb17e",
     "is_camp": false
   },
@@ -2155,7 +2215,7 @@
     "source_channel": "eventbrite",
     "source_name": "Eventbrite / Palo Alto",
     "source_url": "https://www.eventbrite.com/d/ca--palo-alto/family/",
-    "last_verified": "2026-06-14T05:38:44.073229+00:00",
+    "last_verified": "2026-06-14T05:46:27.778810+00:00",
     "dedupe_key": "68c59d8bb1f5",
     "is_camp": false
   },
@@ -2175,7 +2235,7 @@
     "source_channel": "eventbrite",
     "source_name": "Eventbrite / San Jose",
     "source_url": "https://www.eventbrite.com/d/ca--san-jose/family/",
-    "last_verified": "2026-06-14T05:38:45.595393+00:00",
+    "last_verified": "2026-06-14T05:46:29.325589+00:00",
     "dedupe_key": "32f8e00a358a",
     "is_camp": false
   },
@@ -2195,7 +2255,7 @@
     "source_channel": "library",
     "source_name": "Palo Alto City Library",
     "source_url": "https://paloalto.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:10.732390+00:00",
+    "last_verified": "2026-06-14T05:46:05.937987+00:00",
     "dedupe_key": "485412b4b4bc",
     "is_camp": false
   },
@@ -2215,7 +2275,7 @@
     "source_channel": "library",
     "source_name": "San Mateo County Library",
     "source_url": "https://smcl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:19.525995+00:00",
+    "last_verified": "2026-06-14T05:46:12.150547+00:00",
     "dedupe_key": "47ecb8fd0465",
     "is_camp": false
   },
@@ -2235,7 +2295,7 @@
     "source_channel": "library",
     "source_name": "San Mateo County Library",
     "source_url": "https://smcl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:19.525995+00:00",
+    "last_verified": "2026-06-14T05:46:12.150547+00:00",
     "dedupe_key": "4a3fc9262406",
     "is_camp": false
   },
@@ -2255,7 +2315,7 @@
     "source_channel": "eventbrite",
     "source_name": "Eventbrite / Palo Alto",
     "source_url": "https://www.eventbrite.com/d/ca--palo-alto/family/",
-    "last_verified": "2026-06-14T05:38:44.073229+00:00",
+    "last_verified": "2026-06-14T05:46:27.778810+00:00",
     "dedupe_key": "e07f3a971445",
     "is_camp": false
   },
@@ -2275,7 +2335,7 @@
     "source_channel": "library",
     "source_name": "San Jose Public Library",
     "source_url": "https://sjpl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:27.249400+00:00",
+    "last_verified": "2026-06-14T05:46:16.466624+00:00",
     "dedupe_key": "2bbf087938b2",
     "is_camp": false
   },
@@ -2295,7 +2355,7 @@
     "source_channel": "library",
     "source_name": "Palo Alto City Library",
     "source_url": "https://paloalto.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:10.732390+00:00",
+    "last_verified": "2026-06-14T05:46:05.937987+00:00",
     "dedupe_key": "83565e781e23",
     "is_camp": false
   },
@@ -2315,7 +2375,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:35.872377+00:00",
+    "last_verified": "2026-06-14T05:46:22.764744+00:00",
     "dedupe_key": "520cfdcfcb5a",
     "is_camp": false
   },
@@ -2335,7 +2395,7 @@
     "source_channel": "eventbrite",
     "source_name": "Eventbrite / Palo Alto",
     "source_url": "https://www.eventbrite.com/d/ca--palo-alto/family/",
-    "last_verified": "2026-06-14T05:38:44.073229+00:00",
+    "last_verified": "2026-06-14T05:46:27.778810+00:00",
     "dedupe_key": "cddc696a3ee6",
     "is_camp": false
   },
@@ -2355,8 +2415,28 @@
     "source_channel": "venue",
     "source_name": "CuriOdyssey",
     "source_url": "https://curiodyssey.org/events/",
-    "last_verified": "2026-06-14T05:39:00.762742+00:00",
+    "last_verified": "2026-06-14T05:46:43.407147+00:00",
     "dedupe_key": "cb31d219afc3",
+    "is_camp": false
+  },
+  {
+    "title": "Farm Volunteer Day",
+    "start_datetime": "2026-06-27T09:00:00-07:00",
+    "end_datetime": "2026-06-27T12:00:00-07:00",
+    "venue": "Hidden Villa Farm",
+    "city": "Los Altos Hills",
+    "county": "Santa Clara",
+    "age_range": "Families",
+    "cost": "Paid",
+    "cost_amount": 8.0,
+    "ticket_status": "some tours require registration",
+    "ticket_url": "https://www.hiddenvilla.org/programs/catalog/468-farm-volunteer-day/region-HV/",
+    "category": "venue",
+    "source_channel": "venue",
+    "source_name": "Hidden Villa Farm",
+    "source_url": "https://www.hiddenvilla.org/calendar/individuals-families/region-HV/",
+    "last_verified": "2026-06-14T05:46:45.697092+00:00",
+    "dedupe_key": "984cd2e23713",
     "is_camp": false
   },
   {
@@ -2375,14 +2455,14 @@
     "source_channel": "eventbrite",
     "source_name": "Eventbrite / San Jose",
     "source_url": "https://www.eventbrite.com/d/ca--san-jose/family/",
-    "last_verified": "2026-06-14T05:38:45.595393+00:00",
+    "last_verified": "2026-06-14T05:46:29.325589+00:00",
     "dedupe_key": "d383bbde6dcc",
     "is_camp": false
   },
   {
     "title": "Palo Alto Junior Museum & Zoo \u2014 Open",
-    "start_datetime": "2026-06-27T10:00:00.361702+00:00",
-    "end_datetime": "2026-06-27T17:00:00.361702+00:00",
+    "start_datetime": "2026-06-27T10:00:00.976061+00:00",
+    "end_datetime": "2026-06-27T17:00:00.976061+00:00",
     "venue": "Palo Alto Junior Museum & Zoo",
     "city": "Palo Alto",
     "county": "Santa Clara",
@@ -2395,7 +2475,7 @@
     "source_channel": "venue",
     "source_name": "Palo Alto Junior Museum & Zoo",
     "source_url": "https://www.paloaltozoo.org/visit",
-    "last_verified": "2026-06-14T05:38:59.222569+00:00",
+    "last_verified": "2026-06-14T05:46:41.743084+00:00",
     "dedupe_key": "8f0013b2656b",
     "is_camp": false
   },
@@ -2415,7 +2495,7 @@
     "source_channel": "library",
     "source_name": "San Jose Public Library",
     "source_url": "https://sjpl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:27.249400+00:00",
+    "last_verified": "2026-06-14T05:46:16.466624+00:00",
     "dedupe_key": "f8a178dffca5",
     "is_camp": false
   },
@@ -2435,7 +2515,7 @@
     "source_channel": "library",
     "source_name": "Palo Alto City Library",
     "source_url": "https://paloalto.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:10.732390+00:00",
+    "last_verified": "2026-06-14T05:46:05.937987+00:00",
     "dedupe_key": "7bb026c2ba3e",
     "is_camp": false
   },
@@ -2455,7 +2535,7 @@
     "source_channel": "library",
     "source_name": "Palo Alto City Library",
     "source_url": "https://paloalto.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:10.732390+00:00",
+    "last_verified": "2026-06-14T05:46:05.937987+00:00",
     "dedupe_key": "6f133e0e67a2",
     "is_camp": false
   },
@@ -2475,7 +2555,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:35.872377+00:00",
+    "last_verified": "2026-06-14T05:46:22.764744+00:00",
     "dedupe_key": "9fdcc17e886f",
     "is_camp": false
   },
@@ -2495,7 +2575,7 @@
     "source_channel": "library",
     "source_name": "San Jose Public Library",
     "source_url": "https://sjpl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:27.249400+00:00",
+    "last_verified": "2026-06-14T05:46:16.466624+00:00",
     "dedupe_key": "44183ac84ed5",
     "is_camp": false
   },
@@ -2515,7 +2595,7 @@
     "source_channel": "eventbrite",
     "source_name": "Eventbrite / Palo Alto",
     "source_url": "https://www.eventbrite.com/d/ca--palo-alto/family/",
-    "last_verified": "2026-06-14T05:38:44.073229+00:00",
+    "last_verified": "2026-06-14T05:46:27.778810+00:00",
     "dedupe_key": "4569c2cb93df",
     "is_camp": false
   },
@@ -2535,7 +2615,7 @@
     "source_channel": "eventbrite",
     "source_name": "Eventbrite / San Jose",
     "source_url": "https://www.eventbrite.com/d/ca--san-jose/family/",
-    "last_verified": "2026-06-14T05:38:45.595393+00:00",
+    "last_verified": "2026-06-14T05:46:29.325589+00:00",
     "dedupe_key": "3476b54a8401",
     "is_camp": false
   },
@@ -2555,7 +2635,7 @@
     "source_channel": "eventbrite",
     "source_name": "Eventbrite / Palo Alto",
     "source_url": "https://www.eventbrite.com/d/ca--palo-alto/family/",
-    "last_verified": "2026-06-14T05:38:44.073229+00:00",
+    "last_verified": "2026-06-14T05:46:27.778810+00:00",
     "dedupe_key": "9fe774bcf0c1",
     "is_camp": false
   },
@@ -2575,7 +2655,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:35.872377+00:00",
+    "last_verified": "2026-06-14T05:46:22.764744+00:00",
     "dedupe_key": "4ff666f1ca14",
     "is_camp": false
   },
@@ -2595,7 +2675,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:35.872377+00:00",
+    "last_verified": "2026-06-14T05:46:22.764744+00:00",
     "dedupe_key": "384b4dc4d267",
     "is_camp": false
   },
@@ -2615,7 +2695,7 @@
     "source_channel": "library",
     "source_name": "Palo Alto City Library",
     "source_url": "https://paloalto.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:10.732390+00:00",
+    "last_verified": "2026-06-14T05:46:05.937987+00:00",
     "dedupe_key": "12750a453ad3",
     "is_camp": false
   },
@@ -2635,7 +2715,7 @@
     "source_channel": "eventbrite",
     "source_name": "Eventbrite / Palo Alto",
     "source_url": "https://www.eventbrite.com/d/ca--palo-alto/family/",
-    "last_verified": "2026-06-14T05:38:44.073229+00:00",
+    "last_verified": "2026-06-14T05:46:27.778810+00:00",
     "dedupe_key": "ee4fe0ff15e5",
     "is_camp": false
   },
@@ -2655,7 +2735,7 @@
     "source_channel": "eventbrite",
     "source_name": "Eventbrite / Mountain View",
     "source_url": "https://www.eventbrite.com/d/ca--mountain-view/family/",
-    "last_verified": "2026-06-14T05:38:47.174054+00:00",
+    "last_verified": "2026-06-14T05:46:30.779883+00:00",
     "dedupe_key": "89947a553d5d",
     "is_camp": false
   },
@@ -2675,14 +2755,14 @@
     "source_channel": "venue",
     "source_name": "Cantor Arts Center",
     "source_url": "https://museum.stanford.edu/events",
-    "last_verified": "2026-06-14T05:39:01.258340+00:00",
+    "last_verified": "2026-06-14T05:46:45.188445+00:00",
     "dedupe_key": "36682497386e",
     "is_camp": false
   },
   {
     "title": "Palo Alto Junior Museum & Zoo \u2014 Open",
-    "start_datetime": "2026-06-28T10:00:00.361702+00:00",
-    "end_datetime": "2026-06-28T17:00:00.361702+00:00",
+    "start_datetime": "2026-06-28T10:00:00.976061+00:00",
+    "end_datetime": "2026-06-28T17:00:00.976061+00:00",
     "venue": "Palo Alto Junior Museum & Zoo",
     "city": "Palo Alto",
     "county": "Santa Clara",
@@ -2695,7 +2775,7 @@
     "source_channel": "venue",
     "source_name": "Palo Alto Junior Museum & Zoo",
     "source_url": "https://www.paloaltozoo.org/visit",
-    "last_verified": "2026-06-14T05:38:59.222582+00:00",
+    "last_verified": "2026-06-14T05:46:41.743094+00:00",
     "dedupe_key": "bfdb9a601687",
     "is_camp": false
   },
@@ -2715,7 +2795,7 @@
     "source_channel": "library",
     "source_name": "San Mateo County Library",
     "source_url": "https://smcl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:19.525995+00:00",
+    "last_verified": "2026-06-14T05:46:12.150547+00:00",
     "dedupe_key": "7dd785b2c0b1",
     "is_camp": false
   },
@@ -2735,7 +2815,7 @@
     "source_channel": "library",
     "source_name": "Palo Alto City Library",
     "source_url": "https://paloalto.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:10.732390+00:00",
+    "last_verified": "2026-06-14T05:46:05.937987+00:00",
     "dedupe_key": "b10757750698",
     "is_camp": false
   },
@@ -2755,7 +2835,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:35.872377+00:00",
+    "last_verified": "2026-06-14T05:46:22.764744+00:00",
     "dedupe_key": "6382303ae678",
     "is_camp": false
   },
@@ -2775,7 +2855,7 @@
     "source_channel": "library",
     "source_name": "San Jose Public Library",
     "source_url": "https://sjpl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:27.249400+00:00",
+    "last_verified": "2026-06-14T05:46:16.466624+00:00",
     "dedupe_key": "ad15dc507b11",
     "is_camp": false
   },
@@ -2795,8 +2875,28 @@
     "source_channel": "library",
     "source_name": "San Jose Public Library",
     "source_url": "https://sjpl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T05:38:27.249400+00:00",
+    "last_verified": "2026-06-14T05:46:16.466624+00:00",
     "dedupe_key": "8f4cbc28ba55",
+    "is_camp": false
+  },
+  {
+    "title": "Family Paint Party",
+    "start_datetime": "2026-06-29T18:30:00+00:00",
+    "end_datetime": "2026-06-29T20:30:00+00:00",
+    "venue": "PF Changs Sunnyvale",
+    "city": "Sunnyvale",
+    "county": "Santa Clara",
+    "age_range": "Families",
+    "cost": "Paid",
+    "cost_amount": 1.0,
+    "ticket_status": "book ahead",
+    "ticket_url": "https://www.eventbrite.com/e/family-paint-party-tickets-1987594096447",
+    "category": "eventbrite",
+    "source_channel": "eventbrite",
+    "source_name": "Eventbrite / San Jose",
+    "source_url": "https://www.eventbrite.com/d/ca--san-jose/family/",
+    "last_verified": "2026-06-14T05:46:29.325589+00:00",
+    "dedupe_key": "72a945300f42",
     "is_camp": false
   },
   {
@@ -2815,7 +2915,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T05:38:56.139534+00:00",
+    "last_verified": "2026-06-14T05:46:38.614429+00:00",
     "dedupe_key": "047ccefa5add",
     "is_camp": false
   },
@@ -2835,7 +2935,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T05:38:56.140252+00:00",
+    "last_verified": "2026-06-14T05:46:38.615076+00:00",
     "dedupe_key": "9d6fa79ffed4",
     "is_camp": false
   },
@@ -2855,7 +2955,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T05:38:56.140831+00:00",
+    "last_verified": "2026-06-14T05:46:38.615638+00:00",
     "dedupe_key": "acc31d694d88",
     "is_camp": false
   },
@@ -2875,7 +2975,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T05:38:56.141447+00:00",
+    "last_verified": "2026-06-14T05:46:38.616261+00:00",
     "dedupe_key": "50d3f16e830e",
     "is_camp": false
   },
@@ -2895,7 +2995,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T05:38:56.142025+00:00",
+    "last_verified": "2026-06-14T05:46:38.616815+00:00",
     "dedupe_key": "b521966a72e7",
     "is_camp": false
   },
@@ -2915,7 +3015,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T05:38:56.142608+00:00",
+    "last_verified": "2026-06-14T05:46:38.617372+00:00",
     "dedupe_key": "36a8737218d1",
     "is_camp": false
   },
@@ -2935,7 +3035,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T05:38:56.143188+00:00",
+    "last_verified": "2026-06-14T05:46:38.617922+00:00",
     "dedupe_key": "5cb9bc253d0b",
     "is_camp": false
   },
@@ -2955,7 +3055,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T05:38:56.143809+00:00",
+    "last_verified": "2026-06-14T05:46:38.618454+00:00",
     "dedupe_key": "7c02eb867f39",
     "is_camp": false
   },
@@ -2975,7 +3075,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T05:38:56.144373+00:00",
+    "last_verified": "2026-06-14T05:46:38.619008+00:00",
     "dedupe_key": "5ee38de2f0af",
     "is_camp": false
   },
@@ -2995,7 +3095,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T05:38:56.144890+00:00",
+    "last_verified": "2026-06-14T05:46:38.619557+00:00",
     "dedupe_key": "a31242d1cfdb",
     "is_camp": false
   },
@@ -3015,7 +3115,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T05:38:56.145368+00:00",
+    "last_verified": "2026-06-14T05:46:38.620090+00:00",
     "dedupe_key": "df239eaa691c",
     "is_camp": false
   },
@@ -3035,7 +3135,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T05:38:56.145890+00:00",
+    "last_verified": "2026-06-14T05:46:38.620644+00:00",
     "dedupe_key": "06aab3311dbe",
     "is_camp": false
   },
@@ -3055,7 +3155,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T05:38:56.146340+00:00",
+    "last_verified": "2026-06-14T05:46:38.621135+00:00",
     "dedupe_key": "c45002f1290f",
     "is_camp": false
   },
@@ -3075,7 +3175,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T05:38:56.146788+00:00",
+    "last_verified": "2026-06-14T05:46:38.621635+00:00",
     "dedupe_key": "1556f5e89598",
     "is_camp": false
   },
@@ -3095,7 +3195,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T05:38:56.147231+00:00",
+    "last_verified": "2026-06-14T05:46:38.622212+00:00",
     "dedupe_key": "4347a558c84d",
     "is_camp": false
   },
@@ -3115,7 +3215,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T05:38:56.147682+00:00",
+    "last_verified": "2026-06-14T05:46:38.622721+00:00",
     "dedupe_key": "a1fef04cafa3",
     "is_camp": false
   },
@@ -3135,7 +3235,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T05:38:56.148127+00:00",
+    "last_verified": "2026-06-14T05:46:38.623230+00:00",
     "dedupe_key": "226a63ad359b",
     "is_camp": false
   },
@@ -3155,7 +3255,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T05:38:56.148617+00:00",
+    "last_verified": "2026-06-14T05:46:38.623774+00:00",
     "dedupe_key": "46b5f5084df9",
     "is_camp": false
   },
@@ -3175,7 +3275,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T05:38:56.149513+00:00",
+    "last_verified": "2026-06-14T05:46:38.624792+00:00",
     "dedupe_key": "4e1775eb7921",
     "is_camp": false
   },
@@ -3195,7 +3295,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T05:38:56.150002+00:00",
+    "last_verified": "2026-06-14T05:46:38.625381+00:00",
     "dedupe_key": "d2d27b07872a",
     "is_camp": false
   },
@@ -3215,7 +3315,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T05:38:56.150457+00:00",
+    "last_verified": "2026-06-14T05:46:38.625905+00:00",
     "dedupe_key": "843cdc62eecd",
     "is_camp": false
   },
@@ -3235,7 +3335,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T05:38:56.150918+00:00",
+    "last_verified": "2026-06-14T05:46:38.626459+00:00",
     "dedupe_key": "455b1360ecd2",
     "is_camp": false
   },
@@ -3255,7 +3355,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T05:38:56.151452+00:00",
+    "last_verified": "2026-06-14T05:46:38.627044+00:00",
     "dedupe_key": "d228bc936c97",
     "is_camp": false
   },
@@ -3275,7 +3375,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T05:38:56.151968+00:00",
+    "last_verified": "2026-06-14T05:46:38.627622+00:00",
     "dedupe_key": "b910f0d5a12c",
     "is_camp": false
   },
@@ -3295,7 +3395,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T05:38:56.152483+00:00",
+    "last_verified": "2026-06-14T05:46:38.628200+00:00",
     "dedupe_key": "29016ed7254f",
     "is_camp": false
   },
@@ -3315,7 +3415,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T05:38:56.152990+00:00",
+    "last_verified": "2026-06-14T05:46:38.628752+00:00",
     "dedupe_key": "3d34adb79bb9",
     "is_camp": false
   },
@@ -3335,7 +3435,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T05:38:56.153495+00:00",
+    "last_verified": "2026-06-14T05:46:38.629304+00:00",
     "dedupe_key": "20e8168b7a84",
     "is_camp": false
   },
@@ -3355,7 +3455,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T05:38:56.154103+00:00",
+    "last_verified": "2026-06-14T05:46:38.629803+00:00",
     "dedupe_key": "b412e3f2af0d",
     "is_camp": false
   },
@@ -3375,7 +3475,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T05:38:56.154602+00:00",
+    "last_verified": "2026-06-14T05:46:38.630329+00:00",
     "dedupe_key": "350a12b9624d",
     "is_camp": false
   },
@@ -3395,7 +3495,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/2/",
-    "last_verified": "2026-06-14T05:38:56.744071+00:00",
+    "last_verified": "2026-06-14T05:46:38.802128+00:00",
     "dedupe_key": "2aed97afdfbd",
     "is_camp": false
   },
@@ -3415,7 +3515,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/2/",
-    "last_verified": "2026-06-14T05:38:56.744699+00:00",
+    "last_verified": "2026-06-14T05:46:38.802710+00:00",
     "dedupe_key": "90e2dd2aa871",
     "is_camp": false
   },
@@ -3435,7 +3535,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/2/",
-    "last_verified": "2026-06-14T05:38:56.745231+00:00",
+    "last_verified": "2026-06-14T05:46:38.803220+00:00",
     "dedupe_key": "6f5c52150a66",
     "is_camp": false
   },
@@ -3455,7 +3555,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/2/",
-    "last_verified": "2026-06-14T05:38:56.745875+00:00",
+    "last_verified": "2026-06-14T05:46:38.803797+00:00",
     "dedupe_key": "be5d3029f6f7",
     "is_camp": false
   },
@@ -3475,7 +3575,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/2/",
-    "last_verified": "2026-06-14T05:38:56.746412+00:00",
+    "last_verified": "2026-06-14T05:46:38.804327+00:00",
     "dedupe_key": "2ad3081465ea",
     "is_camp": false
   },
@@ -3495,7 +3595,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/2/",
-    "last_verified": "2026-06-14T05:38:56.748839+00:00",
+    "last_verified": "2026-06-14T05:46:38.806402+00:00",
     "dedupe_key": "71008ad26453",
     "is_camp": false
   },
@@ -3515,7 +3615,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/2/",
-    "last_verified": "2026-06-14T05:38:56.751294+00:00",
+    "last_verified": "2026-06-14T05:46:38.808442+00:00",
     "dedupe_key": "b7759aeee3cc",
     "is_camp": false
   },
@@ -3535,7 +3635,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/2/",
-    "last_verified": "2026-06-14T05:38:56.753291+00:00",
+    "last_verified": "2026-06-14T05:46:38.810122+00:00",
     "dedupe_key": "23d4bd7120a5",
     "is_camp": false
   },
@@ -3555,7 +3655,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/2/",
-    "last_verified": "2026-06-14T05:38:56.753892+00:00",
+    "last_verified": "2026-06-14T05:46:38.810661+00:00",
     "dedupe_key": "91aa802aa076",
     "is_camp": false
   },
@@ -3575,7 +3675,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/2/",
-    "last_verified": "2026-06-14T05:38:56.755592+00:00",
+    "last_verified": "2026-06-14T05:46:38.812266+00:00",
     "dedupe_key": "f4cfa3a7b5c0",
     "is_camp": false
   },
@@ -3595,7 +3695,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/2/",
-    "last_verified": "2026-06-14T05:38:56.756624+00:00",
+    "last_verified": "2026-06-14T05:46:38.813284+00:00",
     "dedupe_key": "0c5b4d685bd9",
     "is_camp": false
   },
@@ -3615,7 +3715,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/2/",
-    "last_verified": "2026-06-14T05:38:56.757200+00:00",
+    "last_verified": "2026-06-14T05:46:38.813853+00:00",
     "dedupe_key": "33cbf6471f6e",
     "is_camp": false
   },
@@ -3635,7 +3735,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/2/",
-    "last_verified": "2026-06-14T05:38:56.757808+00:00",
+    "last_verified": "2026-06-14T05:46:38.814403+00:00",
     "dedupe_key": "baee550719b2",
     "is_camp": false
   },
@@ -3655,7 +3755,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/2/",
-    "last_verified": "2026-06-14T05:38:56.759115+00:00",
+    "last_verified": "2026-06-14T05:46:38.815488+00:00",
     "dedupe_key": "7eed313a1602",
     "is_camp": false
   },
@@ -3675,7 +3775,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/2/",
-    "last_verified": "2026-06-14T05:38:56.760300+00:00",
+    "last_verified": "2026-06-14T05:46:38.816567+00:00",
     "dedupe_key": "f4d54c568506",
     "is_camp": false
   },
@@ -3695,7 +3795,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/2/",
-    "last_verified": "2026-06-14T05:38:56.760898+00:00",
+    "last_verified": "2026-06-14T05:46:38.817126+00:00",
     "dedupe_key": "e53ae9be62fe",
     "is_camp": false
   },
@@ -3715,7 +3815,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/2/",
-    "last_verified": "2026-06-14T05:38:56.761352+00:00",
+    "last_verified": "2026-06-14T05:46:38.817573+00:00",
     "dedupe_key": "807a2b9d5837",
     "is_camp": false
   },
@@ -3735,7 +3835,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/3/",
-    "last_verified": "2026-06-14T05:38:57.376052+00:00",
+    "last_verified": "2026-06-14T05:46:39.088542+00:00",
     "dedupe_key": "c51b71dd2189",
     "is_camp": false
   },
@@ -3755,7 +3855,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/3/",
-    "last_verified": "2026-06-14T05:38:57.377472+00:00",
+    "last_verified": "2026-06-14T05:46:39.089640+00:00",
     "dedupe_key": "dc3ea2eeb516",
     "is_camp": false
   },
@@ -3775,7 +3875,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/3/",
-    "last_verified": "2026-06-14T05:38:57.377978+00:00",
+    "last_verified": "2026-06-14T05:46:39.090104+00:00",
     "dedupe_key": "7e3cf4858a70",
     "is_camp": false
   },
@@ -3795,7 +3895,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/3/",
-    "last_verified": "2026-06-14T05:38:57.378548+00:00",
+    "last_verified": "2026-06-14T05:46:39.090614+00:00",
     "dedupe_key": "51151af70d10",
     "is_camp": false
   },
@@ -3815,7 +3915,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/3/",
-    "last_verified": "2026-06-14T05:38:57.379628+00:00",
+    "last_verified": "2026-06-14T05:46:39.091609+00:00",
     "dedupe_key": "fa0accefcbef",
     "is_camp": false
   },
@@ -3835,7 +3935,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/3/",
-    "last_verified": "2026-06-14T05:38:57.380140+00:00",
+    "last_verified": "2026-06-14T05:46:39.092140+00:00",
     "dedupe_key": "edfe683d101c",
     "is_camp": false
   },
@@ -3855,7 +3955,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/3/",
-    "last_verified": "2026-06-14T05:38:57.380678+00:00",
+    "last_verified": "2026-06-14T05:46:39.092684+00:00",
     "dedupe_key": "45980e0eb257",
     "is_camp": false
   },
@@ -3875,7 +3975,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/3/",
-    "last_verified": "2026-06-14T05:38:57.381160+00:00",
+    "last_verified": "2026-06-14T05:46:39.093194+00:00",
     "dedupe_key": "8bd09300485b",
     "is_camp": false
   },
@@ -3895,7 +3995,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/3/",
-    "last_verified": "2026-06-14T05:38:57.382206+00:00",
+    "last_verified": "2026-06-14T05:46:39.094275+00:00",
     "dedupe_key": "5fe96f39185a",
     "is_camp": false
   },
@@ -3915,7 +4015,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/3/",
-    "last_verified": "2026-06-14T05:38:57.382947+00:00",
+    "last_verified": "2026-06-14T05:46:39.094824+00:00",
     "dedupe_key": "7ae993c20ab7",
     "is_camp": false
   },
@@ -3935,7 +4035,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/3/",
-    "last_verified": "2026-06-14T05:38:57.383409+00:00",
+    "last_verified": "2026-06-14T05:46:39.095270+00:00",
     "dedupe_key": "d0edde904452",
     "is_camp": false
   },
@@ -3955,7 +4055,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/3/",
-    "last_verified": "2026-06-14T05:38:57.383841+00:00",
+    "last_verified": "2026-06-14T05:46:39.095700+00:00",
     "dedupe_key": "36952c7ebae2",
     "is_camp": false
   },
@@ -3975,7 +4075,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/3/",
-    "last_verified": "2026-06-14T05:38:57.384912+00:00",
+    "last_verified": "2026-06-14T05:46:39.096701+00:00",
     "dedupe_key": "0fe38f759153",
     "is_camp": false
   },
@@ -3995,7 +4095,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/3/",
-    "last_verified": "2026-06-14T05:38:57.386149+00:00",
+    "last_verified": "2026-06-14T05:46:39.097806+00:00",
     "dedupe_key": "c3389ff4a7e0",
     "is_camp": false
   },
@@ -4015,7 +4115,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/3/",
-    "last_verified": "2026-06-14T05:38:57.386666+00:00",
+    "last_verified": "2026-06-14T05:46:39.098343+00:00",
     "dedupe_key": "53d1a05984d0",
     "is_camp": false
   },
@@ -4035,7 +4135,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/3/",
-    "last_verified": "2026-06-14T05:38:57.387116+00:00",
+    "last_verified": "2026-06-14T05:46:39.098799+00:00",
     "dedupe_key": "9dfc4775afe9",
     "is_camp": false
   },
@@ -4055,7 +4155,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/3/",
-    "last_verified": "2026-06-14T05:38:57.387689+00:00",
+    "last_verified": "2026-06-14T05:46:39.099378+00:00",
     "dedupe_key": "860c026a247f",
     "is_camp": false
   },
@@ -4075,7 +4175,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/3/",
-    "last_verified": "2026-06-14T05:38:57.388699+00:00",
+    "last_verified": "2026-06-14T05:46:39.100394+00:00",
     "dedupe_key": "87007ffd829c",
     "is_camp": false
   },
@@ -4095,7 +4195,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/3/",
-    "last_verified": "2026-06-14T05:38:57.389735+00:00",
+    "last_verified": "2026-06-14T05:46:39.101456+00:00",
     "dedupe_key": "39c30376e16c",
     "is_camp": false
   },
@@ -4115,7 +4215,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T05:38:57.909007+00:00",
+    "last_verified": "2026-06-14T05:46:40.796823+00:00",
     "dedupe_key": "c810969de512",
     "is_camp": false
   },
@@ -4135,7 +4235,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T05:38:57.909074+00:00",
+    "last_verified": "2026-06-14T05:46:40.796863+00:00",
     "dedupe_key": "90504636982b",
     "is_camp": false
   },
@@ -4155,7 +4255,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T05:38:57.909089+00:00",
+    "last_verified": "2026-06-14T05:46:40.796874+00:00",
     "dedupe_key": "2df887ea0d6c",
     "is_camp": false
   },
@@ -4175,7 +4275,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T05:38:57.909107+00:00",
+    "last_verified": "2026-06-14T05:46:40.796887+00:00",
     "dedupe_key": "a80bad48d9b2",
     "is_camp": false
   },
@@ -4195,7 +4295,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T05:38:57.909123+00:00",
+    "last_verified": "2026-06-14T05:46:40.796896+00:00",
     "dedupe_key": "85df1d22ed48",
     "is_camp": false
   },
@@ -4215,7 +4315,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T05:38:57.909135+00:00",
+    "last_verified": "2026-06-14T05:46:40.796904+00:00",
     "dedupe_key": "3e796f7da8f8",
     "is_camp": false
   },
@@ -4235,7 +4335,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T05:38:57.909146+00:00",
+    "last_verified": "2026-06-14T05:46:40.796912+00:00",
     "dedupe_key": "fcc8ffd71d10",
     "is_camp": false
   },
@@ -4255,7 +4355,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T05:38:57.909160+00:00",
+    "last_verified": "2026-06-14T05:46:40.796920+00:00",
     "dedupe_key": "2c66b93139e1",
     "is_camp": false
   },
@@ -4275,7 +4375,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T05:38:57.909170+00:00",
+    "last_verified": "2026-06-14T05:46:40.796928+00:00",
     "dedupe_key": "ce67267cef32",
     "is_camp": false
   },
@@ -4295,7 +4395,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T05:38:57.909182+00:00",
+    "last_verified": "2026-06-14T05:46:40.796935+00:00",
     "dedupe_key": "13c0a17f389a",
     "is_camp": false
   },
@@ -4315,7 +4415,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T05:38:57.909192+00:00",
+    "last_verified": "2026-06-14T05:46:40.796942+00:00",
     "dedupe_key": "41934f3ba17f",
     "is_camp": false
   },
@@ -4335,7 +4435,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T05:38:57.909207+00:00",
+    "last_verified": "2026-06-14T05:46:40.796950+00:00",
     "dedupe_key": "397a3a016cf6",
     "is_camp": false
   },
@@ -4355,7 +4455,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T05:38:57.909217+00:00",
+    "last_verified": "2026-06-14T05:46:40.796958+00:00",
     "dedupe_key": "355de2907573",
     "is_camp": false
   },
@@ -4375,7 +4475,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T05:38:57.909229+00:00",
+    "last_verified": "2026-06-14T05:46:40.796973+00:00",
     "dedupe_key": "e69174c74d6f",
     "is_camp": false
   },
@@ -4395,7 +4495,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T05:38:57.909246+00:00",
+    "last_verified": "2026-06-14T05:46:40.796981+00:00",
     "dedupe_key": "3e6d52e66ac2",
     "is_camp": false
   },
@@ -4415,7 +4515,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T05:38:57.909259+00:00",
+    "last_verified": "2026-06-14T05:46:40.796988+00:00",
     "dedupe_key": "ab682614bb17",
     "is_camp": false
   },
@@ -4435,7 +4535,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T05:38:57.909270+00:00",
+    "last_verified": "2026-06-14T05:46:40.796995+00:00",
     "dedupe_key": "857570193972",
     "is_camp": false
   },
@@ -4455,7 +4555,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T05:38:57.909282+00:00",
+    "last_verified": "2026-06-14T05:46:40.797003+00:00",
     "dedupe_key": "c24606245e15",
     "is_camp": false
   },
@@ -4475,7 +4575,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T05:38:57.909292+00:00",
+    "last_verified": "2026-06-14T05:46:40.797010+00:00",
     "dedupe_key": "c15ee6d5c6be",
     "is_camp": false
   },
@@ -4495,7 +4595,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T05:38:57.909301+00:00",
+    "last_verified": "2026-06-14T05:46:40.797017+00:00",
     "dedupe_key": "1a9472cf64be",
     "is_camp": false
   },
@@ -4515,7 +4615,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T05:38:57.909311+00:00",
+    "last_verified": "2026-06-14T05:46:40.797023+00:00",
     "dedupe_key": "8b917d5f513f",
     "is_camp": false
   },
@@ -4535,7 +4635,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T05:38:57.909319+00:00",
+    "last_verified": "2026-06-14T05:46:40.797030+00:00",
     "dedupe_key": "5b3c1d6a1840",
     "is_camp": false
   },
@@ -4555,7 +4655,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T05:38:57.909334+00:00",
+    "last_verified": "2026-06-14T05:46:40.797038+00:00",
     "dedupe_key": "b8f0b3b49bf6",
     "is_camp": false
   },
@@ -4575,7 +4675,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T05:38:57.909349+00:00",
+    "last_verified": "2026-06-14T05:46:40.797049+00:00",
     "dedupe_key": "66a5ff0b5e79",
     "is_camp": false
   },
@@ -4595,7 +4695,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T05:38:57.909361+00:00",
+    "last_verified": "2026-06-14T05:46:40.797057+00:00",
     "dedupe_key": "f042f722bb38",
     "is_camp": false
   },
@@ -4615,7 +4715,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T05:38:57.909375+00:00",
+    "last_verified": "2026-06-14T05:46:40.797067+00:00",
     "dedupe_key": "b34bf914af79",
     "is_camp": false
   },
@@ -4635,7 +4735,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T05:38:57.909385+00:00",
+    "last_verified": "2026-06-14T05:46:40.797074+00:00",
     "dedupe_key": "fb45d8a86d9e",
     "is_camp": false
   },
@@ -4655,7 +4755,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T05:38:57.909394+00:00",
+    "last_verified": "2026-06-14T05:46:40.797082+00:00",
     "dedupe_key": "68a7dc978f22",
     "is_camp": false
   },
@@ -4675,7 +4775,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T05:38:57.909403+00:00",
+    "last_verified": "2026-06-14T05:46:40.797089+00:00",
     "dedupe_key": "6a74c942d436",
     "is_camp": false
   },
@@ -4695,7 +4795,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T05:38:57.909413+00:00",
+    "last_verified": "2026-06-14T05:46:40.797096+00:00",
     "dedupe_key": "7a75af40dab3",
     "is_camp": false
   },
@@ -4715,7 +4815,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T05:38:57.909422+00:00",
+    "last_verified": "2026-06-14T05:46:40.797103+00:00",
     "dedupe_key": "21df5b81d368",
     "is_camp": false
   },
@@ -4735,7 +4835,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T05:38:57.909431+00:00",
+    "last_verified": "2026-06-14T05:46:40.797111+00:00",
     "dedupe_key": "62d8b341ce02",
     "is_camp": false
   },
@@ -4755,7 +4855,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T05:38:57.909442+00:00",
+    "last_verified": "2026-06-14T05:46:40.797118+00:00",
     "dedupe_key": "29e5fee4156c",
     "is_camp": false
   },
@@ -4775,7 +4875,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T05:38:57.909451+00:00",
+    "last_verified": "2026-06-14T05:46:40.797125+00:00",
     "dedupe_key": "16cd65e7b270",
     "is_camp": false
   },
@@ -4795,7 +4895,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T05:38:57.909460+00:00",
+    "last_verified": "2026-06-14T05:46:40.797132+00:00",
     "dedupe_key": "51b736310ac4",
     "is_camp": false
   },
@@ -4815,7 +4915,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T05:38:57.909470+00:00",
+    "last_verified": "2026-06-14T05:46:40.797139+00:00",
     "dedupe_key": "9cd0a4a40b92",
     "is_camp": false
   },
@@ -4835,7 +4935,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T05:38:57.909511+00:00",
+    "last_verified": "2026-06-14T05:46:40.797148+00:00",
     "dedupe_key": "ddc88ef84702",
     "is_camp": false
   },
@@ -4855,7 +4955,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T05:38:57.909525+00:00",
+    "last_verified": "2026-06-14T05:46:40.797156+00:00",
     "dedupe_key": "ba75d2a578e8",
     "is_camp": false
   },
@@ -4875,7 +4975,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T05:38:57.909534+00:00",
+    "last_verified": "2026-06-14T05:46:40.797163+00:00",
     "dedupe_key": "767ad51642aa",
     "is_camp": false
   },
@@ -4895,7 +4995,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T05:38:57.909544+00:00",
+    "last_verified": "2026-06-14T05:46:40.797169+00:00",
     "dedupe_key": "4d663498eeff",
     "is_camp": false
   },
@@ -4915,7 +5015,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T05:38:57.909554+00:00",
+    "last_verified": "2026-06-14T05:46:40.797176+00:00",
     "dedupe_key": "723bfc58089d",
     "is_camp": false
   },
@@ -4935,7 +5035,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T05:38:57.909618+00:00",
+    "last_verified": "2026-06-14T05:46:40.797183+00:00",
     "dedupe_key": "d49413f7f059",
     "is_camp": false
   },
@@ -4955,7 +5055,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T05:38:57.909637+00:00",
+    "last_verified": "2026-06-14T05:46:40.797189+00:00",
     "dedupe_key": "e8d15dee0cdb",
     "is_camp": false
   },
@@ -4975,7 +5075,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T05:38:57.909648+00:00",
+    "last_verified": "2026-06-14T05:46:40.797196+00:00",
     "dedupe_key": "e7e84f5cf08c",
     "is_camp": false
   },
@@ -4995,7 +5095,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T05:38:57.909668+00:00",
+    "last_verified": "2026-06-14T05:46:40.797203+00:00",
     "dedupe_key": "03c6cde2e10f",
     "is_camp": false
   },
@@ -5015,7 +5115,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T05:38:57.909679+00:00",
+    "last_verified": "2026-06-14T05:46:40.797210+00:00",
     "dedupe_key": "22e567444768",
     "is_camp": false
   },
@@ -5035,7 +5135,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T05:38:57.909689+00:00",
+    "last_verified": "2026-06-14T05:46:40.797219+00:00",
     "dedupe_key": "d10c3bd3fad4",
     "is_camp": false
   },
@@ -5055,7 +5155,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T05:38:58.359409+00:00",
+    "last_verified": "2026-06-14T05:46:40.974486+00:00",
     "dedupe_key": "9fdd3d62ae25",
     "is_camp": false
   },
@@ -5075,7 +5175,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T05:38:58.359469+00:00",
+    "last_verified": "2026-06-14T05:46:40.974526+00:00",
     "dedupe_key": "e8b4f3064471",
     "is_camp": false
   },
@@ -5095,7 +5195,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T05:38:58.359497+00:00",
+    "last_verified": "2026-06-14T05:46:40.974551+00:00",
     "dedupe_key": "3255900cd9fe",
     "is_camp": false
   },
@@ -5115,7 +5215,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T05:38:58.359508+00:00",
+    "last_verified": "2026-06-14T05:46:40.974560+00:00",
     "dedupe_key": "33ed33ee7a78",
     "is_camp": false
   },
@@ -5135,7 +5235,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T05:38:58.359519+00:00",
+    "last_verified": "2026-06-14T05:46:40.974568+00:00",
     "dedupe_key": "49d167c5734e",
     "is_camp": false
   },
@@ -5155,7 +5255,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T05:38:58.359531+00:00",
+    "last_verified": "2026-06-14T05:46:40.974577+00:00",
     "dedupe_key": "b8d8677f3889",
     "is_camp": false
   },
@@ -5175,7 +5275,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T05:38:58.359541+00:00",
+    "last_verified": "2026-06-14T05:46:40.974585+00:00",
     "dedupe_key": "12c9e39e9f3b",
     "is_camp": false
   },
@@ -5195,7 +5295,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T05:38:58.359552+00:00",
+    "last_verified": "2026-06-14T05:46:40.974593+00:00",
     "dedupe_key": "8febb0750276",
     "is_camp": false
   },
@@ -5215,7 +5315,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T05:38:58.359563+00:00",
+    "last_verified": "2026-06-14T05:46:40.974601+00:00",
     "dedupe_key": "3173a3a1641b",
     "is_camp": false
   },
@@ -5235,7 +5335,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T05:38:58.359574+00:00",
+    "last_verified": "2026-06-14T05:46:40.974610+00:00",
     "dedupe_key": "872f9291ca0a",
     "is_camp": false
   },
@@ -5255,7 +5355,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T05:38:58.359585+00:00",
+    "last_verified": "2026-06-14T05:46:40.974618+00:00",
     "dedupe_key": "2999509361fb",
     "is_camp": false
   },
@@ -5275,7 +5375,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T05:38:58.359596+00:00",
+    "last_verified": "2026-06-14T05:46:40.974628+00:00",
     "dedupe_key": "2c4f620d4118",
     "is_camp": false
   },
@@ -5295,7 +5395,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T05:38:58.359607+00:00",
+    "last_verified": "2026-06-14T05:46:40.974637+00:00",
     "dedupe_key": "b77ccd038760",
     "is_camp": false
   },
@@ -5315,7 +5415,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T05:38:58.359617+00:00",
+    "last_verified": "2026-06-14T05:46:40.974645+00:00",
     "dedupe_key": "81ff7f83f68c",
     "is_camp": false
   },
@@ -5335,7 +5435,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T05:38:58.359626+00:00",
+    "last_verified": "2026-06-14T05:46:40.974652+00:00",
     "dedupe_key": "46dbaaff5559",
     "is_camp": false
   },
@@ -5355,7 +5455,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T05:38:58.359635+00:00",
+    "last_verified": "2026-06-14T05:46:40.974660+00:00",
     "dedupe_key": "55096960bd13",
     "is_camp": false
   },
@@ -5375,7 +5475,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T05:38:58.359644+00:00",
+    "last_verified": "2026-06-14T05:46:40.974667+00:00",
     "dedupe_key": "72a6cd07569e",
     "is_camp": false
   },
@@ -5395,7 +5495,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T05:38:58.359660+00:00",
+    "last_verified": "2026-06-14T05:46:40.974678+00:00",
     "dedupe_key": "69337e3a74d1",
     "is_camp": false
   },
@@ -5415,7 +5515,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T05:38:58.359670+00:00",
+    "last_verified": "2026-06-14T05:46:40.974686+00:00",
     "dedupe_key": "ccd711130575",
     "is_camp": false
   },
@@ -5435,7 +5535,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T05:38:58.359679+00:00",
+    "last_verified": "2026-06-14T05:46:40.974695+00:00",
     "dedupe_key": "1e381297371b",
     "is_camp": false
   },
@@ -5455,7 +5555,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T05:38:58.359688+00:00",
+    "last_verified": "2026-06-14T05:46:40.974702+00:00",
     "dedupe_key": "5c0121e0b752",
     "is_camp": false
   },
@@ -5475,7 +5575,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T05:38:58.359699+00:00",
+    "last_verified": "2026-06-14T05:46:40.974712+00:00",
     "dedupe_key": "7b420426a874",
     "is_camp": false
   },
@@ -5495,7 +5595,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T05:38:58.359710+00:00",
+    "last_verified": "2026-06-14T05:46:40.974721+00:00",
     "dedupe_key": "bd22a79d798f",
     "is_camp": false
   },
@@ -5515,7 +5615,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T05:38:58.359720+00:00",
+    "last_verified": "2026-06-14T05:46:40.974729+00:00",
     "dedupe_key": "64a780697e32",
     "is_camp": false
   },
@@ -5535,7 +5635,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T05:38:58.359731+00:00",
+    "last_verified": "2026-06-14T05:46:40.974738+00:00",
     "dedupe_key": "d4c6ab188e1f",
     "is_camp": false
   },
@@ -5555,7 +5655,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T05:38:58.359741+00:00",
+    "last_verified": "2026-06-14T05:46:40.974746+00:00",
     "dedupe_key": "dda73b8d38ad",
     "is_camp": false
   },
@@ -5575,7 +5675,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T05:38:58.359751+00:00",
+    "last_verified": "2026-06-14T05:46:40.974754+00:00",
     "dedupe_key": "fe2b34226c66",
     "is_camp": false
   },
@@ -5595,7 +5695,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T05:38:58.359763+00:00",
+    "last_verified": "2026-06-14T05:46:40.974763+00:00",
     "dedupe_key": "aa07dbb5d719",
     "is_camp": false
   },
@@ -5615,7 +5715,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T05:38:58.359775+00:00",
+    "last_verified": "2026-06-14T05:46:40.974771+00:00",
     "dedupe_key": "f88688b81b87",
     "is_camp": false
   },
@@ -5635,7 +5735,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T05:38:58.359786+00:00",
+    "last_verified": "2026-06-14T05:46:40.974780+00:00",
     "dedupe_key": "3aa8bea6dc3e",
     "is_camp": false
   },
@@ -5655,7 +5755,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T05:38:58.359800+00:00",
+    "last_verified": "2026-06-14T05:46:40.974791+00:00",
     "dedupe_key": "37856f97a96c",
     "is_camp": false
   },
@@ -5675,228 +5775,8 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T05:38:58.359813+00:00",
+    "last_verified": "2026-06-14T05:46:40.974804+00:00",
     "dedupe_key": "f0e8c796288e",
-    "is_camp": false
-  },
-  {
-    "title": "Farm Volunteer Day",
-    "start_datetime": null,
-    "end_datetime": null,
-    "venue": "Hidden Villa Farm",
-    "city": "Los Altos Hills",
-    "county": "Santa Clara",
-    "age_range": "Families",
-    "cost": "Paid",
-    "cost_amount": 8.0,
-    "ticket_status": "some tours require registration",
-    "ticket_url": "https://www.hiddenvilla.org/programs/catalog/468-farm-volunteer-day/region-HV/",
-    "category": "venue",
-    "source_channel": "venue",
-    "source_name": "Hidden Villa Farm",
-    "source_url": "https://www.hiddenvilla.org/calendar/individuals-families/region-HV/",
-    "last_verified": "2026-06-14T05:39:01.461194+00:00",
-    "dedupe_key": "d386f2fd248d",
-    "is_camp": false
-  },
-  {
-    "title": "Archery ",
-    "start_datetime": null,
-    "end_datetime": null,
-    "venue": "Hidden Villa Farm",
-    "city": "Los Altos Hills",
-    "county": "Santa Clara",
-    "age_range": "Families",
-    "cost": "Paid",
-    "cost_amount": 8.0,
-    "ticket_status": "some tours require registration",
-    "ticket_url": "https://www.hiddenvilla.org/programs/catalog/460-archery/region-HV/",
-    "category": "venue",
-    "source_channel": "venue",
-    "source_name": "Hidden Villa Farm",
-    "source_url": "https://www.hiddenvilla.org/calendar/individuals-families/region-HV/",
-    "last_verified": "2026-06-14T05:39:01.461540+00:00",
-    "dedupe_key": "6d0f6f3d1504",
-    "is_camp": false
-  },
-  {
-    "title": "Weekend Farm Tour ",
-    "start_datetime": null,
-    "end_datetime": null,
-    "venue": "Hidden Villa Farm",
-    "city": "Los Altos Hills",
-    "county": "Santa Clara",
-    "age_range": "Families",
-    "cost": "Paid",
-    "cost_amount": 8.0,
-    "ticket_status": "some tours require registration",
-    "ticket_url": "https://www.hiddenvilla.org/programs/catalog/372-weekend-farm-tour/region-HV/",
-    "category": "venue",
-    "source_channel": "venue",
-    "source_name": "Hidden Villa Farm",
-    "source_url": "https://www.hiddenvilla.org/calendar/individuals-families/region-HV/",
-    "last_verified": "2026-06-14T05:39:01.461644+00:00",
-    "dedupe_key": "c415c446a8f5",
-    "is_camp": false
-  },
-  {
-    "title": "Hidden Villa History Tour",
-    "start_datetime": null,
-    "end_datetime": null,
-    "venue": "Hidden Villa Farm",
-    "city": "Los Altos Hills",
-    "county": "Santa Clara",
-    "age_range": "Families",
-    "cost": "Paid",
-    "cost_amount": 8.0,
-    "ticket_status": "some tours require registration",
-    "ticket_url": "https://www.hiddenvilla.org/programs/catalog/542-hidden-villa-history-tour/region-HV/",
-    "category": "venue",
-    "source_channel": "venue",
-    "source_name": "Hidden Villa Farm",
-    "source_url": "https://www.hiddenvilla.org/calendar/individuals-families/region-HV/",
-    "last_verified": "2026-06-14T05:39:01.461663+00:00",
-    "dedupe_key": "b684237dbdb5",
-    "is_camp": false
-  },
-  {
-    "title": "Art in the Garden",
-    "start_datetime": null,
-    "end_datetime": null,
-    "venue": "Hidden Villa Farm",
-    "city": "Los Altos Hills",
-    "county": "Santa Clara",
-    "age_range": "Families",
-    "cost": "Paid",
-    "cost_amount": 8.0,
-    "ticket_status": "some tours require registration",
-    "ticket_url": "https://www.hiddenvilla.org/programs/catalog/552-art-in-the-garden/region-HV/",
-    "category": "venue",
-    "source_channel": "venue",
-    "source_name": "Hidden Villa Farm",
-    "source_url": "https://www.hiddenvilla.org/calendar/individuals-families/region-HV/",
-    "last_verified": "2026-06-14T05:39:01.461697+00:00",
-    "dedupe_key": "47e8bee96f9e",
-    "is_camp": false
-  },
-  {
-    "title": "Star Party",
-    "start_datetime": null,
-    "end_datetime": null,
-    "venue": "Hidden Villa Farm",
-    "city": "Los Altos Hills",
-    "county": "Santa Clara",
-    "age_range": "Families",
-    "cost": "Paid",
-    "cost_amount": 8.0,
-    "ticket_status": "some tours require registration",
-    "ticket_url": "https://www.hiddenvilla.org/programs/catalog/555-star-party/region-HV/",
-    "category": "venue",
-    "source_channel": "venue",
-    "source_name": "Hidden Villa Farm",
-    "source_url": "https://www.hiddenvilla.org/calendar/individuals-families/region-HV/",
-    "last_verified": "2026-06-14T05:39:01.461823+00:00",
-    "dedupe_key": "cd33607d1d26",
-    "is_camp": false
-  },
-  {
-    "title": "Weekend Volunteer Training",
-    "start_datetime": null,
-    "end_datetime": null,
-    "venue": "Hidden Villa Farm",
-    "city": "Los Altos Hills",
-    "county": "Santa Clara",
-    "age_range": "Families",
-    "cost": "Paid",
-    "cost_amount": 8.0,
-    "ticket_status": "some tours require registration",
-    "ticket_url": "https://www.hiddenvilla.org/programs/catalog/534-weekend-volunteer-training/region-HV/",
-    "category": "venue",
-    "source_channel": "venue",
-    "source_name": "Hidden Villa Farm",
-    "source_url": "https://www.hiddenvilla.org/calendar/individuals-families/region-HV/",
-    "last_verified": "2026-06-14T05:39:01.461850+00:00",
-    "dedupe_key": "2e748842a523",
-    "is_camp": false
-  },
-  {
-    "title": "Painting with Wool Workshop",
-    "start_datetime": null,
-    "end_datetime": null,
-    "venue": "Hidden Villa Farm",
-    "city": "Los Altos Hills",
-    "county": "Santa Clara",
-    "age_range": "Families",
-    "cost": "Paid",
-    "cost_amount": 8.0,
-    "ticket_status": "some tours require registration",
-    "ticket_url": "https://www.hiddenvilla.org/programs/catalog/558-painting-with-wool-workshop/region-HV/",
-    "category": "venue",
-    "source_channel": "venue",
-    "source_name": "Hidden Villa Farm",
-    "source_url": "https://www.hiddenvilla.org/calendar/individuals-families/region-HV/",
-    "last_verified": "2026-06-14T05:39:01.461901+00:00",
-    "dedupe_key": "ce72bbd0f140",
-    "is_camp": false
-  },
-  {
-    "title": "Umoja Pranayama: Breathwork Fundamentals ",
-    "start_datetime": null,
-    "end_datetime": null,
-    "venue": "Hidden Villa Farm",
-    "city": "Los Altos Hills",
-    "county": "Santa Clara",
-    "age_range": "Families",
-    "cost": "Paid",
-    "cost_amount": 8.0,
-    "ticket_status": "some tours require registration",
-    "ticket_url": "https://www.hiddenvilla.org/programs/catalog/515-umoja-pranayama-breathwork-fundamentals/region-HV/",
-    "category": "venue",
-    "source_channel": "venue",
-    "source_name": "Hidden Villa Farm",
-    "source_url": "https://www.hiddenvilla.org/calendar/individuals-families/region-HV/",
-    "last_verified": "2026-06-14T05:39:01.462043+00:00",
-    "dedupe_key": "e77bb70ab7b8",
-    "is_camp": false
-  },
-  {
-    "title": "Hide Tanning Workshop",
-    "start_datetime": null,
-    "end_datetime": null,
-    "venue": "Hidden Villa Farm",
-    "city": "Los Altos Hills",
-    "county": "Santa Clara",
-    "age_range": "Families",
-    "cost": "Paid",
-    "cost_amount": 8.0,
-    "ticket_status": "some tours require registration",
-    "ticket_url": "https://www.hiddenvilla.org/programs/catalog/554-hide-tanning-workshop/region-HV/",
-    "category": "venue",
-    "source_channel": "venue",
-    "source_name": "Hidden Villa Farm",
-    "source_url": "https://www.hiddenvilla.org/calendar/individuals-families/region-HV/",
-    "last_verified": "2026-06-14T05:39:01.462081+00:00",
-    "dedupe_key": "c93bd0a8b5de",
-    "is_camp": false
-  },
-  {
-    "title": "Acorn Adventure",
-    "start_datetime": null,
-    "end_datetime": null,
-    "venue": "Hidden Villa Farm",
-    "city": "Los Altos Hills",
-    "county": "Santa Clara",
-    "age_range": "Families",
-    "cost": "Paid",
-    "cost_amount": 8.0,
-    "ticket_status": "some tours require registration",
-    "ticket_url": "https://www.hiddenvilla.org/programs/catalog/559-acorn-adventure/region-HV/",
-    "category": "venue",
-    "source_channel": "venue",
-    "source_name": "Hidden Villa Farm",
-    "source_url": "https://www.hiddenvilla.org/calendar/individuals-families/region-HV/",
-    "last_verified": "2026-06-14T05:39:01.462162+00:00",
-    "dedupe_key": "e715ab182220",
     "is_camp": false
   }
 ]
