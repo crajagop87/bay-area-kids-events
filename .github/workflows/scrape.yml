@@ -2,8 +2,8 @@ name: Bay Area Kids Events Scraper
 
 on:
   schedule:
-    # Every Friday at 6am PT (14:00 UTC) — fresh before the weekend
-    - cron: "0 14 * * 5"
+    # Every day at 6am PT (14:00 UTC)
+    - cron: "0 14 * * *"
   workflow_dispatch:
     inputs:
       days:
