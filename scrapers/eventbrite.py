@@ -19,7 +19,7 @@ HEADERS = {
 }
 
 CITIES = [
-    # Peninsula / South Bay (original)
+    # Peninsula / South Bay core
     ("palo-alto",     "Palo Alto",     "Santa Clara"),
     ("san-jose",      "San Jose",      "Santa Clara"),
     ("mountain-view", "Mountain View", "Santa Clara"),
@@ -27,7 +27,14 @@ CITIES = [
     ("san-mateo",     "San Mateo",     "San Mateo"),
     ("redwood-city",  "Redwood City",  "San Mateo"),
     ("menlo-park",    "Menlo Park",    "San Mateo"),
-    # SF / East Bay / Santa Cruz (expanded — within 40 miles of Palo Alto)
+    # Peninsula deep coverage (exhaustive around Palo Alto)
+    ("cupertino",     "Cupertino",     "Santa Clara"),
+    ("los-altos",     "Los Altos",     "Santa Clara"),
+    ("campbell",      "Campbell",      "Santa Clara"),
+    ("los-gatos",     "Los Gatos",     "Santa Clara"),
+    ("burlingame",    "Burlingame",    "San Mateo"),
+    ("foster-city",   "Foster City",   "San Mateo"),
+    # SF / East Bay / Santa Cruz (within 40 miles of Palo Alto)
     ("san-francisco", "San Francisco", "San Francisco"),
     ("oakland",       "Oakland",       "Alameda"),
     ("berkeley",      "Berkeley",      "Alameda"),

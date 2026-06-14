@@ -352,7 +352,7 @@ def scrape_lawrence_hall(window_days: int = 16) -> list[dict]:
 
 
 VENUE_SCRAPERS = [
-    # Peninsula / South Bay
+    # Peninsula / South Bay core
     ("Palo Alto Junior Museum & Zoo", scrape_palo_alto_junior_museum),
     ("CuriOdyssey", scrape_curiodyssey),
     ("Hiller Aviation Museum", scrape_hiller_aviation),

@@ -540,9 +540,9 @@ footer a { color: var(--ink-3); text-decoration: underline; }
     <div class="filter-row" id="radius-row">
       <span class="radius-within" id="radius-within-label">within 20 mi</span>
       <div class="radius-wrap">
-        <input type="range" id="radius-slider" min="0" max="3" step="1" value="2">
+        <input type="range" id="radius-slider" min="1" max="40" step="1" value="20">
         <div class="radius-ticks">
-          <span>5 mi</span><span>10 mi</span><span class="active-tick">20 mi</span><span>40 mi</span>
+          <span data-snap="5">5 mi</span><span data-snap="10">10 mi</span><span data-snap="20" class="active-tick">20 mi</span><span data-snap="40">max</span>
         </div>
       </div>
     </div>
@@ -582,12 +582,12 @@ const FEEDBACK_URL = 'https://api.github.com/repos/crajagop87/bay-area-kids-even
 let allEvents = [];
 let healthData = {};
 let activePreset = 'Palo Alto';
-let activeRadiusIdx = 2; // index into RADIUS_STEPS: 0→5mi 1→10mi 2→20mi 3→40mi
+let activeRadius = 20; // miles
 let activeCost = 'all';
 let activeWhen = 'this-weekend';
 let activeSearchTags = [];
 
-const RADIUS_STEPS = [5, 10, 20, 40];
+const RADIUS_TICKS = [5, 10, 20, 40]; // visual reference ticks only
 
 // City name (lowercase) → [lat, lng] for haversine distance filtering
 const CITY_LATLNG = {
@@ -897,11 +897,14 @@ function updatePresetStyles() {
 
 function updateRadiusTicks() {
   const ticks = document.querySelectorAll('.radius-ticks span');
-  ticks.forEach((el, i) => el.classList.toggle('active-tick', i === activeRadiusIdx));
+  ticks.forEach(el => {
+    const snap = +el.dataset.snap;
+    el.classList.toggle('active-tick', snap === activeRadius);
+  });
   const slider = document.getElementById('radius-slider');
-  if (slider) slider.style.setProperty('--pct', `${(activeRadiusIdx / 3) * 100}%`);
+  if (slider) slider.style.setProperty('--pct', `${((activeRadius - 1) / 39) * 100}%`);
   const withinEl = document.getElementById('radius-within-label');
-  if (withinEl) withinEl.textContent = `within ${RADIUS_STEPS[activeRadiusIdx]} mi`;
+  if (withinEl) withinEl.textContent = activeRadius === 40 ? 'within max' : `within ${activeRadius} mi`;
 }
 
 function setPreset(p) {
@@ -921,15 +924,15 @@ document.querySelectorAll('[data-cost]').forEach(b => b.addEventListener('click'
 
 document.querySelectorAll('[data-preset]').forEach(b => b.addEventListener('click', () => setPreset(b.dataset.preset)));
 document.getElementById('radius-slider').addEventListener('input', e => {
-  activeRadiusIdx = +e.target.value;
+  activeRadius = +e.target.value;
   updateRadiusTicks();
   render();
 });
-// Clicking a tick label also snaps the slider
-document.querySelectorAll('.radius-ticks span').forEach((el, i) => {
+// Clicking a tick label snaps the slider to that value
+document.querySelectorAll('.radius-ticks span').forEach(el => {
   el.addEventListener('click', () => {
-    activeRadiusIdx = i;
-    document.getElementById('radius-slider').value = i;
+    activeRadius = +el.dataset.snap;
+    document.getElementById('radius-slider').value = activeRadius;
     updateRadiusTicks();
     render();
   });
@@ -991,8 +994,8 @@ document.getElementById('reset-btn').addEventListener('click', () => {
   document.querySelectorAll('[data-cost]').forEach(b => b.classList.remove('active', 'active-green', 'active-all'));
   document.querySelector('[data-cost="all"]').classList.add('active-all');
   activePreset = 'Palo Alto';
-  activeRadiusIdx = 2;
-  document.getElementById('radius-slider').value = 2;
+  activeRadius = 20;
+  document.getElementById('radius-slider').value = 20;
   updatePresetStyles();
   activeSearchTags = [];
   renderSearchTags();
@@ -1029,7 +1032,7 @@ function render() {
 
     if (activePreset !== 'all') {
       const centers = PRESET_CENTERS[activePreset];
-      const radius = RADIUS_STEPS[activeRadiusIdx];
+      const radius = activeRadius;
       const cityKey = (e.city || '').toLowerCase().trim();
       const countyKey = (e.county || '').toLowerCase().trim();
       const latlng = CITY_LATLNG[cityKey] || COUNTY_LATLNG[countyKey] || null;
@@ -1192,7 +1195,7 @@ function updateStickyBar() {
   const presetLabel = { 'all': 'All areas', 'Palo Alto': 'Palo Alto', 'SF+Oakland': 'SF / Oakland', 'Santa Cruz': 'Santa Cruz' };
   const areaLabel = activePreset === 'all'
     ? 'All areas'
-    : `${presetLabel[activePreset]} · ${RADIUS_STEPS[activeRadiusIdx]}mi`;
+    : `${presetLabel[activePreset]} · ${activeRadius === 40 ? 'max' : activeRadius + 'mi'}`;
   chips.push(areaLabel);
   // Dates
   // Cost

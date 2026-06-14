@@ -1,8 +1,8 @@
 """
 BiblioCommons library event scraper — uses the gateway JSON API.
-Targets: Palo Alto, San Mateo County, San Jose Public, Santa Clara County,
-San Francisco Public, Oakland, Berkeley, and Santa Cruz City libraries.
-Coverage area: roughly within 40 miles of Palo Alto.
+Targets: Palo Alto, Mountain View, Redwood City, Burlingame, San Mateo County,
+San Jose Public, Santa Clara County, San Francisco Public, Oakland, Berkeley,
+and Santa Cruz City libraries. Coverage area: roughly within 40 miles of Palo Alto.
 """
 
 import re
