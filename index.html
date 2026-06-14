@@ -1033,8 +1033,7 @@ function render() {
       const countyKey = (e.county || '').toLowerCase().trim();
       const latlng = CITY_LATLNG[cityKey] || COUNTY_LATLNG[countyKey] || null;
       if (!latlng) {
-        // Truly unknown location (aggregator catch-alls like "Bay Area") — include for radius ≥ 20mi only
-        if (radius < 20) return false;
+        return false; // no location data — only visible under "All areas"
       } else {
         const inRange = centers.some(([lat, lon]) => distMi(lat, lon, latlng[0], latlng[1]) <= radius);
         if (!inRange) return false;
