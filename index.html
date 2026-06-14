@@ -180,9 +180,46 @@ footer {
 }
 footer a { color: var(--ink-3); text-decoration: underline; }
 
-@media (max-width: 600px) {
-  .grid { grid-template-columns: 1fr; }
-  .header-inner { flex-direction: column; align-items: flex-start; }
+@media (max-width: 640px) {
+  body { font-size: 14px; }
+
+  .header { padding: 0.9rem 1rem 0.75rem; margin-bottom: 0.75rem; }
+  .header h1 { font-size: 1rem; }
+  .header h1 span { display: block; }
+
+  .filters { padding: 0 0.75rem; }
+  .filter-card { padding: 0.75rem 0.9rem; gap: 0.55rem; border-radius: 14px; }
+
+  .filter-row { gap: 0.35rem; }
+  .filter-label { min-width: 42px; font-size: 0.63rem; }
+
+  /* Make all interactive chips bigger touch targets */
+  .chip { padding: 7px 13px; font-size: 0.73rem; min-height: 36px; }
+  .reset-btn { padding: 7px 12px; min-height: 36px; }
+  input[type="date"] { padding: 6px 8px; font-size: 0.8rem; min-height: 36px; }
+  #search { padding: 9px 12px 9px 34px; font-size: 0.83rem; min-height: 40px; }
+
+  /* Chip rows: let them wrap freely, no overflow */
+  .chip-group, .date-chips { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+
+  /* Date custom: stack vertically */
+  .date-custom { flex-direction: column; align-items: flex-start; gap: 0.3rem; }
+
+  /* Reset button: full row on mobile */
+  .reset-btn { margin-left: 0; width: 100%; justify-content: center; }
+
+  .grid { grid-template-columns: 1fr; gap: 6px; padding: 0 0.75rem; }
+  .date-group { padding: 0 0.75rem; }
+  .count-bar { padding: 0 0.75rem; }
+
+  .card { padding: 0.75rem 0.85rem; border-radius: 13px; }
+  .card-title { font-size: 0.88rem; }
+  .tag-chip { font-size: 0.65rem; padding: 3px 8px; }
+
+  footer { padding: 0.4rem 0.75rem; font-size: 0.65rem; }
+
+  /* Bottom padding so cards aren't hidden behind fixed footer */
+  #output { padding-bottom: 2.5rem; }
 }
 </style>
 </head>
