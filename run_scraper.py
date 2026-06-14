@@ -14,6 +14,7 @@ from scrapers.bibliocommons import scrape_all_libraries
 from scrapers.eventbrite import scrape_all_eventbrite
 from scrapers.aggregators import scrape_all_aggregators
 from scrapers.venues import scrape_all_venues
+from scrapers.tagger import tag_event, enrich_title
 
 logging.basicConfig(
     level=logging.INFO,
@@ -83,6 +84,11 @@ def main(window_days: int = 16):
     all_events = dedupe(all_events)
     deduped_count = len(all_events)
     all_events = sort_events(all_events)
+
+    # Enrich: fix generic venue titles + generate tags
+    for event in all_events:
+        event["title"] = enrich_title(event)
+        event["tags"] = tag_event(event)
 
     # Emit health summary
     total_ok = sum(1 for h in all_health if h["status"] == "ok")

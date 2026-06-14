@@ -4,435 +4,317 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bay Area Kids Events</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  /* ── Typography & reset ── */
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  :root {
-    --ink:       #1a1a1a;
-    --ink-2:     #555;
-    --ink-3:     #888;
-    --rule:      #e0ddd8;
-    --bg:        #faf9f7;
-    --bg-card:   #ffffff;
-    --free:      #2d6a4f;
-    --paid:      #6b4226;
-    --accent:    #b5451b;
-    --font:      'Georgia', 'Times New Roman', serif;
-    --mono:      'SF Mono', 'Fira Mono', 'Consolas', monospace;
-    --sans:      -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  }
+:root {
+  --ink:      #1c1917;
+  --ink-2:    #57534e;
+  --ink-3:    #a8a29e;
+  --bg:       #fffbf7;
+  --bg-card:  #ffffff;
+  --rule:     #e8e0d8;
+  --accent:   #c2410c;
+  --free-bg:  #d1fae5; --free-fg: #065f46;
+  --paid-bg:  #fef3c7; --paid-fg: #78350f;
+  --warn-bg:  #fee2e2; --warn-fg: #991b1b;
+  --tag-bg:   #f1ede8; --tag-fg: #57534e;
+  --pill-bg:  #f5f0eb;
+  --sans: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
+}
 
-  body {
-    background: var(--bg);
-    color: var(--ink);
-    font-family: var(--font);
-    font-size: 15px;
-    line-height: 1.6;
-    min-height: 100vh;
-  }
+body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.5; }
 
-  /* ── Header ── */
-  header {
-    border-bottom: 1px solid var(--ink);
-    padding: 2rem 0 1rem;
-    margin-bottom: 2rem;
-  }
-  .header-inner {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-  h1 {
-    font-size: 1.25rem;
-    font-weight: normal;
-    letter-spacing: 0.02em;
-  }
-  h1 em { font-style: normal; color: var(--accent); }
-  #meta {
-    font-family: var(--sans);
-    font-size: 0.72rem;
-    color: var(--ink-3);
-    letter-spacing: 0.03em;
-  }
+/* ── Header ── */
+.header {
+  background: #fff7ed;
+  border-bottom: 2px solid #fed7aa;
+  padding: 1.25rem 1.5rem 1rem;
+  margin-bottom: 1.25rem;
+}
+.header-inner { max-width: 980px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
+.header h1 { font-size: 1.2rem; font-weight: 700; color: #9a3412; }
+.header h1 span { color: #c2410c; }
+.header-meta { font-size: 0.72rem; color: #c2410c; background: #fed7aa; padding: 3px 10px; border-radius: 99px; font-weight: 600; }
 
-  /* ── Controls ── */
-  .controls {
-    max-width: 960px;
-    margin: 0 auto 1.5rem;
-    padding: 0 1.5rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-    align-items: center;
-  }
+/* ── Filters panel ── */
+.filters {
+  max-width: 980px; margin: 0 auto 1rem; padding: 0 1.25rem;
+}
+.filter-card {
+  background: var(--bg-card);
+  border: 1.5px solid var(--rule);
+  border-radius: 18px;
+  padding: 1rem 1.25rem;
+  display: flex; flex-direction: column; gap: 0.65rem;
+}
 
-  .filter-group {
-    display: flex;
-    align-items: center;
-    gap: 0.35rem;
-  }
-  .filter-label {
-    font-family: var(--sans);
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--ink-3);
-  }
+.filter-row { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+.filter-label { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--ink-3); min-width: 52px; }
 
-  select, input[type="date"] {
-    font-family: var(--sans);
-    font-size: 0.8rem;
-    color: var(--ink);
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid var(--ink-2);
-    padding: 0.15rem 0.3rem;
-    cursor: pointer;
-    appearance: none;
-    -webkit-appearance: none;
-    outline: none;
-  }
-  select:focus, input[type="date"]:focus {
-    border-bottom-color: var(--accent);
-  }
+.search-wrap { position: relative; flex: 1; min-width: 180px; }
+.search-wrap svg { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: var(--ink-3); }
+#search {
+  width: 100%; padding: 8px 12px 8px 34px;
+  border: 1.5px solid var(--rule); border-radius: 99px;
+  font-family: var(--sans); font-size: 0.85rem; color: var(--ink);
+  background: var(--bg); outline: none;
+}
+#search:focus { border-color: #fb923c; }
+#search::placeholder { color: var(--ink-3); }
 
-  .pill-group {
-    display: flex;
-    gap: 0.3rem;
-    flex-wrap: wrap;
-  }
-  .pill {
-    font-family: var(--sans);
-    font-size: 0.72rem;
-    padding: 0.2rem 0.65rem;
-    border-radius: 99px;
-    border: 1px solid var(--rule);
-    background: transparent;
-    color: var(--ink-2);
-    cursor: pointer;
-    transition: all 0.1s;
-    white-space: nowrap;
-  }
-  .pill:hover { border-color: var(--ink-2); color: var(--ink); }
-  .pill.active { background: var(--ink); color: #fff; border-color: var(--ink); }
+/* chips */
+.chip {
+  font-family: var(--sans); font-size: 0.75rem; font-weight: 600;
+  padding: 5px 13px; border-radius: 99px;
+  border: 1.5px solid var(--rule); background: var(--pill-bg); color: var(--ink-2);
+  cursor: pointer; transition: all 0.12s; white-space: nowrap;
+}
+.chip:hover { border-color: #fb923c; color: var(--ink); }
+.chip.active { background: #c2410c; border-color: #c2410c; color: #fff; }
+.chip.active-green { background: #065f46; border-color: #065f46; color: #fff; }
+.chip.active-purple { background: #5b21b6; border-color: #5b21b6; color: #fff; }
 
-  .search-wrap {
-    flex: 1;
-    min-width: 160px;
-  }
-  #search {
-    font-family: var(--sans);
-    font-size: 0.82rem;
-    border: none;
-    border-bottom: 1px solid var(--rule);
-    background: transparent;
-    padding: 0.2rem 0.3rem;
-    width: 100%;
-    outline: none;
-    color: var(--ink);
-  }
-  #search:focus { border-bottom-color: var(--accent); }
-  #search::placeholder { color: var(--ink-3); }
+/* date quick-picks */
+.date-chips { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+.date-custom { display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
+.date-custom label { font-size: 0.72rem; font-weight: 700; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.06em; }
+input[type="date"] {
+  font-family: var(--sans); font-size: 0.78rem; color: var(--ink);
+  border: 1.5px solid var(--rule); border-radius: 8px;
+  padding: 4px 8px; background: var(--bg); outline: none; cursor: pointer;
+}
+input[type="date"]:focus { border-color: #fb923c; }
 
-  .count-line {
-    max-width: 960px;
-    margin: 0 auto 1rem;
-    padding: 0 1.5rem;
-    font-family: var(--sans);
-    font-size: 0.72rem;
-    color: var(--ink-3);
-    letter-spacing: 0.03em;
-  }
-  .count-line strong { color: var(--ink); }
+.reset-btn {
+  font-family: var(--sans); font-size: 0.72rem; font-weight: 700;
+  padding: 5px 12px; border-radius: 99px;
+  border: 1.5px dashed #f97316; background: transparent; color: #c2410c;
+  cursor: pointer; margin-left: auto; display: flex; align-items: center; gap: 4px;
+  transition: background 0.12s;
+}
+.reset-btn:hover { background: #fff7ed; }
 
-  /* ── Divider / date group headers ── */
-  .date-group {
-    max-width: 960px;
-    margin: 1.5rem auto 0.5rem;
-    padding: 0 1.5rem;
-  }
-  .date-group h2 {
-    font-family: var(--sans);
-    font-size: 0.7rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--ink-3);
-    border-top: 1px solid var(--rule);
-    padding-top: 0.5rem;
-  }
+/* ── Count bar ── */
+.count-bar {
+  max-width: 980px; margin: 0 auto 0.75rem; padding: 0 1.25rem;
+  font-size: 0.75rem; color: var(--ink-3); display: flex; align-items: center; gap: 0.5rem;
+}
+.count-bar strong { color: var(--ink); font-weight: 700; }
 
-  /* ── Event grid ── */
-  .grid {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 0 1.5rem 4rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1px;
-    background: var(--rule);
-  }
+/* ── Date group ── */
+.date-group { max-width: 980px; margin: 1.25rem auto 0.5rem; padding: 0 1.25rem; }
+.date-group h2 {
+  font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--ink-3);
+  border-top: 1.5px solid var(--rule); padding-top: 0.6rem;
+}
 
-  /* ── Event card ── */
-  .card {
-    background: var(--bg-card);
-    padding: 1rem 1.1rem 0.9rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-    transition: background 0.1s;
-  }
-  .card:hover { background: #f5f3ef; }
+/* ── Grid ── */
+.grid {
+  max-width: 980px; margin: 0 auto;
+  padding: 0 1.25rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(285px, 1fr));
+  gap: 8px;
+}
 
-  .card-title {
-    font-size: 0.92rem;
-    font-weight: normal;
-    line-height: 1.35;
-    color: var(--ink);
-  }
-  .card-title a {
-    color: var(--accent);
-    text-decoration: none;
-    border-bottom: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
-  }
-  .card-title a:hover {
-    border-bottom-color: var(--accent);
-  }
-  .card-link {
-    font-family: var(--sans);
-    font-size: 0.72rem;
-    color: var(--ink-3);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .card-link a {
-    color: var(--ink-3);
-    text-decoration: underline;
-    text-underline-offset: 2px;
-  }
-  .card-link a:hover { color: var(--accent); }
+/* ── Card ── */
+.card {
+  background: var(--bg-card);
+  border: 1.5px solid var(--rule);
+  border-radius: 16px;
+  padding: 0.85rem 1rem 0.8rem;
+  display: flex; flex-direction: column; gap: 0.3rem;
+  transition: border-color 0.12s, box-shadow 0.12s;
+}
+.card:hover { border-color: #fb923c; box-shadow: 0 2px 12px rgba(194,65,12,0.08); }
 
-  .card-meta {
-    font-family: var(--sans);
-    font-size: 0.72rem;
-    color: var(--ink-2);
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.2rem 0.6rem;
-    align-items: baseline;
-    margin-top: 0.1rem;
-  }
+.card-title { font-size: 0.9rem; font-weight: 700; line-height: 1.35; color: var(--ink); }
+.card-title a { color: #c2410c; text-decoration: none; border-bottom: 1.5px solid #fed7aa; }
+.card-title a:hover { border-bottom-color: #c2410c; }
 
-  .tag {
-    font-family: var(--sans);
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    padding: 0.1rem 0.4rem;
-    border-radius: 3px;
-  }
-  .tag-free  { background: #d8f3e3; color: var(--free); }
-  .tag-paid  { background: #f7e8d8; color: var(--paid); }
-  .tag-unknown { background: var(--rule); color: var(--ink-3); }
-  .tag-camp  { background: #e8e0f7; color: #4a2d8a; }
+.card-meta { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; margin-top: 2px; }
+.m-time { font-size: 0.72rem; color: var(--ink-2); font-weight: 600; }
+.badge {
+  font-size: 0.65rem; font-weight: 700; padding: 2px 7px; border-radius: 99px;
+}
+.badge-free  { background: var(--free-bg); color: var(--free-fg); }
+.badge-paid  { background: var(--paid-bg); color: var(--paid-fg); }
+.badge-unk   { background: var(--tag-bg);  color: var(--ink-2); }
+.badge-warn  { background: var(--warn-bg); color: var(--warn-fg); }
+.badge-camp  { background: #ede9fe; color: #5b21b6; }
 
-  .card-venue {
-    font-family: var(--sans);
-    font-size: 0.72rem;
-    color: var(--ink-3);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+.card-venue { font-size: 0.72rem; color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.card-link  { font-size: 0.7rem; }
+.card-link a { color: #2563eb; text-decoration: underline; text-underline-offset: 2px; }
+.card-link a:hover { color: #c2410c; }
 
-  .card-source {
-    margin-top: auto;
-    font-family: var(--sans);
-    font-size: 0.65rem;
-    color: var(--ink-3);
-    padding-top: 0.4rem;
-    border-top: 1px solid var(--rule);
-  }
+.card-tags { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 4px; }
+.tag-chip {
+  font-size: 0.6rem; font-weight: 600; padding: 2px 7px; border-radius: 99px;
+  background: var(--tag-bg); color: var(--tag-fg); white-space: nowrap;
+}
 
-  /* ── Empty state ── */
-  #empty {
-    max-width: 960px;
-    margin: 4rem auto;
-    padding: 0 1.5rem;
-    text-align: center;
-    font-family: var(--sans);
-    color: var(--ink-3);
-    font-size: 0.85rem;
-    display: none;
-  }
+.card-source {
+  font-size: 0.65rem; color: var(--ink-3); padding-top: 6px;
+  border-top: 1px solid var(--rule); margin-top: 2px;
+}
 
-  /* ── Loading ── */
-  #loading {
-    max-width: 960px;
-    margin: 4rem auto;
-    padding: 0 1.5rem;
-    font-family: var(--sans);
-    font-size: 0.8rem;
-    color: var(--ink-3);
-    text-align: center;
-  }
+/* ── Empty / loading ── */
+#loading, #empty {
+  max-width: 980px; margin: 3rem auto; padding: 0 1.5rem;
+  font-size: 0.85rem; color: var(--ink-3); text-align: center;
+}
+#empty { display: none; }
 
-  /* ── Tufte sparkline-style cost bar ── */
-  .cost-bar {
-    display: inline-block;
-    width: 3px;
-    height: 10px;
-    border-radius: 1px;
-    margin-right: 2px;
-    vertical-align: middle;
-    background: var(--free);
-  }
-  .cost-bar.paid { background: var(--paid); }
+/* ── Footer ── */
+footer {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: var(--bg); border-top: 1px solid var(--rule);
+  padding: 0.45rem 1.5rem;
+  font-size: 0.68rem; color: var(--ink-3);
+  display: flex; justify-content: space-between; align-items: center;
+}
+footer a { color: var(--ink-3); text-decoration: underline; }
 
-  /* ── Footer note ── */
-  footer {
-    position: fixed;
-    bottom: 0;
-    left: 0; right: 0;
-    background: var(--bg);
-    border-top: 1px solid var(--rule);
-    padding: 0.5rem 1.5rem;
-    font-family: var(--sans);
-    font-size: 0.68rem;
-    color: var(--ink-3);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-  }
-  footer a { color: var(--ink-3); text-decoration: underline; }
-
-  @media (max-width: 600px) {
-    .grid { grid-template-columns: 1fr; }
-    .header-inner { flex-direction: column; }
-  }
+@media (max-width: 600px) {
+  .grid { grid-template-columns: 1fr; }
+  .header-inner { flex-direction: column; align-items: flex-start; }
+}
 </style>
 </head>
 <body>
 
-<header>
+<div class="header">
   <div class="header-inner">
-    <h1>Bay Area Kids Events &mdash; <em>Peninsula + South Bay</em></h1>
-    <span id="meta">loading&hellip;</span>
-  </div>
-</header>
-
-<div class="controls">
-  <div class="search-wrap">
-    <input id="search" type="search" placeholder="Search events&hellip;" autocomplete="off">
-  </div>
-
-  <div class="filter-group">
-    <span class="filter-label">Region</span>
-    <div class="pill-group" id="region-pills"></div>
-  </div>
-
-  <div class="filter-group">
-    <span class="filter-label">Cost</span>
-    <div class="pill-group">
-      <button class="pill active" data-cost="all">All</button>
-      <button class="pill" data-cost="Free">Free</button>
-      <button class="pill" data-cost="Paid">Paid</button>
-    </div>
-  </div>
-
-  <div class="filter-group">
-    <span class="filter-label">From</span>
-    <input type="date" id="date-from">
-  </div>
-  <div class="filter-group">
-    <span class="filter-label">To</span>
-    <input type="date" id="date-to">
+    <h1>Bay Area Kids Events <span>— Peninsula + South Bay</span></h1>
+    <span class="header-meta" id="meta">loading…</span>
   </div>
 </div>
 
-<div class="count-line" id="count-line"></div>
+<div class="filters">
+  <div class="filter-card">
 
-<div id="loading">Fetching events&hellip;</div>
-<div id="empty">No events match your filters.<br>Try widening the date range or clearing the search.</div>
+    <div class="filter-row">
+      <div class="search-wrap">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input id="search" type="search" placeholder="Try: outdoors, storytime, free, animals, hands-on…" autocomplete="off">
+      </div>
+    </div>
+
+    <div class="filter-row">
+      <span class="filter-label">When</span>
+      <div class="date-chips" id="when-chips">
+        <button class="chip" data-when="today">Today</button>
+        <button class="chip active" data-when="this-weekend">This weekend</button>
+        <button class="chip" data-when="next-weekend">Next weekend</button>
+        <button class="chip" data-when="2weeks">Next 2 weeks</button>
+        <button class="chip" data-when="custom">Custom</button>
+      </div>
+    </div>
+
+    <div class="filter-row date-custom" id="custom-dates" style="display:none">
+      <label>From</label>
+      <input type="date" id="date-from">
+      <label>To</label>
+      <input type="date" id="date-to">
+    </div>
+
+    <div class="filter-row">
+      <span class="filter-label">Area</span>
+      <div class="chip-group" id="region-pills"></div>
+    </div>
+
+    <div class="filter-row">
+      <span class="filter-label">Cost</span>
+      <div class="chip-group">
+        <button class="chip active" data-cost="all">All</button>
+        <button class="chip active-green" data-cost="Free" style="background:transparent;border-color:var(--rule);color:var(--ink-2)">Free only</button>
+      </div>
+      <button class="reset-btn" id="reset-btn">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+        Reset
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<div class="count-line count-bar" id="count-line"></div>
+<div id="loading">Fetching events…</div>
+<div id="empty">No events match — try clearing the search or widening the date range.</div>
 <div id="output"></div>
 
 <footer>
-  <span>Updated daily 6am PT &middot; <a href="https://github.com/crajagop87/bay-area-kids-events" target="_blank">Source</a></span>
+  <span>Updated daily 6am PT · <a href="https://github.com/crajagop87/bay-area-kids-events" target="_blank">Source</a></span>
   <span id="footer-count"></span>
 </footer>
 
 <script>
-// Use local files when served locally, GitHub raw when hosted on Pages
 const IS_LOCAL = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
-const JSON_URL = IS_LOCAL
-  ? '/output/events.json'
-  : 'https://raw.githubusercontent.com/crajagop87/bay-area-kids-events/main/output/events.json';
-const HEALTH_URL = IS_LOCAL
-  ? '/output/health.json'
-  : 'https://raw.githubusercontent.com/crajagop87/bay-area-kids-events/main/output/health.json';
+const JSON_URL   = IS_LOCAL ? '/output/events.json'  : 'https://raw.githubusercontent.com/crajagop87/bay-area-kids-events/main/output/events.json';
+const HEALTH_URL = IS_LOCAL ? '/output/health.json'  : 'https://raw.githubusercontent.com/crajagop87/bay-area-kids-events/main/output/health.json';
 
 let allEvents = [];
 let activeRegions = new Set(['all']);
 let activeCost = 'all';
+let activeWhen = 'this-weekend';
 
-// ── Helpers ──────────────────────────────────────────────────────────────────
+// ── Date helpers ───────────────────────────────────────────────────────────
+function pad(n) { return String(n).padStart(2, '0'); }
+function isoLocal(d) { return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`; }
 
-function fmt_date(iso) {
-  if (!iso) return '';
-  const d = new Date(iso);
-  return d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', timeZone: 'America/Los_Angeles' });
+function getWeekendRange(offsetWeeks = 0) {
+  const now = new Date();
+  const day = now.getDay(); // 0=Sun,6=Sat
+  const daysToSat = (6 - day + 7 * offsetWeeks) % 7 || (offsetWeeks ? 7 * offsetWeeks : 0);
+  const sat = new Date(now); sat.setDate(now.getDate() + (day === 6 && offsetWeeks === 0 ? 0 : (6 - day + 7 * offsetWeeks)));
+  const sun = new Date(sat); sun.setDate(sat.getDate() + 1);
+  return [isoLocal(sat), isoLocal(sun)];
 }
 
-function fmt_time(iso) {
-  if (!iso) return '';
-  // Read time directly from the stored ISO string — scraper stores local times
-  // tagged as UTC, so we bypass JS timezone conversion entirely
-  const m = iso.match(/T(\d{2}):(\d{2})/);
-  if (!m) return '';
-  const h = parseInt(m[1]), min = m[2];
-  if (h === 0 && min === '00') return ''; // skip midnight / no-time entries
-  const ampm = h >= 12 ? 'PM' : 'AM';
-  const h12 = h % 12 || 12;
-  return `${h12}:${min} ${ampm}`;
+function dateRangeForWhen(when) {
+  const now = new Date();
+  const todayStr = isoLocal(now);
+  if (when === 'today') return [todayStr, todayStr];
+  if (when === 'this-weekend') {
+    const day = now.getDay();
+    if (day === 6) return [todayStr, isoLocal(new Date(now.getFullYear(), now.getMonth(), now.getDate()+1))];
+    if (day === 0) return [todayStr, todayStr];
+    const sat = new Date(now); sat.setDate(now.getDate() + (6 - day));
+    const sun = new Date(sat); sun.setDate(sat.getDate() + 1);
+    return [isoLocal(sat), isoLocal(sun)];
+  }
+  if (when === 'next-weekend') {
+    const day = now.getDay();
+    const daysToNextSat = (6 - day + 7) % 7 + 7;
+    const sat = new Date(now); sat.setDate(now.getDate() + daysToNextSat);
+    const sun = new Date(sat); sun.setDate(sat.getDate() + 1);
+    return [isoLocal(sat), isoLocal(sun)];
+  }
+  if (when === '2weeks') {
+    const end = new Date(now); end.setDate(now.getDate() + 16);
+    return [todayStr, isoLocal(end)];
+  }
+  return [null, null]; // custom
 }
 
-function isoDate(iso) {
-  if (!iso) return '';
-  return iso.slice(0, 10);
+function isoDate(iso) { return iso ? iso.slice(0, 10) : ''; }
+
+function inferRegion(e) {
+  const hay = ((e.tags || []).join(' ') + ' ' + e.city + ' ' + e.county + ' ' + e.venue).toLowerCase();
+  if (/\bsf\b|san francisco|golden gate|mission|soma|presidio/.test(hay)) return 'SF';
+  if (/east bay|oakland|berkeley|alameda|fremont|hayward|contra costa|livermore|walnut creek|danville|martinez/.test(hay)) return 'East Bay';
+  if (/marin|fairfax|san rafael|novato|north bay|vallejo|sausalito/.test(hay)) return 'North Bay';
+  if (/san jose|campbell|los gatos|saratoga|cupertino|milpitas|morgan hill|santa clara city/.test(hay)) return 'South Bay';
+  if (/santa cruz|half moon bay|gilroy|scotts valley/.test(hay)) return 'Fringe';
+  return 'PA & Peninsula';
 }
 
-function today() {
-  return new Date().toISOString().slice(0, 10);
-}
-
-function inDays(n) {
-  const d = new Date();
-  d.setDate(d.getDate() + n);
-  return d.toISOString().slice(0, 10);
-}
-
-function inferRegion(event) {
-  const city = (event.city || event.venue || '').toLowerCase();
-  const county = (event.county || '').toLowerCase();
-  if (/san francisco|sf|golden gate|mission|soma/.test(city)) return 'SF';
-  if (/oakland|berkeley|alameda|fremont|hayward|contra costa|east bay|walnut creek|danville|martinez|livermore/.test(city + county)) return 'East Bay';
-  if (/marin|fairfax|san rafael|novato|north bay|vallejo/.test(city + county)) return 'North Bay';
-  if (/san jose|campbell|los gatos|saratoga|cupertino|milpitas|morgan hill/.test(city)) return 'South Bay';
-  if (/santa cruz|half moon bay|gilroy|scotts valley/.test(city)) return 'Fringe';
-  return 'Peninsula'; // default for palo alto, menlo park, mountain view, etc.
-}
-
-// ── Load data ────────────────────────────────────────────────────────────────
-
+// ── Load ───────────────────────────────────────────────────────────────────
 async function load() {
   try {
     const [evRes, hlRes] = await Promise.all([
@@ -442,52 +324,42 @@ async function load() {
     allEvents = await evRes.json();
     const health = await hlRes.json();
 
-    // Stamp region
     allEvents.forEach(e => { e._region = inferRegion(e); });
 
-    // Meta line
     const runAt = health.run_at ? new Date(health.run_at).toLocaleDateString('en-US', {
-      weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', timeZone: 'America/Los_Angeles'
+      month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', timeZone: 'America/Los_Angeles'
     }) : '';
     document.getElementById('meta').textContent =
-      `${health.deduped_events || allEvents.length} events · updated ${runAt} · ${health.channels_ok}/${health.channels_total} sources ok`;
-    document.getElementById('footer-count').textContent =
-      `${allEvents.length} events in JSON`;
+      `${health.deduped_events || allEvents.length} events · ${runAt} · ${health.channels_ok}/${health.channels_total} sources ok`;
+    document.getElementById('footer-count').textContent = `${allEvents.length} events`;
 
-    // Build region pills
-    const regions = ['all', 'Peninsula', 'SF', 'East Bay', 'South Bay', 'North Bay', 'Fringe'];
-    const pillContainer = document.getElementById('region-pills');
+    // Region pills
+    const regions = ['all', 'PA & Peninsula', 'SF', 'East Bay', 'South Bay', 'North Bay', 'Fringe'];
+    const pc = document.getElementById('region-pills');
     regions.forEach(r => {
       const b = document.createElement('button');
-      b.className = 'pill' + (r === 'all' ? ' active' : '');
+      b.className = 'chip' + (r === 'all' ? ' active' : '');
       b.dataset.region = r;
-      b.textContent = r === 'all' ? 'All' : r;
+      b.textContent = r === 'all' ? 'All areas' : r;
       b.addEventListener('click', () => toggleRegion(r));
-      pillContainer.appendChild(b);
+      pc.appendChild(b);
     });
-
-    // Default date range: today → +16 days
-    document.getElementById('date-from').value = today();
-    document.getElementById('date-to').value = inDays(16);
 
     document.getElementById('loading').style.display = 'none';
     render();
-  } catch (err) {
-    document.getElementById('loading').textContent = 'Failed to load events. Try refreshing.';
+  } catch(err) {
+    document.getElementById('loading').textContent = 'Failed to load events — try refreshing.';
     console.error(err);
   }
 }
 
-// ── Filters ──────────────────────────────────────────────────────────────────
-
+// ── Filter wiring ──────────────────────────────────────────────────────────
 function toggleRegion(r) {
-  if (r === 'all') {
-    activeRegions = new Set(['all']);
-  } else {
+  if (r === 'all') { activeRegions = new Set(['all']); }
+  else {
     activeRegions.delete('all');
-    if (activeRegions.has(r)) activeRegions.delete(r);
-    else activeRegions.add(r);
-    if (activeRegions.size === 0) activeRegions.add('all');
+    activeRegions.has(r) ? activeRegions.delete(r) : activeRegions.add(r);
+    if (!activeRegions.size) activeRegions.add('all');
   }
   document.querySelectorAll('[data-region]').forEach(b => {
     b.classList.toggle('active', activeRegions.has(b.dataset.region));
@@ -498,9 +370,26 @@ function toggleRegion(r) {
 document.querySelectorAll('[data-cost]').forEach(b => {
   b.addEventListener('click', () => {
     activeCost = b.dataset.cost;
-    document.querySelectorAll('[data-cost]').forEach(x => x.classList.remove('active'));
-    b.classList.add('active');
+    document.querySelectorAll('[data-cost]').forEach(x => {
+      x.classList.remove('active', 'active-green');
+      x.style.background = 'transparent';
+      x.style.borderColor = 'var(--rule)';
+      x.style.color = 'var(--ink-2)';
+    });
+    if (activeCost === 'all') b.classList.add('active');
+    else { b.classList.add('active-green'); b.style.background = ''; b.style.borderColor = ''; b.style.color = ''; }
     render();
+  });
+});
+
+document.querySelectorAll('[data-when]').forEach(b => {
+  b.addEventListener('click', () => {
+    activeWhen = b.dataset.when;
+    document.querySelectorAll('[data-when]').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    const custom = document.getElementById('custom-dates');
+    custom.style.display = activeWhen === 'custom' ? 'flex' : 'none';
+    if (activeWhen !== 'custom') render();
   });
 });
 
@@ -508,118 +397,130 @@ document.getElementById('search').addEventListener('input', render);
 document.getElementById('date-from').addEventListener('change', render);
 document.getElementById('date-to').addEventListener('change', render);
 
-// ── Render ───────────────────────────────────────────────────────────────────
+document.getElementById('reset-btn').addEventListener('click', () => {
+  document.getElementById('search').value = '';
+  activeWhen = 'this-weekend';
+  document.querySelectorAll('[data-when]').forEach(b => b.classList.toggle('active', b.dataset.when === 'this-weekend'));
+  document.getElementById('custom-dates').style.display = 'none';
+  activeCost = 'all';
+  document.querySelectorAll('[data-cost]').forEach(b => {
+    b.classList.remove('active', 'active-green');
+    b.style.background = 'transparent'; b.style.borderColor = 'var(--rule)'; b.style.color = 'var(--ink-2)';
+  });
+  document.querySelector('[data-cost="all"]').classList.add('active');
+  document.querySelector('[data-cost="all"]').style.background = '';
+  activeRegions = new Set(['all']);
+  document.querySelectorAll('[data-region]').forEach(b => b.classList.toggle('active', b.dataset.region === 'all'));
+  render();
+});
 
+// ── Render ─────────────────────────────────────────────────────────────────
 function render() {
   const query = document.getElementById('search').value.toLowerCase().trim();
-  const fromDate = document.getElementById('date-from').value;
-  const toDate = document.getElementById('date-to').value;
+  let fromDate, toDate;
+
+  if (activeWhen === 'custom') {
+    fromDate = document.getElementById('date-from').value;
+    toDate = document.getElementById('date-to').value;
+  } else {
+    [fromDate, toDate] = dateRangeForWhen(activeWhen);
+  }
 
   let events = allEvents.filter(e => {
     const d = isoDate(e.start_datetime);
-
-    // Date range
     if (fromDate && d && d < fromDate) return false;
     if (toDate && d && d > toDate) return false;
-
-    // Region
     if (!activeRegions.has('all') && !activeRegions.has(e._region)) return false;
-
-    // Cost
     if (activeCost !== 'all' && e.cost !== activeCost) return false;
-
-    // Search
     if (query) {
-      const haystack = [e.title, e.venue, e.city, e.county, e.age_range, e.category, e.source_name]
+      const tags = (e.tags || []).join(' ');
+      const hay = [e.title, e.venue, e.city, e.age_range, e.category, e.source_name, tags]
         .join(' ').toLowerCase();
-      if (!haystack.includes(query)) return false;
+      if (!hay.includes(query)) return false;
     }
-
     return true;
   });
 
-  // Sort by start_datetime, nulls last
   events.sort((a, b) => {
     if (!a.start_datetime) return 1;
     if (!b.start_datetime) return -1;
     return a.start_datetime.localeCompare(b.start_datetime);
   });
 
-  // Count
-  document.getElementById('count-line').innerHTML =
-    `Showing <strong>${events.length}</strong> of ${allEvents.length} events`;
+  const total = events.length;
+  document.getElementById('count-line').innerHTML = `Showing <strong>${total}</strong> of ${allEvents.length} events`;
 
-  // Empty state
   const empty = document.getElementById('empty');
   const output = document.getElementById('output');
-  if (events.length === 0) {
-    empty.style.display = 'block';
-    output.innerHTML = '';
-    return;
-  }
+  if (!total) { empty.style.display = 'block'; output.innerHTML = ''; return; }
   empty.style.display = 'none';
 
   // Group by date
   const groups = {};
   events.forEach(e => {
-    const key = e.start_datetime ? isoDate(e.start_datetime) : 'no-date';
-    if (!groups[key]) groups[key] = [];
-    groups[key].push(e);
+    const k = e.start_datetime ? isoDate(e.start_datetime) : 'no-date';
+    (groups[k] = groups[k] || []).push(e);
   });
 
   const html = [];
-  Object.entries(groups).forEach(([dateKey, evs]) => {
-    const label = dateKey === 'no-date'
-      ? 'Date unknown'
-      : new Date(dateKey + 'T12:00:00').toLocaleDateString('en-US', {
-          weekday: 'long', month: 'long', day: 'numeric'
-        });
-
-    html.push(`<div class="date-group"><h2>${label}</h2></div>`);
-    html.push(`<div class="grid">`);
+  Object.entries(groups).forEach(([k, evs]) => {
+    const label = k === 'no-date' ? 'Date unknown'
+      : new Date(k + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+    html.push(`<div class="date-group"><h2>${label}</h2></div><div class="grid">`);
     evs.forEach(e => html.push(card(e)));
-    html.push(`</div>`);
+    html.push('</div>');
   });
-
   output.innerHTML = html.join('');
 }
 
+function fmt_time(iso) {
+  if (!iso) return '';
+  const m = iso.match(/T(\d{2}):(\d{2})/);
+  if (!m) return '';
+  const h = parseInt(m[1]), min = m[2];
+  if (h === 0 && min === '00') return '';
+  return `${h % 12 || 12}:${min} ${h >= 12 ? 'PM' : 'AM'}`;
+}
+
+// Tags to hide from display (too generic / internal)
+const HIDDEN_TAGS = new Set(['venue','library','aggregator','eventbrite','weekend','weekday','summer','all ages']);
+
 function card(e) {
   const time = fmt_time(e.start_datetime);
-  const costClass = e.cost === 'Free' ? 'tag-free' : e.cost === 'Paid' ? 'tag-paid' : 'tag-unknown';
-  const costLabel = e.cost === 'Free' ? 'Free' : e.cost === 'Paid'
-    ? (e.cost_amount > 1 ? `$${e.cost_amount}` : 'Paid') : '?';
-  const isCamp = e.is_camp;
-
+  const costCls = e.cost === 'Free' ? 'badge-free' : e.cost === 'Paid' ? 'badge-paid' : 'badge-unk';
+  const costLbl = e.cost === 'Free' ? 'Free' : e.cost === 'Paid' ? (e.cost_amount > 1 ? `$${e.cost_amount}` : 'Paid') : '?';
   const titleHtml = e.ticket_url
     ? `<a href="${esc(e.ticket_url)}" target="_blank" rel="noopener">${esc(e.title)} ↗</a>`
     : esc(e.title);
 
-  const venue = e.venue && e.venue !== e.city ? e.venue : (e.city || '');
-
-  // Show a clean domain as the visible link label
   let linkHtml = '';
   if (e.ticket_url) {
     try {
       const domain = new URL(e.ticket_url).hostname.replace(/^www\./, '');
       linkHtml = `<div class="card-link"><a href="${esc(e.ticket_url)}" target="_blank" rel="noopener">${esc(domain)}</a></div>`;
-    } catch(_) {
-      linkHtml = `<div class="card-link"><a href="${esc(e.ticket_url)}" target="_blank" rel="noopener">View event</a></div>`;
-    }
+    } catch(_) {}
   }
+
+  const venue = (e.venue && e.venue !== e.city) ? e.venue : (e.city || '');
+  const tags = (e.tags || []).filter(t => !HIDDEN_TAGS.has(t));
+  const tagsHtml = tags.length
+    ? `<div class="card-tags">${tags.map(t => `<span class="tag-chip">${esc(t)}</span>`).join('')}</div>`
+    : '';
+
+  const warnHtml = e.ticket_status && !['free walk-up','walk-up or reserve'].includes(e.ticket_status)
+    ? `<span class="badge badge-warn">${esc(e.ticket_status)}</span>` : '';
 
   return `<div class="card">
     <div class="card-title">${titleHtml}</div>
     <div class="card-meta">
-      ${time ? `<span>${time}</span>` : ''}
-      <span class="tag ${costClass}">${costLabel}</span>
-      ${isCamp ? `<span class="tag tag-camp">camp</span>` : ''}
-      ${e._region ? `<span>${e._region}</span>` : ''}
-      ${e.ticket_status && e.ticket_status !== 'free walk-up'
-        ? `<span style="color:var(--accent)">${esc(e.ticket_status)}</span>` : ''}
+      ${time ? `<span class="m-time">${time}</span>` : ''}
+      <span class="badge ${costCls}">${costLbl}</span>
+      ${e.is_camp ? '<span class="badge badge-camp">camp</span>' : ''}
+      ${warnHtml}
     </div>
     ${venue ? `<div class="card-venue">${esc(venue)}</div>` : ''}
     ${linkHtml}
+    ${tagsHtml}
     <div class="card-source">${esc(e.source_name || '')}</div>
   </div>`;
 }

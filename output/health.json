@@ -1,20 +1,20 @@
 {
-  "run_at": "2026-06-14T05:46:05.937767+00:00",
+  "run_at": "2026-06-14T14:50:10.922173+00:00",
   "window_days": 16,
   "channels_ok": 20,
   "channels_total": 20,
-  "raw_events": 380,
-  "deduped_events": 289,
+  "raw_events": 423,
+  "deduped_events": 293,
   "channels": [
     {
       "source": "Palo Alto City Library",
       "status": "ok",
-      "count": 21
+      "count": 18
     },
     {
       "source": "San Mateo County Library",
       "status": "ok",
-      "count": 21
+      "count": 20
     },
     {
       "source": "San Jose Public Library",
@@ -24,42 +24,42 @@
     {
       "source": "Santa Clara County Library District",
       "status": "ok",
-      "count": 27
+      "count": 30
     },
     {
       "source": "Eventbrite/Palo Alto",
       "status": "ok",
-      "count": 14
+      "count": 12
     },
     {
       "source": "Eventbrite/San Jose",
       "status": "ok",
-      "count": 15
+      "count": 14
     },
     {
       "source": "Eventbrite/Mountain View",
       "status": "ok",
-      "count": 12
+      "count": 10
     },
     {
       "source": "Eventbrite/Sunnyvale",
       "status": "ok",
-      "count": 13
+      "count": 12
     },
     {
       "source": "Eventbrite/San Mateo",
       "status": "ok",
-      "count": 12
+      "count": 10
     },
     {
       "source": "Eventbrite/Redwood City",
       "status": "ok",
-      "count": 13
+      "count": 11
     },
     {
       "source": "Eventbrite/Menlo Park",
       "status": "ok",
-      "count": 14
+      "count": 12
     },
     {
       "source": "Funcheap",
@@ -104,7 +104,7 @@
     {
       "source": "Hidden Villa Farm",
       "status": "ok",
-      "count": 4
+      "count": 60
     }
   ]
 }
