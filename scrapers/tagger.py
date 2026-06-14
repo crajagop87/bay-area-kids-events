@@ -13,7 +13,7 @@ TAG_RULES = [
     # ── Setting / environment ──────────────────────────────────────────────
     ("outdoors",        [r"\b(outdoor|outside|park|trail|garden|farm|beach|nature|hike|hiking|forest|lawn|plaza|open[\s-]air|creek|bay|lake|pond)\b"]),
     ("indoors",         [r"\b(museum|library|theatre|theater|center|hall|studio|gallery|indoor|classroom|auditorium)\b"]),
-    ("water",           [r"\b(beach|pool|splash|aquatic|bay|lake|creek|river|sand|ocean|water[\s-]play|splash\s*pad)\b"]),
+    ("water",           [r"\b(beach|pool|splash|aquatic|lake|creek|river|sand|ocean|water[\s-]play|splash\s*pad)\b"]),
     ("farm",            [r"\b(farm|barn|petting\s*zoo|livestock|chickens?|goats?|cows?|pigs?|horses?|hayride|pick[- ]your[\s-]own)\b"]),
     ("nature",          [r"\b(nature|wildlife|wild|bird|butterfly|insect|plant|trail|hike|ecology|environment|garden|outdoor)\b"]),
 

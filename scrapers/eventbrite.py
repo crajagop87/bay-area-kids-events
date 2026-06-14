@@ -1,6 +1,7 @@
 """
 Eventbrite scraper — extracts events from window.__SERVER_DATA__ embedded in search pages.
 Uses /d/ca--{city}/family/ pages which reliably include a search_data.events.results list.
+Coverage: Peninsula, South Bay, SF, East Bay, and Santa Cruz (within 40 miles of Palo Alto).
 """
 
 import re
@@ -18,6 +19,7 @@ HEADERS = {
 }
 
 CITIES = [
+    # Peninsula / South Bay (original)
     ("palo-alto",     "Palo Alto",     "Santa Clara"),
     ("san-jose",      "San Jose",      "Santa Clara"),
     ("mountain-view", "Mountain View", "Santa Clara"),
@@ -25,6 +27,11 @@ CITIES = [
     ("san-mateo",     "San Mateo",     "San Mateo"),
     ("redwood-city",  "Redwood City",  "San Mateo"),
     ("menlo-park",    "Menlo Park",    "San Mateo"),
+    # SF / East Bay / Santa Cruz (expanded — within 40 miles of Palo Alto)
+    ("san-francisco", "San Francisco", "San Francisco"),
+    ("oakland",       "Oakland",       "Alameda"),
+    ("berkeley",      "Berkeley",      "Alameda"),
+    ("santa-cruz",    "Santa Cruz",    "Santa Cruz"),
 ]
 
 ADULT_NOISE = re.compile(

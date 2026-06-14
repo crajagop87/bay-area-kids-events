@@ -15,7 +15,7 @@
     "source_channel": "venue",
     "source_name": "Cantor Arts Center",
     "source_url": "https://museum.stanford.edu/events",
-    "last_verified": "2026-06-14T15:47:43.708568+00:00",
+    "last_verified": "2026-06-14T19:34:16.223159+00:00",
     "dedupe_key": "34d38e580490",
     "is_camp": false,
     "tags": [
@@ -30,64 +30,39 @@
     ]
   },
   {
-    "title": "Early Closure at 1  PM for Sensory Sunday",
-    "start_datetime": "2026-06-14T10:00:00-07:00",
-    "end_datetime": "2026-06-14T13:00:00-07:00",
-    "venue": "CuriOdyssey",
-    "city": "San Mateo",
-    "county": "San Mateo",
+    "title": "Exploratorium \u2014 Open (hands-on science exhibits)",
+    "start_datetime": "2026-06-14T10:00:00+00:00",
+    "end_datetime": "2026-06-14T17:00:00+00:00",
+    "venue": "Exploratorium",
+    "city": "San Francisco",
+    "county": "San Francisco",
     "age_range": "Families",
     "cost": "Paid",
-    "cost_amount": 12.0,
+    "cost_amount": 20.0,
     "ticket_status": "walk-up or reserve",
-    "ticket_url": "https://curiodyssey.org/event/early-closure-at-1-pm-for-sensory-sunday/",
+    "ticket_url": "https://www.exploratorium.edu/visit",
     "category": "venue",
     "source_channel": "venue",
-    "source_name": "CuriOdyssey",
-    "source_url": "https://curiodyssey.org/events/",
-    "last_verified": "2026-06-14T15:47:41.109371+00:00",
-    "dedupe_key": "e6a83df61ae0",
+    "source_name": "Exploratorium",
+    "source_url": "https://www.exploratorium.edu/visit/calendar",
+    "last_verified": "2026-06-14T19:34:16.970106+00:00",
+    "dedupe_key": "8a86a7d23c8c",
     "is_camp": false,
     "tags": [
+      "STEM",
       "book ahead",
       "drop-in",
-      "peninsula",
-      "sensory",
-      "venue",
-      "weekend"
-    ]
-  },
-  {
-    "title": "Hiller Aviation Museum \u2014 Today\u2019s Schedule 10-5",
-    "start_datetime": "2026-06-14T10:00:00-07:00",
-    "end_datetime": "2026-06-14T17:00:00-07:00",
-    "venue": "Hiller Aviation Museum",
-    "city": "San Carlos",
-    "county": "San Mateo",
-    "age_range": "Families",
-    "cost": "Paid",
-    "cost_amount": 15.0,
-    "ticket_status": "book ahead \u2014 sells out",
-    "ticket_url": "https://www.hiller.org/event/todays-schedule-9-5/2026-06-14/",
-    "category": "venue",
-    "source_channel": "venue",
-    "source_name": "Hiller Aviation Museum",
-    "source_url": "https://www.hiller.org/events/",
-    "last_verified": "2026-06-14T15:47:41.500261+00:00",
-    "dedupe_key": "63e9081b7c8d",
-    "is_camp": false,
-    "tags": [
-      "indoors",
-      "peninsula",
-      "rainy day",
+      "hands-on",
+      "san francisco",
+      "science",
       "venue",
       "weekend"
     ]
   },
   {
     "title": "Palo Alto Junior Museum & Zoo \u2014 Open",
-    "start_datetime": "2026-06-14T10:00:00.764967+00:00",
-    "end_datetime": "2026-06-14T17:00:00.764967+00:00",
+    "start_datetime": "2026-06-14T10:00:00.178117+00:00",
+    "end_datetime": "2026-06-14T17:00:00.178117+00:00",
     "venue": "Palo Alto Junior Museum & Zoo",
     "city": "Palo Alto",
     "county": "Santa Clara",
@@ -100,7 +75,7 @@
     "source_channel": "venue",
     "source_name": "Palo Alto Junior Museum & Zoo",
     "source_url": "https://www.paloaltozoo.org/visit",
-    "last_verified": "2026-06-14T15:47:38.765885+00:00",
+    "last_verified": "2026-06-14T19:34:11.864623+00:00",
     "dedupe_key": "ae8ae5111fd3",
     "is_camp": false,
     "tags": [
@@ -108,61 +83,6 @@
       "book ahead",
       "indoors",
       "palo alto",
-      "rainy day",
-      "venue",
-      "weekend"
-    ]
-  },
-  {
-    "title": "Drone Plex, Flight Sim Zone, Invention Lab, FMX Flight Simulator",
-    "start_datetime": "2026-06-14T10:30:00-07:00",
-    "end_datetime": "2026-06-14T15:00:00-07:00",
-    "venue": "Hiller Aviation Museum",
-    "city": "San Carlos",
-    "county": "San Mateo",
-    "age_range": "Families",
-    "cost": "Paid",
-    "cost_amount": 15.0,
-    "ticket_status": "book ahead \u2014 sells out",
-    "ticket_url": "https://www.hiller.org/event/weekend-events-2-2-2-2-2-2-2/2026-06-14/",
-    "category": "venue",
-    "source_channel": "venue",
-    "source_name": "Hiller Aviation Museum",
-    "source_url": "https://www.hiller.org/events/",
-    "last_verified": "2026-06-14T15:47:41.500304+00:00",
-    "dedupe_key": "032431ef15f2",
-    "is_camp": false,
-    "tags": [
-      "indoors",
-      "peninsula",
-      "rainy day",
-      "science",
-      "venue",
-      "weekend"
-    ]
-  },
-  {
-    "title": "Water Rocket Rally",
-    "start_datetime": "2026-06-14T11:00:00-07:00",
-    "end_datetime": "2026-06-14T12:00:00-07:00",
-    "venue": "Hiller Aviation Museum",
-    "city": "San Carlos",
-    "county": "San Mateo",
-    "age_range": "Families",
-    "cost": "Paid",
-    "cost_amount": 15.0,
-    "ticket_status": "book ahead \u2014 sells out",
-    "ticket_url": "https://www.hiller.org/event/water-rocket-rally/2026-06-14/",
-    "category": "venue",
-    "source_channel": "venue",
-    "source_name": "Hiller Aviation Museum",
-    "source_url": "https://www.hiller.org/events/",
-    "last_verified": "2026-06-14T15:47:41.500318+00:00",
-    "dedupe_key": "7b5a366c28d9",
-    "is_camp": false,
-    "tags": [
-      "indoors",
-      "peninsula",
       "rainy day",
       "venue",
       "weekend"
@@ -184,7 +104,7 @@
     "source_channel": "venue",
     "source_name": "CuriOdyssey",
     "source_url": "https://curiodyssey.org/events/",
-    "last_verified": "2026-06-14T15:47:41.109415+00:00",
+    "last_verified": "2026-06-14T19:34:13.615542+00:00",
     "dedupe_key": "cfec4c94f9af",
     "is_camp": false,
     "tags": [
@@ -212,7 +132,7 @@
     "source_channel": "venue",
     "source_name": "Hiller Aviation Museum",
     "source_url": "https://www.hiller.org/events/",
-    "last_verified": "2026-06-14T15:47:41.500329+00:00",
+    "last_verified": "2026-06-14T19:34:16.008064+00:00",
     "dedupe_key": "b44f1ed21d38",
     "is_camp": false,
     "tags": [
@@ -239,7 +159,7 @@
     "source_channel": "library",
     "source_name": "San Mateo County Library",
     "source_url": "https://smcl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:01.785854+00:00",
+    "last_verified": "2026-06-14T19:33:06.423493+00:00",
     "dedupe_key": "826c8d82bb00",
     "is_camp": false,
     "tags": [
@@ -272,7 +192,7 @@
     "source_channel": "library",
     "source_name": "Palo Alto City Library",
     "source_url": "https://paloalto.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:46:53.576762+00:00",
+    "last_verified": "2026-06-14T19:32:55.502452+00:00",
     "dedupe_key": "729019887bd0",
     "is_camp": false,
     "tags": [
@@ -303,7 +223,7 @@
     "source_channel": "library",
     "source_name": "San Jose Public Library",
     "source_url": "https://sjpl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:08.392096+00:00",
+    "last_verified": "2026-06-14T19:33:15.607872+00:00",
     "dedupe_key": "3808fbbaaac6",
     "is_camp": false,
     "tags": [
@@ -332,14 +252,15 @@
     "ticket_url": "https://www.eventbrite.com/e/family-paint-party-tickets-1987594085414",
     "category": "eventbrite",
     "source_channel": "eventbrite",
-    "source_name": "Eventbrite / Sunnyvale",
-    "source_url": "https://www.eventbrite.com/d/ca--sunnyvale/family/",
-    "last_verified": "2026-06-14T15:47:29.750514+00:00",
+    "source_name": "Eventbrite / Palo Alto",
+    "source_url": "https://www.eventbrite.com/d/ca--palo-alto/family/",
+    "last_verified": "2026-06-14T19:33:47.784536+00:00",
     "dedupe_key": "12e99890fcaa",
     "is_camp": false,
     "tags": [
       "arts & crafts",
       "eventbrite",
+      "palo alto",
       "toddler-friendly",
       "weekday"
     ]
@@ -360,7 +281,7 @@
     "source_channel": "venue",
     "source_name": "Hiller Aviation Museum",
     "source_url": "https://www.hiller.org/events/",
-    "last_verified": "2026-06-14T15:47:41.500340+00:00",
+    "last_verified": "2026-06-14T19:34:16.008156+00:00",
     "dedupe_key": "527af4bc0223",
     "is_camp": false,
     "tags": [
@@ -387,7 +308,7 @@
     "source_channel": "library",
     "source_name": "San Mateo County Library",
     "source_url": "https://smcl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:01.785854+00:00",
+    "last_verified": "2026-06-14T19:33:06.423493+00:00",
     "dedupe_key": "41638f62cd2f",
     "is_camp": false,
     "tags": [
@@ -418,7 +339,7 @@
     "source_channel": "library",
     "source_name": "San Mateo County Library",
     "source_url": "https://smcl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:01.785854+00:00",
+    "last_verified": "2026-06-14T19:33:06.423493+00:00",
     "dedupe_key": "9ade8877d89b",
     "is_camp": false,
     "tags": [
@@ -450,7 +371,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:18.498591+00:00",
+    "last_verified": "2026-06-14T19:33:26.122091+00:00",
     "dedupe_key": "511d48a65e27",
     "is_camp": false,
     "tags": [
@@ -481,7 +402,7 @@
     "source_channel": "library",
     "source_name": "San Jose Public Library",
     "source_url": "https://sjpl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:08.392096+00:00",
+    "last_verified": "2026-06-14T19:33:15.607872+00:00",
     "dedupe_key": "072277111d91",
     "is_camp": false,
     "tags": [
@@ -513,7 +434,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:18.498591+00:00",
+    "last_verified": "2026-06-14T19:33:26.122091+00:00",
     "dedupe_key": "164a80cd3914",
     "is_camp": false,
     "tags": [
@@ -543,7 +464,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:18.498591+00:00",
+    "last_verified": "2026-06-14T19:33:26.122091+00:00",
     "dedupe_key": "b33265aa655a",
     "is_camp": false,
     "tags": [
@@ -574,7 +495,7 @@
     "source_channel": "library",
     "source_name": "Palo Alto City Library",
     "source_url": "https://paloalto.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:46:53.576762+00:00",
+    "last_verified": "2026-06-14T19:32:55.502452+00:00",
     "dedupe_key": "77529105192b",
     "is_camp": false,
     "tags": [
@@ -605,7 +526,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:18.498591+00:00",
+    "last_verified": "2026-06-14T19:33:26.122091+00:00",
     "dedupe_key": "8a90d4c0c5ed",
     "is_camp": false,
     "tags": [
@@ -636,7 +557,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:18.498591+00:00",
+    "last_verified": "2026-06-14T19:33:26.122091+00:00",
     "dedupe_key": "593616f50cb2",
     "is_camp": false,
     "tags": [
@@ -669,41 +590,13 @@
     "source_channel": "venue",
     "source_name": "Hiller Aviation Museum",
     "source_url": "https://www.hiller.org/events/",
-    "last_verified": "2026-06-14T15:47:41.500351+00:00",
+    "last_verified": "2026-06-14T19:34:16.008165+00:00",
     "dedupe_key": "97911ea09e03",
     "is_camp": false,
     "tags": [
       "indoors",
       "peninsula",
       "rainy day",
-      "venue",
-      "weekday"
-    ]
-  },
-  {
-    "title": "Farm Volunteer Day",
-    "start_datetime": "2026-06-17T09:00:00-07:00",
-    "end_datetime": "2026-06-17T12:00:00-07:00",
-    "venue": "Hidden Villa Farm",
-    "city": "Los Altos Hills",
-    "county": "Santa Clara",
-    "age_range": "Families",
-    "cost": "Paid",
-    "cost_amount": 8.0,
-    "ticket_status": "some tours require registration",
-    "ticket_url": "https://www.hiddenvilla.org/programs/catalog/468-farm-volunteer-day/region-HV/",
-    "category": "venue",
-    "source_channel": "venue",
-    "source_name": "Hidden Villa Farm",
-    "source_url": "https://www.hiddenvilla.org/calendar/individuals-families/region-HV/",
-    "last_verified": "2026-06-14T15:47:44.200717+00:00",
-    "dedupe_key": "a13a3af127e8",
-    "is_camp": false,
-    "tags": [
-      "animals",
-      "book ahead",
-      "farm",
-      "outdoors",
       "venue",
       "weekday"
     ]
@@ -724,7 +617,7 @@
     "source_channel": "venue",
     "source_name": "Hiller Aviation Museum",
     "source_url": "https://www.hiller.org/events/",
-    "last_verified": "2026-06-14T15:47:41.500361+00:00",
+    "last_verified": "2026-06-14T19:34:16.008173+00:00",
     "dedupe_key": "ff85a04590bf",
     "is_camp": false,
     "tags": [
@@ -732,6 +625,38 @@
       "peninsula",
       "rainy day",
       "venue",
+      "weekday"
+    ]
+  },
+  {
+    "title": "Toddler Storytime",
+    "start_datetime": "2026-06-17T10:15:00+00:00",
+    "end_datetime": "2026-06-17T10:45:00+00:00",
+    "venue": "Oakland Public Library \u2014 Dimond Park's Toddler Lot",
+    "city": "Oakland Public Library",
+    "county": "Alameda",
+    "age_range": "Families",
+    "cost": "Free",
+    "cost_amount": 0.0,
+    "ticket_status": "free walk-up",
+    "ticket_url": "https://oaklandlibrary.bibliocommons.com/v2/events/692f34eb3df0e4370005f81b",
+    "category": "library",
+    "source_channel": "library",
+    "source_name": "Oakland Public Library",
+    "source_url": "https://oaklandlibrary.bibliocommons.com/v2/events",
+    "last_verified": "2026-06-14T19:33:35.774753+00:00",
+    "dedupe_key": "5f452438f4a3",
+    "is_camp": false,
+    "tags": [
+      "books & reading",
+      "drop-in",
+      "east bay",
+      "free",
+      "indoors",
+      "library",
+      "outdoors",
+      "storytime",
+      "toddler-friendly",
       "weekday"
     ]
   },
@@ -751,7 +676,7 @@
     "source_channel": "library",
     "source_name": "San Mateo County Library",
     "source_url": "https://smcl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:01.785854+00:00",
+    "last_verified": "2026-06-14T19:33:06.423493+00:00",
     "dedupe_key": "d23eebcab33e",
     "is_camp": false,
     "tags": [
@@ -782,7 +707,7 @@
     "source_channel": "library",
     "source_name": "San Mateo County Library",
     "source_url": "https://smcl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:01.785854+00:00",
+    "last_verified": "2026-06-14T19:33:06.423493+00:00",
     "dedupe_key": "82788bdfcbc9",
     "is_camp": false,
     "tags": [
@@ -795,6 +720,121 @@
       "rainy day",
       "storytime",
       "toddler-friendly",
+      "weekday"
+    ]
+  },
+  {
+    "title": "Bilingual Spanish Play Caf\u00e9",
+    "start_datetime": "2026-06-17T10:30:00+00:00",
+    "end_datetime": "2026-06-17T12:00:00+00:00",
+    "venue": "Oakland Public Library",
+    "city": "Oakland Public Library",
+    "county": "Alameda",
+    "age_range": "Families",
+    "cost": "Free",
+    "cost_amount": 0.0,
+    "ticket_status": "free walk-up",
+    "ticket_url": "https://oaklandlibrary.bibliocommons.com/v2/events/69fcf240caf93436005a7266",
+    "category": "library",
+    "source_channel": "library",
+    "source_name": "Oakland Public Library",
+    "source_url": "https://oaklandlibrary.bibliocommons.com/v2/events",
+    "last_verified": "2026-06-14T19:33:35.774753+00:00",
+    "dedupe_key": "464093885ea6",
+    "is_camp": false,
+    "tags": [
+      "books & reading",
+      "drop-in",
+      "east bay",
+      "free",
+      "indoors",
+      "library",
+      "rainy day",
+      "theatre",
+      "weekday"
+    ]
+  },
+  {
+    "title": "Baby Bounce",
+    "start_datetime": "2026-06-17T10:30:00+00:00",
+    "end_datetime": "2026-06-17T11:00:00+00:00",
+    "venue": "Oakland Public Library",
+    "city": "Oakland Public Library",
+    "county": "Alameda",
+    "age_range": "Families",
+    "cost": "Free",
+    "cost_amount": 0.0,
+    "ticket_status": "free walk-up",
+    "ticket_url": "https://oaklandlibrary.bibliocommons.com/v2/events/68decfa9a3ce0fa7a6b9a9f7",
+    "category": "library",
+    "source_channel": "library",
+    "source_name": "Oakland Public Library",
+    "source_url": "https://oaklandlibrary.bibliocommons.com/v2/events",
+    "last_verified": "2026-06-14T19:33:35.774753+00:00",
+    "dedupe_key": "23533b58fc38",
+    "is_camp": false,
+    "tags": [
+      "books & reading",
+      "drop-in",
+      "east bay",
+      "free",
+      "indoors",
+      "library",
+      "rainy day",
+      "toddler-friendly",
+      "weekday"
+    ]
+  },
+  {
+    "title": "Family Event: Wednesday Playgroup  2025-202705",
+    "start_datetime": "2026-06-17T10:30:00+00:00",
+    "end_datetime": "2026-06-17T11:30:00+00:00",
+    "venue": "Children's Council of San Francisco",
+    "city": "San Francisco",
+    "county": "San Francisco",
+    "age_range": "Families",
+    "cost": "Paid",
+    "cost_amount": 1.0,
+    "ticket_status": "book ahead",
+    "ticket_url": "https://www.eventbrite.com/e/family-event-wednesday-playgroup-2025-202705-tickets-1977403331595",
+    "category": "eventbrite",
+    "source_channel": "eventbrite",
+    "source_name": "Eventbrite / San Francisco",
+    "source_url": "https://www.eventbrite.com/d/ca--san-francisco/family/",
+    "last_verified": "2026-06-14T19:34:00.719857+00:00",
+    "dedupe_key": "530b697678ee",
+    "is_camp": false,
+    "tags": [
+      "eventbrite",
+      "san francisco",
+      "school-age",
+      "toddler-friendly",
+      "weekday"
+    ]
+  },
+  {
+    "title": "SisterWeb Walks: Meet the Doulas",
+    "start_datetime": "2026-06-17T11:00:00+00:00",
+    "end_datetime": "2026-06-17T14:00:00+00:00",
+    "venue": "Warming Hut Park Store",
+    "city": "San Francisco",
+    "county": "San Francisco",
+    "age_range": "Families",
+    "cost": "Paid",
+    "cost_amount": 1.0,
+    "ticket_status": "book ahead",
+    "ticket_url": "https://www.eventbrite.com/e/sisterweb-walks-meet-the-doulas-tickets-1991233201107",
+    "category": "eventbrite",
+    "source_channel": "eventbrite",
+    "source_name": "Eventbrite / San Francisco",
+    "source_url": "https://www.eventbrite.com/d/ca--san-francisco/family/",
+    "last_verified": "2026-06-14T19:34:00.719857+00:00",
+    "dedupe_key": "e8f76c29cd66",
+    "is_camp": false,
+    "tags": [
+      "eventbrite",
+      "outdoors",
+      "san francisco",
       "weekday"
     ]
   },
@@ -814,7 +854,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:18.498591+00:00",
+    "last_verified": "2026-06-14T19:33:26.122091+00:00",
     "dedupe_key": "0a092229c1e1",
     "is_camp": false,
     "tags": [
@@ -827,6 +867,68 @@
       "storytime",
       "theatre",
       "toddler-friendly",
+      "weekday"
+    ]
+  },
+  {
+    "title": "Craft for Kids",
+    "start_datetime": "2026-06-17T14:00:00+00:00",
+    "end_datetime": "2026-06-17T15:00:00+00:00",
+    "venue": "Oakland Public Library",
+    "city": "Oakland Public Library",
+    "county": "Alameda",
+    "age_range": "Families",
+    "cost": "Free",
+    "cost_amount": 0.0,
+    "ticket_status": "free walk-up",
+    "ticket_url": "https://oaklandlibrary.bibliocommons.com/v2/events/689b7573709d2741003698d2",
+    "category": "library",
+    "source_channel": "library",
+    "source_name": "Oakland Public Library",
+    "source_url": "https://oaklandlibrary.bibliocommons.com/v2/events",
+    "last_verified": "2026-06-14T19:33:35.774753+00:00",
+    "dedupe_key": "eb201f6e8d90",
+    "is_camp": false,
+    "tags": [
+      "arts & crafts",
+      "books & reading",
+      "drop-in",
+      "east bay",
+      "free",
+      "indoors",
+      "library",
+      "rainy day",
+      "school-age",
+      "weekday"
+    ]
+  },
+  {
+    "title": "Teen Double Dutch Extravaganza!",
+    "start_datetime": "2026-06-17T15:00:00+00:00",
+    "end_datetime": "2026-06-17T17:00:00+00:00",
+    "venue": "Oakland Public Library",
+    "city": "Oakland Public Library",
+    "county": "Alameda",
+    "age_range": "Families",
+    "cost": "Free",
+    "cost_amount": 0.0,
+    "ticket_status": "free walk-up",
+    "ticket_url": "https://oaklandlibrary.bibliocommons.com/v2/events/69c6e28c1e64afd01e6526cd",
+    "category": "library",
+    "source_channel": "library",
+    "source_name": "Oakland Public Library",
+    "source_url": "https://oaklandlibrary.bibliocommons.com/v2/events",
+    "last_verified": "2026-06-14T19:33:35.774753+00:00",
+    "dedupe_key": "b7abbff137b1",
+    "is_camp": false,
+    "tags": [
+      "books & reading",
+      "drop-in",
+      "east bay",
+      "free",
+      "indoors",
+      "library",
+      "rainy day",
       "weekday"
     ]
   },
@@ -846,7 +948,7 @@
     "source_channel": "library",
     "source_name": "Palo Alto City Library",
     "source_url": "https://paloalto.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:46:53.576762+00:00",
+    "last_verified": "2026-06-14T19:32:55.502452+00:00",
     "dedupe_key": "b6a19cb204f9",
     "is_camp": false,
     "tags": [
@@ -878,7 +980,7 @@
     "source_channel": "library",
     "source_name": "San Mateo County Library",
     "source_url": "https://smcl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:01.785854+00:00",
+    "last_verified": "2026-06-14T19:33:06.423493+00:00",
     "dedupe_key": "29188a6e67de",
     "is_camp": false,
     "tags": [
@@ -908,12 +1010,42 @@
     "source_channel": "library",
     "source_name": "San Jose Public Library",
     "source_url": "https://sjpl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:08.392096+00:00",
+    "last_verified": "2026-06-14T19:33:15.607872+00:00",
     "dedupe_key": "b5f272cf1f83",
     "is_camp": false,
     "tags": [
       "books & reading",
       "drop-in",
+      "free",
+      "indoors",
+      "library",
+      "rainy day",
+      "weekday"
+    ]
+  },
+  {
+    "title": "The Kalimba King",
+    "start_datetime": "2026-06-17T18:00:00+00:00",
+    "end_datetime": "2026-06-17T19:00:00+00:00",
+    "venue": "Oakland Public Library",
+    "city": "Oakland Public Library",
+    "county": "Alameda",
+    "age_range": "Families",
+    "cost": "Free",
+    "cost_amount": 0.0,
+    "ticket_status": "free walk-up",
+    "ticket_url": "https://oaklandlibrary.bibliocommons.com/v2/events/69fb7239caf93436005a29fc",
+    "category": "library",
+    "source_channel": "library",
+    "source_name": "Oakland Public Library",
+    "source_url": "https://oaklandlibrary.bibliocommons.com/v2/events",
+    "last_verified": "2026-06-14T19:33:35.774753+00:00",
+    "dedupe_key": "4762be9f11be",
+    "is_camp": false,
+    "tags": [
+      "books & reading",
+      "drop-in",
+      "east bay",
       "free",
       "indoors",
       "library",
@@ -937,7 +1069,7 @@
     "source_channel": "eventbrite",
     "source_name": "Eventbrite / San Jose",
     "source_url": "https://www.eventbrite.com/d/ca--san-jose/family/",
-    "last_verified": "2026-06-14T15:47:26.310884+00:00",
+    "last_verified": "2026-06-14T19:33:49.745385+00:00",
     "dedupe_key": "de20a7d9cc7e",
     "is_camp": false,
     "tags": [
@@ -963,7 +1095,7 @@
     "source_channel": "library",
     "source_name": "Palo Alto City Library",
     "source_url": "https://paloalto.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:46:53.576762+00:00",
+    "last_verified": "2026-06-14T19:32:55.502452+00:00",
     "dedupe_key": "fe98a754f8d9",
     "is_camp": false,
     "tags": [
@@ -995,13 +1127,39 @@
     "source_channel": "eventbrite",
     "source_name": "Eventbrite / San Jose",
     "source_url": "https://www.eventbrite.com/d/ca--san-jose/family/",
-    "last_verified": "2026-06-14T15:47:26.310884+00:00",
+    "last_verified": "2026-06-14T19:33:49.745385+00:00",
     "dedupe_key": "ac47441c9788",
     "is_camp": false,
     "tags": [
       "eventbrite",
       "outdoors",
       "palo alto",
+      "weekday"
+    ]
+  },
+  {
+    "title": "Sip & Sushi June  2026 with Besson Family Vineyards",
+    "start_datetime": "2026-06-17T18:30:00+00:00",
+    "end_datetime": "2026-06-17T20:30:00+00:00",
+    "venue": "Sushi Confidential Morgan Hill",
+    "city": "Morgan Hill",
+    "county": "Santa Cruz",
+    "age_range": "Families",
+    "cost": "Paid",
+    "cost_amount": 1.0,
+    "ticket_status": "book ahead",
+    "ticket_url": "https://www.eventbrite.com/e/sip-sushi-june-2026-with-besson-family-vineyards-tickets-1984401323778",
+    "category": "eventbrite",
+    "source_channel": "eventbrite",
+    "source_name": "Eventbrite / Santa Cruz",
+    "source_url": "https://www.eventbrite.com/d/ca--santa-cruz/family/",
+    "last_verified": "2026-06-14T19:34:06.320395+00:00",
+    "dedupe_key": "32ab2bea11ce",
+    "is_camp": false,
+    "tags": [
+      "eventbrite",
+      "summer",
+      "toddler-friendly",
       "weekday"
     ]
   },
@@ -1021,7 +1179,7 @@
     "source_channel": "venue",
     "source_name": "Hiller Aviation Museum",
     "source_url": "https://www.hiller.org/events/",
-    "last_verified": "2026-06-14T15:47:41.500371+00:00",
+    "last_verified": "2026-06-14T19:34:16.008180+00:00",
     "dedupe_key": "72ef92ea4a7d",
     "is_camp": false,
     "tags": [
@@ -1029,6 +1187,102 @@
       "peninsula",
       "rainy day",
       "venue",
+      "weekday"
+    ]
+  },
+  {
+    "title": "Toddler Storytime",
+    "start_datetime": "2026-06-18T10:15:00+00:00",
+    "end_datetime": "2026-06-18T11:15:00+00:00",
+    "venue": "Oakland Public Library \u2014 Children\u2019s Room \nADA Accessible",
+    "city": "Oakland Public Library",
+    "county": "Alameda",
+    "age_range": "Families",
+    "cost": "Free",
+    "cost_amount": 0.0,
+    "ticket_status": "free walk-up",
+    "ticket_url": "https://oaklandlibrary.bibliocommons.com/v2/events/692f34cdd8681b290041f1fd",
+    "category": "library",
+    "source_channel": "library",
+    "source_name": "Oakland Public Library",
+    "source_url": "https://oaklandlibrary.bibliocommons.com/v2/events",
+    "last_verified": "2026-06-14T19:33:35.774753+00:00",
+    "dedupe_key": "2a2c4c8265ae",
+    "is_camp": false,
+    "tags": [
+      "books & reading",
+      "drop-in",
+      "east bay",
+      "free",
+      "indoors",
+      "library",
+      "rainy day",
+      "school-age",
+      "storytime",
+      "toddler-friendly",
+      "weekday"
+    ]
+  },
+  {
+    "title": "Baby Bounce",
+    "start_datetime": "2026-06-18T10:15:00+00:00",
+    "end_datetime": "2026-06-18T10:30:00+00:00",
+    "venue": "Oakland Public Library \u2014 Dimond Branch Meeting Room - Limit 65 people.",
+    "city": "Oakland Public Library",
+    "county": "Alameda",
+    "age_range": "Families",
+    "cost": "Free",
+    "cost_amount": 0.0,
+    "ticket_status": "free walk-up",
+    "ticket_url": "https://oaklandlibrary.bibliocommons.com/v2/events/692f34ed7eb3e43000270d88",
+    "category": "library",
+    "source_channel": "library",
+    "source_name": "Oakland Public Library",
+    "source_url": "https://oaklandlibrary.bibliocommons.com/v2/events",
+    "last_verified": "2026-06-14T19:33:35.774753+00:00",
+    "dedupe_key": "e25470690d1b",
+    "is_camp": false,
+    "tags": [
+      "books & reading",
+      "drop-in",
+      "east bay",
+      "free",
+      "indoors",
+      "library",
+      "rainy day",
+      "toddler-friendly",
+      "weekday"
+    ]
+  },
+  {
+    "title": "Teens: Metalsmithing - Make Your Own Jewelry at Chavez",
+    "start_datetime": "2026-06-18T13:30:00+00:00",
+    "end_datetime": "2026-06-18T15:30:00+00:00",
+    "venue": "Oakland Public Library",
+    "city": "Oakland Public Library",
+    "county": "Alameda",
+    "age_range": "Families",
+    "cost": "Free",
+    "cost_amount": 0.0,
+    "ticket_status": "free walk-up",
+    "ticket_url": "https://oaklandlibrary.bibliocommons.com/v2/events/69964b126583d22e3c0c6dda",
+    "category": "library",
+    "source_channel": "library",
+    "source_name": "Oakland Public Library",
+    "source_url": "https://oaklandlibrary.bibliocommons.com/v2/events",
+    "last_verified": "2026-06-14T19:33:35.774753+00:00",
+    "dedupe_key": "2787e13a149a",
+    "is_camp": false,
+    "tags": [
+      "arts & crafts",
+      "books & reading",
+      "drop-in",
+      "east bay",
+      "free",
+      "hands-on",
+      "indoors",
+      "library",
+      "rainy day",
       "weekday"
     ]
   },
@@ -1048,7 +1302,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:18.498591+00:00",
+    "last_verified": "2026-06-14T19:33:26.122091+00:00",
     "dedupe_key": "d2447fa4704d",
     "is_camp": false,
     "tags": [
@@ -1080,7 +1334,7 @@
     "source_channel": "library",
     "source_name": "San Jose Public Library",
     "source_url": "https://sjpl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:08.392096+00:00",
+    "last_verified": "2026-06-14T19:33:15.607872+00:00",
     "dedupe_key": "d43dbda506ed",
     "is_camp": false,
     "tags": [
@@ -1110,7 +1364,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:18.498591+00:00",
+    "last_verified": "2026-06-14T19:33:26.122091+00:00",
     "dedupe_key": "a3c043abb5ab",
     "is_camp": false,
     "tags": [
@@ -1139,7 +1393,7 @@
     "source_channel": "eventbrite",
     "source_name": "Eventbrite / Palo Alto",
     "source_url": "https://www.eventbrite.com/d/ca--palo-alto/family/",
-    "last_verified": "2026-06-14T15:47:24.585414+00:00",
+    "last_verified": "2026-06-14T19:33:47.784536+00:00",
     "dedupe_key": "a409d2b92e74",
     "is_camp": false,
     "tags": [
@@ -1167,7 +1421,7 @@
     "source_channel": "eventbrite",
     "source_name": "Eventbrite / San Jose",
     "source_url": "https://www.eventbrite.com/d/ca--san-jose/family/",
-    "last_verified": "2026-06-14T15:47:26.310884+00:00",
+    "last_verified": "2026-06-14T19:33:49.745385+00:00",
     "dedupe_key": "750ba841c423",
     "is_camp": false,
     "tags": [
@@ -1193,7 +1447,7 @@
     "source_channel": "venue",
     "source_name": "Hiller Aviation Museum",
     "source_url": "https://www.hiller.org/events/",
-    "last_verified": "2026-06-14T15:47:41.500381+00:00",
+    "last_verified": "2026-06-14T19:34:16.008187+00:00",
     "dedupe_key": "8f1bf4080864",
     "is_camp": false,
     "tags": [
@@ -1220,7 +1474,7 @@
     "source_channel": "library",
     "source_name": "Palo Alto City Library",
     "source_url": "https://paloalto.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:46:53.576762+00:00",
+    "last_verified": "2026-06-14T19:32:55.502452+00:00",
     "dedupe_key": "a2119f028900",
     "is_camp": false,
     "tags": [
@@ -1252,7 +1506,7 @@
     "source_channel": "eventbrite",
     "source_name": "Eventbrite / Palo Alto",
     "source_url": "https://www.eventbrite.com/d/ca--palo-alto/family/",
-    "last_verified": "2026-06-14T15:47:24.585414+00:00",
+    "last_verified": "2026-06-14T19:33:47.784536+00:00",
     "dedupe_key": "3380bbff1fae",
     "is_camp": false,
     "tags": [
@@ -1261,6 +1515,36 @@
       "palo alto",
       "san francisco",
       "toddler-friendly",
+      "weekday"
+    ]
+  },
+  {
+    "title": "Teen Scape",
+    "start_datetime": "2026-06-19T14:00:00+00:00",
+    "end_datetime": "2026-06-19T16:00:00+00:00",
+    "venue": "Oakland Public Library \u2014 Meeting Room",
+    "city": "Oakland Public Library",
+    "county": "Alameda",
+    "age_range": "Families",
+    "cost": "Free",
+    "cost_amount": 0.0,
+    "ticket_status": "free walk-up",
+    "ticket_url": "https://oaklandlibrary.bibliocommons.com/v2/events/698a265894297d3600ab11d1",
+    "category": "library",
+    "source_channel": "library",
+    "source_name": "Oakland Public Library",
+    "source_url": "https://oaklandlibrary.bibliocommons.com/v2/events",
+    "last_verified": "2026-06-14T19:33:35.774753+00:00",
+    "dedupe_key": "ad49da1b1d5d",
+    "is_camp": false,
+    "tags": [
+      "books & reading",
+      "drop-in",
+      "east bay",
+      "free",
+      "indoors",
+      "library",
+      "rainy day",
       "weekday"
     ]
   },
@@ -1280,7 +1564,7 @@
     "source_channel": "library",
     "source_name": "Palo Alto City Library",
     "source_url": "https://paloalto.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:46:53.576762+00:00",
+    "last_verified": "2026-06-14T19:32:55.502452+00:00",
     "dedupe_key": "2c626b95d2c7",
     "is_camp": false,
     "tags": [
@@ -1312,7 +1596,7 @@
     "source_channel": "library",
     "source_name": "Palo Alto City Library",
     "source_url": "https://paloalto.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:46:53.576762+00:00",
+    "last_verified": "2026-06-14T19:32:55.502452+00:00",
     "dedupe_key": "276288cf21a1",
     "is_camp": false,
     "tags": [
@@ -1343,13 +1627,38 @@
     "source_channel": "eventbrite",
     "source_name": "Eventbrite / Mountain View",
     "source_url": "https://www.eventbrite.com/d/ca--mountain-view/family/",
-    "last_verified": "2026-06-14T15:47:28.157031+00:00",
+    "last_verified": "2026-06-14T19:33:51.402593+00:00",
     "dedupe_key": "69c2b305b6dd",
     "is_camp": false,
     "tags": [
       "east bay",
       "eventbrite",
       "festival",
+      "toddler-friendly",
+      "weekday"
+    ]
+  },
+  {
+    "title": "White Out Party at Besson Family Vineyards",
+    "start_datetime": "2026-06-19T17:00:00+00:00",
+    "end_datetime": "2026-06-19T21:00:00+00:00",
+    "venue": "Besson Family Vineyards",
+    "city": "Gilroy",
+    "county": "Santa Cruz",
+    "age_range": "Families",
+    "cost": "Paid",
+    "cost_amount": 1.0,
+    "ticket_status": "book ahead",
+    "ticket_url": "https://www.eventbrite.com/e/white-out-party-at-besson-family-vineyards-tickets-1988665558218",
+    "category": "eventbrite",
+    "source_channel": "eventbrite",
+    "source_name": "Eventbrite / Santa Cruz",
+    "source_url": "https://www.eventbrite.com/d/ca--santa-cruz/family/",
+    "last_verified": "2026-06-14T19:34:06.320395+00:00",
+    "dedupe_key": "7d7018779180",
+    "is_camp": false,
+    "tags": [
+      "eventbrite",
       "toddler-friendly",
       "weekday"
     ]
@@ -1370,7 +1679,7 @@
     "source_channel": "eventbrite",
     "source_name": "Eventbrite / San Jose",
     "source_url": "https://www.eventbrite.com/d/ca--san-jose/family/",
-    "last_verified": "2026-06-14T15:47:26.310884+00:00",
+    "last_verified": "2026-06-14T19:33:49.745385+00:00",
     "dedupe_key": "73be1cddfc2f",
     "is_camp": false,
     "tags": [
@@ -1398,41 +1707,13 @@
     "source_channel": "venue",
     "source_name": "Hiller Aviation Museum",
     "source_url": "https://www.hiller.org/events/",
-    "last_verified": "2026-06-14T15:47:41.500390+00:00",
+    "last_verified": "2026-06-14T19:34:16.008194+00:00",
     "dedupe_key": "5faae6fb8298",
     "is_camp": false,
     "tags": [
       "indoors",
       "peninsula",
       "rainy day",
-      "venue",
-      "weekend"
-    ]
-  },
-  {
-    "title": "Farm Volunteer Day",
-    "start_datetime": "2026-06-20T09:00:00-07:00",
-    "end_datetime": "2026-06-20T12:00:00-07:00",
-    "venue": "Hidden Villa Farm",
-    "city": "Los Altos Hills",
-    "county": "Santa Clara",
-    "age_range": "Families",
-    "cost": "Paid",
-    "cost_amount": 8.0,
-    "ticket_status": "some tours require registration",
-    "ticket_url": "https://www.hiddenvilla.org/programs/catalog/468-farm-volunteer-day/region-HV/",
-    "category": "venue",
-    "source_channel": "venue",
-    "source_name": "Hidden Villa Farm",
-    "source_url": "https://www.hiddenvilla.org/calendar/individuals-families/region-HV/",
-    "last_verified": "2026-06-14T15:47:44.200774+00:00",
-    "dedupe_key": "f2d674ed1158",
-    "is_camp": false,
-    "tags": [
-      "animals",
-      "book ahead",
-      "farm",
-      "outdoors",
       "venue",
       "weekend"
     ]
@@ -1453,7 +1734,7 @@
     "source_channel": "library",
     "source_name": "San Jose Public Library",
     "source_url": "https://sjpl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:08.392096+00:00",
+    "last_verified": "2026-06-14T19:33:15.607872+00:00",
     "dedupe_key": "3a4ea032575c",
     "is_camp": false,
     "tags": [
@@ -1482,7 +1763,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:18.498591+00:00",
+    "last_verified": "2026-06-14T19:33:26.122091+00:00",
     "dedupe_key": "ef2fe6c865d3",
     "is_camp": false,
     "tags": [
@@ -1492,14 +1773,43 @@
       "indoors",
       "library",
       "outdoors",
-      "water",
+      "weekend"
+    ]
+  },
+  {
+    "title": "Exploratorium \u2014 Open (hands-on science exhibits)",
+    "start_datetime": "2026-06-20T10:00:00+00:00",
+    "end_datetime": "2026-06-20T17:00:00+00:00",
+    "venue": "Exploratorium",
+    "city": "San Francisco",
+    "county": "San Francisco",
+    "age_range": "Families",
+    "cost": "Paid",
+    "cost_amount": 20.0,
+    "ticket_status": "walk-up or reserve",
+    "ticket_url": "https://www.exploratorium.edu/visit",
+    "category": "venue",
+    "source_channel": "venue",
+    "source_name": "Exploratorium",
+    "source_url": "https://www.exploratorium.edu/visit/calendar",
+    "last_verified": "2026-06-14T19:34:16.970161+00:00",
+    "dedupe_key": "692ba91f320b",
+    "is_camp": false,
+    "tags": [
+      "STEM",
+      "book ahead",
+      "drop-in",
+      "hands-on",
+      "san francisco",
+      "science",
+      "venue",
       "weekend"
     ]
   },
   {
     "title": "Palo Alto Junior Museum & Zoo \u2014 Open",
-    "start_datetime": "2026-06-20T10:00:00.764967+00:00",
-    "end_datetime": "2026-06-20T17:00:00.764967+00:00",
+    "start_datetime": "2026-06-20T10:00:00.178117+00:00",
+    "end_datetime": "2026-06-20T17:00:00.178117+00:00",
     "venue": "Palo Alto Junior Museum & Zoo",
     "city": "Palo Alto",
     "county": "Santa Clara",
@@ -1512,7 +1822,7 @@
     "source_channel": "venue",
     "source_name": "Palo Alto Junior Museum & Zoo",
     "source_url": "https://www.paloaltozoo.org/visit",
-    "last_verified": "2026-06-14T15:47:38.765957+00:00",
+    "last_verified": "2026-06-14T19:34:11.864668+00:00",
     "dedupe_key": "2373440649a6",
     "is_camp": false,
     "tags": [
@@ -1541,7 +1851,7 @@
     "source_channel": "library",
     "source_name": "San Jose Public Library",
     "source_url": "https://sjpl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:08.392096+00:00",
+    "last_verified": "2026-06-14T19:33:15.607872+00:00",
     "dedupe_key": "625625b4c007",
     "is_camp": false,
     "tags": [
@@ -1571,7 +1881,7 @@
     "source_channel": "library",
     "source_name": "Palo Alto City Library",
     "source_url": "https://paloalto.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:46:53.576762+00:00",
+    "last_verified": "2026-06-14T19:32:55.502452+00:00",
     "dedupe_key": "1f39629c5f82",
     "is_camp": false,
     "tags": [
@@ -1581,6 +1891,38 @@
       "indoors",
       "library",
       "palo alto",
+      "rainy day",
+      "storytime",
+      "toddler-friendly",
+      "weekend"
+    ]
+  },
+  {
+    "title": "Family Storytime",
+    "start_datetime": "2026-06-20T10:30:00+00:00",
+    "end_datetime": "2026-06-20T11:00:00+00:00",
+    "venue": "Oakland Public Library",
+    "city": "Oakland Public Library",
+    "county": "Alameda",
+    "age_range": "Families",
+    "cost": "Free",
+    "cost_amount": 0.0,
+    "ticket_status": "free walk-up",
+    "ticket_url": "https://oaklandlibrary.bibliocommons.com/v2/events/695bf211c719ac98c3360959",
+    "category": "library",
+    "source_channel": "library",
+    "source_name": "Oakland Public Library",
+    "source_url": "https://oaklandlibrary.bibliocommons.com/v2/events",
+    "last_verified": "2026-06-14T19:33:35.774753+00:00",
+    "dedupe_key": "965fae9b95ab",
+    "is_camp": false,
+    "tags": [
+      "books & reading",
+      "drop-in",
+      "east bay",
+      "free",
+      "indoors",
+      "library",
       "rainy day",
       "storytime",
       "toddler-friendly",
@@ -1603,7 +1945,7 @@
     "source_channel": "venue",
     "source_name": "Hiller Aviation Museum",
     "source_url": "https://www.hiller.org/events/",
-    "last_verified": "2026-06-14T15:47:41.500407+00:00",
+    "last_verified": "2026-06-14T19:34:16.008201+00:00",
     "dedupe_key": "58f7a08c3df9",
     "is_camp": false,
     "tags": [
@@ -1631,7 +1973,7 @@
     "source_channel": "library",
     "source_name": "San Jose Public Library",
     "source_url": "https://sjpl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:08.392096+00:00",
+    "last_verified": "2026-06-14T19:33:15.607872+00:00",
     "dedupe_key": "c6c050751851",
     "is_camp": false,
     "tags": [
@@ -1642,6 +1984,38 @@
       "library",
       "rainy day",
       "school-age",
+      "weekend"
+    ]
+  },
+  {
+    "title": "Soccer Camp with Oakland Roots",
+    "start_datetime": "2026-06-20T11:00:00+00:00",
+    "end_datetime": "2026-06-20T12:00:00+00:00",
+    "venue": "Oakland Public Library",
+    "city": "Oakland Public Library",
+    "county": "Alameda",
+    "age_range": "Families",
+    "cost": "Free",
+    "cost_amount": 0.0,
+    "ticket_status": "free walk-up",
+    "ticket_url": "https://oaklandlibrary.bibliocommons.com/v2/events/69b58fd9b6c4ac1fedc5b98f",
+    "category": "library",
+    "source_channel": "library",
+    "source_name": "Oakland Public Library",
+    "source_url": "https://oaklandlibrary.bibliocommons.com/v2/events",
+    "last_verified": "2026-06-14T19:33:35.774753+00:00",
+    "dedupe_key": "61b97bf163fc",
+    "is_camp": false,
+    "tags": [
+      "books & reading",
+      "drop-in",
+      "east bay",
+      "free",
+      "indoors",
+      "library",
+      "rainy day",
+      "sports & movement",
+      "summer",
       "weekend"
     ]
   },
@@ -1661,7 +2035,7 @@
     "source_channel": "library",
     "source_name": "San Mateo County Library",
     "source_url": "https://smcl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:01.785854+00:00",
+    "last_verified": "2026-06-14T19:33:06.423493+00:00",
     "dedupe_key": "e31c621b69af",
     "is_camp": false,
     "tags": [
@@ -1692,7 +2066,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:18.498591+00:00",
+    "last_verified": "2026-06-14T19:33:26.122091+00:00",
     "dedupe_key": "1b8473048c2f",
     "is_camp": false,
     "tags": [
@@ -1724,7 +2098,7 @@
     "source_channel": "library",
     "source_name": "Palo Alto City Library",
     "source_url": "https://paloalto.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:46:53.576762+00:00",
+    "last_verified": "2026-06-14T19:32:55.502452+00:00",
     "dedupe_key": "146c889d69df",
     "is_camp": false,
     "tags": [
@@ -1738,6 +2112,36 @@
       "outdoors",
       "palo alto",
       "theatre",
+      "weekend"
+    ]
+  },
+  {
+    "title": "Teens: Engrave Your Own Keychain at Temescal",
+    "start_datetime": "2026-06-20T15:30:00+00:00",
+    "end_datetime": "2026-06-20T16:30:00+00:00",
+    "venue": "Oakland Public Library",
+    "city": "Oakland Public Library",
+    "county": "Alameda",
+    "age_range": "Families",
+    "cost": "Free",
+    "cost_amount": 0.0,
+    "ticket_status": "free walk-up",
+    "ticket_url": "https://oaklandlibrary.bibliocommons.com/v2/events/69a22bf58b29ea2800d302a1",
+    "category": "library",
+    "source_channel": "library",
+    "source_name": "Oakland Public Library",
+    "source_url": "https://oaklandlibrary.bibliocommons.com/v2/events",
+    "last_verified": "2026-06-14T19:33:35.774753+00:00",
+    "dedupe_key": "64f6eca10d8e",
+    "is_camp": false,
+    "tags": [
+      "books & reading",
+      "drop-in",
+      "east bay",
+      "free",
+      "indoors",
+      "library",
+      "rainy day",
       "weekend"
     ]
   },
@@ -1757,7 +2161,7 @@
     "source_channel": "library",
     "source_name": "San Jose Public Library",
     "source_url": "https://sjpl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:08.392096+00:00",
+    "last_verified": "2026-06-14T19:33:15.607872+00:00",
     "dedupe_key": "440a363d55fb",
     "is_camp": false,
     "tags": [
@@ -1787,7 +2191,7 @@
     "source_channel": "venue",
     "source_name": "Hiller Aviation Museum",
     "source_url": "https://www.hiller.org/events/",
-    "last_verified": "2026-06-14T15:47:41.500418+00:00",
+    "last_verified": "2026-06-14T19:34:16.008209+00:00",
     "dedupe_key": "34fa42ac150c",
     "is_camp": false,
     "tags": [
@@ -1814,7 +2218,7 @@
     "source_channel": "venue",
     "source_name": "Cantor Arts Center",
     "source_url": "https://museum.stanford.edu/events",
-    "last_verified": "2026-06-14T15:47:43.708778+00:00",
+    "last_verified": "2026-06-14T19:34:16.223227+00:00",
     "dedupe_key": "553371a88ae0",
     "is_camp": false,
     "tags": [
@@ -1829,9 +2233,67 @@
     ]
   },
   {
+    "title": "Exploratorium \u2014 Open (hands-on science exhibits)",
+    "start_datetime": "2026-06-21T10:00:00+00:00",
+    "end_datetime": "2026-06-21T17:00:00+00:00",
+    "venue": "Exploratorium",
+    "city": "San Francisco",
+    "county": "San Francisco",
+    "age_range": "Families",
+    "cost": "Paid",
+    "cost_amount": 20.0,
+    "ticket_status": "walk-up or reserve",
+    "ticket_url": "https://www.exploratorium.edu/visit",
+    "category": "venue",
+    "source_channel": "venue",
+    "source_name": "Exploratorium",
+    "source_url": "https://www.exploratorium.edu/visit/calendar",
+    "last_verified": "2026-06-14T19:34:16.970170+00:00",
+    "dedupe_key": "f684110c472f",
+    "is_camp": false,
+    "tags": [
+      "STEM",
+      "book ahead",
+      "drop-in",
+      "hands-on",
+      "san francisco",
+      "science",
+      "venue",
+      "weekend"
+    ]
+  },
+  {
+    "title": "Paint-A-Plane",
+    "start_datetime": "2026-06-21T10:00:00-07:00",
+    "end_datetime": "2026-06-21T12:00:00-07:00",
+    "venue": "Hiller Aviation Museum",
+    "city": "San Carlos",
+    "county": "San Mateo",
+    "age_range": "Families",
+    "cost": "Paid",
+    "cost_amount": 15.0,
+    "ticket_status": "book ahead \u2014 sells out",
+    "ticket_url": "https://www.hiller.org/event/paint-a-plane/2026-06-21/",
+    "category": "venue",
+    "source_channel": "venue",
+    "source_name": "Hiller Aviation Museum",
+    "source_url": "https://www.hiller.org/events/",
+    "last_verified": "2026-06-14T19:34:16.008216+00:00",
+    "dedupe_key": "bf0380e693a6",
+    "is_camp": false,
+    "tags": [
+      "arts & crafts",
+      "indoors",
+      "peninsula",
+      "rainy day",
+      "venue",
+      "weekend"
+    ]
+  },
+  {
     "title": "Palo Alto Junior Museum & Zoo \u2014 Open",
-    "start_datetime": "2026-06-21T10:00:00.764967+00:00",
-    "end_datetime": "2026-06-21T17:00:00.764967+00:00",
+    "start_datetime": "2026-06-21T10:00:00.178117+00:00",
+    "end_datetime": "2026-06-21T17:00:00.178117+00:00",
     "venue": "Palo Alto Junior Museum & Zoo",
     "city": "Palo Alto",
     "county": "Santa Clara",
@@ -1844,7 +2306,7 @@
     "source_channel": "venue",
     "source_name": "Palo Alto Junior Museum & Zoo",
     "source_url": "https://www.paloaltozoo.org/visit",
-    "last_verified": "2026-06-14T15:47:38.765974+00:00",
+    "last_verified": "2026-06-14T19:34:11.864680+00:00",
     "dedupe_key": "513fad721aea",
     "is_camp": false,
     "tags": [
@@ -1854,6 +2316,33 @@
       "palo alto",
       "rainy day",
       "venue",
+      "weekend"
+    ]
+  },
+  {
+    "title": "Worship with Your Memorial Tabernacle Family",
+    "start_datetime": "2026-06-21T10:30:00+00:00",
+    "end_datetime": "2026-06-21T12:30:00+00:00",
+    "venue": "Memorial Tabernacle Church",
+    "city": "Oakland",
+    "county": "Santa Clara",
+    "age_range": "Families",
+    "cost": "Paid",
+    "cost_amount": 1.0,
+    "ticket_status": "book ahead",
+    "ticket_url": "https://www.eventbrite.com/e/worship-with-your-memorial-tabernacle-family-tickets-1744325276859",
+    "category": "eventbrite",
+    "source_channel": "eventbrite",
+    "source_name": "Eventbrite / Palo Alto",
+    "source_url": "https://www.eventbrite.com/d/ca--palo-alto/family/",
+    "last_verified": "2026-06-14T19:33:47.784536+00:00",
+    "dedupe_key": "b263d2d8ca2d",
+    "is_camp": false,
+    "tags": [
+      "east bay",
+      "eventbrite",
+      "palo alto",
+      "toddler-friendly",
       "weekend"
     ]
   },
@@ -1873,7 +2362,7 @@
     "source_channel": "library",
     "source_name": "Palo Alto City Library",
     "source_url": "https://paloalto.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:46:53.576762+00:00",
+    "last_verified": "2026-06-14T19:32:55.502452+00:00",
     "dedupe_key": "c0668cb3f6a8",
     "is_camp": false,
     "tags": [
@@ -1906,7 +2395,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:18.498591+00:00",
+    "last_verified": "2026-06-14T19:33:26.122091+00:00",
     "dedupe_key": "d924f78e764a",
     "is_camp": false,
     "tags": [
@@ -1938,12 +2427,37 @@
     "source_channel": "eventbrite",
     "source_name": "Eventbrite / San Jose",
     "source_url": "https://www.eventbrite.com/d/ca--san-jose/family/",
-    "last_verified": "2026-06-14T15:47:26.310884+00:00",
+    "last_verified": "2026-06-14T19:33:49.745385+00:00",
     "dedupe_key": "f26f651ddf42",
     "is_camp": false,
     "tags": [
       "eventbrite",
       "palo alto",
+      "weekend"
+    ]
+  },
+  {
+    "title": "Role-playing Games: Father's Day D&D Event",
+    "start_datetime": "2026-06-21T13:00:00+00:00",
+    "end_datetime": "2026-06-21T17:00:00+00:00",
+    "venue": "Sunset Commons",
+    "city": "San Francisco",
+    "county": "San Francisco",
+    "age_range": "Families",
+    "cost": "Paid",
+    "cost_amount": 1.0,
+    "ticket_status": "book ahead",
+    "ticket_url": "https://www.eventbrite.com/e/role-playing-games-fathers-day-dd-event-tickets-1990020419645",
+    "category": "eventbrite",
+    "source_channel": "eventbrite",
+    "source_name": "Eventbrite / San Francisco",
+    "source_url": "https://www.eventbrite.com/d/ca--san-francisco/family/",
+    "last_verified": "2026-06-14T19:34:00.719857+00:00",
+    "dedupe_key": "ea9d1428a569",
+    "is_camp": false,
+    "tags": [
+      "eventbrite",
+      "san francisco",
       "weekend"
     ]
   },
@@ -1963,7 +2477,7 @@
     "source_channel": "library",
     "source_name": "San Jose Public Library",
     "source_url": "https://sjpl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:08.392096+00:00",
+    "last_verified": "2026-06-14T19:33:15.607872+00:00",
     "dedupe_key": "5670c3afa236",
     "is_camp": false,
     "tags": [
@@ -1993,7 +2507,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:18.498591+00:00",
+    "last_verified": "2026-06-14T19:33:26.122091+00:00",
     "dedupe_key": "c622d84df09c",
     "is_camp": false,
     "tags": [
@@ -2022,7 +2536,7 @@
     "source_channel": "eventbrite",
     "source_name": "Eventbrite / Palo Alto",
     "source_url": "https://www.eventbrite.com/d/ca--palo-alto/family/",
-    "last_verified": "2026-06-14T15:47:24.585414+00:00",
+    "last_verified": "2026-06-14T19:33:47.784536+00:00",
     "dedupe_key": "4fe3b3e9d924",
     "is_camp": false,
     "tags": [
@@ -2049,7 +2563,7 @@
     "source_channel": "library",
     "source_name": "San Jose Public Library",
     "source_url": "https://sjpl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:08.392096+00:00",
+    "last_verified": "2026-06-14T19:33:15.607872+00:00",
     "dedupe_key": "a202a8627bc7",
     "is_camp": false,
     "tags": [
@@ -2082,7 +2596,7 @@
     "source_channel": "library",
     "source_name": "San Mateo County Library",
     "source_url": "https://smcl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:01.785854+00:00",
+    "last_verified": "2026-06-14T19:33:06.423493+00:00",
     "dedupe_key": "0fa62121c28b",
     "is_camp": false,
     "tags": [
@@ -2114,7 +2628,7 @@
     "source_channel": "library",
     "source_name": "San Mateo County Library",
     "source_url": "https://smcl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:01.785854+00:00",
+    "last_verified": "2026-06-14T19:33:06.423493+00:00",
     "dedupe_key": "b582c7b6b8d3",
     "is_camp": false,
     "tags": [
@@ -2147,7 +2661,7 @@
     "source_channel": "library",
     "source_name": "San Mateo County Library",
     "source_url": "https://smcl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:01.785854+00:00",
+    "last_verified": "2026-06-14T19:33:06.423493+00:00",
     "dedupe_key": "6771a495d480",
     "is_camp": false,
     "tags": [
@@ -2178,7 +2692,7 @@
     "source_channel": "library",
     "source_name": "San Jose Public Library",
     "source_url": "https://sjpl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:08.392096+00:00",
+    "last_verified": "2026-06-14T19:33:15.607872+00:00",
     "dedupe_key": "de57e1c57ece",
     "is_camp": false,
     "tags": [
@@ -2198,7 +2712,7 @@
     "end_datetime": "2026-06-22T20:30:00+00:00",
     "venue": "PF Changs Sunnyvale",
     "city": "Sunnyvale",
-    "county": "Santa Clara",
+    "county": "San Mateo",
     "age_range": "Families",
     "cost": "Paid",
     "cost_amount": 1.0,
@@ -2206,14 +2720,47 @@
     "ticket_url": "https://www.eventbrite.com/e/family-paint-party-tickets-1987594088423",
     "category": "eventbrite",
     "source_channel": "eventbrite",
-    "source_name": "Eventbrite / San Jose",
-    "source_url": "https://www.eventbrite.com/d/ca--san-jose/family/",
-    "last_verified": "2026-06-14T15:47:26.310884+00:00",
+    "source_name": "Eventbrite / Menlo Park",
+    "source_url": "https://www.eventbrite.com/d/ca--menlo-park/family/",
+    "last_verified": "2026-06-14T19:33:58.980607+00:00",
     "dedupe_key": "c71a43364b20",
     "is_camp": false,
     "tags": [
       "arts & crafts",
       "eventbrite",
+      "outdoors",
+      "peninsula",
+      "toddler-friendly",
+      "weekday"
+    ]
+  },
+  {
+    "title": "Baby Bounce & Playtime",
+    "start_datetime": "2026-06-23T10:15:00+00:00",
+    "end_datetime": "2026-06-23T11:15:00+00:00",
+    "venue": "Oakland Public Library",
+    "city": "Oakland Public Library",
+    "county": "Alameda",
+    "age_range": "Families",
+    "cost": "Free",
+    "cost_amount": 0.0,
+    "ticket_status": "free walk-up",
+    "ticket_url": "https://oaklandlibrary.bibliocommons.com/v2/events/6927886d51da852800c3bc0b",
+    "category": "library",
+    "source_channel": "library",
+    "source_name": "Oakland Public Library",
+    "source_url": "https://oaklandlibrary.bibliocommons.com/v2/events",
+    "last_verified": "2026-06-14T19:33:35.774753+00:00",
+    "dedupe_key": "415428ef77a5",
+    "is_camp": false,
+    "tags": [
+      "books & reading",
+      "drop-in",
+      "east bay",
+      "free",
+      "indoors",
+      "library",
+      "rainy day",
       "toddler-friendly",
       "weekday"
     ]
@@ -2234,7 +2781,7 @@
     "source_channel": "library",
     "source_name": "San Mateo County Library",
     "source_url": "https://smcl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:01.785854+00:00",
+    "last_verified": "2026-06-14T19:33:06.423493+00:00",
     "dedupe_key": "ffc10bce88af",
     "is_camp": false,
     "tags": [
@@ -2265,7 +2812,7 @@
     "source_channel": "library",
     "source_name": "San Jose Public Library",
     "source_url": "https://sjpl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:08.392096+00:00",
+    "last_verified": "2026-06-14T19:33:15.607872+00:00",
     "dedupe_key": "734a87423f21",
     "is_camp": false,
     "tags": [
@@ -2296,7 +2843,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:18.498591+00:00",
+    "last_verified": "2026-06-14T19:33:26.122091+00:00",
     "dedupe_key": "02125fbbe88c",
     "is_camp": false,
     "tags": [
@@ -2307,6 +2854,38 @@
       "library",
       "rainy day",
       "storytime",
+      "toddler-friendly",
+      "weekday"
+    ]
+  },
+  {
+    "title": "Baby Bounce",
+    "start_datetime": "2026-06-23T11:45:00+00:00",
+    "end_datetime": "2026-06-23T12:15:00+00:00",
+    "venue": "Oakland Public Library \u2014 Children\u2019s Room\nADA Accessible",
+    "city": "Oakland Public Library",
+    "county": "Alameda",
+    "age_range": "Families",
+    "cost": "Free",
+    "cost_amount": 0.0,
+    "ticket_status": "free walk-up",
+    "ticket_url": "https://oaklandlibrary.bibliocommons.com/v2/events/692f34e97eb3e43000270d22",
+    "category": "library",
+    "source_channel": "library",
+    "source_name": "Oakland Public Library",
+    "source_url": "https://oaklandlibrary.bibliocommons.com/v2/events",
+    "last_verified": "2026-06-14T19:33:35.774753+00:00",
+    "dedupe_key": "6e257081a125",
+    "is_camp": false,
+    "tags": [
+      "books & reading",
+      "drop-in",
+      "east bay",
+      "free",
+      "indoors",
+      "library",
+      "rainy day",
+      "school-age",
       "toddler-friendly",
       "weekday"
     ]
@@ -2327,7 +2906,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:18.498591+00:00",
+    "last_verified": "2026-06-14T19:33:26.122091+00:00",
     "dedupe_key": "25bcb88fc243",
     "is_camp": false,
     "tags": [
@@ -2356,7 +2935,7 @@
     "source_channel": "eventbrite",
     "source_name": "Eventbrite / Palo Alto",
     "source_url": "https://www.eventbrite.com/d/ca--palo-alto/family/",
-    "last_verified": "2026-06-14T15:47:24.585414+00:00",
+    "last_verified": "2026-06-14T19:33:47.784536+00:00",
     "dedupe_key": "5006411efe9b",
     "is_camp": false,
     "tags": [
@@ -2383,7 +2962,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:18.498591+00:00",
+    "last_verified": "2026-06-14T19:33:26.122091+00:00",
     "dedupe_key": "1db67f2cac4e",
     "is_camp": false,
     "tags": [
@@ -2414,7 +2993,7 @@
     "source_channel": "library",
     "source_name": "San Mateo County Library",
     "source_url": "https://smcl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:01.785854+00:00",
+    "last_verified": "2026-06-14T19:33:06.423493+00:00",
     "dedupe_key": "be7f14adf901",
     "is_camp": false,
     "tags": [
@@ -2445,7 +3024,7 @@
     "source_channel": "library",
     "source_name": "Palo Alto City Library",
     "source_url": "https://paloalto.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:46:53.576762+00:00",
+    "last_verified": "2026-06-14T19:32:55.502452+00:00",
     "dedupe_key": "6f1d159dd955",
     "is_camp": false,
     "tags": [
@@ -2476,7 +3055,7 @@
     "source_channel": "library",
     "source_name": "San Jose Public Library",
     "source_url": "https://sjpl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:08.392096+00:00",
+    "last_verified": "2026-06-14T19:33:15.607872+00:00",
     "dedupe_key": "819b957e3c9b",
     "is_camp": false,
     "tags": [
@@ -2506,7 +3085,7 @@
     "source_channel": "library",
     "source_name": "San Jose Public Library",
     "source_url": "https://sjpl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:08.392096+00:00",
+    "last_verified": "2026-06-14T19:33:15.607872+00:00",
     "dedupe_key": "3896935b3f41",
     "is_camp": false,
     "tags": [
@@ -2537,7 +3116,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:18.498591+00:00",
+    "last_verified": "2026-06-14T19:33:26.122091+00:00",
     "dedupe_key": "e8570ac5fca3",
     "is_camp": false,
     "tags": [
@@ -2555,30 +3134,27 @@
     ]
   },
   {
-    "title": "Farm Volunteer Day",
-    "start_datetime": "2026-06-24T09:00:00-07:00",
-    "end_datetime": "2026-06-24T12:00:00-07:00",
-    "venue": "Hidden Villa Farm",
-    "city": "Los Altos Hills",
-    "county": "Santa Clara",
+    "title": "Free Educational Seminar on Estate Planning - Daly City",
+    "start_datetime": "2026-06-24T09:30:00+00:00",
+    "end_datetime": "2026-06-24T10:30:00+00:00",
+    "venue": "Hampton Inn & Suites",
+    "city": "Daly City",
+    "county": "San Francisco",
     "age_range": "Families",
     "cost": "Paid",
-    "cost_amount": 8.0,
-    "ticket_status": "some tours require registration",
-    "ticket_url": "https://www.hiddenvilla.org/programs/catalog/468-farm-volunteer-day/region-HV/",
-    "category": "venue",
-    "source_channel": "venue",
-    "source_name": "Hidden Villa Farm",
-    "source_url": "https://www.hiddenvilla.org/calendar/individuals-families/region-HV/",
-    "last_verified": "2026-06-14T15:47:44.200802+00:00",
-    "dedupe_key": "1eb21acb7d68",
+    "cost_amount": 1.0,
+    "ticket_status": "book ahead",
+    "ticket_url": "https://www.eventbrite.com/e/free-educational-seminar-on-estate-planning-daly-city-tickets-1991111242325",
+    "category": "eventbrite",
+    "source_channel": "eventbrite",
+    "source_name": "Eventbrite / San Francisco",
+    "source_url": "https://www.eventbrite.com/d/ca--san-francisco/family/",
+    "last_verified": "2026-06-14T19:34:00.719857+00:00",
+    "dedupe_key": "ce6dcc76f116",
     "is_camp": false,
     "tags": [
-      "animals",
-      "book ahead",
-      "farm",
-      "outdoors",
-      "venue",
+      "eventbrite",
+      "san francisco",
       "weekday"
     ]
   },
@@ -2598,7 +3174,7 @@
     "source_channel": "library",
     "source_name": "San Mateo County Library",
     "source_url": "https://smcl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:01.785854+00:00",
+    "last_verified": "2026-06-14T19:33:06.423493+00:00",
     "dedupe_key": "6ae9ba00fa2b",
     "is_camp": false,
     "tags": [
@@ -2630,7 +3206,7 @@
     "source_channel": "library",
     "source_name": "San Mateo County Library",
     "source_url": "https://smcl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:01.785854+00:00",
+    "last_verified": "2026-06-14T19:33:06.423493+00:00",
     "dedupe_key": "888de572d593",
     "is_camp": false,
     "tags": [
@@ -2642,6 +3218,68 @@
       "peninsula",
       "rainy day",
       "storytime",
+      "weekday"
+    ]
+  },
+  {
+    "title": "Bilingual Spanish Play Caf\u00e9",
+    "start_datetime": "2026-06-24T10:30:00+00:00",
+    "end_datetime": "2026-06-24T12:00:00+00:00",
+    "venue": "Oakland Public Library",
+    "city": "Oakland Public Library",
+    "county": "Alameda",
+    "age_range": "Families",
+    "cost": "Free",
+    "cost_amount": 0.0,
+    "ticket_status": "free walk-up",
+    "ticket_url": "https://oaklandlibrary.bibliocommons.com/v2/events/69fcf240caf93436005a7267",
+    "category": "library",
+    "source_channel": "library",
+    "source_name": "Oakland Public Library",
+    "source_url": "https://oaklandlibrary.bibliocommons.com/v2/events",
+    "last_verified": "2026-06-14T19:33:35.774753+00:00",
+    "dedupe_key": "d0cb342aee3f",
+    "is_camp": false,
+    "tags": [
+      "books & reading",
+      "drop-in",
+      "east bay",
+      "free",
+      "indoors",
+      "library",
+      "rainy day",
+      "theatre",
+      "weekday"
+    ]
+  },
+  {
+    "title": "Baby Bounce",
+    "start_datetime": "2026-06-24T10:30:00+00:00",
+    "end_datetime": "2026-06-24T11:00:00+00:00",
+    "venue": "Oakland Public Library",
+    "city": "Oakland Public Library",
+    "county": "Alameda",
+    "age_range": "Families",
+    "cost": "Free",
+    "cost_amount": 0.0,
+    "ticket_status": "free walk-up",
+    "ticket_url": "https://oaklandlibrary.bibliocommons.com/v2/events/68decfa9a3ce0fa7a6b9a9f8",
+    "category": "library",
+    "source_channel": "library",
+    "source_name": "Oakland Public Library",
+    "source_url": "https://oaklandlibrary.bibliocommons.com/v2/events",
+    "last_verified": "2026-06-14T19:33:35.774753+00:00",
+    "dedupe_key": "5df883786543",
+    "is_camp": false,
+    "tags": [
+      "books & reading",
+      "drop-in",
+      "east bay",
+      "free",
+      "indoors",
+      "library",
+      "rainy day",
+      "toddler-friendly",
       "weekday"
     ]
   },
@@ -2661,7 +3299,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:18.498591+00:00",
+    "last_verified": "2026-06-14T19:33:26.122091+00:00",
     "dedupe_key": "81ec00a09d57",
     "is_camp": false,
     "tags": [
@@ -2693,7 +3331,7 @@
     "source_channel": "library",
     "source_name": "San Mateo County Library",
     "source_url": "https://smcl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:01.785854+00:00",
+    "last_verified": "2026-06-14T19:33:06.423493+00:00",
     "dedupe_key": "211117562452",
     "is_camp": false,
     "tags": [
@@ -2724,7 +3362,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:18.498591+00:00",
+    "last_verified": "2026-06-14T19:33:26.122091+00:00",
     "dedupe_key": "5140b63dbfaf",
     "is_camp": false,
     "tags": [
@@ -2753,7 +3391,7 @@
     "source_channel": "library",
     "source_name": "San Jose Public Library",
     "source_url": "https://sjpl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:08.392096+00:00",
+    "last_verified": "2026-06-14T19:33:15.607872+00:00",
     "dedupe_key": "d403fbef2dfb",
     "is_camp": false,
     "tags": [
@@ -2782,15 +3420,14 @@
     "ticket_url": "https://www.eventbrite.com/e/family-paint-party-tickets-1988945451386",
     "category": "eventbrite",
     "source_channel": "eventbrite",
-    "source_name": "Eventbrite / Palo Alto",
-    "source_url": "https://www.eventbrite.com/d/ca--palo-alto/family/",
-    "last_verified": "2026-06-14T15:47:24.585414+00:00",
+    "source_name": "Eventbrite / San Jose",
+    "source_url": "https://www.eventbrite.com/d/ca--san-jose/family/",
+    "last_verified": "2026-06-14T19:33:49.745385+00:00",
     "dedupe_key": "9dfc5d6b286c",
     "is_camp": false,
     "tags": [
       "arts & crafts",
       "eventbrite",
-      "palo alto",
       "toddler-friendly",
       "weekday"
     ]
@@ -2811,7 +3448,7 @@
     "source_channel": "library",
     "source_name": "Palo Alto City Library",
     "source_url": "https://paloalto.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:46:53.576762+00:00",
+    "last_verified": "2026-06-14T19:32:55.502452+00:00",
     "dedupe_key": "e62ae8d98a7b",
     "is_camp": false,
     "tags": [
@@ -2843,7 +3480,7 @@
     "source_channel": "eventbrite",
     "source_name": "Eventbrite / Mountain View",
     "source_url": "https://www.eventbrite.com/d/ca--mountain-view/family/",
-    "last_verified": "2026-06-14T15:47:28.157031+00:00",
+    "last_verified": "2026-06-14T19:33:51.402593+00:00",
     "dedupe_key": "bef9b1787ba7",
     "is_camp": false,
     "tags": [
@@ -2867,7 +3504,7 @@
     "source_channel": "library",
     "source_name": "San Mateo County Library",
     "source_url": "https://smcl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:01.785854+00:00",
+    "last_verified": "2026-06-14T19:33:06.423493+00:00",
     "dedupe_key": "d78f9765219a",
     "is_camp": false,
     "tags": [
@@ -2899,7 +3536,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:18.498591+00:00",
+    "last_verified": "2026-06-14T19:33:26.122091+00:00",
     "dedupe_key": "a82076208ff3",
     "is_camp": false,
     "tags": [
@@ -2931,7 +3568,7 @@
     "source_channel": "library",
     "source_name": "San Mateo County Library",
     "source_url": "https://smcl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:01.785854+00:00",
+    "last_verified": "2026-06-14T19:33:06.423493+00:00",
     "dedupe_key": "e01ba2b906b9",
     "is_camp": false,
     "tags": [
@@ -2962,7 +3599,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:18.498591+00:00",
+    "last_verified": "2026-06-14T19:33:26.122091+00:00",
     "dedupe_key": "2e3cfd12eb21",
     "is_camp": false,
     "tags": [
@@ -2995,7 +3632,7 @@
     "source_channel": "library",
     "source_name": "San Jose Public Library",
     "source_url": "https://sjpl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:08.392096+00:00",
+    "last_verified": "2026-06-14T19:33:15.607872+00:00",
     "dedupe_key": "55bc601b2619",
     "is_camp": false,
     "tags": [
@@ -3025,7 +3662,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:18.498591+00:00",
+    "last_verified": "2026-06-14T19:33:26.122091+00:00",
     "dedupe_key": "bf864f6270c4",
     "is_camp": false,
     "tags": [
@@ -3057,7 +3694,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:18.498591+00:00",
+    "last_verified": "2026-06-14T19:33:26.122091+00:00",
     "dedupe_key": "5742b0fdb17e",
     "is_camp": false,
     "tags": [
@@ -3086,7 +3723,7 @@
     "source_channel": "eventbrite",
     "source_name": "Eventbrite / Palo Alto",
     "source_url": "https://www.eventbrite.com/d/ca--palo-alto/family/",
-    "last_verified": "2026-06-14T15:47:24.585414+00:00",
+    "last_verified": "2026-06-14T19:33:47.784536+00:00",
     "dedupe_key": "68c59d8bb1f5",
     "is_camp": false,
     "tags": [
@@ -3110,14 +3747,15 @@
     "ticket_url": "https://www.eventbrite.com/e/family-paint-party-tickets-1983581139585",
     "category": "eventbrite",
     "source_channel": "eventbrite",
-    "source_name": "Eventbrite / San Jose",
-    "source_url": "https://www.eventbrite.com/d/ca--san-jose/family/",
-    "last_verified": "2026-06-14T15:47:26.310884+00:00",
+    "source_name": "Eventbrite / Palo Alto",
+    "source_url": "https://www.eventbrite.com/d/ca--palo-alto/family/",
+    "last_verified": "2026-06-14T19:33:47.784536+00:00",
     "dedupe_key": "32f8e00a358a",
     "is_camp": false,
     "tags": [
       "arts & crafts",
       "eventbrite",
+      "palo alto",
       "toddler-friendly",
       "weekday"
     ]
@@ -3138,7 +3776,7 @@
     "source_channel": "library",
     "source_name": "Palo Alto City Library",
     "source_url": "https://paloalto.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:46:53.576762+00:00",
+    "last_verified": "2026-06-14T19:32:55.502452+00:00",
     "dedupe_key": "485412b4b4bc",
     "is_camp": false,
     "tags": [
@@ -3170,7 +3808,7 @@
     "source_channel": "library",
     "source_name": "San Mateo County Library",
     "source_url": "https://smcl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:01.785854+00:00",
+    "last_verified": "2026-06-14T19:33:06.423493+00:00",
     "dedupe_key": "47ecb8fd0465",
     "is_camp": false,
     "tags": [
@@ -3204,7 +3842,7 @@
     "source_channel": "library",
     "source_name": "San Mateo County Library",
     "source_url": "https://smcl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:01.785854+00:00",
+    "last_verified": "2026-06-14T19:33:06.423493+00:00",
     "dedupe_key": "4a3fc9262406",
     "is_camp": false,
     "tags": [
@@ -3238,7 +3876,7 @@
     "source_channel": "eventbrite",
     "source_name": "Eventbrite / Palo Alto",
     "source_url": "https://www.eventbrite.com/d/ca--palo-alto/family/",
-    "last_verified": "2026-06-14T15:47:24.585414+00:00",
+    "last_verified": "2026-06-14T19:33:47.784536+00:00",
     "dedupe_key": "e07f3a971445",
     "is_camp": false,
     "tags": [
@@ -3268,7 +3906,7 @@
     "source_channel": "library",
     "source_name": "San Jose Public Library",
     "source_url": "https://sjpl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:08.392096+00:00",
+    "last_verified": "2026-06-14T19:33:15.607872+00:00",
     "dedupe_key": "2bbf087938b2",
     "is_camp": false,
     "tags": [
@@ -3279,6 +3917,94 @@
       "library",
       "rainy day",
       "sports & movement",
+      "weekday"
+    ]
+  },
+  {
+    "title": "Grand Opening: Visitacion Valley Family Resource Center",
+    "start_datetime": "2026-06-26T12:30:00+00:00",
+    "end_datetime": "2026-06-26T14:00:00+00:00",
+    "venue": "Family Connections Centers \u2022 Visitacion Valley (New!)",
+    "city": "San Francisco",
+    "county": "San Francisco",
+    "age_range": "Families",
+    "cost": "Paid",
+    "cost_amount": 1.0,
+    "ticket_status": "book ahead",
+    "ticket_url": "https://www.eventbrite.com/e/grand-opening-visitacion-valley-family-resource-center-tickets-1989414647765",
+    "category": "eventbrite",
+    "source_channel": "eventbrite",
+    "source_name": "Eventbrite / San Francisco",
+    "source_url": "https://www.eventbrite.com/d/ca--san-francisco/family/",
+    "last_verified": "2026-06-14T19:34:00.719857+00:00",
+    "dedupe_key": "a6db8835d3d0",
+    "is_camp": false,
+    "tags": [
+      "eventbrite",
+      "indoors",
+      "rainy day",
+      "san francisco",
+      "toddler-friendly",
+      "weekday"
+    ]
+  },
+  {
+    "title": "Teen Scape",
+    "start_datetime": "2026-06-26T14:00:00+00:00",
+    "end_datetime": "2026-06-26T16:00:00+00:00",
+    "venue": "Oakland Public Library \u2014 Meeting Room",
+    "city": "Oakland Public Library",
+    "county": "Alameda",
+    "age_range": "Families",
+    "cost": "Free",
+    "cost_amount": 0.0,
+    "ticket_status": "free walk-up",
+    "ticket_url": "https://oaklandlibrary.bibliocommons.com/v2/events/698a265894297d3600ab11d2",
+    "category": "library",
+    "source_channel": "library",
+    "source_name": "Oakland Public Library",
+    "source_url": "https://oaklandlibrary.bibliocommons.com/v2/events",
+    "last_verified": "2026-06-14T19:33:35.774753+00:00",
+    "dedupe_key": "a74b5d0c14f6",
+    "is_camp": false,
+    "tags": [
+      "books & reading",
+      "drop-in",
+      "east bay",
+      "free",
+      "indoors",
+      "library",
+      "rainy day",
+      "weekday"
+    ]
+  },
+  {
+    "title": "Teens: Engrave Your Own Keychain at West",
+    "start_datetime": "2026-06-26T15:00:00+00:00",
+    "end_datetime": "2026-06-26T16:00:00+00:00",
+    "venue": "Oakland Public Library",
+    "city": "Oakland Public Library",
+    "county": "Alameda",
+    "age_range": "Families",
+    "cost": "Free",
+    "cost_amount": 0.0,
+    "ticket_status": "free walk-up",
+    "ticket_url": "https://oaklandlibrary.bibliocommons.com/v2/events/69a22d214a9fd98b7f811630",
+    "category": "library",
+    "source_channel": "library",
+    "source_name": "Oakland Public Library",
+    "source_url": "https://oaklandlibrary.bibliocommons.com/v2/events",
+    "last_verified": "2026-06-14T19:33:35.774753+00:00",
+    "dedupe_key": "09a263db2243",
+    "is_camp": false,
+    "tags": [
+      "books & reading",
+      "drop-in",
+      "east bay",
+      "free",
+      "indoors",
+      "library",
+      "rainy day",
       "weekday"
     ]
   },
@@ -3298,7 +4024,7 @@
     "source_channel": "library",
     "source_name": "Palo Alto City Library",
     "source_url": "https://paloalto.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:46:53.576762+00:00",
+    "last_verified": "2026-06-14T19:32:55.502452+00:00",
     "dedupe_key": "83565e781e23",
     "is_camp": false,
     "tags": [
@@ -3329,7 +4055,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:18.498591+00:00",
+    "last_verified": "2026-06-14T19:33:26.122091+00:00",
     "dedupe_key": "520cfdcfcb5a",
     "is_camp": false,
     "tags": [
@@ -3359,13 +4085,67 @@
     "source_channel": "eventbrite",
     "source_name": "Eventbrite / Palo Alto",
     "source_url": "https://www.eventbrite.com/d/ca--palo-alto/family/",
-    "last_verified": "2026-06-14T15:47:24.585414+00:00",
+    "last_verified": "2026-06-14T19:33:47.784536+00:00",
     "dedupe_key": "cddc696a3ee6",
     "is_camp": false,
     "tags": [
       "eventbrite",
       "palo alto",
       "san francisco",
+      "toddler-friendly",
+      "weekday"
+    ]
+  },
+  {
+    "title": "Friday Family Fun Night: Monarch Magic",
+    "start_datetime": "2026-06-26T16:30:00+00:00",
+    "end_datetime": "2026-06-26T18:30:00+00:00",
+    "venue": "Family Connections Centers \u2022 Excelsior",
+    "city": "San Francisco",
+    "county": "San Francisco",
+    "age_range": "Families",
+    "cost": "Paid",
+    "cost_amount": 1.0,
+    "ticket_status": "book ahead",
+    "ticket_url": "https://www.eventbrite.com/e/friday-family-fun-night-monarch-magic-tickets-1991423026881",
+    "category": "eventbrite",
+    "source_channel": "eventbrite",
+    "source_name": "Eventbrite / San Francisco",
+    "source_url": "https://www.eventbrite.com/d/ca--san-francisco/family/",
+    "last_verified": "2026-06-14T19:34:00.719857+00:00",
+    "dedupe_key": "ebfbe42712cc",
+    "is_camp": false,
+    "tags": [
+      "eventbrite",
+      "san francisco",
+      "theatre",
+      "toddler-friendly",
+      "weekday"
+    ]
+  },
+  {
+    "title": "C2C Family Learning & Leadership Circle/ Circulo de Aprendizaje y Liderazgo",
+    "start_datetime": "2026-06-26T18:00:00+00:00",
+    "end_datetime": "2026-06-26T20:00:00+00:00",
+    "venue": "Live Oak Community Center- Room A",
+    "city": "Santa Cruz California",
+    "county": "Santa Cruz",
+    "age_range": "Families",
+    "cost": "Paid",
+    "cost_amount": 1.0,
+    "ticket_status": "book ahead",
+    "ticket_url": "https://www.eventbrite.com/e/c2c-family-learning-leadership-circle-circulo-de-aprendizaje-y-liderazgo-tickets-1990901536088",
+    "category": "eventbrite",
+    "source_channel": "eventbrite",
+    "source_name": "Eventbrite / Santa Cruz",
+    "source_url": "https://www.eventbrite.com/d/ca--santa-cruz/family/",
+    "last_verified": "2026-06-14T19:34:06.320395+00:00",
+    "dedupe_key": "edf28fa12f74",
+    "is_camp": false,
+    "tags": [
+      "eventbrite",
+      "indoors",
+      "rainy day",
       "toddler-friendly",
       "weekday"
     ]
@@ -3386,41 +4166,13 @@
     "source_channel": "venue",
     "source_name": "CuriOdyssey",
     "source_url": "https://curiodyssey.org/events/",
-    "last_verified": "2026-06-14T15:47:41.109427+00:00",
+    "last_verified": "2026-06-14T19:34:13.615579+00:00",
     "dedupe_key": "cb31d219afc3",
     "is_camp": false,
     "tags": [
       "book ahead",
       "drop-in",
       "peninsula",
-      "venue",
-      "weekend"
-    ]
-  },
-  {
-    "title": "Farm Volunteer Day",
-    "start_datetime": "2026-06-27T09:00:00-07:00",
-    "end_datetime": "2026-06-27T12:00:00-07:00",
-    "venue": "Hidden Villa Farm",
-    "city": "Los Altos Hills",
-    "county": "Santa Clara",
-    "age_range": "Families",
-    "cost": "Paid",
-    "cost_amount": 8.0,
-    "ticket_status": "some tours require registration",
-    "ticket_url": "https://www.hiddenvilla.org/programs/catalog/468-farm-volunteer-day/region-HV/",
-    "category": "venue",
-    "source_channel": "venue",
-    "source_name": "Hidden Villa Farm",
-    "source_url": "https://www.hiddenvilla.org/calendar/individuals-families/region-HV/",
-    "last_verified": "2026-06-14T15:47:44.200828+00:00",
-    "dedupe_key": "984cd2e23713",
-    "is_camp": false,
-    "tags": [
-      "animals",
-      "book ahead",
-      "farm",
-      "outdoors",
       "venue",
       "weekend"
     ]
@@ -3441,7 +4193,7 @@
     "source_channel": "eventbrite",
     "source_name": "Eventbrite / San Jose",
     "source_url": "https://www.eventbrite.com/d/ca--san-jose/family/",
-    "last_verified": "2026-06-14T15:47:26.310884+00:00",
+    "last_verified": "2026-06-14T19:33:49.745385+00:00",
     "dedupe_key": "d383bbde6dcc",
     "is_camp": false,
     "tags": [
@@ -3467,7 +4219,7 @@
     "source_channel": "eventbrite",
     "source_name": "Eventbrite / Mountain View",
     "source_url": "https://www.eventbrite.com/d/ca--mountain-view/family/",
-    "last_verified": "2026-06-14T15:47:28.157031+00:00",
+    "last_verified": "2026-06-14T19:33:51.402593+00:00",
     "dedupe_key": "84aae69b85a5",
     "is_camp": false,
     "tags": [
@@ -3477,9 +4229,39 @@
     ]
   },
   {
+    "title": "Exploratorium \u2014 Open (hands-on science exhibits)",
+    "start_datetime": "2026-06-27T10:00:00+00:00",
+    "end_datetime": "2026-06-27T17:00:00+00:00",
+    "venue": "Exploratorium",
+    "city": "San Francisco",
+    "county": "San Francisco",
+    "age_range": "Families",
+    "cost": "Paid",
+    "cost_amount": 20.0,
+    "ticket_status": "walk-up or reserve",
+    "ticket_url": "https://www.exploratorium.edu/visit",
+    "category": "venue",
+    "source_channel": "venue",
+    "source_name": "Exploratorium",
+    "source_url": "https://www.exploratorium.edu/visit/calendar",
+    "last_verified": "2026-06-14T19:34:16.970179+00:00",
+    "dedupe_key": "b8f9c42bd580",
+    "is_camp": false,
+    "tags": [
+      "STEM",
+      "book ahead",
+      "drop-in",
+      "hands-on",
+      "san francisco",
+      "science",
+      "venue",
+      "weekend"
+    ]
+  },
+  {
     "title": "Palo Alto Junior Museum & Zoo \u2014 Open",
-    "start_datetime": "2026-06-27T10:00:00.764967+00:00",
-    "end_datetime": "2026-06-27T17:00:00.764967+00:00",
+    "start_datetime": "2026-06-27T10:00:00.178117+00:00",
+    "end_datetime": "2026-06-27T17:00:00.178117+00:00",
     "venue": "Palo Alto Junior Museum & Zoo",
     "city": "Palo Alto",
     "county": "Santa Clara",
@@ -3492,7 +4274,7 @@
     "source_channel": "venue",
     "source_name": "Palo Alto Junior Museum & Zoo",
     "source_url": "https://www.paloaltozoo.org/visit",
-    "last_verified": "2026-06-14T15:47:38.765990+00:00",
+    "last_verified": "2026-06-14T19:34:11.864693+00:00",
     "dedupe_key": "8f0013b2656b",
     "is_camp": false,
     "tags": [
@@ -3521,7 +4303,7 @@
     "source_channel": "library",
     "source_name": "San Jose Public Library",
     "source_url": "https://sjpl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:08.392096+00:00",
+    "last_verified": "2026-06-14T19:33:15.607872+00:00",
     "dedupe_key": "f8a178dffca5",
     "is_camp": false,
     "tags": [
@@ -3551,7 +4333,7 @@
     "source_channel": "library",
     "source_name": "Palo Alto City Library",
     "source_url": "https://paloalto.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:46:53.576762+00:00",
+    "last_verified": "2026-06-14T19:32:55.502452+00:00",
     "dedupe_key": "7bb026c2ba3e",
     "is_camp": false,
     "tags": [
@@ -3581,7 +4363,7 @@
     "source_channel": "library",
     "source_name": "Palo Alto City Library",
     "source_url": "https://paloalto.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:46:53.576762+00:00",
+    "last_verified": "2026-06-14T19:32:55.502452+00:00",
     "dedupe_key": "6f133e0e67a2",
     "is_camp": false,
     "tags": [
@@ -3613,7 +4395,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:18.498591+00:00",
+    "last_verified": "2026-06-14T19:33:26.122091+00:00",
     "dedupe_key": "9fdcc17e886f",
     "is_camp": false,
     "tags": [
@@ -3624,6 +4406,38 @@
       "library",
       "rainy day",
       "sports & movement",
+      "weekend"
+    ]
+  },
+  {
+    "title": "Family Storytime",
+    "start_datetime": "2026-06-27T10:30:00+00:00",
+    "end_datetime": "2026-06-27T11:00:00+00:00",
+    "venue": "Oakland Public Library",
+    "city": "Oakland Public Library",
+    "county": "Alameda",
+    "age_range": "Families",
+    "cost": "Free",
+    "cost_amount": 0.0,
+    "ticket_status": "free walk-up",
+    "ticket_url": "https://oaklandlibrary.bibliocommons.com/v2/events/695bf211c719ac98c336095a",
+    "category": "library",
+    "source_channel": "library",
+    "source_name": "Oakland Public Library",
+    "source_url": "https://oaklandlibrary.bibliocommons.com/v2/events",
+    "last_verified": "2026-06-14T19:33:35.774753+00:00",
+    "dedupe_key": "19ea7cb80492",
+    "is_camp": false,
+    "tags": [
+      "books & reading",
+      "drop-in",
+      "east bay",
+      "free",
+      "indoors",
+      "library",
+      "rainy day",
+      "storytime",
+      "toddler-friendly",
       "weekend"
     ]
   },
@@ -3643,7 +4457,7 @@
     "source_channel": "library",
     "source_name": "San Jose Public Library",
     "source_url": "https://sjpl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:08.392096+00:00",
+    "last_verified": "2026-06-14T19:33:15.607872+00:00",
     "dedupe_key": "44183ac84ed5",
     "is_camp": false,
     "tags": [
@@ -3673,7 +4487,7 @@
     "source_channel": "eventbrite",
     "source_name": "Eventbrite / Palo Alto",
     "source_url": "https://www.eventbrite.com/d/ca--palo-alto/family/",
-    "last_verified": "2026-06-14T15:47:24.585414+00:00",
+    "last_verified": "2026-06-14T19:33:47.784536+00:00",
     "dedupe_key": "4569c2cb93df",
     "is_camp": false,
     "tags": [
@@ -3701,7 +4515,7 @@
     "source_channel": "eventbrite",
     "source_name": "Eventbrite / San Jose",
     "source_url": "https://www.eventbrite.com/d/ca--san-jose/family/",
-    "last_verified": "2026-06-14T15:47:26.310884+00:00",
+    "last_verified": "2026-06-14T19:33:49.745385+00:00",
     "dedupe_key": "3476b54a8401",
     "is_camp": false,
     "tags": [
@@ -3725,7 +4539,7 @@
     "source_channel": "eventbrite",
     "source_name": "Eventbrite / Palo Alto",
     "source_url": "https://www.eventbrite.com/d/ca--palo-alto/family/",
-    "last_verified": "2026-06-14T15:47:24.585414+00:00",
+    "last_verified": "2026-06-14T19:33:47.784536+00:00",
     "dedupe_key": "9fe774bcf0c1",
     "is_camp": false,
     "tags": [
@@ -3750,7 +4564,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:18.498591+00:00",
+    "last_verified": "2026-06-14T19:33:26.122091+00:00",
     "dedupe_key": "4ff666f1ca14",
     "is_camp": false,
     "tags": [
@@ -3781,7 +4595,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:18.498591+00:00",
+    "last_verified": "2026-06-14T19:33:26.122091+00:00",
     "dedupe_key": "384b4dc4d267",
     "is_camp": false,
     "tags": [
@@ -3810,7 +4624,7 @@
     "source_channel": "library",
     "source_name": "Palo Alto City Library",
     "source_url": "https://paloalto.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:46:53.576762+00:00",
+    "last_verified": "2026-06-14T19:32:55.502452+00:00",
     "dedupe_key": "12750a453ad3",
     "is_camp": false,
     "tags": [
@@ -3841,7 +4655,7 @@
     "source_channel": "eventbrite",
     "source_name": "Eventbrite / Palo Alto",
     "source_url": "https://www.eventbrite.com/d/ca--palo-alto/family/",
-    "last_verified": "2026-06-14T15:47:24.585414+00:00",
+    "last_verified": "2026-06-14T19:33:47.784536+00:00",
     "dedupe_key": "ee4fe0ff15e5",
     "is_camp": false,
     "tags": [
@@ -3868,7 +4682,7 @@
     "source_channel": "eventbrite",
     "source_name": "Eventbrite / Mountain View",
     "source_url": "https://www.eventbrite.com/d/ca--mountain-view/family/",
-    "last_verified": "2026-06-14T15:47:28.157031+00:00",
+    "last_verified": "2026-06-14T19:33:51.402593+00:00",
     "dedupe_key": "89947a553d5d",
     "is_camp": false,
     "tags": [
@@ -3893,7 +4707,7 @@
     "source_channel": "venue",
     "source_name": "Cantor Arts Center",
     "source_url": "https://museum.stanford.edu/events",
-    "last_verified": "2026-06-14T15:47:43.708802+00:00",
+    "last_verified": "2026-06-14T19:34:16.223252+00:00",
     "dedupe_key": "36682497386e",
     "is_camp": false,
     "tags": [
@@ -3908,9 +4722,39 @@
     ]
   },
   {
+    "title": "Exploratorium \u2014 Open (hands-on science exhibits)",
+    "start_datetime": "2026-06-28T10:00:00+00:00",
+    "end_datetime": "2026-06-28T17:00:00+00:00",
+    "venue": "Exploratorium",
+    "city": "San Francisco",
+    "county": "San Francisco",
+    "age_range": "Families",
+    "cost": "Paid",
+    "cost_amount": 20.0,
+    "ticket_status": "walk-up or reserve",
+    "ticket_url": "https://www.exploratorium.edu/visit",
+    "category": "venue",
+    "source_channel": "venue",
+    "source_name": "Exploratorium",
+    "source_url": "https://www.exploratorium.edu/visit/calendar",
+    "last_verified": "2026-06-14T19:34:16.970187+00:00",
+    "dedupe_key": "dcdb81122fb7",
+    "is_camp": false,
+    "tags": [
+      "STEM",
+      "book ahead",
+      "drop-in",
+      "hands-on",
+      "san francisco",
+      "science",
+      "venue",
+      "weekend"
+    ]
+  },
+  {
     "title": "Palo Alto Junior Museum & Zoo \u2014 Open",
-    "start_datetime": "2026-06-28T10:00:00.764967+00:00",
-    "end_datetime": "2026-06-28T17:00:00.764967+00:00",
+    "start_datetime": "2026-06-28T10:00:00.178117+00:00",
+    "end_datetime": "2026-06-28T17:00:00.178117+00:00",
     "venue": "Palo Alto Junior Museum & Zoo",
     "city": "Palo Alto",
     "county": "Santa Clara",
@@ -3923,7 +4767,7 @@
     "source_channel": "venue",
     "source_name": "Palo Alto Junior Museum & Zoo",
     "source_url": "https://www.paloaltozoo.org/visit",
-    "last_verified": "2026-06-14T15:47:38.766001+00:00",
+    "last_verified": "2026-06-14T19:34:11.864703+00:00",
     "dedupe_key": "bfdb9a601687",
     "is_camp": false,
     "tags": [
@@ -3952,7 +4796,7 @@
     "source_channel": "library",
     "source_name": "San Mateo County Library",
     "source_url": "https://smcl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:01.785854+00:00",
+    "last_verified": "2026-06-14T19:33:06.423493+00:00",
     "dedupe_key": "7dd785b2c0b1",
     "is_camp": false,
     "tags": [
@@ -3983,7 +4827,7 @@
     "source_channel": "library",
     "source_name": "Palo Alto City Library",
     "source_url": "https://paloalto.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:46:53.576762+00:00",
+    "last_verified": "2026-06-14T19:32:55.502452+00:00",
     "dedupe_key": "b10757750698",
     "is_camp": false,
     "tags": [
@@ -4016,7 +4860,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:18.498591+00:00",
+    "last_verified": "2026-06-14T19:33:26.122091+00:00",
     "dedupe_key": "6382303ae678",
     "is_camp": false,
     "tags": [
@@ -4048,7 +4892,7 @@
     "source_channel": "library",
     "source_name": "San Jose Public Library",
     "source_url": "https://sjpl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:08.392096+00:00",
+    "last_verified": "2026-06-14T19:33:15.607872+00:00",
     "dedupe_key": "ad15dc507b11",
     "is_camp": false,
     "tags": [
@@ -4060,6 +4904,33 @@
       "rainy day",
       "school-age",
       "storytime",
+      "weekend"
+    ]
+  },
+  {
+    "title": "Family Art Day:  Free Family Fun",
+    "start_datetime": "2026-06-28T13:00:00+00:00",
+    "end_datetime": "2026-06-28T15:00:00+00:00",
+    "venue": "216 Stage Rd, Pescadero, CA, USA",
+    "city": "Pescadero",
+    "county": "Santa Cruz",
+    "age_range": "Families",
+    "cost": "Paid",
+    "cost_amount": 1.0,
+    "ticket_status": "book ahead",
+    "ticket_url": "https://www.eventbrite.com/e/family-art-day-free-family-fun-tickets-1990272000129",
+    "category": "eventbrite",
+    "source_channel": "eventbrite",
+    "source_name": "Eventbrite / Santa Cruz",
+    "source_url": "https://www.eventbrite.com/d/ca--santa-cruz/family/",
+    "last_verified": "2026-06-14T19:34:06.320395+00:00",
+    "dedupe_key": "5046403f3080",
+    "is_camp": false,
+    "tags": [
+      "arts & crafts",
+      "eventbrite",
+      "theatre",
+      "toddler-friendly",
       "weekend"
     ]
   },
@@ -4079,7 +4950,7 @@
     "source_channel": "library",
     "source_name": "San Jose Public Library",
     "source_url": "https://sjpl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:08.392096+00:00",
+    "last_verified": "2026-06-14T19:33:15.607872+00:00",
     "dedupe_key": "8f4cbc28ba55",
     "is_camp": false,
     "tags": [
@@ -4097,28 +4968,32 @@
     ]
   },
   {
-    "title": "Family Paint Party",
-    "start_datetime": "2026-06-29T18:30:00+00:00",
-    "end_datetime": "2026-06-29T20:30:00+00:00",
-    "venue": "PF Changs Sunnyvale",
-    "city": "Sunnyvale",
-    "county": "Santa Clara",
+    "title": "Baby Bounce & Playtime",
+    "start_datetime": "2026-06-30T10:15:00+00:00",
+    "end_datetime": "2026-06-30T11:15:00+00:00",
+    "venue": "Oakland Public Library",
+    "city": "Oakland Public Library",
+    "county": "Alameda",
     "age_range": "Families",
-    "cost": "Paid",
-    "cost_amount": 1.0,
-    "ticket_status": "book ahead",
-    "ticket_url": "https://www.eventbrite.com/e/family-paint-party-tickets-1987594096447",
-    "category": "eventbrite",
-    "source_channel": "eventbrite",
-    "source_name": "Eventbrite / Palo Alto",
-    "source_url": "https://www.eventbrite.com/d/ca--palo-alto/family/",
-    "last_verified": "2026-06-14T15:47:24.585414+00:00",
-    "dedupe_key": "72a945300f42",
+    "cost": "Free",
+    "cost_amount": 0.0,
+    "ticket_status": "free walk-up",
+    "ticket_url": "https://oaklandlibrary.bibliocommons.com/v2/events/6927886d51da852800c3bc0c",
+    "category": "library",
+    "source_channel": "library",
+    "source_name": "Oakland Public Library",
+    "source_url": "https://oaklandlibrary.bibliocommons.com/v2/events",
+    "last_verified": "2026-06-14T19:33:35.774753+00:00",
+    "dedupe_key": "7f84a0526bf0",
     "is_camp": false,
     "tags": [
-      "arts & crafts",
-      "eventbrite",
-      "palo alto",
+      "books & reading",
+      "drop-in",
+      "east bay",
+      "free",
+      "indoors",
+      "library",
+      "rainy day",
       "toddler-friendly",
       "weekday"
     ]
@@ -4139,7 +5014,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:18.498591+00:00",
+    "last_verified": "2026-06-14T19:33:26.122091+00:00",
     "dedupe_key": "3425ac961894",
     "is_camp": false,
     "tags": [
@@ -4150,6 +5025,38 @@
       "library",
       "rainy day",
       "storytime",
+      "toddler-friendly",
+      "weekday"
+    ]
+  },
+  {
+    "title": "Baby Bounce",
+    "start_datetime": "2026-06-30T11:45:00+00:00",
+    "end_datetime": "2026-06-30T12:15:00+00:00",
+    "venue": "Oakland Public Library \u2014 Children\u2019s Room\nADA Accessible",
+    "city": "Oakland Public Library",
+    "county": "Alameda",
+    "age_range": "Families",
+    "cost": "Free",
+    "cost_amount": 0.0,
+    "ticket_status": "free walk-up",
+    "ticket_url": "https://oaklandlibrary.bibliocommons.com/v2/events/692f34e97eb3e43000270d23",
+    "category": "library",
+    "source_channel": "library",
+    "source_name": "Oakland Public Library",
+    "source_url": "https://oaklandlibrary.bibliocommons.com/v2/events",
+    "last_verified": "2026-06-14T19:33:35.774753+00:00",
+    "dedupe_key": "b7061682908f",
+    "is_camp": false,
+    "tags": [
+      "books & reading",
+      "drop-in",
+      "east bay",
+      "free",
+      "indoors",
+      "library",
+      "rainy day",
+      "school-age",
       "toddler-friendly",
       "weekday"
     ]
@@ -4170,7 +5077,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:18.498591+00:00",
+    "last_verified": "2026-06-14T19:33:26.122091+00:00",
     "dedupe_key": "864254b10ced",
     "is_camp": false,
     "tags": [
@@ -4199,7 +5106,7 @@
     "source_channel": "library",
     "source_name": "Santa Clara County Library District",
     "source_url": "https://sccl.bibliocommons.com/v2/events",
-    "last_verified": "2026-06-14T15:47:18.498591+00:00",
+    "last_verified": "2026-06-14T19:33:26.122091+00:00",
     "dedupe_key": "451247024254",
     "is_camp": false,
     "tags": [
@@ -4209,6 +5116,100 @@
       "indoors",
       "library",
       "rainy day",
+      "storytime",
+      "toddler-friendly",
+      "weekday"
+    ]
+  },
+  {
+    "title": "LEGO Tuesdays!",
+    "start_datetime": "2026-06-30T16:00:00+00:00",
+    "end_datetime": "2026-06-30T17:00:00+00:00",
+    "venue": "Palo Alto City Library \u2014 El Camino Room",
+    "city": "Palo Alto City Library",
+    "county": "Santa Clara",
+    "age_range": "Families",
+    "cost": "Free",
+    "cost_amount": 0.0,
+    "ticket_status": "free walk-up",
+    "ticket_url": "https://paloalto.bibliocommons.com/v2/events/68afa7b0022de53d00d2716d",
+    "category": "library",
+    "source_channel": "library",
+    "source_name": "Palo Alto City Library",
+    "source_url": "https://paloalto.bibliocommons.com/v2/events",
+    "last_verified": "2026-06-14T19:32:55.502452+00:00",
+    "dedupe_key": "a84521269a1a",
+    "is_camp": false,
+    "tags": [
+      "arts & crafts",
+      "books & reading",
+      "drop-in",
+      "free",
+      "indoors",
+      "library",
+      "palo alto",
+      "rainy day",
+      "weekday"
+    ]
+  },
+  {
+    "title": "LEGO\u00ae Club",
+    "start_datetime": "2026-06-30T16:30:00+00:00",
+    "end_datetime": "2026-06-30T17:30:00+00:00",
+    "venue": "San Jose Public Library",
+    "city": "San Jose Public Library",
+    "county": "Santa Clara",
+    "age_range": "Families",
+    "cost": "Free",
+    "cost_amount": 0.0,
+    "ticket_status": "free walk-up",
+    "ticket_url": "https://sjpl.bibliocommons.com/v2/events/6a23130d7b73be6a1b1aa42f",
+    "category": "library",
+    "source_channel": "library",
+    "source_name": "San Jose Public Library",
+    "source_url": "https://sjpl.bibliocommons.com/v2/events",
+    "last_verified": "2026-06-14T19:33:15.607872+00:00",
+    "dedupe_key": "76adcb784f54",
+    "is_camp": false,
+    "tags": [
+      "arts & crafts",
+      "books & reading",
+      "drop-in",
+      "free",
+      "indoors",
+      "library",
+      "rainy day",
+      "weekday"
+    ]
+  },
+  {
+    "title": "Bilingual Family Storytime / \u4e2d\u82f1\u96d9\u8a9e\u6545\u4e8b\u6642\u9593",
+    "start_datetime": "2026-06-30T18:30:00+00:00",
+    "end_datetime": "2026-06-30T19:00:00+00:00",
+    "venue": "Santa Clara County Library District \u2014 Children's Activity Room",
+    "city": "Santa Clara County Library District",
+    "county": "Santa Clara",
+    "age_range": "Families",
+    "cost": "Free",
+    "cost_amount": 0.0,
+    "ticket_status": "free walk-up",
+    "ticket_url": "https://sccl.bibliocommons.com/v2/events/6931e18a6724c63d00e53cc1",
+    "category": "library",
+    "source_channel": "library",
+    "source_name": "Santa Clara County Library District",
+    "source_url": "https://sccl.bibliocommons.com/v2/events",
+    "last_verified": "2026-06-14T19:33:26.122091+00:00",
+    "dedupe_key": "f7c723ed7199",
+    "is_camp": false,
+    "tags": [
+      "books & reading",
+      "drop-in",
+      "free",
+      "hands-on",
+      "indoors",
+      "library",
+      "rainy day",
+      "school-age",
       "storytime",
       "toddler-friendly",
       "weekday"
@@ -4230,7 +5231,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T15:47:36.288579+00:00",
+    "last_verified": "2026-06-14T19:34:08.695069+00:00",
     "dedupe_key": "047ccefa5add",
     "is_camp": false,
     "tags": [
@@ -4238,8 +5239,7 @@
       "drop-in",
       "festival",
       "outdoors",
-      "san francisco",
-      "water"
+      "san francisco"
     ]
   },
   {
@@ -4258,14 +5258,13 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T15:47:36.289378+00:00",
+    "last_verified": "2026-06-14T19:34:08.695666+00:00",
     "dedupe_key": "9d6fa79ffed4",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -4284,7 +5283,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T15:47:36.290112+00:00",
+    "last_verified": "2026-06-14T19:34:08.696202+00:00",
     "dedupe_key": "b521966a72e7",
     "is_camp": false,
     "tags": [
@@ -4292,35 +5291,7 @@
       "drop-in",
       "east bay",
       "festival",
-      "outdoors",
-      "water"
-    ]
-  },
-  {
-    "title": "Inner Sunset Flea Market",
-    "start_datetime": null,
-    "end_datetime": null,
-    "venue": "Bay Area",
-    "city": "Bay Area",
-    "county": "Bay Area",
-    "age_range": "Families",
-    "cost": "Paid",
-    "cost_amount": 0.0,
-    "ticket_status": "free walk-up",
-    "ticket_url": "https://sf.funcheap.com/sunset-flea-market-2/",
-    "category": "aggregator",
-    "source_channel": "aggregator",
-    "source_name": "Funcheap",
-    "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T15:47:36.290792+00:00",
-    "dedupe_key": "acc31d694d88",
-    "is_camp": false,
-    "tags": [
-      "aggregator",
-      "drop-in",
-      "festival",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -4339,7 +5310,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T15:47:36.291498+00:00",
+    "last_verified": "2026-06-14T19:34:08.696739+00:00",
     "dedupe_key": "36a8737218d1",
     "is_camp": false,
     "tags": [
@@ -4347,12 +5318,11 @@
       "drop-in",
       "indoors",
       "outdoors",
-      "toddler-friendly",
-      "water"
+      "toddler-friendly"
     ]
   },
   {
-    "title": "\u201cManny\u2019s Neighborhood Trash Cleanup\u201d w/ $1 Beer & Free Yoga Classes, Free Fries (SF)",
+    "title": "Inner Sunset Flea Market",
     "start_datetime": null,
     "end_datetime": null,
     "venue": "Bay Area",
@@ -4362,78 +5332,19 @@
     "cost": "Paid",
     "cost_amount": 0.0,
     "ticket_status": "free walk-up",
-    "ticket_url": "https://sf.funcheap.com/mannys-neighborhood-trash-cleanup-w-1-beer-free-yoga-classes-free-fries-sf-136/",
+    "ticket_url": "https://sf.funcheap.com/sunset-flea-market-2/",
     "category": "aggregator",
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T15:47:36.292224+00:00",
-    "dedupe_key": "50d3f16e830e",
-    "is_camp": false,
-    "tags": [
-      "aggregator",
-      "drop-in",
-      "outdoors",
-      "san francisco",
-      "sports & movement",
-      "water"
-    ]
-  },
-  {
-    "title": "17th Annual \u201c3-Legged Dog Picnic\u201d (Marina Green)",
-    "start_datetime": null,
-    "end_datetime": null,
-    "venue": "Bay Area",
-    "city": "Bay Area",
-    "county": "Bay Area",
-    "age_range": "Families",
-    "cost": "Paid",
-    "cost_amount": 0.0,
-    "ticket_status": "free walk-up",
-    "ticket_url": "https://sf.funcheap.com/17th-annual-3legged-dog-picnic-marina-green/",
-    "category": "aggregator",
-    "source_channel": "aggregator",
-    "source_name": "Funcheap",
-    "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T15:47:36.292902+00:00",
-    "dedupe_key": "5ee38de2f0af",
-    "is_camp": false,
-    "tags": [
-      "aggregator",
-      "drop-in",
-      "outdoors",
-      "water"
-    ]
-  },
-  {
-    "title": "Free \u201cSucka Flea\u201d Outdoor Market in The Mission (SF)",
-    "start_datetime": null,
-    "end_datetime": null,
-    "venue": "Bay Area",
-    "city": "Bay Area",
-    "county": "Bay Area",
-    "age_range": "Families",
-    "cost": "Free",
-    "cost_amount": 0.0,
-    "ticket_status": "free walk-up",
-    "ticket_url": "https://sf.funcheap.com/free-sucka-flea-outdoor-market-mission-sf/",
-    "category": "aggregator",
-    "source_channel": "aggregator",
-    "source_name": "Funcheap",
-    "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T15:47:36.293547+00:00",
-    "dedupe_key": "7c02eb867f39",
+    "last_verified": "2026-06-14T19:34:08.697265+00:00",
+    "dedupe_key": "acc31d694d88",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
       "festival",
-      "free",
-      "nature",
-      "outdoors",
-      "san francisco",
-      "summer",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -4452,19 +5363,18 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T15:47:36.294246+00:00",
+    "last_verified": "2026-06-14T19:34:08.697786+00:00",
     "dedupe_key": "5cb9bc253d0b",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
       "outdoors",
-      "san francisco",
-      "water"
+      "san francisco"
     ]
   },
   {
-    "title": "Pride Party + Tie-Dye & Bleach-Dye Workshop (Oakland)",
+    "title": "17th Annual \u201c3-Legged Dog Picnic\u201d (Marina Green)",
     "start_datetime": null,
     "end_datetime": null,
     "venue": "Bay Area",
@@ -4474,49 +5384,48 @@
     "cost": "Paid",
     "cost_amount": 0.0,
     "ticket_status": "free walk-up",
-    "ticket_url": "https://sf.funcheap.com/pride-party-tiedye-bleachdye-workshop-oakland/",
+    "ticket_url": "https://sf.funcheap.com/17th-annual-3legged-dog-picnic-marina-green/",
     "category": "aggregator",
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T15:47:36.294833+00:00",
-    "dedupe_key": "c45002f1290f",
+    "last_verified": "2026-06-14T19:34:08.698308+00:00",
+    "dedupe_key": "5ee38de2f0af",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
-      "east bay",
-      "hands-on",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
-    "title": "Free \u201cSalsa-Con\u201d 2026: Taste + Vote for SF\u2019s Best Salsa (SOMArts)",
+    "title": "Free \u201cSucka Flea\u201d Outdoor Market in The Mission (SF)",
     "start_datetime": null,
     "end_datetime": null,
     "venue": "Bay Area",
     "city": "Bay Area",
     "county": "Bay Area",
     "age_range": "Families",
-    "cost": "Paid",
+    "cost": "Free",
     "cost_amount": 0.0,
     "ticket_status": "free walk-up",
-    "ticket_url": "https://sf.funcheap.com/free-salsacon-2026-taste-vote-sfs-salsa-somarts/",
+    "ticket_url": "https://sf.funcheap.com/free-sucka-flea-outdoor-market-mission-sf/",
     "category": "aggregator",
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T15:47:36.295536+00:00",
-    "dedupe_key": "06aab3311dbe",
+    "last_verified": "2026-06-14T19:34:08.698773+00:00",
+    "dedupe_key": "7c02eb867f39",
     "is_camp": false,
     "tags": [
       "aggregator",
-      "cooking",
       "drop-in",
+      "festival",
+      "free",
+      "nature",
       "outdoors",
       "san francisco",
-      "water"
+      "summer"
     ]
   },
   {
@@ -4535,15 +5444,68 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T15:47:36.296233+00:00",
+    "last_verified": "2026-06-14T19:34:08.699295+00:00",
     "dedupe_key": "a31242d1cfdb",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
       "outdoors",
-      "san francisco",
-      "water"
+      "san francisco"
+    ]
+  },
+  {
+    "title": "Free \u201cSalsa-Con\u201d 2026: Taste + Vote for SF\u2019s Best Salsa (SOMArts)",
+    "start_datetime": null,
+    "end_datetime": null,
+    "venue": "Bay Area",
+    "city": "Bay Area",
+    "county": "Bay Area",
+    "age_range": "Families",
+    "cost": "Paid",
+    "cost_amount": 0.0,
+    "ticket_status": "free walk-up",
+    "ticket_url": "https://sf.funcheap.com/free-salsacon-2026-taste-vote-sfs-salsa-somarts/",
+    "category": "aggregator",
+    "source_channel": "aggregator",
+    "source_name": "Funcheap",
+    "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
+    "last_verified": "2026-06-14T19:34:08.699822+00:00",
+    "dedupe_key": "06aab3311dbe",
+    "is_camp": false,
+    "tags": [
+      "aggregator",
+      "cooking",
+      "drop-in",
+      "outdoors",
+      "san francisco"
+    ]
+  },
+  {
+    "title": "Pride Party + Tie-Dye & Bleach-Dye Workshop (Oakland)",
+    "start_datetime": null,
+    "end_datetime": null,
+    "venue": "Bay Area",
+    "city": "Bay Area",
+    "county": "Bay Area",
+    "age_range": "Families",
+    "cost": "Paid",
+    "cost_amount": 0.0,
+    "ticket_status": "free walk-up",
+    "ticket_url": "https://sf.funcheap.com/pride-party-tiedye-bleachdye-workshop-oakland/",
+    "category": "aggregator",
+    "source_channel": "aggregator",
+    "source_name": "Funcheap",
+    "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
+    "last_verified": "2026-06-14T19:34:08.700260+00:00",
+    "dedupe_key": "c45002f1290f",
+    "is_camp": false,
+    "tags": [
+      "aggregator",
+      "drop-in",
+      "east bay",
+      "hands-on",
+      "outdoors"
     ]
   },
   {
@@ -4562,7 +5524,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T15:47:36.296850+00:00",
+    "last_verified": "2026-06-14T19:34:08.700718+00:00",
     "dedupe_key": "df239eaa691c",
     "is_camp": false,
     "tags": [
@@ -4571,8 +5533,7 @@
       "festival",
       "free",
       "outdoors",
-      "san francisco",
-      "water"
+      "san francisco"
     ]
   },
   {
@@ -4591,15 +5552,14 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T15:47:36.297516+00:00",
+    "last_verified": "2026-06-14T19:34:08.701162+00:00",
     "dedupe_key": "4347a558c84d",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
       "free",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -4618,7 +5578,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T15:47:36.298156+00:00",
+    "last_verified": "2026-06-14T19:34:08.701606+00:00",
     "dedupe_key": "1556f5e89598",
     "is_camp": false,
     "tags": [
@@ -4627,8 +5587,7 @@
       "east bay",
       "free",
       "outdoors",
-      "theatre",
-      "water"
+      "theatre"
     ]
   },
   {
@@ -4647,7 +5606,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T15:47:36.298785+00:00",
+    "last_verified": "2026-06-14T19:34:08.702059+00:00",
     "dedupe_key": "a1fef04cafa3",
     "is_camp": false,
     "tags": [
@@ -4657,8 +5616,7 @@
       "free",
       "indoors",
       "outdoors",
-      "san francisco",
-      "water"
+      "san francisco"
     ]
   },
   {
@@ -4677,7 +5635,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T15:47:36.299424+00:00",
+    "last_verified": "2026-06-14T19:34:08.702505+00:00",
     "dedupe_key": "226a63ad359b",
     "is_camp": false,
     "tags": [
@@ -4685,8 +5643,7 @@
       "drop-in",
       "free",
       "outdoors",
-      "summer",
-      "water"
+      "summer"
     ]
   },
   {
@@ -4705,7 +5662,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T15:47:36.300168+00:00",
+    "last_verified": "2026-06-14T19:34:08.702993+00:00",
     "dedupe_key": "46b5f5084df9",
     "is_camp": false,
     "tags": [
@@ -4714,8 +5671,7 @@
       "drop-in",
       "hands-on",
       "outdoors",
-      "san francisco",
-      "water"
+      "san francisco"
     ]
   },
   {
@@ -4734,15 +5690,14 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T15:47:36.301438+00:00",
+    "last_verified": "2026-06-14T19:34:08.704160+00:00",
     "dedupe_key": "4e1775eb7921",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
       "outdoors",
-      "peninsula",
-      "water"
+      "peninsula"
     ]
   },
   {
@@ -4761,7 +5716,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T15:47:36.302116+00:00",
+    "last_verified": "2026-06-14T19:34:08.704749+00:00",
     "dedupe_key": "d2d27b07872a",
     "is_camp": false,
     "tags": [
@@ -4769,8 +5724,7 @@
       "drop-in",
       "festival",
       "music",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -4789,7 +5743,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T15:47:36.302721+00:00",
+    "last_verified": "2026-06-14T19:34:08.705246+00:00",
     "dedupe_key": "843cdc62eecd",
     "is_camp": false,
     "tags": [
@@ -4799,8 +5753,7 @@
       "free",
       "outdoors",
       "san francisco",
-      "summer",
-      "water"
+      "summer"
     ]
   },
   {
@@ -4819,15 +5772,14 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T15:47:36.303437+00:00",
+    "last_verified": "2026-06-14T19:34:08.705861+00:00",
     "dedupe_key": "d228bc936c97",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
       "east bay",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -4846,7 +5798,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T15:47:36.304072+00:00",
+    "last_verified": "2026-06-14T19:34:08.706370+00:00",
     "dedupe_key": "455b1360ecd2",
     "is_camp": false,
     "tags": [
@@ -4856,8 +5808,7 @@
       "festival",
       "free",
       "music",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -4876,7 +5827,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T15:47:36.304765+00:00",
+    "last_verified": "2026-06-14T19:34:08.706952+00:00",
     "dedupe_key": "b910f0d5a12c",
     "is_camp": false,
     "tags": [
@@ -4884,8 +5835,7 @@
       "drop-in",
       "music",
       "outdoors",
-      "peninsula",
-      "water"
+      "peninsula"
     ]
   },
   {
@@ -4904,15 +5854,14 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T15:47:36.305471+00:00",
+    "last_verified": "2026-06-14T19:34:08.707518+00:00",
     "dedupe_key": "29016ed7254f",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
       "outdoors",
-      "san francisco",
-      "water"
+      "san francisco"
     ]
   },
   {
@@ -4931,7 +5880,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T15:47:36.306159+00:00",
+    "last_verified": "2026-06-14T19:34:08.708112+00:00",
     "dedupe_key": "3d34adb79bb9",
     "is_camp": false,
     "tags": [
@@ -4960,7 +5909,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T15:47:36.306824+00:00",
+    "last_verified": "2026-06-14T19:34:08.708597+00:00",
     "dedupe_key": "20e8168b7a84",
     "is_camp": false,
     "tags": [
@@ -4968,8 +5917,7 @@
       "drop-in",
       "east bay",
       "music",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -4988,7 +5936,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T15:47:36.307451+00:00",
+    "last_verified": "2026-06-14T19:34:08.709034+00:00",
     "dedupe_key": "b412e3f2af0d",
     "is_camp": false,
     "tags": [
@@ -4998,8 +5946,7 @@
       "free",
       "outdoors",
       "san francisco",
-      "summer",
-      "water"
+      "summer"
     ]
   },
   {
@@ -5018,7 +5965,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
-    "last_verified": "2026-06-14T15:47:36.308084+00:00",
+    "last_verified": "2026-06-14T19:34:08.709468+00:00",
     "dedupe_key": "350a12b9624d",
     "is_camp": false,
     "tags": [
@@ -5047,8 +5994,8 @@
     "category": "aggregator",
     "source_channel": "aggregator",
     "source_name": "Funcheap",
-    "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/2/",
-    "last_verified": "2026-06-14T15:47:36.645321+00:00",
+    "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/",
+    "last_verified": "2026-06-14T19:34:08.709940+00:00",
     "dedupe_key": "90e2dd2aa871",
     "is_camp": false,
     "tags": [
@@ -5056,66 +6003,6 @@
       "drop-in",
       "festival",
       "outdoors",
-      "summer",
-      "water"
-    ]
-  },
-  {
-    "title": "SF\u2019s North Beach Festival 2026 (June 20-21)",
-    "start_datetime": null,
-    "end_datetime": null,
-    "venue": "Bay Area",
-    "city": "Bay Area",
-    "county": "Bay Area",
-    "age_range": "Families",
-    "cost": "Free",
-    "cost_amount": 0.0,
-    "ticket_status": "free walk-up",
-    "ticket_url": "https://sf.funcheap.com/sfs-north-beach-festival-2026-june-20-21/",
-    "category": "aggregator",
-    "source_channel": "aggregator",
-    "source_name": "Funcheap",
-    "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/2/",
-    "last_verified": "2026-06-14T15:47:36.645993+00:00",
-    "dedupe_key": "2aed97afdfbd",
-    "is_camp": false,
-    "tags": [
-      "aggregator",
-      "drop-in",
-      "festival",
-      "free",
-      "outdoors",
-      "san francisco",
-      "summer",
-      "water"
-    ]
-  },
-  {
-    "title": "Golden Gate Park \u201cThe Whale\u2019s Tail\u201d Beer/Wine Garden + Live Music (Summer 2026)",
-    "start_datetime": null,
-    "end_datetime": null,
-    "venue": "Bay Area",
-    "city": "Bay Area",
-    "county": "Bay Area",
-    "age_range": "Families",
-    "cost": "Paid",
-    "cost_amount": 0.0,
-    "ticket_status": "free walk-up",
-    "ticket_url": "https://sf.funcheap.com/golden-gate-park-the-whales-tail-beer-wine-garden-live-music-summer-2026-4/",
-    "category": "aggregator",
-    "source_channel": "aggregator",
-    "source_name": "Funcheap",
-    "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/2/",
-    "last_verified": "2026-06-14T15:47:36.646707+00:00",
-    "dedupe_key": "be5d3029f6f7",
-    "is_camp": false,
-    "tags": [
-      "aggregator",
-      "drop-in",
-      "music",
-      "nature",
-      "outdoors",
-      "san francisco",
       "summer",
       "water"
     ]
@@ -5136,7 +6023,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/2/",
-    "last_verified": "2026-06-14T15:47:36.647344+00:00",
+    "last_verified": "2026-06-14T19:34:09.613809+00:00",
     "dedupe_key": "6f5c52150a66",
     "is_camp": false,
     "tags": [
@@ -5145,8 +6032,36 @@
       "east bay",
       "festival",
       "free",
+      "outdoors"
+    ]
+  },
+  {
+    "title": "Golden Gate Park \u201cThe Whale\u2019s Tail\u201d Beer/Wine Garden + Live Music (Summer 2026)",
+    "start_datetime": null,
+    "end_datetime": null,
+    "venue": "Bay Area",
+    "city": "Bay Area",
+    "county": "Bay Area",
+    "age_range": "Families",
+    "cost": "Paid",
+    "cost_amount": 0.0,
+    "ticket_status": "free walk-up",
+    "ticket_url": "https://sf.funcheap.com/golden-gate-park-the-whales-tail-beer-wine-garden-live-music-summer-2026-4/",
+    "category": "aggregator",
+    "source_channel": "aggregator",
+    "source_name": "Funcheap",
+    "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/2/",
+    "last_verified": "2026-06-14T19:34:09.614441+00:00",
+    "dedupe_key": "be5d3029f6f7",
+    "is_camp": false,
+    "tags": [
+      "aggregator",
+      "drop-in",
+      "music",
+      "nature",
       "outdoors",
-      "water"
+      "san francisco",
+      "summer"
     ]
   },
   {
@@ -5165,7 +6080,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/2/",
-    "last_verified": "2026-06-14T15:47:36.648021+00:00",
+    "last_verified": "2026-06-14T19:34:09.615007+00:00",
     "dedupe_key": "2ad3081465ea",
     "is_camp": false,
     "tags": [
@@ -5174,8 +6089,34 @@
       "free",
       "outdoors",
       "san francisco",
-      "summer",
-      "water"
+      "summer"
+    ]
+  },
+  {
+    "title": "\u201cManny\u2019s Neighborhood Trash Cleanup\u201d w/ $1 Beer & Free Yoga Classes, Free Fries (SF)",
+    "start_datetime": null,
+    "end_datetime": null,
+    "venue": "Bay Area",
+    "city": "Bay Area",
+    "county": "Bay Area",
+    "age_range": "Families",
+    "cost": "Paid",
+    "cost_amount": 0.0,
+    "ticket_status": "free walk-up",
+    "ticket_url": "https://sf.funcheap.com/mannys-neighborhood-trash-cleanup-w-1-beer-free-yoga-classes-free-fries-sf-137/",
+    "category": "aggregator",
+    "source_channel": "aggregator",
+    "source_name": "Funcheap",
+    "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/2/",
+    "last_verified": "2026-06-14T19:34:09.616776+00:00",
+    "dedupe_key": "50d3f16e830e",
+    "is_camp": false,
+    "tags": [
+      "aggregator",
+      "drop-in",
+      "outdoors",
+      "san francisco",
+      "sports & movement"
     ]
   },
   {
@@ -5194,12 +6135,42 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/2/",
-    "last_verified": "2026-06-14T15:47:36.649875+00:00",
+    "last_verified": "2026-06-14T19:34:09.617260+00:00",
     "dedupe_key": "71008ad26453",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
+      "free",
+      "outdoors",
+      "san francisco",
+      "summer",
+      "water"
+    ]
+  },
+  {
+    "title": "SF\u2019s North Beach Festival 2026 (June 20-21)",
+    "start_datetime": null,
+    "end_datetime": null,
+    "venue": "Bay Area",
+    "city": "Bay Area",
+    "county": "Bay Area",
+    "age_range": "Families",
+    "cost": "Free",
+    "cost_amount": 0.0,
+    "ticket_status": "free walk-up",
+    "ticket_url": "https://sf.funcheap.com/sfs-north-beach-festival-2026-june-20-21-2/",
+    "category": "aggregator",
+    "source_channel": "aggregator",
+    "source_name": "Funcheap",
+    "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/2/",
+    "last_verified": "2026-06-14T19:34:09.617794+00:00",
+    "dedupe_key": "2aed97afdfbd",
+    "is_camp": false,
+    "tags": [
+      "aggregator",
+      "drop-in",
+      "festival",
       "free",
       "outdoors",
       "san francisco",
@@ -5223,7 +6194,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/2/",
-    "last_verified": "2026-06-14T15:47:36.653107+00:00",
+    "last_verified": "2026-06-14T19:34:09.619425+00:00",
     "dedupe_key": "b7759aeee3cc",
     "is_camp": false,
     "tags": [
@@ -5232,8 +6203,7 @@
       "festival",
       "free",
       "outdoors",
-      "san francisco",
-      "water"
+      "san francisco"
     ]
   },
   {
@@ -5252,7 +6222,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/2/",
-    "last_verified": "2026-06-14T15:47:36.655198+00:00",
+    "last_verified": "2026-06-14T19:34:09.621509+00:00",
     "dedupe_key": "23d4bd7120a5",
     "is_camp": false,
     "tags": [
@@ -5280,7 +6250,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/2/",
-    "last_verified": "2026-06-14T15:47:36.655848+00:00",
+    "last_verified": "2026-06-14T19:34:09.622073+00:00",
     "dedupe_key": "91aa802aa076",
     "is_camp": false,
     "tags": [
@@ -5289,8 +6259,7 @@
       "festival",
       "outdoors",
       "san francisco",
-      "summer",
-      "water"
+      "summer"
     ]
   },
   {
@@ -5309,7 +6278,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/2/",
-    "last_verified": "2026-06-14T15:47:36.657864+00:00",
+    "last_verified": "2026-06-14T19:34:09.623700+00:00",
     "dedupe_key": "f4cfa3a7b5c0",
     "is_camp": false,
     "tags": [
@@ -5339,7 +6308,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/2/",
-    "last_verified": "2026-06-14T15:47:36.659146+00:00",
+    "last_verified": "2026-06-14T19:34:09.624744+00:00",
     "dedupe_key": "0c5b4d685bd9",
     "is_camp": false,
     "tags": [
@@ -5348,8 +6317,7 @@
       "festival",
       "free",
       "outdoors",
-      "san francisco",
-      "water"
+      "san francisco"
     ]
   },
   {
@@ -5368,14 +6336,13 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/2/",
-    "last_verified": "2026-06-14T15:47:36.659831+00:00",
+    "last_verified": "2026-06-14T19:34:09.625335+00:00",
     "dedupe_key": "33cbf6471f6e",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -5394,7 +6361,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/2/",
-    "last_verified": "2026-06-14T15:47:36.660535+00:00",
+    "last_verified": "2026-06-14T19:34:09.625899+00:00",
     "dedupe_key": "baee550719b2",
     "is_camp": false,
     "tags": [
@@ -5402,8 +6369,7 @@
       "drop-in",
       "indoors",
       "music",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -5422,15 +6388,14 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/2/",
-    "last_verified": "2026-06-14T15:47:36.661864+00:00",
+    "last_verified": "2026-06-14T19:34:09.627004+00:00",
     "dedupe_key": "7eed313a1602",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
       "outdoors",
-      "san francisco",
-      "water"
+      "san francisco"
     ]
   },
   {
@@ -5449,7 +6414,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/2/",
-    "last_verified": "2026-06-14T15:47:36.663170+00:00",
+    "last_verified": "2026-06-14T19:34:09.628098+00:00",
     "dedupe_key": "f4d54c568506",
     "is_camp": false,
     "tags": [
@@ -5457,8 +6422,7 @@
       "drop-in",
       "outdoors",
       "san francisco",
-      "school-age",
-      "water"
+      "school-age"
     ]
   },
   {
@@ -5477,15 +6441,14 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/2/",
-    "last_verified": "2026-06-14T15:47:36.663840+00:00",
+    "last_verified": "2026-06-14T19:34:09.628669+00:00",
     "dedupe_key": "e53ae9be62fe",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
       "outdoors",
-      "summer",
-      "water"
+      "summer"
     ]
   },
   {
@@ -5504,7 +6467,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/2/",
-    "last_verified": "2026-06-14T15:47:36.664410+00:00",
+    "last_verified": "2026-06-14T19:34:09.629108+00:00",
     "dedupe_key": "bf530b3ed002",
     "is_camp": false,
     "tags": [
@@ -5512,8 +6475,35 @@
       "drop-in",
       "free",
       "indoors",
+      "outdoors"
+    ]
+  },
+  {
+    "title": "History Museum: Free First Fridays (Redwood City)",
+    "start_datetime": null,
+    "end_datetime": null,
+    "venue": "Bay Area",
+    "city": "Bay Area",
+    "county": "Bay Area",
+    "age_range": "Families",
+    "cost": "Free",
+    "cost_amount": 0.0,
+    "ticket_status": "free walk-up",
+    "ticket_url": "https://sf.funcheap.com/history-museum-free-first-fridays-redwood-city-135/",
+    "category": "aggregator",
+    "source_channel": "aggregator",
+    "source_name": "Funcheap",
+    "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/2/",
+    "last_verified": "2026-06-14T19:34:09.629550+00:00",
+    "dedupe_key": "807a2b9d5837",
+    "is_camp": false,
+    "tags": [
+      "aggregator",
+      "drop-in",
+      "free",
+      "indoors",
       "outdoors",
-      "water"
+      "peninsula"
     ]
   },
   {
@@ -5532,7 +6522,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/3/",
-    "last_verified": "2026-06-14T15:47:36.886889+00:00",
+    "last_verified": "2026-06-14T19:34:10.242238+00:00",
     "dedupe_key": "c51b71dd2189",
     "is_camp": false,
     "tags": [
@@ -5541,8 +6531,7 @@
       "east bay",
       "festival",
       "free",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -5561,7 +6550,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/3/",
-    "last_verified": "2026-06-14T15:47:36.888983+00:00",
+    "last_verified": "2026-06-14T19:34:10.242772+00:00",
     "dedupe_key": "dc3ea2eeb516",
     "is_camp": false,
     "tags": [
@@ -5569,8 +6558,7 @@
       "drop-in",
       "festival",
       "free",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -5589,7 +6577,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/3/",
-    "last_verified": "2026-06-14T15:47:36.889535+00:00",
+    "last_verified": "2026-06-14T19:34:10.243256+00:00",
     "dedupe_key": "7e3cf4858a70",
     "is_camp": false,
     "tags": [
@@ -5597,8 +6585,7 @@
       "drop-in",
       "east bay",
       "free",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -5617,14 +6604,13 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/3/",
-    "last_verified": "2026-06-14T15:47:36.890167+00:00",
+    "last_verified": "2026-06-14T19:34:10.243816+00:00",
     "dedupe_key": "51151af70d10",
     "is_camp": false,
     "tags": [
       "aggregator",
       "outdoors",
-      "summer",
-      "water"
+      "summer"
     ]
   },
   {
@@ -5643,7 +6629,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/3/",
-    "last_verified": "2026-06-14T15:47:36.891450+00:00",
+    "last_verified": "2026-06-14T19:34:10.244975+00:00",
     "dedupe_key": "8c2975a01876",
     "is_camp": false,
     "tags": [
@@ -5652,38 +6638,7 @@
       "festival",
       "free",
       "outdoors",
-      "summer",
-      "water"
-    ]
-  },
-  {
-    "title": "Alameda | 4th of July Parade: The Longest Parade in the USA | 2026",
-    "start_datetime": null,
-    "end_datetime": null,
-    "venue": "Bay Area",
-    "city": "Bay Area",
-    "county": "Bay Area",
-    "age_range": "Families",
-    "cost": "Free",
-    "cost_amount": 0.0,
-    "ticket_status": "free walk-up",
-    "ticket_url": "https://sf.funcheap.com/city-alameda-mayors-4th-july-parade/",
-    "category": "aggregator",
-    "source_channel": "aggregator",
-    "source_name": "Funcheap",
-    "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/3/",
-    "last_verified": "2026-06-14T15:47:36.891981+00:00",
-    "dedupe_key": "fa0accefcbef",
-    "is_camp": false,
-    "tags": [
-      "aggregator",
-      "drop-in",
-      "east bay",
-      "festival",
-      "free",
-      "outdoors",
-      "summer",
-      "water"
+      "summer"
     ]
   },
   {
@@ -5702,7 +6657,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/3/",
-    "last_verified": "2026-06-14T15:47:36.892642+00:00",
+    "last_verified": "2026-06-14T19:34:10.245561+00:00",
     "dedupe_key": "45980e0eb257",
     "is_camp": false,
     "tags": [
@@ -5710,8 +6665,7 @@
       "drop-in",
       "east bay",
       "outdoors",
-      "summer",
-      "water"
+      "summer"
     ]
   },
   {
@@ -5730,7 +6684,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/3/",
-    "last_verified": "2026-06-14T15:47:36.893299+00:00",
+    "last_verified": "2026-06-14T19:34:10.246130+00:00",
     "dedupe_key": "edfe683d101c",
     "is_camp": false,
     "tags": [
@@ -5739,8 +6693,36 @@
       "drop-in",
       "free",
       "nature",
+      "outdoors"
+    ]
+  },
+  {
+    "title": "Alameda | 4th of July Parade: The Longest Parade in the USA | 2026",
+    "start_datetime": null,
+    "end_datetime": null,
+    "venue": "Bay Area",
+    "city": "Bay Area",
+    "county": "Bay Area",
+    "age_range": "Families",
+    "cost": "Free",
+    "cost_amount": 0.0,
+    "ticket_status": "free walk-up",
+    "ticket_url": "https://sf.funcheap.com/city-alameda-mayors-4th-july-parade/",
+    "category": "aggregator",
+    "source_channel": "aggregator",
+    "source_name": "Funcheap",
+    "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/3/",
+    "last_verified": "2026-06-14T19:34:10.246568+00:00",
+    "dedupe_key": "fa0accefcbef",
+    "is_camp": false,
+    "tags": [
+      "aggregator",
+      "drop-in",
+      "east bay",
+      "festival",
+      "free",
       "outdoors",
-      "water"
+      "summer"
     ]
   },
   {
@@ -5759,7 +6741,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/3/",
-    "last_verified": "2026-06-14T15:47:36.893890+00:00",
+    "last_verified": "2026-06-14T19:34:10.247081+00:00",
     "dedupe_key": "8bd09300485b",
     "is_camp": false,
     "tags": [
@@ -5768,8 +6750,7 @@
       "free",
       "music",
       "outdoors",
-      "summer",
-      "water"
+      "summer"
     ]
   },
   {
@@ -5788,7 +6769,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/3/",
-    "last_verified": "2026-06-14T15:47:36.895213+00:00",
+    "last_verified": "2026-06-14T19:34:10.248193+00:00",
     "dedupe_key": "5fe96f39185a",
     "is_camp": false,
     "tags": [
@@ -5797,8 +6778,7 @@
       "festival",
       "free",
       "outdoors",
-      "summer",
-      "water"
+      "summer"
     ]
   },
   {
@@ -5817,15 +6797,14 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/3/",
-    "last_verified": "2026-06-14T15:47:36.895870+00:00",
+    "last_verified": "2026-06-14T19:34:10.249125+00:00",
     "dedupe_key": "7ae993c20ab7",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
       "outdoors",
-      "summer",
-      "water"
+      "summer"
     ]
   },
   {
@@ -5844,7 +6823,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/3/",
-    "last_verified": "2026-06-14T15:47:36.896401+00:00",
+    "last_verified": "2026-06-14T19:34:10.249663+00:00",
     "dedupe_key": "d0edde904452",
     "is_camp": false,
     "tags": [
@@ -5852,8 +6831,7 @@
       "drop-in",
       "free",
       "outdoors",
-      "theatre",
-      "water"
+      "theatre"
     ]
   },
   {
@@ -5872,7 +6850,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/3/",
-    "last_verified": "2026-06-14T15:47:36.896927+00:00",
+    "last_verified": "2026-06-14T19:34:10.250110+00:00",
     "dedupe_key": "36952c7ebae2",
     "is_camp": false,
     "tags": [
@@ -5881,8 +6859,7 @@
       "free",
       "outdoors",
       "san francisco",
-      "summer",
-      "water"
+      "summer"
     ]
   },
   {
@@ -5901,7 +6878,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/3/",
-    "last_verified": "2026-06-14T15:47:36.898125+00:00",
+    "last_verified": "2026-06-14T19:34:10.251125+00:00",
     "dedupe_key": "0fe38f759153",
     "is_camp": false,
     "tags": [
@@ -5909,8 +6886,7 @@
       "drop-in",
       "free",
       "outdoors",
-      "san francisco",
-      "water"
+      "san francisco"
     ]
   },
   {
@@ -5929,7 +6905,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/3/",
-    "last_verified": "2026-06-14T15:47:36.899472+00:00",
+    "last_verified": "2026-06-14T19:34:10.252244+00:00",
     "dedupe_key": "c3389ff4a7e0",
     "is_camp": false,
     "tags": [
@@ -5937,8 +6913,7 @@
       "arts & crafts",
       "drop-in",
       "free",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -5957,7 +6932,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/3/",
-    "last_verified": "2026-06-14T15:47:36.900133+00:00",
+    "last_verified": "2026-06-14T19:34:10.252842+00:00",
     "dedupe_key": "53d1a05984d0",
     "is_camp": false,
     "tags": [
@@ -5965,8 +6940,7 @@
       "drop-in",
       "free",
       "outdoors",
-      "san francisco",
-      "water"
+      "san francisco"
     ]
   },
   {
@@ -5985,7 +6959,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/3/",
-    "last_verified": "2026-06-14T15:47:36.900684+00:00",
+    "last_verified": "2026-06-14T19:34:10.253345+00:00",
     "dedupe_key": "9dfc4775afe9",
     "is_camp": false,
     "tags": [
@@ -6015,7 +6989,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/3/",
-    "last_verified": "2026-06-14T15:47:36.901386+00:00",
+    "last_verified": "2026-06-14T19:34:10.253955+00:00",
     "dedupe_key": "860c026a247f",
     "is_camp": false,
     "tags": [
@@ -6024,8 +6998,7 @@
       "drop-in",
       "indoors",
       "outdoors",
-      "san francisco",
-      "water"
+      "san francisco"
     ]
   },
   {
@@ -6044,7 +7017,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/3/",
-    "last_verified": "2026-06-14T15:47:36.902619+00:00",
+    "last_verified": "2026-06-14T19:34:10.254967+00:00",
     "dedupe_key": "87007ffd829c",
     "is_camp": false,
     "tags": [
@@ -6073,7 +7046,7 @@
     "source_channel": "aggregator",
     "source_name": "Funcheap",
     "source_url": "https://sf.funcheap.com/category/event/event-types/kids-families/page/3/",
-    "last_verified": "2026-06-14T15:47:36.903902+00:00",
+    "last_verified": "2026-06-14T19:34:10.256019+00:00",
     "dedupe_key": "39c30376e16c",
     "is_camp": false,
     "tags": [
@@ -6081,8 +7054,7 @@
       "drop-in",
       "outdoors",
       "san francisco",
-      "summer",
-      "water"
+      "summer"
     ]
   },
   {
@@ -6101,14 +7073,13 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T15:47:37.477485+00:00",
+    "last_verified": "2026-06-14T19:34:10.811759+00:00",
     "dedupe_key": "c810969de512",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -6127,15 +7098,14 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T15:47:37.477522+00:00",
+    "last_verified": "2026-06-14T19:34:10.811795+00:00",
     "dedupe_key": "90504636982b",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
       "festival",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -6154,7 +7124,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T15:47:37.477535+00:00",
+    "last_verified": "2026-06-14T19:34:10.811816+00:00",
     "dedupe_key": "2df887ea0d6c",
     "is_camp": false,
     "tags": [
@@ -6163,8 +7133,7 @@
       "drop-in",
       "nature",
       "outdoors",
-      "theatre",
-      "water"
+      "theatre"
     ]
   },
   {
@@ -6183,14 +7152,13 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T15:47:37.477547+00:00",
+    "last_verified": "2026-06-14T19:34:10.811830+00:00",
     "dedupe_key": "a80bad48d9b2",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -6209,14 +7177,13 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T15:47:37.477558+00:00",
+    "last_verified": "2026-06-14T19:34:10.811842+00:00",
     "dedupe_key": "85df1d22ed48",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -6235,7 +7202,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T15:47:37.477566+00:00",
+    "last_verified": "2026-06-14T19:34:10.811853+00:00",
     "dedupe_key": "3e796f7da8f8",
     "is_camp": false,
     "tags": [
@@ -6243,8 +7210,7 @@
       "animals",
       "drop-in",
       "farm",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -6263,14 +7229,13 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T15:47:37.477575+00:00",
+    "last_verified": "2026-06-14T19:34:10.811863+00:00",
     "dedupe_key": "fcc8ffd71d10",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -6289,14 +7254,13 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T15:47:37.477583+00:00",
+    "last_verified": "2026-06-14T19:34:10.811873+00:00",
     "dedupe_key": "2c66b93139e1",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -6315,15 +7279,14 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T15:47:37.477591+00:00",
+    "last_verified": "2026-06-14T19:34:10.811883+00:00",
     "dedupe_key": "ce67267cef32",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
       "east bay",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -6342,14 +7305,13 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T15:47:37.477603+00:00",
+    "last_verified": "2026-06-14T19:34:10.811892+00:00",
     "dedupe_key": "13c0a17f389a",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -6368,7 +7330,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T15:47:37.477611+00:00",
+    "last_verified": "2026-06-14T19:34:10.811901+00:00",
     "dedupe_key": "41934f3ba17f",
     "is_camp": false,
     "tags": [
@@ -6376,8 +7338,7 @@
       "drop-in",
       "film & movies",
       "outdoors",
-      "toddler-friendly",
-      "water"
+      "toddler-friendly"
     ]
   },
   {
@@ -6396,15 +7357,14 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T15:47:37.477619+00:00",
+    "last_verified": "2026-06-14T19:34:10.811911+00:00",
     "dedupe_key": "397a3a016cf6",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
       "film & movies",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -6423,15 +7383,14 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T15:47:37.477627+00:00",
+    "last_verified": "2026-06-14T19:34:10.811920+00:00",
     "dedupe_key": "355de2907573",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
       "film & movies",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -6450,14 +7409,13 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T15:47:37.477635+00:00",
+    "last_verified": "2026-06-14T19:34:10.811930+00:00",
     "dedupe_key": "e69174c74d6f",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -6476,14 +7434,13 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T15:47:37.477643+00:00",
+    "last_verified": "2026-06-14T19:34:10.811940+00:00",
     "dedupe_key": "3e6d52e66ac2",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -6502,15 +7459,14 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T15:47:37.477652+00:00",
+    "last_verified": "2026-06-14T19:34:10.811949+00:00",
     "dedupe_key": "ab682614bb17",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
       "outdoors",
-      "school-age",
-      "water"
+      "school-age"
     ]
   },
   {
@@ -6529,7 +7485,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T15:47:37.477659+00:00",
+    "last_verified": "2026-06-14T19:34:10.811958+00:00",
     "dedupe_key": "857570193972",
     "is_camp": false,
     "tags": [
@@ -6537,8 +7493,7 @@
       "drop-in",
       "festival",
       "outdoors",
-      "science",
-      "water"
+      "science"
     ]
   },
   {
@@ -6557,7 +7512,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T15:47:37.477667+00:00",
+    "last_verified": "2026-06-14T19:34:10.811968+00:00",
     "dedupe_key": "c24606245e15",
     "is_camp": false,
     "tags": [
@@ -6565,8 +7520,7 @@
       "drop-in",
       "music",
       "outdoors",
-      "sports & movement",
-      "water"
+      "sports & movement"
     ]
   },
   {
@@ -6585,15 +7539,14 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T15:47:37.477675+00:00",
+    "last_verified": "2026-06-14T19:34:10.811978+00:00",
     "dedupe_key": "c15ee6d5c6be",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
       "festival",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -6612,15 +7565,14 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T15:47:37.477685+00:00",
+    "last_verified": "2026-06-14T19:34:10.811987+00:00",
     "dedupe_key": "1a9472cf64be",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
       "film & movies",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -6639,14 +7591,13 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T15:47:37.477692+00:00",
+    "last_verified": "2026-06-14T19:34:10.811994+00:00",
     "dedupe_key": "8b917d5f513f",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -6665,15 +7616,14 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T15:47:37.477698+00:00",
+    "last_verified": "2026-06-14T19:34:10.812002+00:00",
     "dedupe_key": "5b3c1d6a1840",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
       "festival",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -6692,7 +7642,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T15:47:37.477707+00:00",
+    "last_verified": "2026-06-14T19:34:10.812013+00:00",
     "dedupe_key": "b8f0b3b49bf6",
     "is_camp": false,
     "tags": [
@@ -6700,8 +7650,7 @@
       "drop-in",
       "indoors",
       "outdoors",
-      "school-age",
-      "water"
+      "school-age"
     ]
   },
   {
@@ -6720,15 +7669,14 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T15:47:37.477718+00:00",
+    "last_verified": "2026-06-14T19:34:10.812025+00:00",
     "dedupe_key": "66a5ff0b5e79",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
       "outdoors",
-      "school-age",
-      "water"
+      "school-age"
     ]
   },
   {
@@ -6747,14 +7695,13 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T15:47:37.477727+00:00",
+    "last_verified": "2026-06-14T19:34:10.812036+00:00",
     "dedupe_key": "f042f722bb38",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -6773,15 +7720,14 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T15:47:37.477736+00:00",
+    "last_verified": "2026-06-14T19:34:10.812047+00:00",
     "dedupe_key": "b34bf914af79",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
       "festival",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -6800,7 +7746,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T15:47:37.477744+00:00",
+    "last_verified": "2026-06-14T19:34:10.812062+00:00",
     "dedupe_key": "fb45d8a86d9e",
     "is_camp": false,
     "tags": [
@@ -6809,8 +7755,7 @@
       "film & movies",
       "nature",
       "outdoors",
-      "summer",
-      "water"
+      "summer"
     ]
   },
   {
@@ -6829,7 +7774,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T15:47:37.477752+00:00",
+    "last_verified": "2026-06-14T19:34:10.812071+00:00",
     "dedupe_key": "68a7dc978f22",
     "is_camp": false,
     "tags": [
@@ -6837,8 +7782,7 @@
       "drop-in",
       "east bay",
       "festival",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -6857,14 +7801,13 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T15:47:37.477759+00:00",
+    "last_verified": "2026-06-14T19:34:10.812080+00:00",
     "dedupe_key": "6a74c942d436",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -6883,15 +7826,14 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T15:47:37.477767+00:00",
+    "last_verified": "2026-06-14T19:34:10.812089+00:00",
     "dedupe_key": "7a75af40dab3",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
       "nature",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -6910,7 +7852,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T15:47:37.477775+00:00",
+    "last_verified": "2026-06-14T19:34:10.812099+00:00",
     "dedupe_key": "21df5b81d368",
     "is_camp": false,
     "tags": [
@@ -6918,8 +7860,7 @@
       "animals",
       "drop-in",
       "farm",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -6938,15 +7879,14 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T15:47:37.477783+00:00",
+    "last_verified": "2026-06-14T19:34:10.812108+00:00",
     "dedupe_key": "62d8b341ce02",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
       "nature",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -6965,7 +7905,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T15:47:37.477790+00:00",
+    "last_verified": "2026-06-14T19:34:10.812116+00:00",
     "dedupe_key": "29e5fee4156c",
     "is_camp": false,
     "tags": [
@@ -6973,8 +7913,7 @@
       "books & reading",
       "drop-in",
       "outdoors",
-      "storytime",
-      "water"
+      "storytime"
     ]
   },
   {
@@ -6993,7 +7932,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T15:47:37.477797+00:00",
+    "last_verified": "2026-06-14T19:34:10.812126+00:00",
     "dedupe_key": "16cd65e7b270",
     "is_camp": false,
     "tags": [
@@ -7001,8 +7940,7 @@
       "animals",
       "drop-in",
       "farm",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -7021,7 +7959,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T15:47:37.477805+00:00",
+    "last_verified": "2026-06-14T19:34:10.812135+00:00",
     "dedupe_key": "51b736310ac4",
     "is_camp": false,
     "tags": [
@@ -7029,8 +7967,7 @@
       "aggregator",
       "drop-in",
       "outdoors",
-      "science",
-      "water"
+      "science"
     ]
   },
   {
@@ -7049,14 +7986,13 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T15:47:37.477812+00:00",
+    "last_verified": "2026-06-14T19:34:10.812144+00:00",
     "dedupe_key": "9cd0a4a40b92",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -7075,7 +8011,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T15:47:37.477820+00:00",
+    "last_verified": "2026-06-14T19:34:10.812153+00:00",
     "dedupe_key": "ddc88ef84702",
     "is_camp": false,
     "tags": [
@@ -7083,8 +8019,7 @@
       "arts & crafts",
       "drop-in",
       "indoors",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -7103,7 +8038,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T15:47:37.477828+00:00",
+    "last_verified": "2026-06-14T19:34:10.812162+00:00",
     "dedupe_key": "ba75d2a578e8",
     "is_camp": false,
     "tags": [
@@ -7114,8 +8049,7 @@
       "outdoors",
       "school-age",
       "science",
-      "storytime",
-      "water"
+      "storytime"
     ]
   },
   {
@@ -7134,15 +8068,14 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T15:47:37.477835+00:00",
+    "last_verified": "2026-06-14T19:34:10.812171+00:00",
     "dedupe_key": "767ad51642aa",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
       "outdoors",
-      "toddler-friendly",
-      "water"
+      "toddler-friendly"
     ]
   },
   {
@@ -7161,14 +8094,13 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T15:47:37.477842+00:00",
+    "last_verified": "2026-06-14T19:34:10.812179+00:00",
     "dedupe_key": "4d663498eeff",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -7187,7 +8119,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T15:47:37.477849+00:00",
+    "last_verified": "2026-06-14T19:34:10.812188+00:00",
     "dedupe_key": "723bfc58089d",
     "is_camp": false,
     "tags": [
@@ -7195,8 +8127,7 @@
       "aggregator",
       "drop-in",
       "outdoors",
-      "science",
-      "water"
+      "science"
     ]
   },
   {
@@ -7215,15 +8146,14 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T15:47:37.477856+00:00",
+    "last_verified": "2026-06-14T19:34:10.812196+00:00",
     "dedupe_key": "d49413f7f059",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
       "festival",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -7242,14 +8172,13 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T15:47:37.477863+00:00",
+    "last_verified": "2026-06-14T19:34:10.812205+00:00",
     "dedupe_key": "e8d15dee0cdb",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -7268,7 +8197,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T15:47:37.477874+00:00",
+    "last_verified": "2026-06-14T19:34:10.812214+00:00",
     "dedupe_key": "e7e84f5cf08c",
     "is_camp": false,
     "tags": [
@@ -7276,8 +8205,7 @@
       "drop-in",
       "outdoors",
       "san francisco",
-      "toddler-friendly",
-      "water"
+      "toddler-friendly"
     ]
   },
   {
@@ -7296,7 +8224,7 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T15:47:37.477883+00:00",
+    "last_verified": "2026-06-14T19:34:10.812226+00:00",
     "dedupe_key": "03c6cde2e10f",
     "is_camp": false,
     "tags": [
@@ -7304,8 +8232,7 @@
       "drop-in",
       "festival",
       "outdoors",
-      "peninsula",
-      "water"
+      "peninsula"
     ]
   },
   {
@@ -7324,14 +8251,13 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T15:47:37.477891+00:00",
+    "last_verified": "2026-06-14T19:34:10.812236+00:00",
     "dedupe_key": "22e567444768",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -7350,14 +8276,13 @@
     "source_channel": "aggregator",
     "source_name": "Bay Area Kid Fun",
     "source_url": "https://www.bayareakidfun.com/weekend-highlights/",
-    "last_verified": "2026-06-14T15:47:37.477898+00:00",
+    "last_verified": "2026-06-14T19:34:10.812245+00:00",
     "dedupe_key": "d10c3bd3fad4",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -7376,7 +8301,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T15:47:37.763098+00:00",
+    "last_verified": "2026-06-14T19:34:11.176129+00:00",
     "dedupe_key": "9fdd3d62ae25",
     "is_camp": false,
     "tags": [
@@ -7386,8 +8311,7 @@
       "east bay",
       "indoors",
       "outdoors",
-      "science",
-      "water"
+      "science"
     ]
   },
   {
@@ -7406,15 +8330,14 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T15:47:37.763134+00:00",
+    "last_verified": "2026-06-14T19:34:11.176179+00:00",
     "dedupe_key": "e8b4f3064471",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
       "east bay",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -7433,15 +8356,14 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T15:47:37.763160+00:00",
+    "last_verified": "2026-06-14T19:34:11.176212+00:00",
     "dedupe_key": "3255900cd9fe",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
       "east bay",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -7460,7 +8382,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T15:47:37.763171+00:00",
+    "last_verified": "2026-06-14T19:34:11.176224+00:00",
     "dedupe_key": "33ed33ee7a78",
     "is_camp": false,
     "tags": [
@@ -7468,8 +8390,7 @@
       "drop-in",
       "east bay",
       "music",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -7488,7 +8409,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T15:47:37.763181+00:00",
+    "last_verified": "2026-06-14T19:34:11.176235+00:00",
     "dedupe_key": "49d167c5734e",
     "is_camp": false,
     "tags": [
@@ -7496,8 +8417,7 @@
       "drop-in",
       "east bay",
       "festival",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -7516,15 +8436,14 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T15:47:37.763191+00:00",
+    "last_verified": "2026-06-14T19:34:11.176247+00:00",
     "dedupe_key": "b8d8677f3889",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
       "east bay",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -7543,7 +8462,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T15:47:37.763201+00:00",
+    "last_verified": "2026-06-14T19:34:11.176258+00:00",
     "dedupe_key": "12c9e39e9f3b",
     "is_camp": false,
     "tags": [
@@ -7551,8 +8470,7 @@
       "drop-in",
       "east bay",
       "festival",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -7571,7 +8489,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T15:47:37.763209+00:00",
+    "last_verified": "2026-06-14T19:34:11.176267+00:00",
     "dedupe_key": "8febb0750276",
     "is_camp": false,
     "tags": [
@@ -7581,8 +8499,7 @@
       "festival",
       "outdoors",
       "san francisco",
-      "sports & movement",
-      "water"
+      "sports & movement"
     ]
   },
   {
@@ -7601,7 +8518,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T15:47:37.763219+00:00",
+    "last_verified": "2026-06-14T19:34:11.176278+00:00",
     "dedupe_key": "3173a3a1641b",
     "is_camp": false,
     "tags": [
@@ -7611,8 +8528,7 @@
       "film & movies",
       "nature",
       "outdoors",
-      "summer",
-      "water"
+      "summer"
     ]
   },
   {
@@ -7631,15 +8547,14 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T15:47:37.763233+00:00",
+    "last_verified": "2026-06-14T19:34:11.176292+00:00",
     "dedupe_key": "872f9291ca0a",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
       "east bay",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -7658,7 +8573,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T15:47:37.763243+00:00",
+    "last_verified": "2026-06-14T19:34:11.176303+00:00",
     "dedupe_key": "2999509361fb",
     "is_camp": false,
     "tags": [
@@ -7668,8 +8583,7 @@
       "east bay",
       "festival",
       "nature",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -7688,7 +8602,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T15:47:37.763253+00:00",
+    "last_verified": "2026-06-14T19:34:11.176314+00:00",
     "dedupe_key": "2c4f620d4118",
     "is_camp": false,
     "tags": [
@@ -7696,8 +8610,7 @@
       "arts & crafts",
       "drop-in",
       "east bay",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -7716,7 +8629,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T15:47:37.763265+00:00",
+    "last_verified": "2026-06-14T19:34:11.176325+00:00",
     "dedupe_key": "b77ccd038760",
     "is_camp": false,
     "tags": [
@@ -7726,8 +8639,7 @@
       "east bay",
       "festival",
       "outdoors",
-      "san francisco",
-      "water"
+      "san francisco"
     ]
   },
   {
@@ -7746,7 +8658,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T15:47:37.763274+00:00",
+    "last_verified": "2026-06-14T19:34:11.176335+00:00",
     "dedupe_key": "81ff7f83f68c",
     "is_camp": false,
     "tags": [
@@ -7773,7 +8685,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T15:47:37.763282+00:00",
+    "last_verified": "2026-06-14T19:34:11.176344+00:00",
     "dedupe_key": "46dbaaff5559",
     "is_camp": false,
     "tags": [
@@ -7782,8 +8694,7 @@
       "drop-in",
       "east bay",
       "farm",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -7802,15 +8713,14 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T15:47:37.763291+00:00",
+    "last_verified": "2026-06-14T19:34:11.176353+00:00",
     "dedupe_key": "55096960bd13",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
       "east bay",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -7829,15 +8739,14 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T15:47:37.763298+00:00",
+    "last_verified": "2026-06-14T19:34:11.176362+00:00",
     "dedupe_key": "72a6cd07569e",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
       "east bay",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -7856,7 +8765,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T15:47:37.763311+00:00",
+    "last_verified": "2026-06-14T19:34:11.176380+00:00",
     "dedupe_key": "69337e3a74d1",
     "is_camp": false,
     "tags": [
@@ -7864,8 +8773,7 @@
       "drop-in",
       "east bay",
       "festival",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -7884,7 +8792,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T15:47:37.763320+00:00",
+    "last_verified": "2026-06-14T19:34:11.176390+00:00",
     "dedupe_key": "ccd711130575",
     "is_camp": false,
     "tags": [
@@ -7893,8 +8801,7 @@
       "east bay",
       "festival",
       "outdoors",
-      "peninsula",
-      "water"
+      "peninsula"
     ]
   },
   {
@@ -7913,15 +8820,14 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T15:47:37.763329+00:00",
+    "last_verified": "2026-06-14T19:34:11.176400+00:00",
     "dedupe_key": "1e381297371b",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
       "east bay",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -7940,15 +8846,14 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T15:47:37.763337+00:00",
+    "last_verified": "2026-06-14T19:34:11.176410+00:00",
     "dedupe_key": "5c0121e0b752",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
       "east bay",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -7967,7 +8872,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T15:47:37.763346+00:00",
+    "last_verified": "2026-06-14T19:34:11.176421+00:00",
     "dedupe_key": "7b420426a874",
     "is_camp": false,
     "tags": [
@@ -7976,8 +8881,7 @@
       "east bay",
       "nature",
       "outdoors",
-      "summer",
-      "water"
+      "summer"
     ]
   },
   {
@@ -7996,15 +8900,14 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T15:47:37.763359+00:00",
+    "last_verified": "2026-06-14T19:34:11.176432+00:00",
     "dedupe_key": "bd22a79d798f",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
       "east bay",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -8023,7 +8926,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T15:47:37.763367+00:00",
+    "last_verified": "2026-06-14T19:34:11.176441+00:00",
     "dedupe_key": "64a780697e32",
     "is_camp": false,
     "tags": [
@@ -8032,8 +8935,7 @@
       "east bay",
       "festival",
       "outdoors",
-      "san francisco",
-      "water"
+      "san francisco"
     ]
   },
   {
@@ -8052,15 +8954,14 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T15:47:37.763376+00:00",
+    "last_verified": "2026-06-14T19:34:11.176512+00:00",
     "dedupe_key": "d4c6ab188e1f",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
       "east bay",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -8079,7 +8980,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T15:47:37.763386+00:00",
+    "last_verified": "2026-06-14T19:34:11.176534+00:00",
     "dedupe_key": "dda73b8d38ad",
     "is_camp": false,
     "tags": [
@@ -8087,8 +8988,7 @@
       "drop-in",
       "east bay",
       "outdoors",
-      "school-age",
-      "water"
+      "school-age"
     ]
   },
   {
@@ -8107,7 +9007,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T15:47:37.763394+00:00",
+    "last_verified": "2026-06-14T19:34:11.176548+00:00",
     "dedupe_key": "fe2b34226c66",
     "is_camp": false,
     "tags": [
@@ -8116,8 +9016,7 @@
       "drop-in",
       "east bay",
       "outdoors",
-      "toddler-friendly",
-      "water"
+      "toddler-friendly"
     ]
   },
   {
@@ -8136,7 +9035,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T15:47:37.763403+00:00",
+    "last_verified": "2026-06-14T19:34:11.176560+00:00",
     "dedupe_key": "aa07dbb5d719",
     "is_camp": false,
     "tags": [
@@ -8144,8 +9043,7 @@
       "drop-in",
       "east bay",
       "outdoors",
-      "summer",
-      "water"
+      "summer"
     ]
   },
   {
@@ -8164,7 +9062,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T15:47:37.763413+00:00",
+    "last_verified": "2026-06-14T19:34:11.176573+00:00",
     "dedupe_key": "f88688b81b87",
     "is_camp": false,
     "tags": [
@@ -8172,8 +9070,7 @@
       "drop-in",
       "east bay",
       "hands-on",
-      "outdoors",
-      "water"
+      "outdoors"
     ]
   },
   {
@@ -8192,7 +9089,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T15:47:37.763423+00:00",
+    "last_verified": "2026-06-14T19:34:11.176586+00:00",
     "dedupe_key": "3aa8bea6dc3e",
     "is_camp": false,
     "tags": [
@@ -8201,8 +9098,7 @@
       "east bay",
       "outdoors",
       "school-age",
-      "summer",
-      "water"
+      "summer"
     ]
   },
   {
@@ -8221,7 +9117,7 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T15:47:37.763435+00:00",
+    "last_verified": "2026-06-14T19:34:11.176601+00:00",
     "dedupe_key": "37856f97a96c",
     "is_camp": false,
     "tags": [
@@ -8229,8 +9125,7 @@
       "drop-in",
       "east bay",
       "outdoors",
-      "summer",
-      "water"
+      "summer"
     ]
   },
   {
@@ -8249,15 +9144,316 @@
     "source_channel": "aggregator",
     "source_name": "510 Families",
     "source_url": "https://www.510families.com/fun-in-oakland-with-kids-this-weekend/",
-    "last_verified": "2026-06-14T15:47:37.763450+00:00",
+    "last_verified": "2026-06-14T19:34:11.176615+00:00",
     "dedupe_key": "f0e8c796288e",
     "is_camp": false,
     "tags": [
       "aggregator",
       "drop-in",
       "east bay",
+      "outdoors"
+    ]
+  },
+  {
+    "title": "Farm Volunteer Day",
+    "start_datetime": null,
+    "end_datetime": null,
+    "venue": "Hidden Villa Farm",
+    "city": "Los Altos Hills",
+    "county": "Santa Clara",
+    "age_range": "Families",
+    "cost": "Paid",
+    "cost_amount": 8.0,
+    "ticket_status": "some tours require registration",
+    "ticket_url": "https://www.hiddenvilla.org/programs/catalog/468-farm-volunteer-day/region-HV/",
+    "category": "venue",
+    "source_channel": "venue",
+    "source_name": "Hidden Villa Farm",
+    "source_url": "https://www.hiddenvilla.org/calendar/individuals-families/region-HV/",
+    "last_verified": "2026-06-14T19:34:16.575577+00:00",
+    "dedupe_key": "d386f2fd248d",
+    "is_camp": false,
+    "tags": [
+      "animals",
+      "book ahead",
+      "farm",
       "outdoors",
-      "water"
+      "venue"
+    ]
+  },
+  {
+    "title": "Archery ",
+    "start_datetime": null,
+    "end_datetime": null,
+    "venue": "Hidden Villa Farm",
+    "city": "Los Altos Hills",
+    "county": "Santa Clara",
+    "age_range": "Families",
+    "cost": "Paid",
+    "cost_amount": 8.0,
+    "ticket_status": "some tours require registration",
+    "ticket_url": "https://www.hiddenvilla.org/programs/catalog/460-archery/region-HV/",
+    "category": "venue",
+    "source_channel": "venue",
+    "source_name": "Hidden Villa Farm",
+    "source_url": "https://www.hiddenvilla.org/calendar/individuals-families/region-HV/",
+    "last_verified": "2026-06-14T19:34:16.575809+00:00",
+    "dedupe_key": "6d0f6f3d1504",
+    "is_camp": false,
+    "tags": [
+      "animals",
+      "book ahead",
+      "farm",
+      "outdoors",
+      "venue"
+    ]
+  },
+  {
+    "title": "Weekend Farm Tour ",
+    "start_datetime": null,
+    "end_datetime": null,
+    "venue": "Hidden Villa Farm",
+    "city": "Los Altos Hills",
+    "county": "Santa Clara",
+    "age_range": "Families",
+    "cost": "Paid",
+    "cost_amount": 8.0,
+    "ticket_status": "some tours require registration",
+    "ticket_url": "https://www.hiddenvilla.org/programs/catalog/372-weekend-farm-tour/region-HV/",
+    "category": "venue",
+    "source_channel": "venue",
+    "source_name": "Hidden Villa Farm",
+    "source_url": "https://www.hiddenvilla.org/calendar/individuals-families/region-HV/",
+    "last_verified": "2026-06-14T19:34:16.575886+00:00",
+    "dedupe_key": "c415c446a8f5",
+    "is_camp": false,
+    "tags": [
+      "animals",
+      "book ahead",
+      "farm",
+      "outdoors",
+      "venue"
+    ]
+  },
+  {
+    "title": "Hidden Villa History Tour",
+    "start_datetime": null,
+    "end_datetime": null,
+    "venue": "Hidden Villa Farm",
+    "city": "Los Altos Hills",
+    "county": "Santa Clara",
+    "age_range": "Families",
+    "cost": "Paid",
+    "cost_amount": 8.0,
+    "ticket_status": "some tours require registration",
+    "ticket_url": "https://www.hiddenvilla.org/programs/catalog/542-hidden-villa-history-tour/region-HV/",
+    "category": "venue",
+    "source_channel": "venue",
+    "source_name": "Hidden Villa Farm",
+    "source_url": "https://www.hiddenvilla.org/calendar/individuals-families/region-HV/",
+    "last_verified": "2026-06-14T19:34:16.575899+00:00",
+    "dedupe_key": "b684237dbdb5",
+    "is_camp": false,
+    "tags": [
+      "animals",
+      "book ahead",
+      "farm",
+      "outdoors",
+      "venue"
+    ]
+  },
+  {
+    "title": "Art in the Garden",
+    "start_datetime": null,
+    "end_datetime": null,
+    "venue": "Hidden Villa Farm",
+    "city": "Los Altos Hills",
+    "county": "Santa Clara",
+    "age_range": "Families",
+    "cost": "Paid",
+    "cost_amount": 8.0,
+    "ticket_status": "some tours require registration",
+    "ticket_url": "https://www.hiddenvilla.org/programs/catalog/552-art-in-the-garden/region-HV/",
+    "category": "venue",
+    "source_channel": "venue",
+    "source_name": "Hidden Villa Farm",
+    "source_url": "https://www.hiddenvilla.org/calendar/individuals-families/region-HV/",
+    "last_verified": "2026-06-14T19:34:16.575928+00:00",
+    "dedupe_key": "47e8bee96f9e",
+    "is_camp": false,
+    "tags": [
+      "animals",
+      "arts & crafts",
+      "book ahead",
+      "farm",
+      "nature",
+      "outdoors",
+      "venue"
+    ]
+  },
+  {
+    "title": "Star Party",
+    "start_datetime": null,
+    "end_datetime": null,
+    "venue": "Hidden Villa Farm",
+    "city": "Los Altos Hills",
+    "county": "Santa Clara",
+    "age_range": "Families",
+    "cost": "Paid",
+    "cost_amount": 8.0,
+    "ticket_status": "some tours require registration",
+    "ticket_url": "https://www.hiddenvilla.org/programs/catalog/555-star-party/region-HV/",
+    "category": "venue",
+    "source_channel": "venue",
+    "source_name": "Hidden Villa Farm",
+    "source_url": "https://www.hiddenvilla.org/calendar/individuals-families/region-HV/",
+    "last_verified": "2026-06-14T19:34:16.576018+00:00",
+    "dedupe_key": "cd33607d1d26",
+    "is_camp": false,
+    "tags": [
+      "animals",
+      "book ahead",
+      "farm",
+      "outdoors",
+      "venue"
+    ]
+  },
+  {
+    "title": "Weekend Volunteer Training",
+    "start_datetime": null,
+    "end_datetime": null,
+    "venue": "Hidden Villa Farm",
+    "city": "Los Altos Hills",
+    "county": "Santa Clara",
+    "age_range": "Families",
+    "cost": "Paid",
+    "cost_amount": 8.0,
+    "ticket_status": "some tours require registration",
+    "ticket_url": "https://www.hiddenvilla.org/programs/catalog/534-weekend-volunteer-training/region-HV/",
+    "category": "venue",
+    "source_channel": "venue",
+    "source_name": "Hidden Villa Farm",
+    "source_url": "https://www.hiddenvilla.org/calendar/individuals-families/region-HV/",
+    "last_verified": "2026-06-14T19:34:16.576046+00:00",
+    "dedupe_key": "2e748842a523",
+    "is_camp": false,
+    "tags": [
+      "animals",
+      "book ahead",
+      "farm",
+      "outdoors",
+      "venue"
+    ]
+  },
+  {
+    "title": "Painting with Wool Workshop",
+    "start_datetime": null,
+    "end_datetime": null,
+    "venue": "Hidden Villa Farm",
+    "city": "Los Altos Hills",
+    "county": "Santa Clara",
+    "age_range": "Families",
+    "cost": "Paid",
+    "cost_amount": 8.0,
+    "ticket_status": "some tours require registration",
+    "ticket_url": "https://www.hiddenvilla.org/programs/catalog/558-painting-with-wool-workshop/region-HV/",
+    "category": "venue",
+    "source_channel": "venue",
+    "source_name": "Hidden Villa Farm",
+    "source_url": "https://www.hiddenvilla.org/calendar/individuals-families/region-HV/",
+    "last_verified": "2026-06-14T19:34:16.576087+00:00",
+    "dedupe_key": "ce72bbd0f140",
+    "is_camp": false,
+    "tags": [
+      "animals",
+      "arts & crafts",
+      "book ahead",
+      "farm",
+      "hands-on",
+      "outdoors",
+      "venue"
+    ]
+  },
+  {
+    "title": "Umoja Pranayama: Breathwork Fundamentals ",
+    "start_datetime": null,
+    "end_datetime": null,
+    "venue": "Hidden Villa Farm",
+    "city": "Los Altos Hills",
+    "county": "Santa Clara",
+    "age_range": "Families",
+    "cost": "Paid",
+    "cost_amount": 8.0,
+    "ticket_status": "some tours require registration",
+    "ticket_url": "https://www.hiddenvilla.org/programs/catalog/515-umoja-pranayama-breathwork-fundamentals/region-HV/",
+    "category": "venue",
+    "source_channel": "venue",
+    "source_name": "Hidden Villa Farm",
+    "source_url": "https://www.hiddenvilla.org/calendar/individuals-families/region-HV/",
+    "last_verified": "2026-06-14T19:34:16.576217+00:00",
+    "dedupe_key": "e77bb70ab7b8",
+    "is_camp": false,
+    "tags": [
+      "animals",
+      "book ahead",
+      "farm",
+      "outdoors",
+      "venue"
+    ]
+  },
+  {
+    "title": "Hide Tanning Workshop",
+    "start_datetime": null,
+    "end_datetime": null,
+    "venue": "Hidden Villa Farm",
+    "city": "Los Altos Hills",
+    "county": "Santa Clara",
+    "age_range": "Families",
+    "cost": "Paid",
+    "cost_amount": 8.0,
+    "ticket_status": "some tours require registration",
+    "ticket_url": "https://www.hiddenvilla.org/programs/catalog/554-hide-tanning-workshop/region-HV/",
+    "category": "venue",
+    "source_channel": "venue",
+    "source_name": "Hidden Villa Farm",
+    "source_url": "https://www.hiddenvilla.org/calendar/individuals-families/region-HV/",
+    "last_verified": "2026-06-14T19:34:16.576258+00:00",
+    "dedupe_key": "c93bd0a8b5de",
+    "is_camp": false,
+    "tags": [
+      "animals",
+      "book ahead",
+      "farm",
+      "hands-on",
+      "outdoors",
+      "venue"
+    ]
+  },
+  {
+    "title": "Acorn Adventure",
+    "start_datetime": null,
+    "end_datetime": null,
+    "venue": "Hidden Villa Farm",
+    "city": "Los Altos Hills",
+    "county": "Santa Clara",
+    "age_range": "Families",
+    "cost": "Paid",
+    "cost_amount": 8.0,
+    "ticket_status": "some tours require registration",
+    "ticket_url": "https://www.hiddenvilla.org/programs/catalog/559-acorn-adventure/region-HV/",
+    "category": "venue",
+    "source_channel": "venue",
+    "source_name": "Hidden Villa Farm",
+    "source_url": "https://www.hiddenvilla.org/calendar/individuals-families/region-HV/",
+    "last_verified": "2026-06-14T19:34:16.576389+00:00",
+    "dedupe_key": "e715ab182220",
+    "is_camp": false,
+    "tags": [
+      "animals",
+      "book ahead",
+      "farm",
+      "outdoors",
+      "venue"
     ]
   }
 ]

@@ -89,6 +89,20 @@ body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-
 #search:focus { border-color: #fb923c; }
 #search::placeholder { color: var(--ink-3); }
 
+/* active search tags */
+.search-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 2px; }
+.search-tag {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 0.72rem; font-weight: 700;
+  padding: 3px 10px; border-radius: 99px;
+  background: #c2410c; color: #fff; white-space: nowrap;
+}
+.search-tag-remove {
+  font-size: 0.9rem; line-height: 1; cursor: pointer; opacity: 0.75;
+  background: none; border: none; color: #fff; padding: 0;
+}
+.search-tag-remove:hover { opacity: 1; }
+
 /* chips */
 .chip {
   font-family: var(--sans); font-size: 0.75rem; font-weight: 600;
@@ -112,13 +126,13 @@ input[type="date"] {
 input[type="date"]:focus { border-color: #fb923c; }
 
 .reset-btn {
-  font-family: var(--sans); font-size: 0.72rem; font-weight: 700;
-  padding: 5px 12px; border-radius: 99px;
-  border: 1.5px dashed #f97316; background: transparent; color: #c2410c;
-  cursor: pointer; margin-left: auto; display: flex; align-items: center; gap: 4px;
-  transition: background 0.12s;
+  font-size: 1rem; line-height: 1;
+  width: 28px; height: 28px; border-radius: 50%;
+  border: 1.5px solid var(--rule); background: transparent; color: var(--ink-3);
+  cursor: pointer; margin-left: auto; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; transition: background 0.12s, border-color 0.12s, color 0.12s;
 }
-.reset-btn:hover { background: #fff7ed; }
+.reset-btn:hover { background: #fff7ed; border-color: #f97316; color: #c2410c; }
 
 /* ── Count bar ── */
 .count-bar {
@@ -128,12 +142,13 @@ input[type="date"]:focus { border-color: #fb923c; }
 .count-bar strong { color: var(--ink); font-weight: 700; }
 
 /* ── Date group ── */
-.date-group { max-width: 980px; margin: 1.25rem auto 0.5rem; padding: 0 1.25rem; }
+.date-group { max-width: 980px; margin: 1.5rem auto 0.5rem; padding: 0 1.25rem; }
 .date-group h2 {
-  font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
-  letter-spacing: 0.1em; color: var(--ink-3);
-  border-top: 1.5px solid var(--rule); padding-top: 0.6rem;
+  font-size: 0.75rem; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 0.12em; color: #92400e;
+  border-top: 2px solid #fed7aa; padding-top: 0.65rem;
 }
+.date-group.undated h2 { color: var(--ink-3); border-top-color: var(--rule); }
 
 /* ── Grid ── */
 .grid {
@@ -152,6 +167,9 @@ input[type="date"]:focus { border-color: #fb923c; }
   transition: border-color 0.12s, box-shadow 0.12s;
 }
 .card:hover { border-color: #fb923c; box-shadow: 0 2px 12px rgba(194,65,12,0.08); }
+.card.undated { background: #f7f6f3; border-color: #e5e2db; }
+.card.undated:hover { border-color: var(--ink-3); box-shadow: none; }
+.card.undated .card-title a { color: var(--ink-2); border-bottom-color: #e5e2db; }
 
 .card-title { font-size: 0.9rem; font-weight: 700; line-height: 1.35; color: var(--ink); }
 .card-title a { color: #c2410c; text-decoration: none; border-bottom: 1.5px solid #fed7aa; }
@@ -176,12 +194,44 @@ input[type="date"]:focus { border-color: #fb923c; }
   background: var(--tag-bg); color: var(--tag-fg); white-space: nowrap;
 }
 
+/* ── Card emoji ── */
+.card-emoji { font-size: 1.5rem; line-height: 1; margin-bottom: 2px; }
+
+/* ── Sticky filter bar ── */
+.sticky-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+  background: rgba(255,251,247,0.96); backdrop-filter: blur(8px);
+  border-bottom: 1.5px solid #fed7aa;
+  padding: 6px 1.25rem;
+  display: flex; align-items: center; gap: 0.4rem;
+  overflow-x: auto; -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  transform: translateY(-100%);
+  transition: transform 0.2s ease;
+}
+.sticky-bar::-webkit-scrollbar { display: none; }
+.sticky-bar.visible { transform: translateY(0); }
+.sticky-bar .chip { font-size: 0.68rem; padding: 3px 10px; }
+.sticky-label { font-size: 0.65rem; font-weight: 700; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.06em; white-space: nowrap; }
+.sticky-scroll-hint { font-size: 0.65rem; color: var(--ink-3); white-space: nowrap; cursor: pointer; margin-left: auto; flex-shrink: 0; }
+.sticky-scroll-hint:hover { color: var(--accent); }
+
 /* ── Empty / loading ── */
 #loading, #empty {
   max-width: 980px; margin: 3rem auto; padding: 0 1.5rem;
-  font-size: 0.85rem; color: var(--ink-3); text-align: center;
+  text-align: center;
 }
+#loading { font-size: 0.85rem; color: var(--ink-3); }
 #empty { display: none; }
+.empty-msg { font-size: 1rem; color: var(--ink-2); margin-bottom: 1rem; }
+.empty-suggestions { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
+.empty-suggest-btn {
+  font-family: var(--sans); font-size: 0.78rem; font-weight: 700;
+  padding: 6px 16px; border-radius: 99px; cursor: pointer;
+  background: #fff7ed; border: 1.5px solid #fed7aa; color: #c2410c;
+  transition: background 0.12s;
+}
+.empty-suggest-btn:hover { background: #fed7aa; }
 
 /* ── Footer ── */
 footer {
@@ -204,6 +254,7 @@ footer a { color: var(--ink-3); text-decoration: underline; }
   background: #fff; border-radius: 18px;
   padding: 1.5rem; max-width: 420px; width: 100%;
   box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+  max-height: 85vh; overflow-y: auto;
 }
 .modal h2 { font-size: 1rem; font-weight: 700; color: var(--accent); margin-bottom: 0.75rem; }
 .modal-section { margin-bottom: 0.75rem; }
@@ -287,13 +338,12 @@ footer a { color: var(--ink-3); text-decoration: underline; }
   .filter-label { min-width: 42px; font-size: 0.63rem; }
 
   .chip { padding: 7px 13px; font-size: 0.73rem; min-height: 36px; }
-  .reset-btn { padding: 7px 12px; min-height: 36px; }
+  .reset-btn { width: 32px; height: 32px; font-size: 1.1rem; margin-left: auto; }
   input[type="date"] { padding: 6px 8px; font-size: 0.8rem; min-height: 36px; }
   #search { padding: 9px 12px 9px 34px; font-size: 0.83rem; min-height: 40px; }
 
   .chip-group, .date-chips { display: flex; flex-wrap: wrap; gap: 0.35rem; }
   .date-custom { flex-direction: column; align-items: flex-start; gap: 0.3rem; }
-  .reset-btn { margin-left: 0; width: 100%; justify-content: center; }
 
   .grid { grid-template-columns: 1fr; gap: 6px; padding: 0 0.75rem; }
   .date-group { padding: 0 0.75rem; }
@@ -331,8 +381,9 @@ footer a { color: var(--ink-3); text-decoration: underline; }
     <button class="modal-close" onclick="closeModal('info-modal')">✕</button>
     <h2>About this dashboard</h2>
     <div class="modal-section">
-      <h3>Made by</h3>
-      <p><strong>Chandra Rajagopal</strong> — a Palo Alto parent who wanted a faster way to find things to do with the kids. Built for the Park Parents community. Questions or ideas? Hit the Feedback button.</p>
+      <h3>About</h3>
+      <p>Built by a Palo Alto parent who wanted a faster way to find things to do with the kids. A volunteer project, made for busy families.</p>
+      <p style="margin-top:4px">Questions or ideas? Hit the <strong>Feedback</strong> button.</p>
     </div>
     <div class="modal-section">
       <h3>How filters work</h3>
@@ -341,7 +392,7 @@ footer a { color: var(--ink-3); text-decoration: underline; }
         <li><strong>This weekend</strong> — Saturday and Sunday of the current week.</li>
         <li><strong>Next weekend</strong> — the following Saturday and Sunday.</li>
         <li><strong>Custom</strong> — pick any date range you like.</li>
-        <li><strong>Palo Alto Area</strong> — events in Palo Alto, Menlo Park, Redwood City, Mountain View, Los Altos, and nearby Peninsula cities. Roughly within 10–15 miles of downtown PA.</li>
+        <li><strong>Palo Alto</strong> — events in Palo Alto, Menlo Park, Redwood City, Mountain View, Los Altos, and nearby Peninsula cities. Roughly within 10–15 miles of downtown PA.</li>
         <li><strong>All areas</strong> — includes everything above plus SF, East Bay, South Bay, and beyond.</li>
         <li><strong>Free only</strong> — filters to events with no admission cost. Some free events still require registration.</li>
       </ul>
@@ -397,6 +448,13 @@ footer a { color: var(--ink-3); text-decoration: underline; }
   </div>
 </div>
 
+<!-- ── Sticky filter summary bar ── -->
+<div class="sticky-bar" id="sticky-bar">
+  <span class="sticky-label">Showing</span>
+  <div id="sticky-chips" style="display:flex;gap:0.35rem;flex-wrap:nowrap"></div>
+  <span class="sticky-scroll-hint" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ filters</span>
+</div>
+
 <div class="filters">
   <div class="filter-card">
 
@@ -406,6 +464,7 @@ footer a { color: var(--ink-3); text-decoration: underline; }
         <input id="search" type="search" placeholder="Try: outdoors, storytime, free, animals, crafts…" autocomplete="off">
       </div>
     </div>
+    <div class="search-tags" id="search-tags" style="display:none"></div>
 
     <div class="filter-row">
       <span class="filter-label">When</span>
@@ -424,21 +483,33 @@ footer a { color: var(--ink-3); text-decoration: underline; }
       <input type="date" id="date-to">
     </div>
 
-    <div class="filter-row">
+    <div class="filter-row" style="flex-wrap:wrap; gap:0.5rem;">
       <span class="filter-label">Area</span>
       <div class="chip-group" id="region-pills"></div>
+      <div id="zip-input-wrap" style="display:none; align-items:center; gap:0.35rem; flex-shrink:0;">
+        <input id="zip-input" type="text" inputmode="numeric" pattern="[0-9]{5}" maxlength="5"
+          placeholder="Enter zip" style="width:7rem; padding:0.3rem 0.5rem; border:1px solid var(--rule);
+          border-radius:6px; font-size:0.85rem; background:var(--card); color:var(--ink);">
+        <button id="zip-cancel" style="font-size:0.8rem; background:none; border:none; cursor:pointer; color:var(--ink-2);">✕</button>
+      </div>
+    </div>
+
+    <div class="filter-row">
+      <span class="filter-label">Dates</span>
+      <div class="chip-group">
+        <button class="chip active" data-dated="all">All</button>
+        <button class="chip" data-dated="dated">Has date</button>
+        <button class="chip" data-dated="undated">No date</button>
+      </div>
     </div>
 
     <div class="filter-row">
       <span class="filter-label">Cost</span>
       <div class="chip-group">
         <button class="chip active" data-cost="all">All</button>
-        <button class="chip active-green" data-cost="Free" style="background:transparent;border-color:var(--rule);color:var(--ink-2)">Free only</button>
+        <button class="chip" data-cost="Free">Free</button>
       </div>
-      <button class="reset-btn" id="reset-btn">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
-        Reset
-      </button>
+      <button class="reset-btn" id="reset-btn" title="Reset filters">↺</button>
     </div>
 
   </div>
@@ -446,7 +517,10 @@ footer a { color: var(--ink-3); text-decoration: underline; }
 
 <div class="count-line count-bar" id="count-line"></div>
 <div id="loading">Fetching events…</div>
-<div id="empty">No events match — try clearing the search or widening the date range.</div>
+<div id="empty">
+  <div class="empty-msg">😕 Nothing matches those filters.</div>
+  <div class="empty-suggestions" id="empty-suggestions"></div>
+</div>
 <div id="output"></div>
 
 <footer>
@@ -455,7 +529,7 @@ footer a { color: var(--ink-3); text-decoration: underline; }
 </footer>
 
 <script>
-const FE_VERSION = '1.2.0';
+const FE_VERSION = '1.3.0';
 const IS_LOCAL = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
 const JSON_URL   = IS_LOCAL ? '/output/events.json'  : 'https://raw.githubusercontent.com/crajagop87/bay-area-kids-events/main/output/events.json';
 const HEALTH_URL = IS_LOCAL ? '/output/health.json'  : 'https://raw.githubusercontent.com/crajagop87/bay-area-kids-events/main/output/health.json';
@@ -463,9 +537,84 @@ const FEEDBACK_URL = 'https://api.github.com/repos/crajagop87/bay-area-kids-even
 
 let allEvents = [];
 let healthData = {};
-let activeRegions = new Set(['Palo Alto Area']);
+let activeRegions = new Set(['Palo Alto']);
 let activeCost = 'all';
 let activeWhen = 'this-weekend';
+let activeSearchTags = [];
+let activeDated = 'all';
+let activeZip = null; // null = no zip filter; string = active zip code
+
+// Zipcode → list of city names (within ~40 miles of Palo Alto, Bay Area only)
+const ZIP_CITY_MAP = {
+  // Palo Alto
+  '94301':'Palo Alto','94303':'Palo Alto','94304':'Palo Alto','94305':'Palo Alto','94306':'Palo Alto',
+  // Menlo Park / Atherton
+  '94025':'Menlo Park','94027':'Atherton',
+  // Redwood City / San Carlos / Belmont
+  '94061':'Redwood City','94062':'Redwood City','94063':'Redwood City','94064':'Redwood City','94065':'Redwood City',
+  '94070':'San Carlos','94002':'Belmont',
+  // San Mateo / Foster City / Burlingame
+  '94401':'San Mateo','94402':'San Mateo','94403':'San Mateo','94404':'San Mateo',
+  '94404':'Foster City','94010':'Burlingame','94011':'Burlingame',
+  // South SF / Millbrae / San Bruno
+  '94080':'South San Francisco','94030':'Millbrae','94066':'San Bruno',
+  // Sunnyvale / Mountain View / Los Altos
+  '94085':'Sunnyvale','94086':'Sunnyvale','94087':'Sunnyvale','94089':'Sunnyvale',
+  '94040':'Mountain View','94041':'Mountain View','94043':'Mountain View',
+  '94022':'Los Altos','94023':'Los Altos','94024':'Los Altos',
+  // Santa Clara / Cupertino
+  '95050':'Santa Clara','95051':'Santa Clara','95054':'Santa Clara',
+  '95014':'Cupertino',
+  // San Jose (core)
+  '95101':'San Jose','95110':'San Jose','95111':'San Jose','95112':'San Jose',
+  '95113':'San Jose','95116':'San Jose','95117':'San Jose','95118':'San Jose',
+  '95119':'San Jose','95120':'San Jose','95121':'San Jose','95122':'San Jose',
+  '95123':'San Jose','95124':'San Jose','95125':'San Jose','95126':'San Jose',
+  '95127':'San Jose','95128':'San Jose','95130':'San Jose','95131':'San Jose',
+  '95132':'San Jose','95133':'San Jose','95134':'San Jose','95135':'San Jose',
+  '95136':'San Jose','95138':'San Jose','95139':'San Jose',
+  // Los Gatos / Campbell / Saratoga
+  '95030':'Los Gatos','95031':'Los Gatos','95032':'Los Gatos',
+  '95008':'Campbell','95009':'Campbell',
+  '95070':'Saratoga',
+  // San Francisco
+  '94102':'San Francisco','94103':'San Francisco','94104':'San Francisco',
+  '94105':'San Francisco','94107':'San Francisco','94108':'San Francisco',
+  '94109':'San Francisco','94110':'San Francisco','94111':'San Francisco',
+  '94112':'San Francisco','94114':'San Francisco','94115':'San Francisco',
+  '94116':'San Francisco','94117':'San Francisco','94118':'San Francisco',
+  '94121':'San Francisco','94122':'San Francisco','94123':'San Francisco',
+  '94124':'San Francisco','94127':'San Francisco','94129':'San Francisco',
+  '94130':'San Francisco','94131':'San Francisco','94132':'San Francisco',
+  '94133':'San Francisco','94134':'San Francisco',
+  // Oakland
+  '94601':'Oakland','94602':'Oakland','94603':'Oakland','94605':'Oakland',
+  '94606':'Oakland','94607':'Oakland','94608':'Oakland','94609':'Oakland',
+  '94610':'Oakland','94611':'Oakland','94612':'Oakland','94613':'Oakland',
+  '94618':'Oakland','94619':'Oakland','94621':'Oakland',
+  // Berkeley
+  '94701':'Berkeley','94702':'Berkeley','94703':'Berkeley','94704':'Berkeley',
+  '94705':'Berkeley','94706':'Berkeley','94707':'Berkeley','94708':'Berkeley',
+  '94709':'Berkeley','94710':'Berkeley',
+  // Alameda / Emeryville / Piedmont
+  '94501':'Alameda','94502':'Alameda','94608':'Emeryville','94611':'Piedmont',
+  // Fremont / Hayward / Newark / Union City
+  '94536':'Fremont','94537':'Fremont','94538':'Fremont','94539':'Fremont',
+  '94555':'Fremont',
+  '94541':'Hayward','94542':'Hayward','94543':'Hayward','94544':'Hayward','94545':'Hayward',
+  '94560':'Newark','94587':'Union City',
+  // Santa Cruz
+  '95060':'Santa Cruz','95061':'Santa Cruz','95062':'Santa Cruz','95064':'Santa Cruz','95065':'Santa Cruz',
+  '95003':'Aptos','95010':'Capitola','95076':'Watsonville',
+};
+
+// Given a zip, return the set of city name strings to filter events by
+function citiesForZip(zip) {
+  const city = ZIP_CITY_MAP[zip];
+  if (!city) return null;
+  // Also include partial matches (e.g. "San Jose" matches "San Jose" city field)
+  return new Set([city.toLowerCase()]);
+}
 
 // ── Modals ─────────────────────────────────────────────────────────────────
 function openModal(id) { document.getElementById(id).classList.add('open'); }
@@ -536,7 +685,7 @@ function inferRegion(e) {
   if (/marin|fairfax|san rafael|novato|north bay|vallejo|sausalito/.test(hay)) return 'North Bay';
   if (/san jose|campbell|los gatos|saratoga|cupertino|milpitas|morgan hill|santa clara city/.test(hay)) return 'South Bay';
   if (/santa cruz|half moon bay|gilroy|scotts valley/.test(hay)) return 'Fringe';
-  return 'Palo Alto Area';
+  return 'Palo Alto';
 }
 
 // ── Load ───────────────────────────────────────────────────────────────────
@@ -572,17 +721,32 @@ async function load() {
     document.getElementById('info-version').textContent =
       `FE v${FE_VERSION} · BE scrape: ${healthData.run_at ? healthData.run_at.slice(0,19).replace('T',' ') + ' UTC' : 'unknown'}`;
 
-    // Region pills — simplified: Palo Alto Area + All areas
-    const regions = ['Palo Alto Area', 'All areas'];
+    // Region pills
+    const regions = ['Palo Alto', 'All areas'];
     const pc = document.getElementById('region-pills');
     regions.forEach(r => {
       const b = document.createElement('button');
-      b.className = 'chip' + (r === 'Palo Alto Area' ? ' active' : '');
+      b.className = 'chip' + (r === 'Palo Alto' ? ' active' : '');
       b.dataset.region = r === 'All areas' ? 'all' : r;
       b.textContent = r;
       b.addEventListener('click', () => toggleRegion(b.dataset.region));
       pc.appendChild(b);
     });
+    // Zip pill + input
+    const zipBtn = document.createElement('button');
+    zipBtn.className = 'chip';
+    zipBtn.dataset.region = 'zip';
+    zipBtn.textContent = '📍 My zip';
+    zipBtn.addEventListener('click', () => {
+      document.getElementById('zip-input-wrap').style.display = 'flex';
+      document.getElementById('zip-input').focus();
+    });
+    pc.appendChild(zipBtn);
+    document.getElementById('zip-input').addEventListener('keydown', e => {
+      if (e.key === 'Enter') applyZip(e.target.value.trim());
+      if (e.key === 'Escape') closeZipInput();
+    });
+    document.getElementById('zip-cancel').addEventListener('click', closeZipInput);
 
     document.getElementById('loading').style.display = 'none';
     render();
@@ -594,28 +758,59 @@ async function load() {
 
 // ── Filter wiring ──────────────────────────────────────────────────────────
 function toggleRegion(r) {
+  if (r === 'zip') return; // handled by applyZip
+  activeZip = null;
+  document.getElementById('zip-input-wrap').style.display = 'none';
   if (r === 'all') { activeRegions = new Set(['all']); }
   else { activeRegions = new Set([r]); }
   document.querySelectorAll('[data-region]').forEach(b => {
-    b.classList.toggle('active', activeRegions.has(b.dataset.region));
+    b.classList.toggle('active', b.dataset.region !== 'zip' && activeRegions.has(b.dataset.region));
   });
   render();
 }
 
-document.querySelectorAll('[data-cost]').forEach(b => {
-  b.addEventListener('click', () => {
-    activeCost = b.dataset.cost;
-    document.querySelectorAll('[data-cost]').forEach(x => {
-      x.classList.remove('active', 'active-green');
-      x.style.background = 'transparent';
-      x.style.borderColor = 'var(--rule)';
-      x.style.color = 'var(--ink-2)';
-    });
-    if (activeCost === 'all') b.classList.add('active');
-    else { b.classList.add('active-green'); b.style.background = ''; b.style.borderColor = ''; b.style.color = ''; }
-    render();
+function applyZip(zip) {
+  if (!/^\d{5}$/.test(zip)) {
+    document.getElementById('zip-input').style.borderColor = '#e55';
+    return;
+  }
+  const cities = citiesForZip(zip);
+  if (!cities) {
+    document.getElementById('zip-input').style.borderColor = '#e55';
+    document.getElementById('zip-input').placeholder = 'Zip not found';
+    return;
+  }
+  activeZip = { zip, cities };
+  activeRegions = new Set();
+  document.querySelectorAll('[data-region]').forEach(b => {
+    b.classList.toggle('active', b.dataset.region === 'zip');
   });
-});
+  const cityLabel = ZIP_CITY_MAP[zip];
+  document.querySelector('[data-region="zip"]').textContent = `📍 ${zip} (${cityLabel})`;
+  document.getElementById('zip-input-wrap').style.display = 'none';
+  render();
+}
+
+function closeZipInput() {
+  document.getElementById('zip-input-wrap').style.display = 'none';
+  document.getElementById('zip-input').value = '';
+}
+
+function setDated(val) {
+  activeDated = val;
+  document.querySelectorAll('[data-dated]').forEach(x => x.classList.toggle('active', x.dataset.dated === val));
+  render();
+}
+document.querySelectorAll('[data-dated]').forEach(b => b.addEventListener('click', () => setDated(b.dataset.dated)));
+
+function setCost(val) {
+  activeCost = val;
+  document.querySelectorAll('[data-cost]').forEach(x => x.classList.remove('active', 'active-green'));
+  const target = document.querySelector(`[data-cost="${val}"]`);
+  if (target) target.classList.add(val === 'Free' ? 'active-green' : 'active');
+  render();
+}
+document.querySelectorAll('[data-cost]').forEach(b => b.addEventListener('click', () => setCost(b.dataset.cost)));
 
 document.querySelectorAll('[data-when]').forEach(b => {
   b.addEventListener('click', () => {
@@ -629,6 +824,35 @@ document.querySelectorAll('[data-when]').forEach(b => {
 });
 
 document.getElementById('search').addEventListener('input', render);
+document.getElementById('search').addEventListener('keydown', e => {
+  if (e.key === 'Enter') {
+    const val = e.target.value.trim();
+    if (val && !activeSearchTags.includes(val)) {
+      activeSearchTags.push(val);
+      e.target.value = '';
+      renderSearchTags();
+      render();
+    } else if (val) {
+      e.target.value = '';
+    }
+    e.preventDefault();
+  }
+});
+
+function renderSearchTags() {
+  const container = document.getElementById('search-tags');
+  if (!activeSearchTags.length) { container.style.display = 'none'; container.innerHTML = ''; return; }
+  container.style.display = 'flex';
+  container.innerHTML = activeSearchTags.map((t, i) =>
+    `<span class="search-tag">${esc(t)}<button class="search-tag-remove" onclick="removeSearchTag(${i})" title="Remove">×</button></span>`
+  ).join('');
+}
+
+function removeSearchTag(i) {
+  activeSearchTags.splice(i, 1);
+  renderSearchTags();
+  render();
+}
 document.getElementById('date-from').addEventListener('change', render);
 document.getElementById('date-to').addEventListener('change', render);
 
@@ -644,8 +868,16 @@ document.getElementById('reset-btn').addEventListener('click', () => {
   });
   document.querySelector('[data-cost="all"]').classList.add('active');
   document.querySelector('[data-cost="all"]').style.background = '';
-  activeRegions = new Set(['Palo Alto Area']);
-  document.querySelectorAll('[data-region]').forEach(b => b.classList.toggle('active', b.dataset.region === 'Palo Alto Area'));
+  activeRegions = new Set(['Palo Alto']);
+  activeZip = null;
+  document.querySelectorAll('[data-region]').forEach(b => b.classList.toggle('active', b.dataset.region === 'Palo Alto'));
+  const zipPill = document.querySelector('[data-region="zip"]');
+  if (zipPill) zipPill.textContent = '📍 My zip';
+  document.getElementById('zip-input-wrap').style.display = 'none';
+  activeSearchTags = [];
+  renderSearchTags();
+  activeDated = 'all';
+  document.querySelectorAll('[data-dated]').forEach(b => b.classList.toggle('active', b.dataset.dated === 'all'));
   render();
 });
 
@@ -661,18 +893,31 @@ function render() {
     [fromDate, toDate] = dateRangeForWhen(activeWhen);
   }
 
+  // Whether we're in a date-specific view (not custom with empty dates)
+  const isDateFiltered = activeWhen !== 'custom' || (fromDate || toDate);
+
   let events = allEvents.filter(e => {
     const d = isoDate(e.start_datetime);
-    if (fromDate && d && d < fromDate) return false;
-    if (toDate && d && d > toDate) return false;
-    if (!activeRegions.has('all') && !activeRegions.has(e._region)) return false;
-    if (activeCost !== 'all' && e.cost !== activeCost) return false;
-    if (query) {
-      const tags = (e.tags || []).join(' ');
-      const hay = [e.title, e.venue, e.city, e.age_range, e.category, e.source_name, tags]
-        .join(' ').toLowerCase();
-      if (!hay.includes(query)) return false;
+    const hasDate = !!e.start_datetime;
+
+    // Undated events: always include in date-filtered views (they may be recurring);
+    // apply date range only to events that actually have a date
+    if (hasDate) {
+      if (fromDate && d < fromDate) return false;
+      if (toDate && d > toDate) return false;
     }
+
+    if (activeZip) {
+      const cityHay = (e.city || '').toLowerCase();
+      if (![...activeZip.cities].some(c => cityHay.includes(c))) return false;
+    } else if (!activeRegions.has('all') && !activeRegions.has(e._region)) return false;
+    if (activeCost !== 'all' && e.cost !== activeCost) return false;
+    if (activeDated === 'dated' && !hasDate) return false;
+    if (activeDated === 'undated' && hasDate) return false;
+    const hay = [e.title, e.venue, e.city, e.age_range, e.category, e.source_name, (e.tags||[]).join(' ')]
+      .join(' ').toLowerCase();
+    if (query && !hay.includes(query)) return false;
+    if (activeSearchTags.some(t => !hay.includes(t.toLowerCase()))) return false;
     return true;
   });
 
@@ -687,7 +932,7 @@ function render() {
 
   const empty = document.getElementById('empty');
   const output = document.getElementById('output');
-  if (!total) { empty.style.display = 'block'; output.innerHTML = ''; return; }
+  if (!total) { empty.style.display = 'block'; output.innerHTML = ''; showSmartEmpty(); return; }
   empty.style.display = 'none';
 
   // Group by date
@@ -697,15 +942,25 @@ function render() {
     (groups[k] = groups[k] || []).push(e);
   });
 
+  // Sort groups: dated first (chronological), undated always last
+  const sortedGroups = Object.entries(groups).sort(([a], [b]) => {
+    if (a === 'no-date') return 1;
+    if (b === 'no-date') return -1;
+    return a.localeCompare(b);
+  });
+
   const html = [];
-  Object.entries(groups).forEach(([k, evs]) => {
-    const label = k === 'no-date' ? 'Date unknown'
+  sortedGroups.forEach(([k, evs]) => {
+    const isUndated = k === 'no-date';
+    const label = isUndated
+      ? 'Also worth checking — date not confirmed'
       : new Date(k + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
-    html.push(`<div class="date-group"><h2>${label}</h2></div><div class="grid">`);
-    evs.forEach(e => html.push(card(e)));
+    html.push(`<div class="date-group${isUndated ? ' undated' : ''}"><h2>${label}</h2></div><div class="grid">`);
+    evs.forEach(e => html.push(card(e, isUndated)));
     html.push('</div>');
   });
   output.innerHTML = html.join('');
+  updateStickyBar();
 }
 
 function fmt_time(iso) {
@@ -719,7 +974,7 @@ function fmt_time(iso) {
 
 const HIDDEN_TAGS = new Set(['venue','library','aggregator','eventbrite','weekend','weekday','summer','all ages','peninsula','palo alto']);
 
-function card(e) {
+function card(e, undated = false) {
   const startTime = fmt_time(e.start_datetime);
   const endTime = fmt_time(e.end_datetime);
   const timeStr = startTime ? (endTime ? `${startTime} – ${endTime}` : startTime) : '';
@@ -741,7 +996,9 @@ function card(e) {
     ? `<div class="card-tags">${tags.map(t => `<span class="tag-chip">${esc(t)}</span>`).join('')}</div>`
     : '';
 
-  return `<div class="card">
+  const emoji = eventEmoji(e.tags);
+  return `<div class="card${undated ? ' undated' : ''}">
+    ${emoji ? `<div class="card-emoji">${emoji}</div>` : ''}
     <div class="card-title">${titleHtml}</div>
     <div class="card-meta">
       ${timeStr ? `<span class="m-time">${timeStr}</span>` : ''}
@@ -759,6 +1016,82 @@ function esc(s) {
   d.textContent = String(s);
   return d.innerHTML;
 }
+
+// ── Emoji map (priority order — first match wins) ─────────────────────────
+const EMOJI_MAP = [
+  ['camp',              '⛺'],
+  ['animals',           '🐾'],
+  ['farm',              '🐄'],
+  ['storytime',         '📚'],
+  ['books & reading',   '📖'],
+  ['theatre',           '🎭'],
+  ['film & movies',     '🎬'],
+  ['music',             '🎵'],
+  ['arts & crafts',     '🎨'],
+  ['science',           '🔬'],
+  ['STEM',              '🔬'],
+  ['cooking',           '🍳'],
+  ['sports & movement', '⚽'],
+  ['sensory',           '🫧'],
+  ['festival',          '🎪'],
+  ['hands-on',          '🛠️'],
+  ['outdoors',          '🌳'],
+  ['nature',            '🌿'],
+];
+
+function eventEmoji(tags) {
+  const tagSet = new Set(tags || []);
+  for (const [tag, emoji] of EMOJI_MAP) {
+    if (tagSet.has(tag)) return emoji;
+  }
+  return '';
+}
+
+// ── Sticky filter bar ──────────────────────────────────────────────────────
+const stickyBar = document.getElementById('sticky-bar');
+const filterCard = document.querySelector('.filter-card');
+
+function updateStickyBar() {
+  const rect = filterCard.getBoundingClientRect();
+  const past = rect.bottom < 0;
+  stickyBar.classList.toggle('visible', past);
+  if (!past) return;
+
+  const chips = [];
+  // When
+  const whenLabel = { today:'Today', 'this-weekend':'This weekend', 'next-weekend':'Next weekend', custom:'Custom' };
+  chips.push(whenLabel[activeWhen] || activeWhen);
+  // Area
+  chips.push(activeZip ? `📍 ${activeZip.zip}` : (activeRegions.has('all') ? 'All areas' : [...activeRegions][0]));
+  // Dates
+  if (activeDated !== 'all') chips.push(activeDated === 'dated' ? 'Has date' : 'No date');
+  // Cost
+  if (activeCost !== 'all') chips.push('Free');
+  // Search tags
+  activeSearchTags.forEach(t => chips.push(`"${t}"`));
+
+  document.getElementById('sticky-chips').innerHTML = chips
+    .map(c => `<span class="chip active" style="font-size:0.65rem;padding:3px 9px">${esc(c)}</span>`)
+    .join('');
+}
+
+window.addEventListener('scroll', updateStickyBar, { passive: true });
+
+// ── Smart empty state ──────────────────────────────────────────────────────
+function showSmartEmpty() {
+  const suggs = [];
+  if (activeZip || !activeRegions.has('all')) suggs.push({ label: '🗺 Try All areas', fn: () => toggleRegion('all') });
+  if (activeWhen === 'this-weekend') suggs.push({ label: '📅 Try Next weekend', fn: () => { activeWhen = 'next-weekend'; document.querySelectorAll('[data-when]').forEach(b => b.classList.toggle('active', b.dataset.when === 'next-weekend')); render(); }});
+  if (activeWhen !== 'all' && activeWhen !== 'custom') suggs.push({ label: '📋 See all dates', fn: () => { activeWhen = 'custom'; document.getElementById('custom-dates').style.display = 'flex'; document.querySelectorAll('[data-when]').forEach(b => b.classList.toggle('active', b.dataset.when === 'custom')); render(); }});
+  if (activeSearchTags.length || document.getElementById('search').value) suggs.push({ label: '🔍 Clear search', fn: () => { document.getElementById('search').value = ''; activeSearchTags = []; renderSearchTags(); render(); }});
+
+  const el = document.getElementById('empty-suggestions');
+  el.innerHTML = suggs.map((s, i) =>
+    `<button class="empty-suggest-btn" onclick="emptySugg(${i})">${esc(s.label)}</button>`
+  ).join('');
+  window._emptySuggs = suggs;
+}
+function emptySugg(i) { window._emptySuggs[i]?.fn(); }
 
 // ── Roadmap ────────────────────────────────────────────────────────────────
 const REPO = 'crajagop87/bay-area-kids-events';

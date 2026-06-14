@@ -256,13 +256,113 @@ def scrape_hidden_villa(window_days: int = 16) -> list[dict]:
     return events
 
 
+def scrape_exploratorium(window_days: int = 16) -> list[dict]:
+    """Exploratorium — San Francisco science museum with strong family programming."""
+    url = "https://www.exploratorium.edu/visit/calendar"
+    now = datetime.now(timezone.utc)
+    cutoff = now + timedelta(days=window_days)
+    events = []
+    try:
+        resp = requests.get(url, headers=HEADERS, timeout=20)
+        resp.raise_for_status()
+        soup = BeautifulSoup(resp.text, "html.parser")
+        events = _json_ld_events(soup, "Exploratorium", url,
+                                  "San Francisco", "San Francisco", "Paid", 20.0,
+                                  "walk-up or reserve", "Exploratorium", now, cutoff)
+        if not events:
+            # Emit weekend open hours as a standing anchor event
+            for day_offset in range(window_days):
+                dt = now + timedelta(days=day_offset)
+                if dt.weekday() in (5, 6):
+                    events.append(_make_event(
+                        "Exploratorium — Open (hands-on science exhibits)",
+                        dt.replace(hour=10, minute=0, second=0, microsecond=0),
+                        dt.replace(hour=17, minute=0, second=0, microsecond=0),
+                        "Exploratorium", "San Francisco", "San Francisco",
+                        "Paid", 20.0, "walk-up or reserve",
+                        "https://www.exploratorium.edu/visit",
+                        "Exploratorium", url,
+                    ))
+    except Exception as exc:
+        log.warning("Exploratorium scrape failed: %s", exc)
+    log.info("Exploratorium: %d events", len(events))
+    return events
+
+
+def scrape_fairyland(window_days: int = 16) -> list[dict]:
+    """Oakland Children's Fairyland — classic storybook theme park, ages 1–10."""
+    url = "https://www.fairyland.org/plan-your-visit/"
+    now = datetime.now(timezone.utc)
+    cutoff = now + timedelta(days=window_days)
+    events = []
+    try:
+        resp = requests.get(url, headers=HEADERS, timeout=20)
+        resp.raise_for_status()
+        soup = BeautifulSoup(resp.text, "html.parser")
+        events = _json_ld_events(soup, "Oakland Children's Fairyland", url,
+                                  "Oakland", "Alameda", "Paid", 16.0,
+                                  "book ahead", "Oakland Children's Fairyland", now, cutoff)
+        if not events:
+            for article in soup.select("article, .event, .tribe-event"):
+                title_el = article.select_one("h2, h3, .tribe-event-url")
+                if not title_el:
+                    continue
+                title = title_el.get_text(strip=True)
+                link_el = article.select_one("a")
+                link = link_el["href"] if link_el else url
+                events.append(_make_event(title, None, None, "Oakland Children's Fairyland",
+                                           "Oakland", "Alameda", "Paid", 16.0,
+                                           "book ahead", link,
+                                           "Oakland Children's Fairyland", url))
+    except Exception as exc:
+        log.warning("Oakland Children's Fairyland scrape failed: %s", exc)
+    log.info("Oakland Children's Fairyland: %d events", len(events))
+    return events
+
+
+def scrape_lawrence_hall(window_days: int = 16) -> list[dict]:
+    """Lawrence Hall of Science — UC Berkeley's public science center."""
+    url = "https://www.lawrencehallofscience.org/visit/programs-and-events/"
+    now = datetime.now(timezone.utc)
+    cutoff = now + timedelta(days=window_days)
+    events = []
+    try:
+        resp = requests.get(url, headers=HEADERS, timeout=20)
+        resp.raise_for_status()
+        soup = BeautifulSoup(resp.text, "html.parser")
+        events = _json_ld_events(soup, "Lawrence Hall of Science", url,
+                                  "Berkeley", "Alameda", "Paid", 15.0,
+                                  "walk-up or reserve", "Lawrence Hall of Science", now, cutoff)
+        if not events:
+            for article in soup.select("article, .event-item, .program"):
+                title_el = article.select_one("h2, h3, .event-title")
+                if not title_el:
+                    continue
+                title = title_el.get_text(strip=True)
+                link_el = article.select_one("a")
+                link = link_el["href"] if link_el else url
+                events.append(_make_event(title, None, None, "Lawrence Hall of Science",
+                                           "Berkeley", "Alameda", "Paid", 15.0,
+                                           "walk-up", link,
+                                           "Lawrence Hall of Science", url))
+    except Exception as exc:
+        log.warning("Lawrence Hall of Science scrape failed: %s", exc)
+    log.info("Lawrence Hall of Science: %d events", len(events))
+    return events
+
+
 VENUE_SCRAPERS = [
+    # Peninsula / South Bay
     ("Palo Alto Junior Museum & Zoo", scrape_palo_alto_junior_museum),
     ("CuriOdyssey", scrape_curiodyssey),
     ("Hiller Aviation Museum", scrape_hiller_aviation),
     ("Children's Discovery Museum SJ", scrape_childrens_discovery_museum_sj),
     ("Cantor Arts Center", scrape_cantor_arts),
     ("Hidden Villa Farm", scrape_hidden_villa),
+    # SF / East Bay (expanded)
+    ("Exploratorium", scrape_exploratorium),
+    ("Oakland Children's Fairyland", scrape_fairyland),
+    ("Lawrence Hall of Science", scrape_lawrence_hall),
 ]
 
 

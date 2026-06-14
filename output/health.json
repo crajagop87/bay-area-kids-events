@@ -1,15 +1,15 @@
 {
-  "run_at": "2026-06-14T15:46:53.576549+00:00",
+  "run_at": "2026-06-14T19:32:55.502122+00:00",
   "window_days": 16,
-  "channels_ok": 20,
-  "channels_total": 20,
-  "raw_events": 367,
-  "deduped_events": 287,
+  "channels_ok": 31,
+  "channels_total": 31,
+  "raw_events": 503,
+  "deduped_events": 332,
   "channels": [
     {
       "source": "Palo Alto City Library",
       "status": "ok",
-      "count": 18
+      "count": 19
     },
     {
       "source": "San Mateo County Library",
@@ -19,17 +19,37 @@
     {
       "source": "San Jose Public Library",
       "status": "ok",
-      "count": 21
+      "count": 22
     },
     {
       "source": "Santa Clara County Library District",
       "status": "ok",
-      "count": 30
+      "count": 31
+    },
+    {
+      "source": "San Francisco Public Library",
+      "status": "ok",
+      "count": 0
+    },
+    {
+      "source": "Oakland Public Library",
+      "status": "ok",
+      "count": 22
+    },
+    {
+      "source": "Berkeley Public Library",
+      "status": "ok",
+      "count": 0
+    },
+    {
+      "source": "Santa Cruz City Libraries",
+      "status": "ok",
+      "count": 0
     },
     {
       "source": "Eventbrite/Palo Alto",
       "status": "ok",
-      "count": 12
+      "count": 13
     },
     {
       "source": "Eventbrite/San Jose",
@@ -39,7 +59,7 @@
     {
       "source": "Eventbrite/Mountain View",
       "status": "ok",
-      "count": 10
+      "count": 11
     },
     {
       "source": "Eventbrite/Sunnyvale",
@@ -49,17 +69,37 @@
     {
       "source": "Eventbrite/San Mateo",
       "status": "ok",
-      "count": 10
+      "count": 11
     },
     {
       "source": "Eventbrite/Redwood City",
       "status": "ok",
-      "count": 11
+      "count": 12
     },
     {
       "source": "Eventbrite/Menlo Park",
       "status": "ok",
+      "count": 13
+    },
+    {
+      "source": "Eventbrite/San Francisco",
+      "status": "ok",
+      "count": 11
+    },
+    {
+      "source": "Eventbrite/Oakland",
+      "status": "ok",
       "count": 12
+    },
+    {
+      "source": "Eventbrite/Berkeley",
+      "status": "ok",
+      "count": 11
+    },
+    {
+      "source": "Eventbrite/Santa Cruz",
+      "status": "ok",
+      "count": 14
     },
     {
       "source": "Funcheap",
@@ -84,12 +124,12 @@
     {
       "source": "CuriOdyssey",
       "status": "ok",
-      "count": 3
+      "count": 2
     },
     {
       "source": "Hiller Aviation Museum",
       "status": "ok",
-      "count": 12
+      "count": 10
     },
     {
       "source": "Children's Discovery Museum SJ",
@@ -104,7 +144,22 @@
     {
       "source": "Hidden Villa Farm",
       "status": "ok",
-      "count": 4
+      "count": 60
+    },
+    {
+      "source": "Exploratorium",
+      "status": "ok",
+      "count": 5
+    },
+    {
+      "source": "Oakland Children's Fairyland",
+      "status": "ok",
+      "count": 0
+    },
+    {
+      "source": "Lawrence Hall of Science",
+      "status": "ok",
+      "count": 0
     }
   ]
 }

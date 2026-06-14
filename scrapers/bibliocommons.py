@@ -1,6 +1,8 @@
 """
 BiblioCommons library event scraper — uses the gateway JSON API.
-Targets: Palo Alto, San Mateo County, San Jose Public, Santa Clara County libraries.
+Targets: Palo Alto, San Mateo County, San Jose Public, Santa Clara County,
+San Francisco Public, Oakland, Berkeley, and Santa Cruz City libraries.
+Coverage area: roughly within 40 miles of Palo Alto.
 """
 
 import re
@@ -12,10 +14,16 @@ import requests
 log = logging.getLogger(__name__)
 
 LIBRARIES = [
-    {"name": "Palo Alto City Library",           "slug": "paloalto",  "county": "Santa Clara"},
-    {"name": "San Mateo County Library",          "slug": "smcl",      "county": "San Mateo"},
-    {"name": "San Jose Public Library",           "slug": "sjpl",      "county": "Santa Clara"},
-    {"name": "Santa Clara County Library District","slug": "sccl",     "county": "Santa Clara"},
+    # Peninsula / South Bay (original coverage)
+    {"name": "Palo Alto City Library",            "slug": "paloalto",  "county": "Santa Clara"},
+    {"name": "San Mateo County Library",           "slug": "smcl",      "county": "San Mateo"},
+    {"name": "San Jose Public Library",            "slug": "sjpl",      "county": "Santa Clara"},
+    {"name": "Santa Clara County Library District","slug": "sccl",      "county": "Santa Clara"},
+    # SF / East Bay (expanded — within 40 miles of Palo Alto)
+    {"name": "San Francisco Public Library",       "slug": "sfpl",      "county": "San Francisco"},
+    {"name": "Oakland Public Library",             "slug": "oaklandlibrary", "county": "Alameda"},
+    {"name": "Berkeley Public Library",            "slug": "berkeleypubliclibrary", "county": "Alameda"},
+    {"name": "Santa Cruz City Libraries",          "slug": "santacruz", "county": "Santa Cruz"},
 ]
 
 GATEWAY = "https://gateway.bibliocommons.com/v2/libraries/{slug}/events"
