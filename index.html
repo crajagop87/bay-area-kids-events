@@ -361,21 +361,6 @@ footer a { color: var(--ink-3); text-decoration: underline; }
 </head>
 <body>
 
-<!-- ── Roadmap modal ── -->
-<div class="modal-overlay" id="roadmap-modal">
-  <div class="modal" style="max-width:500px">
-    <button class="modal-close" onclick="closeModal('roadmap-modal')">✕</button>
-    <h2>🗺 What we're working on</h2>
-    <p style="font-size:0.78rem;color:var(--ink-2);margin-bottom:0.9rem">Feedback from the community, tracked publicly. Open issues are on our radar; closed ones have shipped.</p>
-    <div class="modal-tabs">
-      <button class="modal-tab active" id="tab-backlog" onclick="switchRoadmapTab('backlog')">📋 Backlog</button>
-      <button class="modal-tab" id="tab-shipped" onclick="switchRoadmapTab('shipped')">✅ Shipped</button>
-    </div>
-    <div id="roadmap-backlog" class="roadmap-list"></div>
-    <div id="roadmap-shipped" class="roadmap-list" style="display:none"></div>
-  </div>
-</div>
-
 <!-- ── Info modal ── -->
 <div class="modal-overlay" id="info-modal">
   <div class="modal">
@@ -393,8 +378,11 @@ footer a { color: var(--ink-3); text-decoration: underline; }
         <li><strong>This weekend</strong> — Saturday and Sunday of the current week.</li>
         <li><strong>Next weekend</strong> — the following Saturday and Sunday.</li>
         <li><strong>Custom</strong> — pick any date range you like.</li>
-        <li><strong>Palo Alto</strong> — events in Palo Alto, Menlo Park, Redwood City, Mountain View, Los Altos, and nearby Peninsula cities. Roughly within 10–15 miles of downtown PA.</li>
-        <li><strong>All areas</strong> — includes everything above plus SF, East Bay, South Bay, and beyond.</li>
+        <li><strong>Palo Alto</strong> — events in Palo Alto, Menlo Park, Mountain View, Los Altos, and nearby Peninsula cities.</li>
+        <li><strong>SF / East Bay</strong> — San Francisco, Oakland, Berkeley, and surrounding East Bay cities.</li>
+        <li><strong>Santa Cruz</strong> — Santa Cruz, Capitola, Scotts Valley, Aptos.</li>
+        <li><strong>All areas</strong> — everything across all regions.</li>
+        <li><strong>My zip</strong> — enter any Bay Area zip to filter events within ~7 miles of that location.</li>
         <li><strong>Free only</strong> — filters to events with no admission cost. Some free events still require registration.</li>
       </ul>
     </div>
@@ -410,18 +398,34 @@ footer a { color: var(--ink-3); text-decoration: underline; }
   </div>
 </div>
 
-<!-- ── Feedback modal ── -->
+<!-- ── Feedback + Roadmap modal (combined) ── -->
 <div class="modal-overlay" id="feedback-modal">
-  <div class="modal">
+  <div class="modal" style="max-width:500px">
     <button class="modal-close" onclick="closeModal('feedback-modal')">✕</button>
-    <h2>💬 Share feedback</h2>
-    <p style="font-size:0.8rem;color:var(--ink-2);margin-bottom:0.75rem">Spotted a bug? Want a new feature? Just dump it here — anything helps.</p>
-    <input class="feedback-name" id="fb-name" placeholder="Your name (optional)">
-    <textarea class="feedback-textarea" id="fb-text" placeholder="What did you notice? What would you love to see?"></textarea>
-    <div>
-      <button class="submit-btn" onclick="submitFeedback()">Send feedback</button>
+    <div class="modal-tabs">
+      <button class="modal-tab active" id="fb-tab-feedback" onclick="switchFeedbackTab('feedback')">💬 Feedback</button>
+      <button class="modal-tab" id="fb-tab-roadmap" onclick="switchFeedbackTab('roadmap')">🗺 What's on deck</button>
     </div>
-    <div class="feedback-thanks" id="fb-thanks">Thanks! 🙏 Your feedback was sent.</div>
+    <!-- Feedback pane -->
+    <div id="fb-pane-feedback">
+      <p style="font-size:0.8rem;color:var(--ink-2);margin-bottom:0.75rem">Spotted a bug? Want a new feature? Just dump it here — anything helps.</p>
+      <input class="feedback-name" id="fb-name" placeholder="Your name (optional)">
+      <textarea class="feedback-textarea" id="fb-text" placeholder="What did you notice? What would you love to see?"></textarea>
+      <div>
+        <button class="submit-btn" onclick="submitFeedback()">Send feedback</button>
+      </div>
+      <div class="feedback-thanks" id="fb-thanks">Thanks! 🙏 Your feedback was sent.</div>
+    </div>
+    <!-- Roadmap pane -->
+    <div id="fb-pane-roadmap" style="display:none">
+      <p style="font-size:0.78rem;color:var(--ink-2);margin-bottom:0.75rem">Feedback from the community, tracked publicly. Open issues are on our radar; closed ones have shipped.</p>
+      <div class="modal-tabs" style="margin-bottom:0.75rem">
+        <button class="modal-tab active" id="tab-backlog" onclick="switchRoadmapTab('backlog')">📋 Backlog</button>
+        <button class="modal-tab" id="tab-shipped" onclick="switchRoadmapTab('shipped')">✅ Shipped</button>
+      </div>
+      <div id="roadmap-backlog" class="roadmap-list"></div>
+      <div id="roadmap-shipped" class="roadmap-list" style="display:none"></div>
+    </div>
   </div>
 </div>
 
@@ -443,7 +447,6 @@ footer a { color: var(--ink-3); text-decoration: underline; }
     <div class="header-right">
       <span class="header-meta" id="meta">loading…</span>
       <button class="info-btn" onclick="openModal('info-modal')">Info</button>
-      <button class="info-btn" onclick="openRoadmap()">🗺 Roadmap</button>
       <button class="feedback-btn" onclick="openModal('feedback-modal')">Feedback</button>
     </div>
   </div>
@@ -534,78 +537,138 @@ let activeRegions = new Set(['Palo Alto']);
 let activeCost = 'all';
 let activeWhen = 'this-weekend';
 let activeSearchTags = [];
-let activeZip = null; // null = no zip filter; string = active zip code
+// activeZip: null = no zip filter; { zip, cities, label } = zip filter active
+// savedZip: the last-entered zip, remembered even when another area filter is selected
+let activeZip = null;
+let savedZip = null;
 
-// Zipcode → list of city names (within ~40 miles of Palo Alto, Bay Area only)
-const ZIP_CITY_MAP = {
-  // Palo Alto
-  '94301':'Palo Alto','94303':'Palo Alto','94304':'Palo Alto','94305':'Palo Alto','94306':'Palo Alto',
+// Zip → { label, cities[] } — cities within ~7 miles of zip center
+const ZIP_RADIUS = {
+  // Palo Alto cluster
+  '94301':{ label:'Palo Alto', cities:['Palo Alto','Menlo Park','Los Altos','Mountain View','East Palo Alto','Atherton'] },
+  '94303':{ label:'Palo Alto', cities:['Palo Alto','Menlo Park','East Palo Alto','Atherton'] },
+  '94304':{ label:'Palo Alto', cities:['Palo Alto','Los Altos','Los Altos Hills','Mountain View'] },
+  '94305':{ label:'Stanford',  cities:['Palo Alto','Menlo Park','Los Altos'] },
+  '94306':{ label:'Palo Alto', cities:['Palo Alto','Los Altos','Mountain View','Sunnyvale'] },
   // Menlo Park / Atherton
-  '94025':'Menlo Park','94027':'Atherton',
-  // Redwood City / San Carlos / Belmont
-  '94061':'Redwood City','94062':'Redwood City','94063':'Redwood City','94064':'Redwood City','94065':'Redwood City',
-  '94070':'San Carlos','94002':'Belmont',
+  '94025':{ label:'Menlo Park', cities:['Menlo Park','Palo Alto','Redwood City','Atherton','East Palo Alto'] },
+  '94027':{ label:'Atherton',   cities:['Atherton','Menlo Park','Redwood City','Palo Alto'] },
+  // Redwood City
+  '94061':{ label:'Redwood City', cities:['Redwood City','San Carlos','Menlo Park','Belmont'] },
+  '94062':{ label:'Redwood City', cities:['Redwood City','San Carlos','Woodside'] },
+  '94063':{ label:'Redwood City', cities:['Redwood City','San Carlos','East Palo Alto'] },
+  '94064':{ label:'Redwood City', cities:['Redwood City','San Carlos'] },
+  '94065':{ label:'Redwood City', cities:['Redwood City','Foster City','San Mateo'] },
+  // San Carlos / Belmont
+  '94070':{ label:'San Carlos', cities:['San Carlos','Redwood City','Belmont','San Mateo','Foster City'] },
+  '94002':{ label:'Belmont',    cities:['Belmont','San Carlos','San Mateo','Redwood City'] },
   // San Mateo / Foster City / Burlingame
-  '94401':'San Mateo','94402':'San Mateo','94403':'San Mateo','94404':'San Mateo',
-  '94404':'Foster City','94010':'Burlingame','94011':'Burlingame',
-  // South SF / Millbrae / San Bruno
-  '94080':'South San Francisco','94030':'Millbrae','94066':'San Bruno',
-  // Sunnyvale / Mountain View / Los Altos
-  '94085':'Sunnyvale','94086':'Sunnyvale','94087':'Sunnyvale','94089':'Sunnyvale',
-  '94040':'Mountain View','94041':'Mountain View','94043':'Mountain View',
-  '94022':'Los Altos','94023':'Los Altos','94024':'Los Altos',
-  // Santa Clara / Cupertino
-  '95050':'Santa Clara','95051':'Santa Clara','95054':'Santa Clara',
-  '95014':'Cupertino',
-  // San Jose (core)
-  '95101':'San Jose','95110':'San Jose','95111':'San Jose','95112':'San Jose',
-  '95113':'San Jose','95116':'San Jose','95117':'San Jose','95118':'San Jose',
-  '95119':'San Jose','95120':'San Jose','95121':'San Jose','95122':'San Jose',
-  '95123':'San Jose','95124':'San Jose','95125':'San Jose','95126':'San Jose',
-  '95127':'San Jose','95128':'San Jose','95130':'San Jose','95131':'San Jose',
-  '95132':'San Jose','95133':'San Jose','95134':'San Jose','95135':'San Jose',
-  '95136':'San Jose','95138':'San Jose','95139':'San Jose',
-  // Los Gatos / Campbell / Saratoga
-  '95030':'Los Gatos','95031':'Los Gatos','95032':'Los Gatos',
-  '95008':'Campbell','95009':'Campbell',
-  '95070':'Saratoga',
-  // San Francisco
-  '94102':'San Francisco','94103':'San Francisco','94104':'San Francisco',
-  '94105':'San Francisco','94107':'San Francisco','94108':'San Francisco',
-  '94109':'San Francisco','94110':'San Francisco','94111':'San Francisco',
-  '94112':'San Francisco','94114':'San Francisco','94115':'San Francisco',
-  '94116':'San Francisco','94117':'San Francisco','94118':'San Francisco',
-  '94121':'San Francisco','94122':'San Francisco','94123':'San Francisco',
-  '94124':'San Francisco','94127':'San Francisco','94129':'San Francisco',
-  '94130':'San Francisco','94131':'San Francisco','94132':'San Francisco',
-  '94133':'San Francisco','94134':'San Francisco',
+  '94401':{ label:'San Mateo', cities:['San Mateo','Burlingame','Belmont','San Carlos'] },
+  '94402':{ label:'San Mateo', cities:['San Mateo','Burlingame','Belmont'] },
+  '94403':{ label:'San Mateo', cities:['San Mateo','Belmont','Foster City'] },
+  '94404':{ label:'San Mateo', cities:['San Mateo','Foster City','Burlingame','Millbrae'] },
+  '94010':{ label:'Burlingame', cities:['Burlingame','San Mateo','Millbrae','South San Francisco'] },
+  '94030':{ label:'Millbrae',   cities:['Millbrae','Burlingame','San Bruno','South San Francisco'] },
+  '94066':{ label:'San Bruno',  cities:['San Bruno','South San Francisco','Millbrae','Daly City'] },
+  '94080':{ label:'South SF',   cities:['South San Francisco','San Bruno','Daly City','Millbrae'] },
+  // Mountain View / Sunnyvale / Los Altos
+  '94040':{ label:'Mountain View', cities:['Mountain View','Los Altos','Sunnyvale','Palo Alto'] },
+  '94041':{ label:'Mountain View', cities:['Mountain View','Los Altos','Sunnyvale'] },
+  '94043':{ label:'Mountain View', cities:['Mountain View','Sunnyvale','Santa Clara'] },
+  '94085':{ label:'Sunnyvale', cities:['Sunnyvale','Mountain View','Santa Clara','Cupertino'] },
+  '94086':{ label:'Sunnyvale', cities:['Sunnyvale','Mountain View','Santa Clara','Cupertino'] },
+  '94087':{ label:'Sunnyvale', cities:['Sunnyvale','Cupertino','Santa Clara'] },
+  '94089':{ label:'Sunnyvale', cities:['Sunnyvale','Mountain View','Santa Clara'] },
+  '94022':{ label:'Los Altos', cities:['Los Altos','Mountain View','Palo Alto','Cupertino'] },
+  '94024':{ label:'Los Altos', cities:['Los Altos','Mountain View','Cupertino','Sunnyvale'] },
+  // Santa Clara / Cupertino / San Jose (North)
+  '95050':{ label:'Santa Clara', cities:['Santa Clara','Sunnyvale','San Jose','Cupertino'] },
+  '95051':{ label:'Santa Clara', cities:['Santa Clara','Sunnyvale','Cupertino'] },
+  '95054':{ label:'Santa Clara', cities:['Santa Clara','San Jose','Mountain View'] },
+  '95014':{ label:'Cupertino', cities:['Cupertino','Sunnyvale','Santa Clara','Los Altos','San Jose'] },
+  // San Jose core
+  '95110':{ label:'San Jose', cities:['San Jose','Santa Clara','Campbell'] },
+  '95112':{ label:'San Jose', cities:['San Jose','Santa Clara'] },
+  '95116':{ label:'San Jose', cities:['San Jose'] },
+  '95117':{ label:'San Jose', cities:['San Jose','Santa Clara','Cupertino'] },
+  '95118':{ label:'San Jose', cities:['San Jose','Campbell','Los Gatos'] },
+  '95119':{ label:'San Jose', cities:['San Jose','Campbell','Los Gatos'] },
+  '95124':{ label:'San Jose', cities:['San Jose','Campbell','Los Gatos'] },
+  '95125':{ label:'San Jose', cities:['San Jose','Campbell'] },
+  '95126':{ label:'San Jose', cities:['San Jose','Santa Clara'] },
+  '95128':{ label:'San Jose', cities:['San Jose','Santa Clara','Campbell'] },
+  '95129':{ label:'San Jose', cities:['San Jose','Cupertino','Santa Clara'] },
+  '95130':{ label:'San Jose', cities:['San Jose','Campbell','Cupertino'] },
+  // Campbell / Los Gatos / Saratoga
+  '95008':{ label:'Campbell', cities:['Campbell','San Jose','Los Gatos','Santa Clara'] },
+  '95030':{ label:'Los Gatos', cities:['Los Gatos','Campbell','Saratoga','San Jose'] },
+  '95032':{ label:'Los Gatos', cities:['Los Gatos','Campbell','San Jose'] },
+  '95070':{ label:'Saratoga', cities:['Saratoga','Los Gatos','Campbell','Cupertino','San Jose'] },
+  // San Francisco (dense city — 7mi covers the whole city)
+  '94102':{ label:'San Francisco', cities:['San Francisco','Daly City'] },
+  '94103':{ label:'San Francisco', cities:['San Francisco'] },
+  '94105':{ label:'San Francisco', cities:['San Francisco'] },
+  '94107':{ label:'San Francisco', cities:['San Francisco','Daly City'] },
+  '94109':{ label:'San Francisco', cities:['San Francisco'] },
+  '94110':{ label:'San Francisco', cities:['San Francisco','Daly City'] },
+  '94112':{ label:'San Francisco', cities:['San Francisco','Daly City','South San Francisco'] },
+  '94114':{ label:'San Francisco', cities:['San Francisco'] },
+  '94115':{ label:'San Francisco', cities:['San Francisco'] },
+  '94117':{ label:'San Francisco', cities:['San Francisco'] },
+  '94118':{ label:'San Francisco', cities:['San Francisco'] },
+  '94121':{ label:'San Francisco', cities:['San Francisco'] },
+  '94122':{ label:'San Francisco', cities:['San Francisco'] },
+  '94123':{ label:'San Francisco', cities:['San Francisco','Sausalito'] },
+  '94127':{ label:'San Francisco', cities:['San Francisco','Daly City'] },
+  '94132':{ label:'San Francisco', cities:['San Francisco','Daly City'] },
+  '94133':{ label:'San Francisco', cities:['San Francisco','Oakland','Emeryville'] },
   // Oakland
-  '94601':'Oakland','94602':'Oakland','94603':'Oakland','94605':'Oakland',
-  '94606':'Oakland','94607':'Oakland','94608':'Oakland','94609':'Oakland',
-  '94610':'Oakland','94611':'Oakland','94612':'Oakland','94613':'Oakland',
-  '94618':'Oakland','94619':'Oakland','94621':'Oakland',
+  '94601':{ label:'Oakland', cities:['Oakland','Alameda','San Leandro'] },
+  '94602':{ label:'Oakland', cities:['Oakland','Piedmont'] },
+  '94606':{ label:'Oakland', cities:['Oakland','Alameda','Emeryville'] },
+  '94607':{ label:'Oakland', cities:['Oakland','Emeryville','Berkeley','Alameda'] },
+  '94608':{ label:'Oakland/Emeryville', cities:['Oakland','Emeryville','Berkeley'] },
+  '94609':{ label:'Oakland', cities:['Oakland','Berkeley','Piedmont'] },
+  '94610':{ label:'Oakland', cities:['Oakland','Piedmont','Alameda'] },
+  '94611':{ label:'Oakland', cities:['Oakland','Piedmont','Berkeley'] },
+  '94612':{ label:'Oakland', cities:['Oakland','Emeryville','Alameda'] },
+  '94618':{ label:'Oakland', cities:['Oakland','Piedmont','Berkeley','Emeryville'] },
+  '94619':{ label:'Oakland', cities:['Oakland','San Leandro'] },
   // Berkeley
-  '94701':'Berkeley','94702':'Berkeley','94703':'Berkeley','94704':'Berkeley',
-  '94705':'Berkeley','94706':'Berkeley','94707':'Berkeley','94708':'Berkeley',
-  '94709':'Berkeley','94710':'Berkeley',
-  // Alameda / Emeryville / Piedmont
-  '94501':'Alameda','94502':'Alameda','94608':'Emeryville','94611':'Piedmont',
-  // Fremont / Hayward / Newark / Union City
-  '94536':'Fremont','94537':'Fremont','94538':'Fremont','94539':'Fremont',
-  '94555':'Fremont',
-  '94541':'Hayward','94542':'Hayward','94543':'Hayward','94544':'Hayward','94545':'Hayward',
-  '94560':'Newark','94587':'Union City',
-  // Santa Cruz
-  '95060':'Santa Cruz','95061':'Santa Cruz','95062':'Santa Cruz','95064':'Santa Cruz','95065':'Santa Cruz',
-  '95003':'Aptos','95010':'Capitola','95076':'Watsonville',
+  '94701':{ label:'Berkeley', cities:['Berkeley','Albany','Oakland','Emeryville'] },
+  '94702':{ label:'Berkeley', cities:['Berkeley','Oakland','Emeryville'] },
+  '94703':{ label:'Berkeley', cities:['Berkeley','Oakland','Emeryville'] },
+  '94704':{ label:'Berkeley', cities:['Berkeley','Oakland'] },
+  '94705':{ label:'Berkeley', cities:['Berkeley','Oakland','Piedmont'] },
+  '94706':{ label:'Berkeley', cities:['Berkeley','Albany','El Cerrito'] },
+  '94707':{ label:'Berkeley', cities:['Berkeley','Albany','El Cerrito'] },
+  '94708':{ label:'Berkeley', cities:['Berkeley','Oakland'] },
+  '94709':{ label:'Berkeley', cities:['Berkeley','Oakland','Emeryville'] },
+  '94710':{ label:'Berkeley', cities:['Berkeley','Emeryville','Albany'] },
+  // Alameda
+  '94501':{ label:'Alameda', cities:['Alameda','Oakland','Emeryville'] },
+  '94502':{ label:'Alameda', cities:['Alameda','Oakland','San Leandro'] },
+  // Fremont / Hayward
+  '94536':{ label:'Fremont', cities:['Fremont','Newark','Union City','Hayward'] },
+  '94538':{ label:'Fremont', cities:['Fremont','Newark','Milpitas'] },
+  '94539':{ label:'Fremont', cities:['Fremont','Newark','Milpitas'] },
+  '94541':{ label:'Hayward', cities:['Hayward','Union City','San Leandro','Castro Valley'] },
+  '94544':{ label:'Hayward', cities:['Hayward','Fremont','Union City','Newark'] },
+  '94545':{ label:'Hayward', cities:['Hayward','Fremont','Newark'] },
+  // Santa Cruz cluster
+  '95060':{ label:'Santa Cruz', cities:['Santa Cruz','Scotts Valley','Capitola'] },
+  '95062':{ label:'Santa Cruz', cities:['Santa Cruz','Capitola','Aptos'] },
+  '95064':{ label:'Santa Cruz', cities:['Santa Cruz'] },
+  '95003':{ label:'Aptos',      cities:['Aptos','Capitola','Santa Cruz','Watsonville'] },
+  '95010':{ label:'Capitola',   cities:['Capitola','Santa Cruz','Aptos'] },
+  '95076':{ label:'Watsonville', cities:['Watsonville','Aptos','Santa Cruz'] },
 };
 
-// Given a zip, return the set of city name strings to filter events by
+// Given a zip, return { label, citiesSet } or null
 function citiesForZip(zip) {
-  const city = ZIP_CITY_MAP[zip];
-  if (!city) return null;
-  // Also include partial matches (e.g. "San Jose" matches "San Jose" city field)
-  return new Set([city.toLowerCase()]);
+  const entry = ZIP_RADIUS[zip];
+  if (!entry) return null;
+  return { label: entry.label, cities: new Set(entry.cities.map(c => c.toLowerCase())) };
 }
 
 // ── Modals ─────────────────────────────────────────────────────────────────
@@ -676,7 +739,8 @@ function inferRegion(e) {
   if (/east bay|oakland|berkeley|alameda|fremont|hayward|contra costa|livermore|walnut creek|danville|martinez/.test(hay)) return 'East Bay';
   if (/marin|fairfax|san rafael|novato|north bay|vallejo|sausalito/.test(hay)) return 'North Bay';
   if (/san jose|campbell|los gatos|saratoga|cupertino|milpitas|morgan hill|santa clara city/.test(hay)) return 'South Bay';
-  if (/santa cruz|half moon bay|gilroy|scotts valley/.test(hay)) return 'Fringe';
+  if (/santa cruz|capitola|scotts valley|aptos|watsonville/.test(hay)) return 'Santa Cruz';
+  if (/half moon bay|gilroy/.test(hay)) return 'Fringe';
   return 'Palo Alto';
 }
 
@@ -713,29 +777,39 @@ async function load() {
     document.getElementById('info-version').textContent =
       `FE v${FE_VERSION} · BE scrape: ${healthData.run_at ? healthData.run_at.slice(0,19).replace('T',' ') + ' UTC' : 'unknown'}`;
 
-    // Region pills — All areas first for consistency
-    const regions = ['All areas', 'Palo Alto'];
+    // Region pills
+    const regionDefs = [
+      { label: 'All areas',    key: 'all' },
+      { label: 'Palo Alto',   key: 'Palo Alto',  isDefault: true },
+      { label: 'SF / East Bay', key: 'SF+East Bay' },
+      { label: 'Santa Cruz',  key: 'Santa Cruz' },
+    ];
     const pc = document.getElementById('region-pills');
-    regions.forEach(r => {
+    regionDefs.forEach(({ label, key, isDefault }) => {
       const b = document.createElement('button');
-      const regionKey = r === 'All areas' ? 'all' : r;
-      const isDefault = r === 'Palo Alto';
       b.className = 'chip' + (isDefault ? ' active' : '');
-      b.dataset.region = regionKey;
-      b.textContent = r;
-      b.addEventListener('click', () => toggleRegion(b.dataset.region));
+      b.dataset.region = key;
+      b.textContent = label;
+      b.addEventListener('click', () => toggleRegion(key));
       pc.appendChild(b);
     });
-    // Zip pill + input
+    // Zip pill (always rendered; transforms after zip entry)
     const zipBtn = document.createElement('button');
     zipBtn.className = 'chip';
     zipBtn.dataset.region = 'zip';
+    zipBtn.id = 'zip-pill';
     zipBtn.textContent = '📍 My zip';
-    zipBtn.addEventListener('click', () => {
-      document.getElementById('zip-input-wrap').style.display = 'flex';
-      document.getElementById('zip-input').focus();
-    });
+    zipBtn.addEventListener('click', onZipPillClick);
     pc.appendChild(zipBtn);
+    // Zip ✕ button (appears next to pill after zip is saved)
+    const zipX = document.createElement('button');
+    zipX.id = 'zip-x';
+    zipX.title = 'Clear zip filter';
+    zipX.style.cssText = 'display:none;background:none;border:none;cursor:pointer;font-size:0.75rem;color:var(--ink-3);padding:2px 4px;line-height:1;';
+    zipX.textContent = '✕';
+    zipX.addEventListener('click', clearZip);
+    pc.appendChild(zipX);
+    // Zip text input (shown only when no zip is saved yet)
     document.getElementById('zip-input').addEventListener('keydown', e => {
       if (e.key === 'Enter') applyZip(e.target.value.trim());
       if (e.key === 'Escape') closeZipInput();
@@ -751,18 +825,48 @@ async function load() {
 }
 
 // ── Filter wiring ──────────────────────────────────────────────────────────
+function regionIsActive(r) {
+  if (activeZip) return false;
+  if (r === 'SF+East Bay') return activeRegions.has('SF') && activeRegions.has('East Bay');
+  return activeRegions.has(r);
+}
+
+function updateRegionPillStyles() {
+  document.querySelectorAll('[data-region]').forEach(b => {
+    const r = b.dataset.region;
+    b.classList.remove('active', 'active-all');
+    if (r === 'zip') {
+      if (activeZip !== null && activeRegions.size === 0) b.classList.add('active');
+      return;
+    }
+    if (regionIsActive(r)) {
+      b.classList.add(r === 'all' ? 'active-all' : 'active');
+    }
+  });
+}
+
 function toggleRegion(r) {
-  if (r === 'zip') return; // handled by applyZip
   activeZip = null;
   document.getElementById('zip-input-wrap').style.display = 'none';
-  if (r === 'all') { activeRegions = new Set(['all']); }
+  if (r === 'SF+East Bay') { activeRegions = new Set(['SF', 'East Bay']); }
+  else if (r === 'all') { activeRegions = new Set(['all']); }
   else { activeRegions = new Set([r]); }
-  document.querySelectorAll('[data-region]').forEach(b => {
-    const isActive = b.dataset.region !== 'zip' && activeRegions.has(b.dataset.region);
-    b.classList.toggle('active-all', isActive && b.dataset.region === 'all');
-    b.classList.toggle('active', isActive && b.dataset.region !== 'all');
-  });
+  updateRegionPillStyles();
   render();
+}
+
+function onZipPillClick() {
+  if (savedZip) {
+    // Toggle zip filter on
+    activeZip = savedZip;
+    activeRegions = new Set();
+    updateRegionPillStyles();
+    render();
+  } else {
+    // No saved zip yet — open input
+    document.getElementById('zip-input-wrap').style.display = 'flex';
+    document.getElementById('zip-input').focus();
+  }
 }
 
 function applyZip(zip) {
@@ -770,20 +874,36 @@ function applyZip(zip) {
     document.getElementById('zip-input').style.borderColor = '#e55';
     return;
   }
-  const cities = citiesForZip(zip);
-  if (!cities) {
+  const result = citiesForZip(zip);
+  if (!result) {
     document.getElementById('zip-input').style.borderColor = '#e55';
     document.getElementById('zip-input').placeholder = 'Zip not found';
     return;
   }
-  activeZip = { zip, cities };
+  savedZip = { zip, cities: result.cities, label: result.label };
+  activeZip = savedZip;
   activeRegions = new Set();
-  document.querySelectorAll('[data-region]').forEach(b => {
-    b.classList.toggle('active', b.dataset.region === 'zip');
-  });
-  const cityLabel = ZIP_CITY_MAP[zip];
-  document.querySelector('[data-region="zip"]').textContent = `📍 ${zip} (${cityLabel})`;
+  // Update zip pill text and show ✕
+  const pill = document.getElementById('zip-pill');
+  if (pill) pill.textContent = `📍 ${zip} · ${result.label}`;
+  const xBtn = document.getElementById('zip-x');
+  if (xBtn) xBtn.style.display = '';
   document.getElementById('zip-input-wrap').style.display = 'none';
+  document.getElementById('zip-input').value = '';
+  updateRegionPillStyles();
+  render();
+}
+
+function clearZip() {
+  savedZip = null;
+  activeZip = null;
+  const pill = document.getElementById('zip-pill');
+  if (pill) pill.textContent = '📍 My zip';
+  const xBtn = document.getElementById('zip-x');
+  if (xBtn) xBtn.style.display = 'none';
+  // Fall back to Palo Alto
+  activeRegions = new Set(['Palo Alto']);
+  updateRegionPillStyles();
   render();
 }
 
@@ -858,13 +978,13 @@ document.getElementById('reset-btn').addEventListener('click', () => {
   document.querySelector('[data-cost="all"]').classList.add('active-all');
   activeRegions = new Set(['Palo Alto']);
   activeZip = null;
-  document.querySelectorAll('[data-region]').forEach(b => {
-    b.classList.remove('active', 'active-all');
-    b.classList.toggle('active', b.dataset.region === 'Palo Alto');
-  });
-  const zipPill = document.querySelector('[data-region="zip"]');
+  savedZip = null;
+  const zipPill = document.getElementById('zip-pill');
   if (zipPill) zipPill.textContent = '📍 My zip';
+  const zipX = document.getElementById('zip-x');
+  if (zipX) zipX.style.display = 'none';
   document.getElementById('zip-input-wrap').style.display = 'none';
+  updateRegionPillStyles();
   activeSearchTags = [];
   renderSearchTags();
   render();
@@ -1051,7 +1171,11 @@ function updateStickyBar() {
   const whenLabel = { all:'All dates', today:'Today', 'this-weekend':'This weekend', 'next-weekend':'Next weekend', custom:'Custom' };
   chips.push(whenLabel[activeWhen] || activeWhen);
   // Area
-  chips.push(activeZip ? `📍 ${activeZip.zip}` : (activeRegions.has('all') ? 'All areas' : [...activeRegions][0]));
+  const areaLabel = activeZip ? `📍 ${activeZip.zip}` :
+    activeRegions.has('all') ? 'All areas' :
+    activeRegions.has('SF') && activeRegions.has('East Bay') ? 'SF / East Bay' :
+    [...activeRegions][0] || '';
+  chips.push(areaLabel);
   // Dates
   // Cost
   if (activeCost !== 'all') chips.push('Free');
@@ -1081,13 +1205,22 @@ function showSmartEmpty() {
 }
 function emptySugg(i) { window._emptySuggs[i]?.fn(); }
 
+// ── Feedback modal tab switching ───────────────────────────────────────────
+function switchFeedbackTab(tab) {
+  document.getElementById('fb-tab-feedback').classList.toggle('active', tab === 'feedback');
+  document.getElementById('fb-tab-roadmap').classList.toggle('active', tab === 'roadmap');
+  document.getElementById('fb-pane-feedback').style.display = tab === 'feedback' ? '' : 'none';
+  document.getElementById('fb-pane-roadmap').style.display = tab === 'roadmap' ? '' : 'none';
+  if (tab === 'roadmap' && !roadmapLoaded) loadRoadmap();
+}
+
 // ── Roadmap ────────────────────────────────────────────────────────────────
 const REPO = 'crajagop87/bay-area-kids-events';
 let roadmapLoaded = false;
 
 function openRoadmap() {
-  openModal('roadmap-modal');
-  if (!roadmapLoaded) loadRoadmap();
+  openModal('feedback-modal');
+  switchFeedbackTab('roadmap');
 }
 
 function switchRoadmapTab(tab) {
