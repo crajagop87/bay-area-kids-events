@@ -1,10 +1,10 @@
 {
-  "run_at": "2026-06-14T19:32:55.502122+00:00",
+  "run_at": "2026-06-14T20:11:57.158499+00:00",
   "window_days": 16,
   "channels_ok": 31,
   "channels_total": 31,
   "raw_events": 503,
-  "deduped_events": 332,
+  "deduped_events": 333,
   "channels": [
     {
       "source": "Palo Alto City Library",

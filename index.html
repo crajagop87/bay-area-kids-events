@@ -736,7 +736,7 @@ function isoDate(iso) { return iso ? iso.slice(0, 10) : ''; }
 function inferRegion(e) {
   const hay = ((e.tags || []).join(' ') + ' ' + e.city + ' ' + e.county + ' ' + e.venue).toLowerCase();
   if (/\bsf\b|san francisco|golden gate|mission|soma|presidio/.test(hay)) return 'SF';
-  if (/east bay|oakland|berkeley|alameda|fremont|hayward|contra costa|livermore|walnut creek|danville|martinez/.test(hay)) return 'East Bay';
+  if (/east bay|oakland|berkeley|alameda|fremont|hayward|contra costa|livermore|walnut creek|danville|martinez|richmond|el cerrito|san pablo|hercules|pinole|concord|pleasant hill|antioch|pittsburg/.test(hay)) return 'East Bay';
   if (/marin|fairfax|san rafael|novato|north bay|vallejo|sausalito/.test(hay)) return 'North Bay';
   if (/san jose|campbell|los gatos|saratoga|cupertino|milpitas|morgan hill|santa clara city/.test(hay)) return 'South Bay';
   if (/santa cruz|capitola|scotts valley|aptos|watsonville/.test(hay)) return 'Santa Cruz';

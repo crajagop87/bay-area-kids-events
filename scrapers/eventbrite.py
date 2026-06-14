@@ -42,6 +42,33 @@ ADULT_NOISE = re.compile(
 
 MULTI_WEEK_CAMP = re.compile(r"\b(summer\s*camp|week[\-\s]?long\s*camp|multi[\-\s]?week)\b", re.IGNORECASE)
 
+# Map venue city → county so events that land far from the search city get the right county
+CITY_COUNTY = {
+    "san francisco": "San Francisco", "daly city": "San Mateo", "south san francisco": "San Mateo",
+    "oakland": "Alameda", "berkeley": "Alameda", "alameda": "Alameda", "emeryville": "Alameda",
+    "fremont": "Alameda", "hayward": "Alameda", "san leandro": "Alameda", "union city": "Alameda",
+    "newark": "Alameda", "piedmont": "Alameda", "albany": "Alameda", "castro valley": "Alameda",
+    "richmond": "Contra Costa", "el cerrito": "Contra Costa", "san pablo": "Contra Costa",
+    "concord": "Contra Costa", "walnut creek": "Contra Costa", "pleasant hill": "Contra Costa",
+    "martinez": "Contra Costa", "antioch": "Contra Costa", "pittsburg": "Contra Costa",
+    "hercules": "Contra Costa", "pinole": "Contra Costa", "danville": "Contra Costa",
+    "livermore": "Alameda", "pleasanton": "Alameda", "dublin": "Alameda",
+    "palo alto": "Santa Clara", "mountain view": "Santa Clara", "sunnyvale": "Santa Clara",
+    "cupertino": "Santa Clara", "santa clara": "Santa Clara", "san jose": "Santa Clara",
+    "los altos": "Santa Clara", "campbell": "Santa Clara", "los gatos": "Santa Clara",
+    "saratoga": "Santa Clara", "milpitas": "Santa Clara", "morgan hill": "Santa Clara",
+    "menlo park": "San Mateo", "redwood city": "San Mateo", "san mateo": "San Mateo",
+    "san carlos": "San Mateo", "belmont": "San Mateo", "foster city": "San Mateo",
+    "burlingame": "San Mateo", "millbrae": "San Mateo", "san bruno": "San Mateo",
+    "half moon bay": "San Mateo", "atherton": "San Mateo",
+    "santa cruz": "Santa Cruz", "capitola": "Santa Cruz", "scotts valley": "Santa Cruz",
+    "watsonville": "Santa Cruz", "aptos": "Santa Cruz",
+    "sausalito": "Marin", "san rafael": "Marin", "novato": "Marin",
+}
+
+def _county_for_city(city: str, default: str) -> str:
+    return CITY_COUNTY.get(city.lower().strip(), default)
+
 SERVER_DATA_RE = re.compile(r'window\.__SERVER_DATA__\s*=\s*(\{.+)', re.DOTALL)
 
 
@@ -116,6 +143,8 @@ def scrape_city(city_slug: str, city_name: str, county: str, window_days: int = 
         venue_info = item.get("primary_venue", {}) or {}
         venue_name = venue_info.get("name", city_name)
         venue_city = (venue_info.get("address", {}) or {}).get("city", city_name)
+        # Use actual venue city to determine county — Eventbrite search results can span far
+        actual_county = _county_for_city(venue_city, county)
 
         ticket_url = item.get("url", url)
         is_free = item.get("is_free", False)
@@ -135,7 +164,7 @@ def scrape_city(city_slug: str, city_name: str, county: str, window_days: int = 
             "end_datetime": end_dt.isoformat() if end_dt else None,
             "venue": venue_name,
             "city": venue_city,
-            "county": county,
+            "county": actual_county,
             "age_range": "Families",
             "cost": cost_label,
             "cost_amount": cost_amt,
