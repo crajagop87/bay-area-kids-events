@@ -197,11 +197,27 @@
     color: var(--ink);
   }
   .card-title a {
-    color: inherit;
+    color: var(--accent);
     text-decoration: none;
-    border-bottom: 1px solid transparent;
+    border-bottom: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
   }
-  .card-title a:hover { border-bottom-color: var(--accent); }
+  .card-title a:hover {
+    border-bottom-color: var(--accent);
+  }
+  .card-link {
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    color: var(--ink-3);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .card-link a {
+    color: var(--ink-3);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .card-link a:hover { color: var(--accent); }
 
   .card-meta {
     font-family: var(--sans);
@@ -576,10 +592,21 @@ function card(e) {
   const isCamp = e.is_camp;
 
   const titleHtml = e.ticket_url
-    ? `<a href="${e.ticket_url}" target="_blank" rel="noopener">${esc(e.title)}</a>`
+    ? `<a href="${esc(e.ticket_url)}" target="_blank" rel="noopener">${esc(e.title)} ↗</a>`
     : esc(e.title);
 
   const venue = e.venue && e.venue !== e.city ? e.venue : (e.city || '');
+
+  // Show a clean domain as the visible link label
+  let linkHtml = '';
+  if (e.ticket_url) {
+    try {
+      const domain = new URL(e.ticket_url).hostname.replace(/^www\./, '');
+      linkHtml = `<div class="card-link"><a href="${esc(e.ticket_url)}" target="_blank" rel="noopener">${esc(domain)}</a></div>`;
+    } catch(_) {
+      linkHtml = `<div class="card-link"><a href="${esc(e.ticket_url)}" target="_blank" rel="noopener">View event</a></div>`;
+    }
+  }
 
   return `<div class="card">
     <div class="card-title">${titleHtml}</div>
@@ -592,6 +619,7 @@ function card(e) {
         ? `<span style="color:var(--accent)">${esc(e.ticket_status)}</span>` : ''}
     </div>
     ${venue ? `<div class="card-venue">${esc(venue)}</div>` : ''}
+    ${linkHtml}
     <div class="card-source">${esc(e.source_name || '')}</div>
   </div>`;
 }
