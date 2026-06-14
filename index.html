@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bay Area Kids Events</title>
+<title>What's Going On: Park Parents Edition</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -31,23 +31,47 @@ body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-
 .header {
   background: #fff7ed;
   border-bottom: 2px solid #fed7aa;
-  padding: 1.25rem 1.5rem 1rem;
+  padding: 1rem 1.5rem 0.85rem;
   margin-bottom: 1.25rem;
 }
 .header-inner { max-width: 980px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
-.header h1 { font-size: 1.2rem; font-weight: 700; color: #9a3412; }
-.header h1 span { color: #c2410c; }
-.header-meta { font-size: 0.72rem; color: #c2410c; background: #fed7aa; padding: 3px 10px; border-radius: 99px; font-weight: 600; }
+.header-left { display: flex; align-items: center; gap: 0.7rem; }
+
+/* Animated tree SVG */
+.header-tree { flex-shrink: 0; width: 42px; height: 42px; }
+@keyframes sway {
+  0%,100% { transform: rotate(-2deg); transform-origin: bottom center; }
+  50%      { transform: rotate(2deg);  transform-origin: bottom center; }
+}
+.tree-crown { animation: sway 4s ease-in-out infinite; transform-origin: 50% 90%; }
+
+.header h1 { font-size: 1.15rem; font-weight: 700; color: #9a3412; line-height: 1.25; }
+.header h1 span { color: #c2410c; font-size: 0.82rem; font-weight: 600; display: block; }
+
+.header-right { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+.header-meta {
+  font-size: 0.72rem; color: #c2410c; background: #fed7aa;
+  padding: 3px 10px; border-radius: 99px; font-weight: 600; cursor: default;
+}
+.info-btn {
+  font-size: 0.7rem; font-weight: 700; color: var(--ink-3);
+  background: var(--pill-bg); border: 1.5px solid var(--rule);
+  border-radius: 99px; padding: 3px 9px; cursor: pointer;
+  transition: background 0.12s, border-color 0.12s;
+}
+.info-btn:hover { background: #fff7ed; border-color: #fb923c; color: var(--accent); }
+.feedback-btn {
+  font-size: 0.72rem; font-weight: 700; color: #fff;
+  background: #c2410c; border: none; border-radius: 99px;
+  padding: 4px 12px; cursor: pointer; transition: background 0.12s;
+}
+.feedback-btn:hover { background: #9a3412; }
 
 /* ── Filters panel ── */
-.filters {
-  max-width: 980px; margin: 0 auto 1rem; padding: 0 1.25rem;
-}
+.filters { max-width: 980px; margin: 0 auto 1rem; padding: 0 1.25rem; }
 .filter-card {
-  background: var(--bg-card);
-  border: 1.5px solid var(--rule);
-  border-radius: 18px;
-  padding: 1rem 1.25rem;
+  background: var(--bg-card); border: 1.5px solid var(--rule);
+  border-radius: 18px; padding: 1rem 1.25rem;
   display: flex; flex-direction: column; gap: 0.65rem;
 }
 
@@ -75,7 +99,6 @@ body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-
 .chip:hover { border-color: #fb923c; color: var(--ink); }
 .chip.active { background: #c2410c; border-color: #c2410c; color: #fff; }
 .chip.active-green { background: #065f46; border-color: #065f46; color: #fff; }
-.chip.active-purple { background: #5b21b6; border-color: #5b21b6; color: #fff; }
 
 /* date quick-picks */
 .date-chips { display: flex; gap: 0.4rem; flex-wrap: wrap; }
@@ -123,10 +146,8 @@ input[type="date"]:focus { border-color: #fb923c; }
 
 /* ── Card ── */
 .card {
-  background: var(--bg-card);
-  border: 1.5px solid var(--rule);
-  border-radius: 16px;
-  padding: 0.85rem 1rem 0.8rem;
+  background: var(--bg-card); border: 1.5px solid var(--rule);
+  border-radius: 16px; padding: 0.85rem 1rem 0.8rem;
   display: flex; flex-direction: column; gap: 0.3rem;
   transition: border-color 0.12s, box-shadow 0.12s;
 }
@@ -148,19 +169,11 @@ input[type="date"]:focus { border-color: #fb923c; }
 .badge-camp  { background: #ede9fe; color: #5b21b6; }
 
 .card-venue { font-size: 0.72rem; color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.card-link  { font-size: 0.7rem; }
-.card-link a { color: #2563eb; text-decoration: underline; text-underline-offset: 2px; }
-.card-link a:hover { color: #c2410c; }
 
 .card-tags { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 4px; }
 .tag-chip {
   font-size: 0.6rem; font-weight: 600; padding: 2px 7px; border-radius: 99px;
   background: var(--tag-bg); color: var(--tag-fg); white-space: nowrap;
-}
-
-.card-source {
-  font-size: 0.65rem; color: var(--ink-3); padding-top: 6px;
-  border-top: 1px solid var(--rule); margin-top: 2px;
 }
 
 /* ── Empty / loading ── */
@@ -180,12 +193,61 @@ footer {
 }
 footer a { color: var(--ink-3); text-decoration: underline; }
 
+/* ── Info modal ── */
+.modal-overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.35); z-index: 100;
+  align-items: center; justify-content: center; padding: 1rem;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: #fff; border-radius: 18px;
+  padding: 1.5rem; max-width: 420px; width: 100%;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+}
+.modal h2 { font-size: 1rem; font-weight: 700; color: var(--accent); margin-bottom: 0.75rem; }
+.modal-section { margin-bottom: 0.75rem; }
+.modal-section h3 { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--ink-3); margin-bottom: 0.3rem; }
+.modal-section p, .modal-section li { font-size: 0.8rem; color: var(--ink-2); line-height: 1.5; }
+.modal-section ul { padding-left: 1rem; }
+.modal-close {
+  float: right; font-size: 1.1rem; font-weight: 700; color: var(--ink-3);
+  background: none; border: none; cursor: pointer; line-height: 1; margin-top: -2px;
+}
+.modal-close:hover { color: var(--ink); }
+.modal-version { font-size: 0.68rem; color: var(--ink-3); margin-top: 0.5rem; }
+
+/* ── Feedback modal ── */
+.feedback-textarea {
+  width: 100%; min-height: 100px; font-family: var(--sans); font-size: 0.82rem;
+  border: 1.5px solid var(--rule); border-radius: 10px;
+  padding: 0.6rem 0.75rem; resize: vertical; outline: none; color: var(--ink);
+  background: var(--bg);
+}
+.feedback-textarea:focus { border-color: #fb923c; }
+.feedback-name {
+  width: 100%; font-family: var(--sans); font-size: 0.82rem;
+  border: 1.5px solid var(--rule); border-radius: 10px;
+  padding: 0.5rem 0.75rem; outline: none; color: var(--ink);
+  background: var(--bg); margin-bottom: 0.5rem;
+}
+.feedback-name:focus { border-color: #fb923c; }
+.submit-btn {
+  font-family: var(--sans); font-size: 0.8rem; font-weight: 700;
+  color: #fff; background: #c2410c; border: none;
+  border-radius: 99px; padding: 7px 20px; cursor: pointer; margin-top: 0.5rem;
+  transition: background 0.12s;
+}
+.submit-btn:hover { background: #9a3412; }
+.feedback-thanks { display: none; text-align: center; padding: 1rem 0; font-size: 0.85rem; color: var(--ink-2); }
+
+/* ── Mobile ── */
 @media (max-width: 640px) {
   body { font-size: 14px; }
 
-  .header { padding: 0.9rem 1rem 0.75rem; margin-bottom: 0.75rem; }
-  .header h1 { font-size: 1rem; }
-  .header h1 span { display: block; }
+  .header { padding: 0.8rem 1rem 0.7rem; margin-bottom: 0.75rem; }
+  .header h1 { font-size: 0.95rem; }
+  .header-tree { width: 34px; height: 34px; }
 
   .filters { padding: 0 0.75rem; }
   .filter-card { padding: 0.75rem 0.9rem; gap: 0.55rem; border-radius: 14px; }
@@ -193,19 +255,13 @@ footer a { color: var(--ink-3); text-decoration: underline; }
   .filter-row { gap: 0.35rem; }
   .filter-label { min-width: 42px; font-size: 0.63rem; }
 
-  /* Make all interactive chips bigger touch targets */
   .chip { padding: 7px 13px; font-size: 0.73rem; min-height: 36px; }
   .reset-btn { padding: 7px 12px; min-height: 36px; }
   input[type="date"] { padding: 6px 8px; font-size: 0.8rem; min-height: 36px; }
   #search { padding: 9px 12px 9px 34px; font-size: 0.83rem; min-height: 40px; }
 
-  /* Chip rows: let them wrap freely, no overflow */
   .chip-group, .date-chips { display: flex; flex-wrap: wrap; gap: 0.35rem; }
-
-  /* Date custom: stack vertically */
   .date-custom { flex-direction: column; align-items: flex-start; gap: 0.3rem; }
-
-  /* Reset button: full row on mobile */
   .reset-btn { margin-left: 0; width: 100%; justify-content: center; }
 
   .grid { grid-template-columns: 1fr; gap: 6px; padding: 0 0.75rem; }
@@ -217,18 +273,64 @@ footer a { color: var(--ink-3); text-decoration: underline; }
   .tag-chip { font-size: 0.65rem; padding: 3px 8px; }
 
   footer { padding: 0.4rem 0.75rem; font-size: 0.65rem; }
-
-  /* Bottom padding so cards aren't hidden behind fixed footer */
   #output { padding-bottom: 2.5rem; }
 }
 </style>
 </head>
 <body>
 
+<!-- ── Info modal ── -->
+<div class="modal-overlay" id="info-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('info-modal')">✕</button>
+    <h2>About this dashboard</h2>
+    <div class="modal-section">
+      <h3>What "last scraped" means</h3>
+      <p>Events are pulled daily at 6am PT from libraries, Eventbrite, venue sites, and family blogs. The time shown is when the last pull completed.</p>
+    </div>
+    <div class="modal-section">
+      <h3>Sources</h3>
+      <ul id="info-sources"></ul>
+    </div>
+    <div class="modal-version" id="info-version"></div>
+  </div>
+</div>
+
+<!-- ── Feedback modal ── -->
+<div class="modal-overlay" id="feedback-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('feedback-modal')">✕</button>
+    <h2>💬 Share feedback</h2>
+    <p style="font-size:0.8rem;color:var(--ink-2);margin-bottom:0.75rem">Spotted a bug? Want a new feature? Just dump it here — anything helps.</p>
+    <input class="feedback-name" id="fb-name" placeholder="Your name (optional)">
+    <textarea class="feedback-textarea" id="fb-text" placeholder="What did you notice? What would you love to see?"></textarea>
+    <div>
+      <button class="submit-btn" onclick="submitFeedback()">Send feedback</button>
+    </div>
+    <div class="feedback-thanks" id="fb-thanks">Thanks! 🙏 Your feedback was sent.</div>
+  </div>
+</div>
+
 <div class="header">
   <div class="header-inner">
-    <h1>Bay Area Kids Events <span>— Peninsula + South Bay</span></h1>
-    <span class="header-meta" id="meta">loading…</span>
+    <div class="header-left">
+      <!-- Animated Palo Alto tree -->
+      <svg class="header-tree" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="18.5" y="28" width="5" height="11" rx="1.5" fill="#92400e"/>
+        <g class="tree-crown">
+          <ellipse cx="21" cy="22" rx="11" ry="9" fill="#16a34a"/>
+          <ellipse cx="21" cy="17" rx="8" ry="7" fill="#15803d"/>
+          <ellipse cx="21" cy="13" rx="5.5" ry="5" fill="#166534"/>
+          <ellipse cx="21" cy="9.5" rx="3.5" ry="4" fill="#14532d"/>
+        </g>
+      </svg>
+      <h1>What's Going On <span>Park Parents Edition 🌳</span></h1>
+    </div>
+    <div class="header-right">
+      <span class="header-meta" id="meta">loading…</span>
+      <button class="info-btn" onclick="openModal('info-modal')">ℹ︎ sources</button>
+      <button class="feedback-btn" onclick="openModal('feedback-modal')">Feedback</button>
+    </div>
   </div>
 </div>
 
@@ -238,7 +340,7 @@ footer a { color: var(--ink-3); text-decoration: underline; }
     <div class="filter-row">
       <div class="search-wrap">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <input id="search" type="search" placeholder="Try: outdoors, storytime, free, animals, hands-on…" autocomplete="off">
+        <input id="search" type="search" placeholder="Try: outdoors, storytime, free, animals, crafts…" autocomplete="off">
       </div>
     </div>
 
@@ -248,7 +350,6 @@ footer a { color: var(--ink-3); text-decoration: underline; }
         <button class="chip" data-when="today">Today</button>
         <button class="chip active" data-when="this-weekend">This weekend</button>
         <button class="chip" data-when="next-weekend">Next weekend</button>
-        <button class="chip" data-when="2weeks">Next 2 weeks</button>
         <button class="chip" data-when="custom">Custom</button>
       </div>
     </div>
@@ -291,27 +392,55 @@ footer a { color: var(--ink-3); text-decoration: underline; }
 </footer>
 
 <script>
+const FE_VERSION = '1.2.0';
 const IS_LOCAL = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
 const JSON_URL   = IS_LOCAL ? '/output/events.json'  : 'https://raw.githubusercontent.com/crajagop87/bay-area-kids-events/main/output/events.json';
 const HEALTH_URL = IS_LOCAL ? '/output/health.json'  : 'https://raw.githubusercontent.com/crajagop87/bay-area-kids-events/main/output/health.json';
+const FEEDBACK_URL = 'https://api.github.com/repos/crajagop87/bay-area-kids-events/issues';
 
 let allEvents = [];
-let activeRegions = new Set(['all']);
+let healthData = {};
+let activeRegions = new Set(['PA & surrounds']);
 let activeCost = 'all';
 let activeWhen = 'this-weekend';
+
+// ── Modals ─────────────────────────────────────────────────────────────────
+function openModal(id) { document.getElementById(id).classList.add('open'); }
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+document.querySelectorAll('.modal-overlay').forEach(el => {
+  el.addEventListener('click', e => { if (e.target === el) el.classList.remove('open'); });
+});
+
+async function submitFeedback() {
+  const name = document.getElementById('fb-name').value.trim();
+  const text = document.getElementById('fb-text').value.trim();
+  if (!text) return;
+
+  const beVersion = healthData.run_at ? `BE scrape: ${healthData.run_at.slice(0,19).replace('T',' ')} UTC` : 'BE version: unknown';
+  const body = [
+    text,
+    '',
+    '---',
+    name ? `From: ${name}` : 'From: anonymous',
+    `FE version: ${FE_VERSION}`,
+    beVersion,
+    `Submitted: ${new Date().toISOString()}`,
+  ].join('\n');
+
+  // Open a pre-filled GitHub issue in a new tab (no auth needed for the user)
+  const title = encodeURIComponent((name ? `[${name}] ` : '') + text.slice(0, 60));
+  const bodyEnc = encodeURIComponent(body);
+  window.open(`https://github.com/crajagop87/bay-area-kids-events/issues/new?title=${title}&body=${bodyEnc}`, '_blank');
+
+  document.getElementById('fb-text').value = '';
+  document.getElementById('fb-name').value = '';
+  document.getElementById('fb-thanks').style.display = 'block';
+  setTimeout(() => { document.getElementById('fb-thanks').style.display = 'none'; closeModal('feedback-modal'); }, 2500);
+}
 
 // ── Date helpers ───────────────────────────────────────────────────────────
 function pad(n) { return String(n).padStart(2, '0'); }
 function isoLocal(d) { return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`; }
-
-function getWeekendRange(offsetWeeks = 0) {
-  const now = new Date();
-  const day = now.getDay(); // 0=Sun,6=Sat
-  const daysToSat = (6 - day + 7 * offsetWeeks) % 7 || (offsetWeeks ? 7 * offsetWeeks : 0);
-  const sat = new Date(now); sat.setDate(now.getDate() + (day === 6 && offsetWeeks === 0 ? 0 : (6 - day + 7 * offsetWeeks)));
-  const sun = new Date(sat); sun.setDate(sat.getDate() + 1);
-  return [isoLocal(sat), isoLocal(sun)];
-}
 
 function dateRangeForWhen(when) {
   const now = new Date();
@@ -332,10 +461,6 @@ function dateRangeForWhen(when) {
     const sun = new Date(sat); sun.setDate(sat.getDate() + 1);
     return [isoLocal(sat), isoLocal(sun)];
   }
-  if (when === '2weeks') {
-    const end = new Date(now); end.setDate(now.getDate() + 16);
-    return [todayStr, isoLocal(end)];
-  }
   return [null, null]; // custom
 }
 
@@ -348,7 +473,7 @@ function inferRegion(e) {
   if (/marin|fairfax|san rafael|novato|north bay|vallejo|sausalito/.test(hay)) return 'North Bay';
   if (/san jose|campbell|los gatos|saratoga|cupertino|milpitas|morgan hill|santa clara city/.test(hay)) return 'South Bay';
   if (/santa cruz|half moon bay|gilroy|scotts valley/.test(hay)) return 'Fringe';
-  return 'PA & Peninsula';
+  return 'PA & surrounds';
 }
 
 // ── Load ───────────────────────────────────────────────────────────────────
@@ -359,26 +484,36 @@ async function load() {
       fetch(HEALTH_URL + '?t=' + Date.now()),
     ]);
     allEvents = await evRes.json();
-    const health = await hlRes.json();
+    healthData = await hlRes.json();
 
     allEvents.forEach(e => { e._region = inferRegion(e); });
 
-    const runAt = health.run_at ? new Date(health.run_at).toLocaleDateString('en-US', {
+    const runAt = healthData.run_at ? new Date(healthData.run_at).toLocaleDateString('en-US', {
       month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', timeZone: 'America/Los_Angeles'
     }) : '';
-    document.getElementById('meta').textContent =
-      `${health.deduped_events || allEvents.length} events · ${runAt} · ${health.channels_ok}/${health.channels_total} sources ok`;
-    document.getElementById('footer-count').textContent = `${allEvents.length} events`;
+    document.getElementById('meta').textContent = `Last scraped: ${runAt}`;
+    document.getElementById('footer-count').textContent = `v${FE_VERSION} · ${allEvents.length} events`;
 
-    // Region pills
-    const regions = ['all', 'PA & Peninsula', 'SF', 'East Bay', 'South Bay', 'North Bay', 'Fringe'];
+    // Info modal sources
+    const srcList = document.getElementById('info-sources');
+    (healthData.channels || []).forEach(ch => {
+      const li = document.createElement('li');
+      li.style.cssText = 'font-size:0.78rem;color:var(--ink-2);margin-bottom:2px';
+      li.textContent = `${ch.source}: ${ch.status === 'ok' ? ch.count + ' events' : '⚠ ' + (ch.error || ch.status)}`;
+      srcList.appendChild(li);
+    });
+    document.getElementById('info-version').textContent =
+      `FE v${FE_VERSION} · BE scrape: ${healthData.run_at ? healthData.run_at.slice(0,19).replace('T',' ') + ' UTC' : 'unknown'}`;
+
+    // Region pills — simplified: PA & surrounds + All areas
+    const regions = ['PA & surrounds', 'All areas'];
     const pc = document.getElementById('region-pills');
     regions.forEach(r => {
       const b = document.createElement('button');
-      b.className = 'chip' + (r === 'all' ? ' active' : '');
-      b.dataset.region = r;
-      b.textContent = r === 'all' ? 'All areas' : r;
-      b.addEventListener('click', () => toggleRegion(r));
+      b.className = 'chip' + (r === 'PA & surrounds' ? ' active' : '');
+      b.dataset.region = r === 'All areas' ? 'all' : r;
+      b.textContent = r;
+      b.addEventListener('click', () => toggleRegion(b.dataset.region));
       pc.appendChild(b);
     });
 
@@ -393,11 +528,7 @@ async function load() {
 // ── Filter wiring ──────────────────────────────────────────────────────────
 function toggleRegion(r) {
   if (r === 'all') { activeRegions = new Set(['all']); }
-  else {
-    activeRegions.delete('all');
-    activeRegions.has(r) ? activeRegions.delete(r) : activeRegions.add(r);
-    if (!activeRegions.size) activeRegions.add('all');
-  }
+  else { activeRegions = new Set([r]); }
   document.querySelectorAll('[data-region]').forEach(b => {
     b.classList.toggle('active', activeRegions.has(b.dataset.region));
   });
@@ -446,8 +577,8 @@ document.getElementById('reset-btn').addEventListener('click', () => {
   });
   document.querySelector('[data-cost="all"]').classList.add('active');
   document.querySelector('[data-cost="all"]').style.background = '';
-  activeRegions = new Set(['all']);
-  document.querySelectorAll('[data-region]').forEach(b => b.classList.toggle('active', b.dataset.region === 'all'));
+  activeRegions = new Set(['PA & surrounds']);
+  document.querySelectorAll('[data-region]').forEach(b => b.classList.toggle('active', b.dataset.region === 'PA & surrounds'));
   render();
 });
 
@@ -519,46 +650,40 @@ function fmt_time(iso) {
   return `${h % 12 || 12}:${min} ${h >= 12 ? 'PM' : 'AM'}`;
 }
 
-// Tags to hide from display (too generic / internal)
-const HIDDEN_TAGS = new Set(['venue','library','aggregator','eventbrite','weekend','weekday','summer','all ages']);
+const HIDDEN_TAGS = new Set(['venue','library','aggregator','eventbrite','weekend','weekday','summer','all ages','peninsula','palo alto']);
 
 function card(e) {
-  const time = fmt_time(e.start_datetime);
+  const startTime = fmt_time(e.start_datetime);
+  const endTime = fmt_time(e.end_datetime);
+  const timeStr = startTime ? (endTime ? `${startTime} – ${endTime}` : startTime) : '';
+
   const costCls = e.cost === 'Free' ? 'badge-free' : e.cost === 'Paid' ? 'badge-paid' : 'badge-unk';
   const costLbl = e.cost === 'Free' ? 'Free' : e.cost === 'Paid' ? (e.cost_amount > 1 ? `$${e.cost_amount}` : 'Paid') : '?';
+
   const titleHtml = e.ticket_url
     ? `<a href="${esc(e.ticket_url)}" target="_blank" rel="noopener">${esc(e.title)} ↗</a>`
     : esc(e.title);
 
-  let linkHtml = '';
-  if (e.ticket_url) {
-    try {
-      const domain = new URL(e.ticket_url).hostname.replace(/^www\./, '');
-      linkHtml = `<div class="card-link"><a href="${esc(e.ticket_url)}" target="_blank" rel="noopener">${esc(domain)}</a></div>`;
-    } catch(_) {}
-  }
-
   const venue = (e.venue && e.venue !== e.city) ? e.venue : (e.city || '');
+
+  const warnHtml = e.ticket_status && !['free walk-up','walk-up or reserve'].includes(e.ticket_status)
+    ? `<span class="badge badge-warn">${esc(e.ticket_status)}</span>` : '';
+
   const tags = (e.tags || []).filter(t => !HIDDEN_TAGS.has(t));
   const tagsHtml = tags.length
     ? `<div class="card-tags">${tags.map(t => `<span class="tag-chip">${esc(t)}</span>`).join('')}</div>`
     : '';
 
-  const warnHtml = e.ticket_status && !['free walk-up','walk-up or reserve'].includes(e.ticket_status)
-    ? `<span class="badge badge-warn">${esc(e.ticket_status)}</span>` : '';
-
   return `<div class="card">
     <div class="card-title">${titleHtml}</div>
     <div class="card-meta">
-      ${time ? `<span class="m-time">${time}</span>` : ''}
+      ${timeStr ? `<span class="m-time">${timeStr}</span>` : ''}
       <span class="badge ${costCls}">${costLbl}</span>
       ${e.is_camp ? '<span class="badge badge-camp">camp</span>' : ''}
       ${warnHtml}
     </div>
     ${venue ? `<div class="card-venue">${esc(venue)}</div>` : ''}
-    ${linkHtml}
     ${tagsHtml}
-    <div class="card-source">${esc(e.source_name || '')}</div>
   </div>`;
 }
 
