@@ -331,11 +331,27 @@ footer a { color: var(--ink-3); text-decoration: underline; }
     <button class="modal-close" onclick="closeModal('info-modal')">✕</button>
     <h2>About this dashboard</h2>
     <div class="modal-section">
-      <h3>What "last scraped" means</h3>
-      <p>Events are pulled daily at 6am PT from libraries, Eventbrite, venue sites, and family blogs. The time shown is when the last pull completed.</p>
+      <h3>Made by</h3>
+      <p><strong>Chandra Rajagopal</strong> — a Palo Alto parent who wanted a faster way to find things to do with the kids. Built for the Park Parents community. Questions or ideas? Hit the Feedback button.</p>
     </div>
     <div class="modal-section">
-      <h3>Sources</h3>
+      <h3>How filters work</h3>
+      <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:6px">
+        <li><strong>Today</strong> — events happening on today's date only.</li>
+        <li><strong>This weekend</strong> — Saturday and Sunday of the current week.</li>
+        <li><strong>Next weekend</strong> — the following Saturday and Sunday.</li>
+        <li><strong>Custom</strong> — pick any date range you like.</li>
+        <li><strong>Palo Alto Area</strong> — events in Palo Alto, Menlo Park, Redwood City, Mountain View, Los Altos, and nearby Peninsula cities. Roughly within 10–15 miles of downtown PA.</li>
+        <li><strong>All areas</strong> — includes everything above plus SF, East Bay, South Bay, and beyond.</li>
+        <li><strong>Free only</strong> — filters to events with no admission cost. Some free events still require registration.</li>
+      </ul>
+    </div>
+    <div class="modal-section">
+      <h3>Last scraped</h3>
+      <p>Events are automatically pulled every day at 6am PT from public library systems, Eventbrite, venue websites, and Bay Area family blogs. The timestamp in the header shows when the last pull completed.</p>
+    </div>
+    <div class="modal-section">
+      <h3>Sources <span id="info-source-summary"></span></h3>
       <ul id="info-sources"></ul>
     </div>
     <div class="modal-version" id="info-version"></div>
@@ -374,7 +390,7 @@ footer a { color: var(--ink-3); text-decoration: underline; }
     </div>
     <div class="header-right">
       <span class="header-meta" id="meta">loading…</span>
-      <button class="info-btn" onclick="openModal('info-modal')">ℹ︎ sources</button>
+      <button class="info-btn" onclick="openModal('info-modal')">Info</button>
       <button class="info-btn" onclick="openRoadmap()">🗺 Roadmap</button>
       <button class="feedback-btn" onclick="openModal('feedback-modal')">Feedback</button>
     </div>
@@ -447,7 +463,7 @@ const FEEDBACK_URL = 'https://api.github.com/repos/crajagop87/bay-area-kids-even
 
 let allEvents = [];
 let healthData = {};
-let activeRegions = new Set(['PA & surrounds']);
+let activeRegions = new Set(['Palo Alto Area']);
 let activeCost = 'all';
 let activeWhen = 'this-weekend';
 
@@ -520,7 +536,7 @@ function inferRegion(e) {
   if (/marin|fairfax|san rafael|novato|north bay|vallejo|sausalito/.test(hay)) return 'North Bay';
   if (/san jose|campbell|los gatos|saratoga|cupertino|milpitas|morgan hill|santa clara city/.test(hay)) return 'South Bay';
   if (/santa cruz|half moon bay|gilroy|scotts valley/.test(hay)) return 'Fringe';
-  return 'PA & surrounds';
+  return 'Palo Alto Area';
 }
 
 // ── Load ───────────────────────────────────────────────────────────────────
@@ -542,6 +558,10 @@ async function load() {
     document.getElementById('footer-count').textContent = `v${FE_VERSION} · ${allEvents.length} events`;
 
     // Info modal sources
+    const okCount = healthData.channels_ok || 0;
+    const totalCount = healthData.channels_total || 0;
+    const srcSummary = document.getElementById('info-source-summary');
+    if (srcSummary) srcSummary.textContent = `(${okCount}/${totalCount} ok)`;
     const srcList = document.getElementById('info-sources');
     (healthData.channels || []).forEach(ch => {
       const li = document.createElement('li');
@@ -552,12 +572,12 @@ async function load() {
     document.getElementById('info-version').textContent =
       `FE v${FE_VERSION} · BE scrape: ${healthData.run_at ? healthData.run_at.slice(0,19).replace('T',' ') + ' UTC' : 'unknown'}`;
 
-    // Region pills — simplified: PA & surrounds + All areas
-    const regions = ['PA & surrounds', 'All areas'];
+    // Region pills — simplified: Palo Alto Area + All areas
+    const regions = ['Palo Alto Area', 'All areas'];
     const pc = document.getElementById('region-pills');
     regions.forEach(r => {
       const b = document.createElement('button');
-      b.className = 'chip' + (r === 'PA & surrounds' ? ' active' : '');
+      b.className = 'chip' + (r === 'Palo Alto Area' ? ' active' : '');
       b.dataset.region = r === 'All areas' ? 'all' : r;
       b.textContent = r;
       b.addEventListener('click', () => toggleRegion(b.dataset.region));
@@ -624,8 +644,8 @@ document.getElementById('reset-btn').addEventListener('click', () => {
   });
   document.querySelector('[data-cost="all"]').classList.add('active');
   document.querySelector('[data-cost="all"]').style.background = '';
-  activeRegions = new Set(['PA & surrounds']);
-  document.querySelectorAll('[data-region]').forEach(b => b.classList.toggle('active', b.dataset.region === 'PA & surrounds'));
+  activeRegions = new Set(['Palo Alto Area']);
+  document.querySelectorAll('[data-region]').forEach(b => b.classList.toggle('active', b.dataset.region === 'Palo Alto Area'));
   render();
 });
 
