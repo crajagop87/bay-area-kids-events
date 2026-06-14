@@ -98,12 +98,17 @@ def scrape_library(lib: dict, window_days: int = 16) -> list[dict]:
 
             start_raw = defn.get("start", "")
             end_raw = defn.get("end", "")
+            # BiblioCommons returns naive local times (America/Los_Angeles) — store as-is
             try:
-                start_dt = datetime.fromisoformat(start_raw).replace(tzinfo=timezone.utc)
+                start_dt = datetime.fromisoformat(start_raw)
+                if start_dt.tzinfo is None:
+                    start_dt = start_dt.replace(tzinfo=timezone.utc)  # placeholder; display layer reads raw ISO
             except Exception:
                 start_dt = None
             try:
-                end_dt = datetime.fromisoformat(end_raw).replace(tzinfo=timezone.utc)
+                end_dt = datetime.fromisoformat(end_raw)
+                if end_dt.tzinfo is None:
+                    end_dt = end_dt.replace(tzinfo=timezone.utc)
             except Exception:
                 end_dt = None
 
