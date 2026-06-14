@@ -25,65 +25,65 @@
   --sans: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.5; }
+body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.5; }
 
 /* ── Header ── */
 .header {
   background: #fff7ed;
   border-bottom: 2px solid #fed7aa;
-  padding: 1rem 1.5rem 0.85rem;
-  margin-bottom: 1.25rem;
+  padding: 1rem 1.75rem 0.9rem;
+  margin-bottom: 1.5rem;
 }
-.header-inner { max-width: 980px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
-.header-left { display: flex; align-items: center; gap: 0.7rem; }
+.header-inner { max-width: 1040px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
+.header-left { display: flex; align-items: center; gap: 0.75rem; }
 
 /* Animated tree SVG */
-.header-tree { flex-shrink: 0; width: 42px; height: 42px; }
+.header-tree { flex-shrink: 0; width: 44px; height: 44px; }
 @keyframes sway {
   0%,100% { transform: rotate(-2deg); transform-origin: bottom center; }
   50%      { transform: rotate(2deg);  transform-origin: bottom center; }
 }
 .tree-crown { animation: sway 4s ease-in-out infinite; transform-origin: 50% 90%; }
 
-.header h1 { font-size: 1.15rem; font-weight: 700; color: #9a3412; line-height: 1.25; }
-.header h1 span { color: #c2410c; font-size: 0.82rem; font-weight: 600; display: block; }
+.header h1 { font-size: 1.25rem; font-weight: 800; color: #9a3412; line-height: 1.2; }
+.header h1 span { color: #c2410c; font-size: 0.85rem; font-weight: 600; display: block; margin-top: 1px; }
 
-.header-right { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+.header-right { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
 .header-meta {
-  font-size: 0.72rem; color: #c2410c; background: #fed7aa;
-  padding: 3px 10px; border-radius: 99px; font-weight: 600; cursor: default;
+  font-size: 0.75rem; color: #c2410c; background: #fed7aa;
+  padding: 4px 12px; border-radius: 99px; font-weight: 600; cursor: default;
 }
 .info-btn {
-  font-size: 0.7rem; font-weight: 700; color: var(--ink-3);
+  font-size: 0.75rem; font-weight: 700; color: var(--ink-3);
   background: var(--pill-bg); border: 1.5px solid var(--rule);
-  border-radius: 99px; padding: 3px 9px; cursor: pointer;
+  border-radius: 99px; padding: 5px 13px; cursor: pointer;
   transition: background 0.12s, border-color 0.12s;
 }
 .info-btn:hover { background: #fff7ed; border-color: #fb923c; color: var(--accent); }
 .feedback-btn {
-  font-size: 0.72rem; font-weight: 700; color: #fff;
+  font-size: 0.78rem; font-weight: 700; color: #fff;
   background: #c2410c; border: none; border-radius: 99px;
-  padding: 4px 12px; cursor: pointer; transition: background 0.12s;
+  padding: 6px 16px; cursor: pointer; transition: background 0.12s;
 }
 .feedback-btn:hover { background: #9a3412; }
 
 /* ── Filters panel ── */
-.filters { max-width: 980px; margin: 0 auto 1rem; padding: 0 1.25rem; }
+.filters { max-width: 1040px; margin: 0 auto 1.25rem; padding: 0 1.5rem; }
 .filter-card {
   background: var(--bg-card); border: 1.5px solid var(--rule);
-  border-radius: 18px; padding: 1rem 1.25rem;
-  display: flex; flex-direction: column; gap: 0.65rem;
+  border-radius: 20px; padding: 1.2rem 1.5rem;
+  display: flex; flex-direction: column; gap: 0.9rem;
 }
 
-.filter-row { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
-.filter-label { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--ink-3); min-width: 52px; }
+.filter-row { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
+.filter-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-3); min-width: 58px; }
 
-.search-wrap { position: relative; flex: 1; min-width: 180px; }
-.search-wrap svg { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: var(--ink-3); }
+.search-wrap { position: relative; flex: 1; min-width: 200px; }
+.search-wrap svg { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--ink-3); }
 #search {
-  width: 100%; padding: 8px 12px 8px 34px;
+  width: 100%; padding: 10px 14px 10px 38px;
   border: 1.5px solid var(--rule); border-radius: 99px;
-  font-family: var(--sans); font-size: 0.85rem; color: var(--ink);
+  font-family: var(--sans); font-size: 0.9rem; color: var(--ink);
   background: var(--bg); outline: none;
 }
 #search:focus { border-color: #fb923c; }
@@ -105,15 +105,16 @@ body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-
 
 /* chips */
 .chip {
-  font-family: var(--sans); font-size: 0.75rem; font-weight: 600;
-  padding: 5px 13px; border-radius: 99px;
+  font-family: var(--sans); font-size: 0.82rem; font-weight: 600;
+  padding: 6px 16px; border-radius: 99px;
   border: 1.5px solid var(--rule); background: var(--pill-bg); color: var(--ink-2);
-  cursor: pointer; transition: all 0.12s; white-space: nowrap;
+  cursor: pointer; transition: all 0.14s; white-space: nowrap;
 }
-.chip:hover { border-color: #fb923c; color: var(--ink); }
+.chip:hover { border-color: #fb923c; color: var(--ink); background: #fff7ed; }
 .chip.active { background: #c2410c; border-color: #c2410c; color: #fff; }
+.chip.active:hover { background: #9a3412; border-color: #9a3412; }
 .chip.active-green { background: #065f46; border-color: #065f46; color: #fff; }
-.chip.active-all { background: var(--ink-2); border-color: var(--ink-2); color: #fff; opacity: 0.7; }
+.chip.active-all { background: var(--ink-2); border-color: var(--ink-2); color: #fff; opacity: 0.65; }
 
 /* date quick-picks */
 .date-chips { display: flex; gap: 0.4rem; flex-wrap: wrap; }
@@ -137,49 +138,49 @@ input[type="date"]:focus { border-color: #fb923c; }
 
 /* ── Count bar ── */
 .count-bar {
-  max-width: 980px; margin: 0 auto 0.75rem; padding: 0 1.25rem;
-  font-size: 0.75rem; color: var(--ink-3); display: flex; align-items: center; gap: 0.5rem;
+  max-width: 1040px; margin: 0 auto 1rem; padding: 0 1.5rem;
+  font-size: 0.82rem; color: var(--ink-3); display: flex; align-items: center; gap: 0.5rem;
 }
-.count-bar strong { color: var(--ink); font-weight: 700; }
+.count-bar strong { color: var(--ink); font-weight: 800; font-size: 1rem; }
 
 /* ── Date group ── */
-.date-group { max-width: 980px; margin: 1.5rem auto 0.5rem; padding: 0 1.25rem; }
+.date-group { max-width: 1040px; margin: 1.75rem auto 0.6rem; padding: 0 1.5rem; }
 .date-group h2 {
-  font-size: 0.75rem; font-weight: 800; text-transform: uppercase;
+  font-size: 0.78rem; font-weight: 800; text-transform: uppercase;
   letter-spacing: 0.12em; color: #92400e;
-  border-top: 2px solid #fed7aa; padding-top: 0.65rem;
+  border-top: 2px solid #fed7aa; padding-top: 0.7rem;
 }
 .date-group.undated h2 { color: var(--ink-3); border-top-color: var(--rule); }
 
 /* ── Grid ── */
 .grid {
-  max-width: 980px; margin: 0 auto;
-  padding: 0 1.25rem;
+  max-width: 1040px; margin: 0 auto;
+  padding: 0 1.5rem;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(285px, 1fr));
-  gap: 8px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 10px;
 }
 
 /* ── Card ── */
 .card {
   background: var(--bg-card); border: 1.5px solid var(--rule);
-  border-radius: 16px; padding: 0.85rem 1rem 0.8rem;
-  display: flex; flex-direction: column; gap: 0.3rem;
-  transition: border-color 0.12s, box-shadow 0.12s;
+  border-radius: 16px; padding: 1rem 1.1rem 0.95rem;
+  display: flex; flex-direction: column; gap: 0.35rem;
+  transition: border-color 0.14s, box-shadow 0.14s;
 }
-.card:hover { border-color: #fb923c; box-shadow: 0 2px 12px rgba(194,65,12,0.08); }
+.card:hover { border-color: #fb923c; box-shadow: 0 3px 14px rgba(194,65,12,0.09); }
 .card.undated { background: #f7f6f3; border-color: #e5e2db; }
 .card.undated:hover { border-color: var(--ink-3); box-shadow: none; }
 .card.undated .card-title a { color: var(--ink-2); border-bottom-color: #e5e2db; }
 
-.card-title { font-size: 0.9rem; font-weight: 700; line-height: 1.35; color: var(--ink); }
+.card-title { font-size: 0.95rem; font-weight: 700; line-height: 1.35; color: var(--ink); }
 .card-title a { color: #c2410c; text-decoration: none; border-bottom: 1.5px solid #fed7aa; }
 .card-title a:hover { border-bottom-color: #c2410c; }
 
-.card-meta { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; margin-top: 2px; }
-.m-time { font-size: 0.72rem; color: var(--ink-2); font-weight: 600; }
+.card-meta { display: flex; flex-wrap: wrap; gap: 5px; align-items: center; margin-top: 3px; }
+.m-time { font-size: 0.78rem; color: var(--ink-2); font-weight: 600; }
 .badge {
-  font-size: 0.65rem; font-weight: 700; padding: 2px 7px; border-radius: 99px;
+  font-size: 0.68rem; font-weight: 700; padding: 2px 9px; border-radius: 99px;
 }
 .badge-free  { background: var(--free-bg); color: var(--free-fg); }
 .badge-paid  { background: var(--paid-bg); color: var(--paid-fg); }
@@ -187,16 +188,16 @@ input[type="date"]:focus { border-color: #fb923c; }
 .badge-warn  { background: var(--warn-bg); color: var(--warn-fg); }
 .badge-camp  { background: #ede9fe; color: #5b21b6; }
 
-.card-venue { font-size: 0.72rem; color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.card-venue { font-size: 0.76rem; color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-.card-tags { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 4px; }
+.card-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 5px; }
 .tag-chip {
-  font-size: 0.6rem; font-weight: 600; padding: 2px 7px; border-radius: 99px;
+  font-size: 0.65rem; font-weight: 600; padding: 3px 9px; border-radius: 99px;
   background: var(--tag-bg); color: var(--tag-fg); white-space: nowrap;
 }
 
 /* ── Card emoji ── */
-.card-emoji { font-size: 1.5rem; line-height: 1; margin-bottom: 2px; }
+.card-emoji { font-size: 1.6rem; line-height: 1; margin-bottom: 3px; }
 
 /* ── Sticky filter bar ── */
 .sticky-bar {
@@ -212,7 +213,7 @@ input[type="date"]:focus { border-color: #fb923c; }
 }
 .sticky-bar::-webkit-scrollbar { display: none; }
 .sticky-bar.visible { transform: translateY(0); }
-.sticky-bar .chip { font-size: 0.68rem; padding: 3px 10px; }
+.sticky-bar .chip { font-size: 0.72rem; padding: 4px 11px; }
 .sticky-label { font-size: 0.65rem; font-weight: 700; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.06em; white-space: nowrap; }
 .sticky-scroll-hint { font-size: 0.65rem; color: var(--ink-3); white-space: nowrap; cursor: pointer; margin-left: auto; flex-shrink: 0; }
 .sticky-scroll-hint:hover { color: var(--accent); }
@@ -324,35 +325,68 @@ footer a { color: var(--ink-3); text-decoration: underline; }
 .submit-btn:hover { background: #9a3412; }
 .feedback-thanks { display: none; text-align: center; padding: 1rem 0; font-size: 0.85rem; color: var(--ink-2); }
 
+/* ── Radius slider ── */
+#radius-row { display: none; align-items: center; gap: 0.75rem; padding-left: 64px; }
+#radius-row.visible { display: flex; }
+.radius-within {
+  font-size: 0.72rem; font-weight: 700; color: var(--ink-3);
+  text-transform: uppercase; letter-spacing: 0.07em;
+  white-space: nowrap; min-width: 72px;
+}
+.radius-wrap { display: flex; flex-direction: column; gap: 5px; flex: 1; max-width: 280px; }
+#radius-slider {
+  width: 100%; height: 6px; accent-color: #c2410c; cursor: pointer;
+  -webkit-appearance: none; appearance: none;
+  background: linear-gradient(to right, #c2410c 0%, #c2410c var(--pct,50%), #e8e0d8 var(--pct,50%));
+  border-radius: 3px; outline: none;
+}
+#radius-slider::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%;
+  background: #fff; border: 2.5px solid #c2410c; box-shadow: 0 1px 4px rgba(0,0,0,0.15); cursor: pointer;
+  transition: box-shadow 0.12s;
+}
+#radius-slider::-webkit-slider-thumb:hover { box-shadow: 0 0 0 5px rgba(194,65,12,0.12); }
+.radius-ticks { display: flex; justify-content: space-between; }
+.radius-ticks span { font-size: 0.65rem; font-weight: 600; color: var(--ink-3); cursor: pointer; transition: color 0.12s; }
+.radius-ticks span:hover { color: var(--ink-2); }
+.radius-ticks span.active-tick { color: var(--accent); font-weight: 800; }
+
 /* ── Mobile ── */
 @media (max-width: 640px) {
-  body { font-size: 14px; }
+  body { font-size: 15px; }
 
-  .header { padding: 0.8rem 1rem 0.7rem; margin-bottom: 0.75rem; }
-  .header h1 { font-size: 0.95rem; }
-  .header-tree { width: 34px; height: 34px; }
+  .header { padding: 0.8rem 1rem 0.7rem; margin-bottom: 1rem; }
+  .header h1 { font-size: 1rem; }
+  .header-tree { width: 36px; height: 36px; }
+  .header-meta { font-size: 0.7rem; padding: 3px 10px; }
+  .feedback-btn { font-size: 0.72rem; padding: 5px 13px; }
 
-  .filters { padding: 0 0.75rem; }
-  .filter-card { padding: 0.75rem 0.9rem; gap: 0.55rem; border-radius: 14px; }
+  .filters { padding: 0 0.75rem; margin-bottom: 0.75rem; }
+  .filter-card { padding: 0.85rem 1rem; gap: 0.7rem; border-radius: 16px; }
 
-  .filter-row { gap: 0.35rem; }
-  .filter-label { min-width: 42px; font-size: 0.63rem; }
+  .filter-row { gap: 0.4rem; }
+  .filter-label { min-width: 44px; font-size: 0.65rem; }
 
-  .chip { padding: 7px 13px; font-size: 0.73rem; min-height: 36px; }
-  .reset-btn { width: 32px; height: 32px; font-size: 1.1rem; margin-left: auto; }
+  .chip { padding: 7px 14px; font-size: 0.78rem; min-height: 36px; }
+  .reset-btn { width: 32px; height: 32px; font-size: 1.1rem; }
   input[type="date"] { padding: 6px 8px; font-size: 0.8rem; min-height: 36px; }
-  #search { padding: 9px 12px 9px 34px; font-size: 0.83rem; min-height: 40px; }
+  #search { padding: 9px 12px 9px 36px; font-size: 0.85rem; min-height: 42px; }
 
   .chip-group, .date-chips { display: flex; flex-wrap: wrap; gap: 0.35rem; }
   .date-custom { flex-direction: column; align-items: flex-start; gap: 0.3rem; }
 
-  .grid { grid-template-columns: 1fr; gap: 6px; padding: 0 0.75rem; }
-  .date-group { padding: 0 0.75rem; }
-  .count-bar { padding: 0 0.75rem; }
+  #radius-row { padding-left: 0; }
+  .radius-within { min-width: 60px; font-size: 0.65rem; }
+  .radius-wrap { max-width: 200px; }
 
-  .card { padding: 0.75rem 0.85rem; border-radius: 13px; }
-  .card-title { font-size: 0.88rem; }
-  .tag-chip { font-size: 0.65rem; padding: 3px 8px; }
+  .grid { grid-template-columns: 1fr; gap: 8px; padding: 0 0.75rem; }
+  .date-group { padding: 0 0.75rem; }
+  .count-bar { padding: 0 0.75rem; font-size: 0.78rem; }
+  .count-bar strong { font-size: 0.95rem; }
+
+  .card { padding: 0.85rem 0.95rem; border-radius: 14px; }
+  .card-title { font-size: 0.9rem; }
+  .card-emoji { font-size: 1.4rem; }
 
   footer { padding: 0.4rem 0.75rem; font-size: 0.65rem; }
   #output { padding-bottom: 2.5rem; }
@@ -378,11 +412,11 @@ footer a { color: var(--ink-3); text-decoration: underline; }
         <li><strong>This weekend</strong> — Saturday and Sunday of the current week.</li>
         <li><strong>Next weekend</strong> — the following Saturday and Sunday.</li>
         <li><strong>Custom</strong> — pick any date range you like.</li>
-        <li><strong>Palo Alto</strong> — events in Palo Alto, Menlo Park, Mountain View, Los Altos, and nearby Peninsula cities.</li>
-        <li><strong>SF / East Bay</strong> — San Francisco, Oakland, Berkeley, and surrounding East Bay cities.</li>
-        <li><strong>Santa Cruz</strong> — Santa Cruz, Capitola, Scotts Valley, Aptos.</li>
-        <li><strong>All areas</strong> — everything across all regions.</li>
-        <li><strong>My zip</strong> — enter any Bay Area zip to filter events within ~7 miles of that location.</li>
+        <li><strong>Palo Alto</strong> — centered on Palo Alto; radius slider controls how far out (5–40 miles).</li>
+        <li><strong>SF / Oakland</strong> — events within the chosen radius of either San Francisco or Oakland city centers.</li>
+        <li><strong>Santa Cruz</strong> — centered on Santa Cruz; radius slider controls coverage.</li>
+        <li><strong>All areas</strong> — no location filter; shows everything.</li>
+        <li><strong>Radius slider</strong> — snap between 5, 10, 20, and 40 miles from the selected center.</li>
         <li><strong>Free only</strong> — filters to events with no admission cost. Some free events still require registration.</li>
       </ul>
     </div>
@@ -490,12 +524,20 @@ footer a { color: var(--ink-3); text-decoration: underline; }
 
     <div class="filter-row" style="flex-wrap:wrap; gap:0.5rem;">
       <span class="filter-label">Area</span>
-      <div class="chip-group" id="region-pills"></div>
-      <div id="zip-input-wrap" style="display:none; align-items:center; gap:0.35rem; flex-shrink:0;">
-        <input id="zip-input" type="text" inputmode="numeric" pattern="[0-9]{5}" maxlength="5"
-          placeholder="Enter zip" style="width:7rem; padding:0.3rem 0.5rem; border:1px solid var(--rule);
-          border-radius:6px; font-size:0.85rem; background:var(--card); color:var(--ink);">
-        <button id="zip-cancel" style="font-size:0.8rem; background:none; border:none; cursor:pointer; color:var(--ink-2);">✕</button>
+      <div class="chip-group" id="area-presets">
+        <button class="chip" data-preset="all">All areas</button>
+        <button class="chip active" data-preset="Palo Alto">Palo Alto</button>
+        <button class="chip" data-preset="SF+Oakland">SF / Oakland</button>
+        <button class="chip" data-preset="Santa Cruz">Santa Cruz</button>
+      </div>
+    </div>
+    <div class="filter-row" id="radius-row">
+      <span class="radius-within" id="radius-within-label">within 20 mi</span>
+      <div class="radius-wrap">
+        <input type="range" id="radius-slider" min="0" max="3" step="1" value="2">
+        <div class="radius-ticks">
+          <span>5 mi</span><span>10 mi</span><span class="active-tick">20 mi</span><span>40 mi</span>
+        </div>
       </div>
     </div>
 
@@ -525,7 +567,7 @@ footer a { color: var(--ink-3); text-decoration: underline; }
 </footer>
 
 <script>
-const FE_VERSION = '1.3.0';
+const FE_VERSION = '1.4.0';
 const IS_LOCAL = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
 const JSON_URL   = IS_LOCAL ? '/output/events.json'  : 'https://raw.githubusercontent.com/crajagop87/bay-area-kids-events/main/output/events.json';
 const HEALTH_URL = IS_LOCAL ? '/output/health.json'  : 'https://raw.githubusercontent.com/crajagop87/bay-area-kids-events/main/output/health.json';
@@ -533,17 +575,59 @@ const FEEDBACK_URL = 'https://api.github.com/repos/crajagop87/bay-area-kids-even
 
 let allEvents = [];
 let healthData = {};
-let activeRegions = new Set(['Palo Alto']);
+let activePreset = 'Palo Alto';
+let activeRadiusIdx = 2; // index into RADIUS_STEPS: 0→5mi 1→10mi 2→20mi 3→40mi
 let activeCost = 'all';
 let activeWhen = 'this-weekend';
 let activeSearchTags = [];
-// activeZip: null = no zip filter; { zip, cities, label } = zip filter active
-// savedZip: the last-entered zip, remembered even when another area filter is selected
-let activeZip = null;
-let savedZip = null;
 
-// Zip → { label, cities[] } — cities within ~7 miles of zip center
-const ZIP_RADIUS = {
+const RADIUS_STEPS = [5, 10, 20, 40];
+
+// City name (lowercase) → [lat, lng] for haversine distance filtering
+const CITY_LATLNG = {
+  'palo alto':[37.4419,-122.1430],'mountain view':[37.3861,-122.0839],'los altos':[37.3852,-122.1141],
+  'los altos hills':[37.3796,-122.1374],'sunnyvale':[37.3688,-122.0363],'cupertino':[37.3230,-122.0322],
+  'santa clara':[37.3541,-121.9552],'san jose':[37.3382,-121.8863],'campbell':[37.2872,-121.9500],
+  'los gatos':[37.2358,-121.9624],'saratoga':[37.2638,-122.0231],'milpitas':[37.4323,-121.8996],
+  'morgan hill':[37.1305,-121.6544],'menlo park':[37.4529,-122.1817],'atherton':[37.4610,-122.1977],
+  'east palo alto':[37.4688,-122.1411],'woodside':[37.4291,-122.2536],'portola valley':[37.3860,-122.2188],
+  'redwood city':[37.4852,-122.2364],'san carlos':[37.5071,-122.2605],'belmont':[37.5202,-122.2758],
+  'foster city':[37.5585,-122.2711],'san mateo':[37.5630,-122.3255],'burlingame':[37.5841,-122.3661],
+  'millbrae':[37.5999,-122.3869],'san bruno':[37.6305,-122.4111],'south san francisco':[37.6547,-122.4077],
+  'daly city':[37.6879,-122.4702],'half moon bay':[37.4636,-122.4286],'stanford':[37.4275,-122.1697],
+  'san francisco':[37.7749,-122.4194],'sausalito':[37.8590,-122.4852],'tiburon':[37.8907,-122.4566],
+  'san rafael':[37.9735,-122.5311],'novato':[38.1074,-122.5697],'fairfax':[37.9874,-122.5888],
+  'oakland':[37.8044,-122.2712],'berkeley':[37.8716,-122.2727],'emeryville':[37.8309,-122.2854],
+  'alameda':[37.7652,-122.2416],'piedmont':[37.8244,-122.2327],'albany':[37.8871,-122.2977],
+  'el cerrito':[37.9169,-122.3197],'richmond':[37.9358,-122.3478],'san pablo':[37.9624,-122.3447],
+  'hercules':[37.9960,-122.2891],'pinole':[37.9938,-122.2980],'san leandro':[37.7249,-122.1561],
+  'castro valley':[37.6940,-122.0855],'hayward':[37.6688,-122.0808],'union city':[37.5934,-122.0439],
+  'newark':[37.5296,-122.0402],'fremont':[37.5485,-121.9886],'livermore':[37.6819,-121.7681],
+  'pleasanton':[37.6624,-121.8747],'dublin':[37.7022,-121.9358],'concord':[37.9780,-122.0311],
+  'walnut creek':[37.9101,-122.0652],'pleasant hill':[37.9479,-122.0608],'martinez':[38.0194,-122.1341],
+  'danville':[37.8216,-121.9999],'antioch':[37.9963,-121.8058],'pittsburg':[38.0280,-121.8847],
+  'santa cruz':[36.9741,-122.0308],'capitola':[36.9755,-121.9558],'scotts valley':[37.0511,-122.0175],
+  'aptos':[36.9772,-121.8964],'watsonville':[36.9102,-121.7569],
+  // aggregator catch-alls — treated as "unknown location"
+  'bay area':null,'east bay':null,'east bay ':null,
+};
+
+// Preset → center points for distance filter (SF+Oakland uses union of two circles)
+const PRESET_CENTERS = {
+  'Palo Alto':  [[37.4419, -122.1430]],
+  'SF+Oakland': [[37.7749, -122.4194], [37.8044, -122.2712]],
+  'Santa Cruz': [[36.9741, -122.0308]],
+};
+
+function distMi(lat1, lon1, lat2, lon2) {
+  const R = 3958.8, r = Math.PI / 180;
+  const dLat = (lat2 - lat1) * r, dLon = (lon2 - lon1) * r;
+  const a = Math.sin(dLat/2)**2 + Math.cos(lat1*r) * Math.cos(lat2*r) * Math.sin(dLon/2)**2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
+// Deprecated — kept for possible future use
+const ZIP_RADIUS_STUB = {
   // Palo Alto cluster
   '94301':{ label:'Palo Alto', cities:['Palo Alto','Menlo Park','Los Altos','Mountain View','East Palo Alto','Atherton'] },
   '94303':{ label:'Palo Alto', cities:['Palo Alto','Menlo Park','East Palo Alto','Atherton'] },
@@ -664,13 +748,6 @@ const ZIP_RADIUS = {
   '95076':{ label:'Watsonville', cities:['Watsonville','Aptos','Santa Cruz'] },
 };
 
-// Given a zip, return { label, citiesSet } or null
-function citiesForZip(zip) {
-  const entry = ZIP_RADIUS[zip];
-  if (!entry) return null;
-  return { label: entry.label, cities: new Set(entry.cities.map(c => c.toLowerCase())) };
-}
-
 // ── Modals ─────────────────────────────────────────────────────────────────
 function openModal(id) { document.getElementById(id).classList.add('open'); }
 function closeModal(id) { document.getElementById(id).classList.remove('open'); }
@@ -777,46 +854,8 @@ async function load() {
     document.getElementById('info-version').textContent =
       `FE v${FE_VERSION} · BE scrape: ${healthData.run_at ? healthData.run_at.slice(0,19).replace('T',' ') + ' UTC' : 'unknown'}`;
 
-    // Region pills
-    const regionDefs = [
-      { label: 'All areas',    key: 'all' },
-      { label: 'Palo Alto',   key: 'Palo Alto',  isDefault: true },
-      { label: 'SF / East Bay', key: 'SF+East Bay' },
-      { label: 'Santa Cruz',  key: 'Santa Cruz' },
-    ];
-    const pc = document.getElementById('region-pills');
-    regionDefs.forEach(({ label, key, isDefault }) => {
-      const b = document.createElement('button');
-      b.className = 'chip' + (isDefault ? ' active' : '');
-      b.dataset.region = key;
-      b.textContent = label;
-      b.addEventListener('click', () => toggleRegion(key));
-      pc.appendChild(b);
-    });
-    // Zip pill (always rendered; transforms after zip entry)
-    const zipBtn = document.createElement('button');
-    zipBtn.className = 'chip';
-    zipBtn.dataset.region = 'zip';
-    zipBtn.id = 'zip-pill';
-    zipBtn.textContent = '📍 My zip';
-    zipBtn.addEventListener('click', onZipPillClick);
-    pc.appendChild(zipBtn);
-    // Zip ✕ button (appears next to pill after zip is saved)
-    const zipX = document.createElement('button');
-    zipX.id = 'zip-x';
-    zipX.title = 'Clear zip filter';
-    zipX.style.cssText = 'display:none;background:none;border:none;cursor:pointer;font-size:0.75rem;color:var(--ink-3);padding:2px 4px;line-height:1;';
-    zipX.textContent = '✕';
-    zipX.addEventListener('click', clearZip);
-    pc.appendChild(zipX);
-    // Zip text input (shown only when no zip is saved yet)
-    document.getElementById('zip-input').addEventListener('keydown', e => {
-      if (e.key === 'Enter') applyZip(e.target.value.trim());
-      if (e.key === 'Escape') closeZipInput();
-    });
-    document.getElementById('zip-cancel').addEventListener('click', closeZipInput);
-
     document.getElementById('loading').style.display = 'none';
+    updatePresetStyles();
     render();
   } catch(err) {
     document.getElementById('loading').textContent = 'Failed to load events — try refreshing.';
@@ -825,91 +864,30 @@ async function load() {
 }
 
 // ── Filter wiring ──────────────────────────────────────────────────────────
-function regionIsActive(r) {
-  if (activeZip) return false;
-  if (r === 'SF+East Bay') return activeRegions.has('SF') && activeRegions.has('East Bay');
-  return activeRegions.has(r);
-}
-
-function updateRegionPillStyles() {
-  document.querySelectorAll('[data-region]').forEach(b => {
-    const r = b.dataset.region;
+function updatePresetStyles() {
+  document.querySelectorAll('[data-preset]').forEach(b => {
+    const p = b.dataset.preset;
     b.classList.remove('active', 'active-all');
-    if (r === 'zip') {
-      if (activeZip !== null && activeRegions.size === 0) b.classList.add('active');
-      return;
-    }
-    if (regionIsActive(r)) {
-      b.classList.add(r === 'all' ? 'active-all' : 'active');
-    }
+    if (p === activePreset) b.classList.add(p === 'all' ? 'active-all' : 'active');
   });
+  const radiusRow = document.getElementById('radius-row');
+  if (radiusRow) radiusRow.classList.toggle('visible', activePreset !== 'all');
+  updateRadiusTicks();
 }
 
-function toggleRegion(r) {
-  activeZip = null;
-  document.getElementById('zip-input-wrap').style.display = 'none';
-  if (r === 'SF+East Bay') { activeRegions = new Set(['SF', 'East Bay']); }
-  else if (r === 'all') { activeRegions = new Set(['all']); }
-  else { activeRegions = new Set([r]); }
-  updateRegionPillStyles();
+function updateRadiusTicks() {
+  const ticks = document.querySelectorAll('.radius-ticks span');
+  ticks.forEach((el, i) => el.classList.toggle('active-tick', i === activeRadiusIdx));
+  const slider = document.getElementById('radius-slider');
+  if (slider) slider.style.setProperty('--pct', `${(activeRadiusIdx / 3) * 100}%`);
+  const withinEl = document.getElementById('radius-within-label');
+  if (withinEl) withinEl.textContent = `within ${RADIUS_STEPS[activeRadiusIdx]} mi`;
+}
+
+function setPreset(p) {
+  activePreset = p;
+  updatePresetStyles();
   render();
-}
-
-function onZipPillClick() {
-  if (savedZip) {
-    // Toggle zip filter on
-    activeZip = savedZip;
-    activeRegions = new Set();
-    updateRegionPillStyles();
-    render();
-  } else {
-    // No saved zip yet — open input
-    document.getElementById('zip-input-wrap').style.display = 'flex';
-    document.getElementById('zip-input').focus();
-  }
-}
-
-function applyZip(zip) {
-  if (!/^\d{5}$/.test(zip)) {
-    document.getElementById('zip-input').style.borderColor = '#e55';
-    return;
-  }
-  const result = citiesForZip(zip);
-  if (!result) {
-    document.getElementById('zip-input').style.borderColor = '#e55';
-    document.getElementById('zip-input').placeholder = 'Zip not found';
-    return;
-  }
-  savedZip = { zip, cities: result.cities, label: result.label };
-  activeZip = savedZip;
-  activeRegions = new Set();
-  // Update zip pill text and show ✕
-  const pill = document.getElementById('zip-pill');
-  if (pill) pill.textContent = `📍 ${zip} · ${result.label}`;
-  const xBtn = document.getElementById('zip-x');
-  if (xBtn) xBtn.style.display = '';
-  document.getElementById('zip-input-wrap').style.display = 'none';
-  document.getElementById('zip-input').value = '';
-  updateRegionPillStyles();
-  render();
-}
-
-function clearZip() {
-  savedZip = null;
-  activeZip = null;
-  const pill = document.getElementById('zip-pill');
-  if (pill) pill.textContent = '📍 My zip';
-  const xBtn = document.getElementById('zip-x');
-  if (xBtn) xBtn.style.display = 'none';
-  // Fall back to Palo Alto
-  activeRegions = new Set(['Palo Alto']);
-  updateRegionPillStyles();
-  render();
-}
-
-function closeZipInput() {
-  document.getElementById('zip-input-wrap').style.display = 'none';
-  document.getElementById('zip-input').value = '';
 }
 
 function setCost(val) {
@@ -920,6 +898,22 @@ function setCost(val) {
   render();
 }
 document.querySelectorAll('[data-cost]').forEach(b => b.addEventListener('click', () => setCost(b.dataset.cost)));
+
+document.querySelectorAll('[data-preset]').forEach(b => b.addEventListener('click', () => setPreset(b.dataset.preset)));
+document.getElementById('radius-slider').addEventListener('input', e => {
+  activeRadiusIdx = +e.target.value;
+  updateRadiusTicks();
+  render();
+});
+// Clicking a tick label also snaps the slider
+document.querySelectorAll('.radius-ticks span').forEach((el, i) => {
+  el.addEventListener('click', () => {
+    activeRadiusIdx = i;
+    document.getElementById('radius-slider').value = i;
+    updateRadiusTicks();
+    render();
+  });
+});
 
 document.querySelectorAll('[data-when]').forEach(b => {
   b.addEventListener('click', () => {
@@ -976,15 +970,10 @@ document.getElementById('reset-btn').addEventListener('click', () => {
   activeCost = 'all';
   document.querySelectorAll('[data-cost]').forEach(b => b.classList.remove('active', 'active-green', 'active-all'));
   document.querySelector('[data-cost="all"]').classList.add('active-all');
-  activeRegions = new Set(['Palo Alto']);
-  activeZip = null;
-  savedZip = null;
-  const zipPill = document.getElementById('zip-pill');
-  if (zipPill) zipPill.textContent = '📍 My zip';
-  const zipX = document.getElementById('zip-x');
-  if (zipX) zipX.style.display = 'none';
-  document.getElementById('zip-input-wrap').style.display = 'none';
-  updateRegionPillStyles();
+  activePreset = 'Palo Alto';
+  activeRadiusIdx = 2;
+  document.getElementById('radius-slider').value = 2;
+  updatePresetStyles();
   activeSearchTags = [];
   renderSearchTags();
   render();
@@ -1018,10 +1007,19 @@ function render() {
       if (toDate && d > toDate) return false;
     }
 
-    if (activeZip) {
-      const cityHay = (e.city || '').toLowerCase();
-      if (![...activeZip.cities].some(c => cityHay.includes(c))) return false;
-    } else if (!activeRegions.has('all') && !activeRegions.has(e._region)) return false;
+    if (activePreset !== 'all') {
+      const centers = PRESET_CENTERS[activePreset];
+      const radius = RADIUS_STEPS[activeRadiusIdx];
+      const cityKey = (e.city || '').toLowerCase().trim();
+      const latlng = CITY_LATLNG[cityKey];
+      if (!latlng) {
+        // Unknown/generic city (aggregator catch-alls) — include for radius ≥ 10mi
+        if (radius < 10) return false;
+      } else {
+        const inRange = centers.some(([lat, lon]) => distMi(lat, lon, latlng[0], latlng[1]) <= radius);
+        if (!inRange) return false;
+      }
+    }
     if (activeCost !== 'all' && e.cost !== activeCost) return false;
     const hay = [e.title, e.venue, e.city, e.age_range, e.category, e.source_name, (e.tags||[]).join(' ')]
       .join(' ').toLowerCase();
@@ -1171,10 +1169,10 @@ function updateStickyBar() {
   const whenLabel = { all:'All dates', today:'Today', 'this-weekend':'This weekend', 'next-weekend':'Next weekend', custom:'Custom' };
   chips.push(whenLabel[activeWhen] || activeWhen);
   // Area
-  const areaLabel = activeZip ? `📍 ${activeZip.zip}` :
-    activeRegions.has('all') ? 'All areas' :
-    activeRegions.has('SF') && activeRegions.has('East Bay') ? 'SF / East Bay' :
-    [...activeRegions][0] || '';
+  const presetLabel = { 'all': 'All areas', 'Palo Alto': 'Palo Alto', 'SF+Oakland': 'SF / Oakland', 'Santa Cruz': 'Santa Cruz' };
+  const areaLabel = activePreset === 'all'
+    ? 'All areas'
+    : `${presetLabel[activePreset]} · ${RADIUS_STEPS[activeRadiusIdx]}mi`;
   chips.push(areaLabel);
   // Dates
   // Cost
@@ -1183,7 +1181,7 @@ function updateStickyBar() {
   activeSearchTags.forEach(t => chips.push(`"${t}"`));
 
   document.getElementById('sticky-chips').innerHTML = chips
-    .map(c => `<span class="chip active" style="font-size:0.65rem;padding:3px 9px">${esc(c)}</span>`)
+    .map(c => `<span class="chip active">${esc(c)}</span>`)
     .join('');
 }
 
@@ -1192,7 +1190,7 @@ window.addEventListener('scroll', updateStickyBar, { passive: true });
 // ── Smart empty state ──────────────────────────────────────────────────────
 function showSmartEmpty() {
   const suggs = [];
-  if (activeZip || !activeRegions.has('all')) suggs.push({ label: '🗺 Try All areas', fn: () => toggleRegion('all') });
+  if (activePreset !== 'all') suggs.push({ label: '🗺 Try All areas', fn: () => setPreset('all') });
   if (activeWhen === 'this-weekend') suggs.push({ label: '📅 Try Next weekend', fn: () => { activeWhen = 'next-weekend'; document.querySelectorAll('[data-when]').forEach(b => b.classList.toggle('active', b.dataset.when === 'next-weekend')); render(); }});
   if (activeWhen !== 'all' && activeWhen !== 'custom') suggs.push({ label: '📋 See all dates', fn: () => { activeWhen = 'custom'; document.getElementById('custom-dates').style.display = 'flex'; document.querySelectorAll('[data-when]').forEach(b => b.classList.toggle('active', b.dataset.when === 'custom')); render(); }});
   if (activeSearchTags.length || document.getElementById('search').value) suggs.push({ label: '🔍 Clear search', fn: () => { document.getElementById('search').value = ''; activeSearchTags = []; renderSearchTags(); render(); }});
