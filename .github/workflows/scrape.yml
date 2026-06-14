@@ -1,0 +1,40 @@
+name: Bay Area Kids Events Scraper
+
+on:
+  schedule:
+    # Every Friday at 6am PT (14:00 UTC) — fresh before the weekend
+    - cron: "0 14 * * 5"
+  workflow_dispatch:
+    inputs:
+      days:
+        description: "Rolling window in days"
+        default: "16"
+        required: false
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run scraper
+        run: python run_scraper.py --days ${{ github.event.inputs.days || '16' }}
+
+      - name: Commit output
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add output/events.json output/health.json
+          git diff --cached --quiet || git commit -m "chore: scrape run $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git push

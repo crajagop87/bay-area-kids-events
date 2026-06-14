@@ -1,0 +1,110 @@
+{
+  "run_at": "2026-06-14T05:38:10.732108+00:00",
+  "window_days": 16,
+  "channels_ok": 20,
+  "channels_total": 20,
+  "raw_events": 435,
+  "deduped_events": 295,
+  "channels": [
+    {
+      "source": "Palo Alto City Library",
+      "status": "ok",
+      "count": 21
+    },
+    {
+      "source": "San Mateo County Library",
+      "status": "ok",
+      "count": 21
+    },
+    {
+      "source": "San Jose Public Library",
+      "status": "ok",
+      "count": 21
+    },
+    {
+      "source": "Santa Clara County Library District",
+      "status": "ok",
+      "count": 27
+    },
+    {
+      "source": "Eventbrite/Palo Alto",
+      "status": "ok",
+      "count": 14
+    },
+    {
+      "source": "Eventbrite/San Jose",
+      "status": "ok",
+      "count": 14
+    },
+    {
+      "source": "Eventbrite/Mountain View",
+      "status": "ok",
+      "count": 12
+    },
+    {
+      "source": "Eventbrite/Sunnyvale",
+      "status": "ok",
+      "count": 13
+    },
+    {
+      "source": "Eventbrite/San Mateo",
+      "status": "ok",
+      "count": 12
+    },
+    {
+      "source": "Eventbrite/Redwood City",
+      "status": "ok",
+      "count": 13
+    },
+    {
+      "source": "Eventbrite/Menlo Park",
+      "status": "ok",
+      "count": 14
+    },
+    {
+      "source": "Funcheap",
+      "status": "ok",
+      "count": 90
+    },
+    {
+      "source": "Bay Area Kid Fun",
+      "status": "ok",
+      "count": 47
+    },
+    {
+      "source": "510 Families",
+      "status": "ok",
+      "count": 33
+    },
+    {
+      "source": "Palo Alto Junior Museum & Zoo",
+      "status": "ok",
+      "count": 5
+    },
+    {
+      "source": "CuriOdyssey",
+      "status": "ok",
+      "count": 3
+    },
+    {
+      "source": "Hiller Aviation Museum",
+      "status": "ok",
+      "count": 12
+    },
+    {
+      "source": "Children's Discovery Museum SJ",
+      "status": "ok",
+      "count": 0
+    },
+    {
+      "source": "Cantor Arts Center",
+      "status": "ok",
+      "count": 3
+    },
+    {
+      "source": "Hidden Villa Farm",
+      "status": "ok",
+      "count": 60
+    }
+  ]
+}
