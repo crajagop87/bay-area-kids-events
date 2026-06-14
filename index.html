@@ -113,6 +113,7 @@ body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-
 .chip:hover { border-color: #fb923c; color: var(--ink); }
 .chip.active { background: #c2410c; border-color: #c2410c; color: #fff; }
 .chip.active-green { background: #065f46; border-color: #065f46; color: #fff; }
+.chip.active-all { background: var(--ink-2); border-color: var(--ink-2); color: #fff; opacity: 0.7; }
 
 /* date quick-picks */
 .date-chips { display: flex; gap: 0.4rem; flex-wrap: wrap; }
@@ -469,6 +470,7 @@ footer a { color: var(--ink-3); text-decoration: underline; }
     <div class="filter-row">
       <span class="filter-label">When</span>
       <div class="date-chips" id="when-chips">
+        <button class="chip" data-when="all">All</button>
         <button class="chip" data-when="today">Today</button>
         <button class="chip active" data-when="this-weekend">This weekend</button>
         <button class="chip" data-when="next-weekend">Next weekend</button>
@@ -495,18 +497,9 @@ footer a { color: var(--ink-3); text-decoration: underline; }
     </div>
 
     <div class="filter-row">
-      <span class="filter-label">Dates</span>
-      <div class="chip-group">
-        <button class="chip active" data-dated="all">All</button>
-        <button class="chip" data-dated="dated">Has date</button>
-        <button class="chip" data-dated="undated">No date</button>
-      </div>
-    </div>
-
-    <div class="filter-row">
       <span class="filter-label">Cost</span>
       <div class="chip-group">
-        <button class="chip active" data-cost="all">All</button>
+        <button class="chip active-all" data-cost="all">All</button>
         <button class="chip" data-cost="Free">Free</button>
       </div>
       <button class="reset-btn" id="reset-btn" title="Reset filters">↺</button>
@@ -541,7 +534,6 @@ let activeRegions = new Set(['Palo Alto']);
 let activeCost = 'all';
 let activeWhen = 'this-weekend';
 let activeSearchTags = [];
-let activeDated = 'all';
 let activeZip = null; // null = no zip filter; string = active zip code
 
 // Zipcode → list of city names (within ~40 miles of Palo Alto, Bay Area only)
@@ -721,13 +713,15 @@ async function load() {
     document.getElementById('info-version').textContent =
       `FE v${FE_VERSION} · BE scrape: ${healthData.run_at ? healthData.run_at.slice(0,19).replace('T',' ') + ' UTC' : 'unknown'}`;
 
-    // Region pills
-    const regions = ['Palo Alto', 'All areas'];
+    // Region pills — All areas first for consistency
+    const regions = ['All areas', 'Palo Alto'];
     const pc = document.getElementById('region-pills');
     regions.forEach(r => {
       const b = document.createElement('button');
-      b.className = 'chip' + (r === 'Palo Alto' ? ' active' : '');
-      b.dataset.region = r === 'All areas' ? 'all' : r;
+      const regionKey = r === 'All areas' ? 'all' : r;
+      const isDefault = r === 'Palo Alto';
+      b.className = 'chip' + (isDefault ? ' active' : '');
+      b.dataset.region = regionKey;
       b.textContent = r;
       b.addEventListener('click', () => toggleRegion(b.dataset.region));
       pc.appendChild(b);
@@ -764,7 +758,9 @@ function toggleRegion(r) {
   if (r === 'all') { activeRegions = new Set(['all']); }
   else { activeRegions = new Set([r]); }
   document.querySelectorAll('[data-region]').forEach(b => {
-    b.classList.toggle('active', b.dataset.region !== 'zip' && activeRegions.has(b.dataset.region));
+    const isActive = b.dataset.region !== 'zip' && activeRegions.has(b.dataset.region);
+    b.classList.toggle('active-all', isActive && b.dataset.region === 'all');
+    b.classList.toggle('active', isActive && b.dataset.region !== 'all');
   });
   render();
 }
@@ -796,18 +792,11 @@ function closeZipInput() {
   document.getElementById('zip-input').value = '';
 }
 
-function setDated(val) {
-  activeDated = val;
-  document.querySelectorAll('[data-dated]').forEach(x => x.classList.toggle('active', x.dataset.dated === val));
-  render();
-}
-document.querySelectorAll('[data-dated]').forEach(b => b.addEventListener('click', () => setDated(b.dataset.dated)));
-
 function setCost(val) {
   activeCost = val;
-  document.querySelectorAll('[data-cost]').forEach(x => x.classList.remove('active', 'active-green'));
+  document.querySelectorAll('[data-cost]').forEach(x => x.classList.remove('active', 'active-green', 'active-all'));
   const target = document.querySelector(`[data-cost="${val}"]`);
-  if (target) target.classList.add(val === 'Free' ? 'active-green' : 'active');
+  if (target) target.classList.add(val === 'Free' ? 'active-green' : val === 'all' ? 'active-all' : 'active');
   render();
 }
 document.querySelectorAll('[data-cost]').forEach(b => b.addEventListener('click', () => setCost(b.dataset.cost)));
@@ -815,8 +804,8 @@ document.querySelectorAll('[data-cost]').forEach(b => b.addEventListener('click'
 document.querySelectorAll('[data-when]').forEach(b => {
   b.addEventListener('click', () => {
     activeWhen = b.dataset.when;
-    document.querySelectorAll('[data-when]').forEach(x => x.classList.remove('active'));
-    b.classList.add('active');
+    document.querySelectorAll('[data-when]').forEach(x => x.classList.remove('active', 'active-all'));
+    b.classList.add(activeWhen === 'all' ? 'active-all' : 'active');
     const custom = document.getElementById('custom-dates');
     custom.style.display = activeWhen === 'custom' ? 'flex' : 'none';
     if (activeWhen !== 'custom') render();
@@ -859,25 +848,25 @@ document.getElementById('date-to').addEventListener('change', render);
 document.getElementById('reset-btn').addEventListener('click', () => {
   document.getElementById('search').value = '';
   activeWhen = 'this-weekend';
-  document.querySelectorAll('[data-when]').forEach(b => b.classList.toggle('active', b.dataset.when === 'this-weekend'));
+  document.querySelectorAll('[data-when]').forEach(b => {
+    b.classList.remove('active', 'active-all');
+    b.classList.toggle('active', b.dataset.when === 'this-weekend');
+  });
   document.getElementById('custom-dates').style.display = 'none';
   activeCost = 'all';
-  document.querySelectorAll('[data-cost]').forEach(b => {
-    b.classList.remove('active', 'active-green');
-    b.style.background = 'transparent'; b.style.borderColor = 'var(--rule)'; b.style.color = 'var(--ink-2)';
-  });
-  document.querySelector('[data-cost="all"]').classList.add('active');
-  document.querySelector('[data-cost="all"]').style.background = '';
+  document.querySelectorAll('[data-cost]').forEach(b => b.classList.remove('active', 'active-green', 'active-all'));
+  document.querySelector('[data-cost="all"]').classList.add('active-all');
   activeRegions = new Set(['Palo Alto']);
   activeZip = null;
-  document.querySelectorAll('[data-region]').forEach(b => b.classList.toggle('active', b.dataset.region === 'Palo Alto'));
+  document.querySelectorAll('[data-region]').forEach(b => {
+    b.classList.remove('active', 'active-all');
+    b.classList.toggle('active', b.dataset.region === 'Palo Alto');
+  });
   const zipPill = document.querySelector('[data-region="zip"]');
   if (zipPill) zipPill.textContent = '📍 My zip';
   document.getElementById('zip-input-wrap').style.display = 'none';
   activeSearchTags = [];
   renderSearchTags();
-  activeDated = 'all';
-  document.querySelectorAll('[data-dated]').forEach(b => b.classList.toggle('active', b.dataset.dated === 'all'));
   render();
 });
 
@@ -886,7 +875,9 @@ function render() {
   const query = document.getElementById('search').value.toLowerCase().trim();
   let fromDate, toDate;
 
-  if (activeWhen === 'custom') {
+  if (activeWhen === 'all') {
+    fromDate = null; toDate = null;
+  } else if (activeWhen === 'custom') {
     fromDate = document.getElementById('date-from').value;
     toDate = document.getElementById('date-to').value;
   } else {
@@ -894,7 +885,7 @@ function render() {
   }
 
   // Whether we're in a date-specific view (not custom with empty dates)
-  const isDateFiltered = activeWhen !== 'custom' || (fromDate || toDate);
+  const isDateFiltered = activeWhen !== 'custom' && activeWhen !== 'all' || (fromDate || toDate);
 
   let events = allEvents.filter(e => {
     const d = isoDate(e.start_datetime);
@@ -912,8 +903,6 @@ function render() {
       if (![...activeZip.cities].some(c => cityHay.includes(c))) return false;
     } else if (!activeRegions.has('all') && !activeRegions.has(e._region)) return false;
     if (activeCost !== 'all' && e.cost !== activeCost) return false;
-    if (activeDated === 'dated' && !hasDate) return false;
-    if (activeDated === 'undated' && hasDate) return false;
     const hay = [e.title, e.venue, e.city, e.age_range, e.category, e.source_name, (e.tags||[]).join(' ')]
       .join(' ').toLowerCase();
     if (query && !hay.includes(query)) return false;
@@ -1059,12 +1048,11 @@ function updateStickyBar() {
 
   const chips = [];
   // When
-  const whenLabel = { today:'Today', 'this-weekend':'This weekend', 'next-weekend':'Next weekend', custom:'Custom' };
+  const whenLabel = { all:'All dates', today:'Today', 'this-weekend':'This weekend', 'next-weekend':'Next weekend', custom:'Custom' };
   chips.push(whenLabel[activeWhen] || activeWhen);
   // Area
   chips.push(activeZip ? `📍 ${activeZip.zip}` : (activeRegions.has('all') ? 'All areas' : [...activeRegions][0]));
   // Dates
-  if (activeDated !== 'all') chips.push(activeDated === 'dated' ? 'Has date' : 'No date');
   // Cost
   if (activeCost !== 'all') chips.push('Free');
   // Search tags
