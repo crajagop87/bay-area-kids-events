@@ -245,12 +245,30 @@ def scrape_510families(window_days: int = 16) -> list[dict]:
         log.warning("510 Families RSS fetch failed: %s", exc)
         return []
 
-    # Find weekend roundup posts
+    URL_NOISE = re.compile(
+        r"facebook\.com|twitter\.com|instagram\.com|tinyurl\.com|"
+        r"510families\.com/best|510families\.com/bay|510families\.com$",
+        re.IGNORECASE,
+    )
+    STALE_YEAR = re.compile(r"/20(2[0-3])/|[/-]20(2[0-3])-")  # 2020-2023 in URL path
     WEEKEND_RE = re.compile(r"weekend|things\s+to\s+do|fun\s+things", re.IGNORECASE)
+    cutoff_old = now - timedelta(days=60)  # ignore RSS posts older than 60 days
+
     for item in soup.find_all("item"):
         title_el = item.find("title")
         if not title_el or not WEEKEND_RE.search(title_el.get_text()):
             continue
+
+        # Skip posts published more than 60 days ago
+        pub_el = item.find("pubDate")
+        if pub_el:
+            try:
+                from email.utils import parsedate_to_datetime
+                pub_dt = parsedate_to_datetime(pub_el.get_text(strip=True))
+                if pub_dt.replace(tzinfo=timezone.utc) < cutoff_old:
+                    continue
+            except Exception:
+                pass
 
         post_url = (item.find("link") or item.find("guid"))
         post_url = post_url.get_text(strip=True) if post_url else rss_url
@@ -265,10 +283,8 @@ def scrape_510families(window_days: int = 16) -> list[dict]:
             event_title = a.get_text(strip=True)
             if len(event_title) < 8 or ADULT_NOISE.search(event_title):
                 continue
-            # Only keep links that look like event/activity pages
             href = a["href"]
-            if any(noise in href for noise in ["facebook.com", "twitter.com", "instagram.com",
-                                                "510families.com/best", "510families.com/bay"]):
+            if URL_NOISE.search(href) or STALE_YEAR.search(href):
                 continue
 
             events.append(_base_event(

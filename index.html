@@ -819,7 +819,8 @@ function dateRangeForWhen(when) {
   }
   if (when === 'next-weekend') {
     const day = now.getDay();
-    const daysToNextSat = (6 - day + 7) % 7 + 7;
+    // On Sunday (day=0) the next Saturday is 6 days away; all other days use +7 offset
+    const daysToNextSat = day === 0 ? 6 : (6 - day + 7) % 7 + 7;
     const sat = new Date(now); sat.setDate(now.getDate() + daysToNextSat);
     const sun = new Date(sat); sun.setDate(sat.getDate() + 1);
     return [isoLocal(sat), isoLocal(sun)];
