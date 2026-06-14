@@ -132,7 +132,7 @@ def scrape_library(lib: dict, window_days: int = 16) -> list[dict]:
             reg = defn.get("registration", {}) or {}
             requires_reg = reg.get("type") not in (None, "no_registration")
             ticket_status = "register ahead" if requires_reg else "free walk-up"
-            reg_url = reg.get("externalUrl") or f"{base_url}/v2/events/{eid}"
+            reg_url = reg.get("externalUrl") or f"{base_url}/events/{eid}"
 
             date_str = start_dt.date().isoformat() if start_dt else start_raw[:10]
             is_camp = bool(MULTI_WEEK_CAMP.search(title))

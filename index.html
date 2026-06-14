@@ -151,6 +151,12 @@ input[type="date"]:focus { border-color: #fb923c; }
   border-top: 2px solid #fed7aa; padding-top: 0.7rem;
 }
 .date-group.undated h2 { color: var(--ink-3); border-top-color: var(--rule); }
+.group-count {
+  display: inline-block; font-size: 0.72rem; font-weight: 700;
+  background: #fed7aa; color: #92400e; border-radius: 99px;
+  padding: 1px 8px; margin-left: 6px; vertical-align: middle; letter-spacing: 0;
+}
+.date-group.undated .group-count { background: var(--tag-bg); color: var(--ink-3); }
 
 /* ── Grid ── */
 .grid {
@@ -619,6 +625,19 @@ const PRESET_CENTERS = {
   'Santa Cruz': [[36.9741, -122.0308]],
 };
 
+// County-level fallback for events whose city field is a library name, not a city
+const COUNTY_LATLNG = {
+  'santa clara':        [37.3541, -121.9552],
+  'san mateo':          [37.5630, -122.3255],
+  'san francisco':      [37.7749, -122.4194],
+  'alameda':            [37.8044, -122.2712],
+  'contra costa':       [37.9780, -122.0311],
+  'santa cruz':         [36.9741, -122.0308],
+  'marin':              [37.9735, -122.5311],
+  'bay area':           null,
+  'alameda/contra costa': [37.8044, -122.2712],
+};
+
 function distMi(lat1, lon1, lat2, lon2) {
   const R = 3958.8, r = Math.PI / 180;
   const dLat = (lat2 - lat1) * r, dLon = (lon2 - lon1) * r;
@@ -1011,10 +1030,11 @@ function render() {
       const centers = PRESET_CENTERS[activePreset];
       const radius = RADIUS_STEPS[activeRadiusIdx];
       const cityKey = (e.city || '').toLowerCase().trim();
-      const latlng = CITY_LATLNG[cityKey];
+      const countyKey = (e.county || '').toLowerCase().trim();
+      const latlng = CITY_LATLNG[cityKey] || COUNTY_LATLNG[countyKey] || null;
       if (!latlng) {
-        // Unknown/generic city (aggregator catch-alls) — include for radius ≥ 10mi
-        if (radius < 10) return false;
+        // Truly unknown location (aggregator catch-alls like "Bay Area") — include for radius ≥ 20mi only
+        if (radius < 20) return false;
       } else {
         const inRange = centers.some(([lat, lon]) => distMi(lat, lon, latlng[0], latlng[1]) <= radius);
         if (!inRange) return false;
@@ -1062,7 +1082,7 @@ function render() {
     const label = isUndated
       ? 'Also worth checking — date not confirmed'
       : new Date(k + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
-    html.push(`<div class="date-group${isUndated ? ' undated' : ''}"><h2>${label}</h2></div><div class="grid">`);
+    html.push(`<div class="date-group${isUndated ? ' undated' : ''}"><h2>${label} <span class="group-count">${evs.length}</span></h2></div><div class="grid">`);
     evs.forEach(e => html.push(card(e, isUndated)));
     html.push('</div>');
   });
