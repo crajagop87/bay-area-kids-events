@@ -588,7 +588,7 @@ footer a { color: var(--ink-3); text-decoration: underline; }
     <div class="filter-row" id="radius-row">
       <span class="radius-within" id="radius-within-label">within 20 mi</span>
       <div class="radius-wrap">
-        <input type="range" id="radius-slider" min="1" max="40" step="1" value="20">
+        <input type="range" id="radius-slider" min="1" max="40" step="1" value="5">
         <div class="radius-ticks">
           <span data-snap="5">5 mi</span><span data-snap="10">10 mi</span><span data-snap="20" class="active-tick">20 mi</span><span data-snap="40">max</span>
         </div>
@@ -601,7 +601,7 @@ footer a { color: var(--ink-3); text-decoration: underline; }
         <div class="age-slider-wrap">
           <div class="age-track-fill" id="age-track-fill"></div>
           <input type="range" id="age-min" min="0" max="18" step="1" value="0">
-          <input type="range" id="age-max" min="0" max="18" step="1" value="18">
+          <input type="range" id="age-max" min="0" max="18" step="1" value="5">
         </div>
         <div class="age-ticks">
           <span>0</span><span>3</span><span>6</span><span>9</span><span>12</span><span>15</span><span>18</span>
@@ -644,11 +644,11 @@ const FEEDBACK_URL = 'https://api.github.com/repos/crajagop87/bay-area-kids-even
 let allEvents = [];
 let healthData = {};
 let activePreset = 'Palo Alto';
-let activeRadius = 20; // miles
+let activeRadius = 5; // miles
 let customCenter = null; // [lat, lng] when user types a city/zip
 let activeCost = 'all';
 let activeAgeMin = 0;
-let activeAgeMax = 18;
+let activeAgeMax = 5;
 let activeWhen = 'next-7';
 let activeSearchTags = [];
 
@@ -1177,13 +1177,13 @@ document.getElementById('reset-btn').addEventListener('click', () => {
   activeCost = 'all';
   document.querySelectorAll('[data-cost]').forEach(b => b.classList.remove('active', 'active-green', 'active-all'));
   document.querySelector('[data-cost="all"]').classList.add('active-all');
-  activeAgeMin = 0; activeAgeMax = 18;
+  activeAgeMin = 0; activeAgeMax = 5;
   document.getElementById('age-min').value = 0;
-  document.getElementById('age-max').value = 18;
+  document.getElementById('age-max').value = 5;
   updateAgeSlider();
   activePreset = 'Palo Alto';
   activeRadius = 20;
-  document.getElementById('radius-slider').value = 20;
+  document.getElementById('radius-slider').value = 5;
   updatePresetStyles();
   activeSearchTags = [];
   renderSearchTags();
