@@ -420,7 +420,7 @@ footer a { color: var(--ink-3); text-decoration: underline; }
         <li><strong>Custom</strong> — pick any date range you like.</li>
         <li><strong>Palo Alto</strong> — centered on Palo Alto; radius slider controls how far out (5–40 miles).</li>
         <li><strong>SF / Oakland</strong> — events within the chosen radius of either San Francisco or Oakland city centers.</li>
-        <li><strong>Santa Cruz</strong> — centered on Santa Cruz; radius slider controls coverage.</li>
+        <li><strong>East Bay</strong> — centered on Fremont; radius slider controls coverage across the East Bay.</li>
         <li><strong>All areas</strong> — no location filter; shows everything.</li>
         <li><strong>Radius slider</strong> — snap between 5, 10, 20, and 40 miles from the selected center.</li>
         <li><strong>Free only</strong> — filters to events with no admission cost. Some free events still require registration.</li>
@@ -534,7 +534,7 @@ footer a { color: var(--ink-3); text-decoration: underline; }
         <button class="chip" data-preset="all">All areas</button>
         <button class="chip active" data-preset="Palo Alto">Palo Alto</button>
         <button class="chip" data-preset="SF+Oakland">SF / Oakland</button>
-        <button class="chip" data-preset="Santa Cruz">Santa Cruz</button>
+        <button class="chip" data-preset="East Bay">East Bay</button>
       </div>
     </div>
     <div class="filter-row" id="radius-row">
@@ -614,6 +614,17 @@ const CITY_LATLNG = {
   'danville':[37.8216,-121.9999],'antioch':[37.9963,-121.8058],'pittsburg':[38.0280,-121.8847],
   'santa cruz':[36.9741,-122.0308],'capitola':[36.9755,-121.9558],'scotts valley':[37.0511,-122.0175],
   'aptos':[36.9772,-121.8964],'watsonville':[36.9102,-121.7569],
+  // library source_name → actual city coords (city field is set to library name, not city)
+  'palo alto city library':[37.4419,-122.1430],
+  'san mateo county library':[37.5630,-122.3255],
+  'san jose public library':[37.3382,-121.8863],
+  'santa clara county library district':[37.3541,-121.9552],
+  'san francisco public library':[37.7749,-122.4194],
+  'oakland public library':[37.8044,-122.2712],
+  'berkeley public library':[37.8716,-122.2727],
+  'santa cruz city libraries':[36.9741,-122.0308],
+  'contra costa county library':[37.9101,-122.0652],
+  'alameda county library':[37.6688,-122.0808],
   // aggregator catch-alls — treated as "unknown location"
   'bay area':null,'east bay':null,'east bay ':null,
 };
@@ -622,7 +633,7 @@ const CITY_LATLNG = {
 const PRESET_CENTERS = {
   'Palo Alto':  [[37.4419, -122.1430]],
   'SF+Oakland': [[37.7749, -122.4194], [37.8044, -122.2712]],
-  'Santa Cruz': [[36.9741, -122.0308]],
+  'East Bay':   [[37.5485, -121.9886]],
 };
 
 // County-level fallback for events whose city field is a library name, not a city
@@ -1192,7 +1203,7 @@ function updateStickyBar() {
   const whenLabel = { all:'All dates', today:'Today', 'this-weekend':'This weekend', 'next-weekend':'Next weekend', custom:'Custom' };
   chips.push(whenLabel[activeWhen] || activeWhen);
   // Area
-  const presetLabel = { 'all': 'All areas', 'Palo Alto': 'Palo Alto', 'SF+Oakland': 'SF / Oakland', 'Santa Cruz': 'Santa Cruz' };
+  const presetLabel = { 'all': 'All areas', 'Palo Alto': 'Palo Alto', 'SF+Oakland': 'SF / Oakland', 'East Bay': 'East Bay' };
   const areaLabel = activePreset === 'all'
     ? 'All areas'
     : `${presetLabel[activePreset]} · ${activeRadius === 40 ? 'max' : activeRadius + 'mi'}`;

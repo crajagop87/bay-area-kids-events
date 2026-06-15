@@ -38,6 +38,11 @@ CITIES = [
     ("san-francisco", "San Francisco", "San Francisco"),
     ("oakland",       "Oakland",       "Alameda"),
     ("berkeley",      "Berkeley",      "Alameda"),
+    ("fremont",       "Fremont",       "Alameda"),
+    ("hayward",       "Hayward",       "Alameda"),
+    ("walnut-creek",  "Walnut Creek",  "Contra Costa"),
+    ("pleasanton",    "Pleasanton",    "Alameda"),
+    ("dublin",        "Dublin",        "Alameda"),
     ("santa-cruz",    "Santa Cruz",    "Santa Cruz"),
 ]
 

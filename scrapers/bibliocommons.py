@@ -24,6 +24,9 @@ LIBRARIES = [
     {"name": "Oakland Public Library",             "slug": "oaklandlibrary", "county": "Alameda"},
     {"name": "Berkeley Public Library",            "slug": "berkeleypubliclibrary", "county": "Alameda"},
     {"name": "Santa Cruz City Libraries",          "slug": "santacruz", "county": "Santa Cruz"},
+    # East Bay county systems (both confirmed 200 on gateway API)
+    {"name": "Contra Costa County Library",        "slug": "ccclib",    "county": "Contra Costa"},
+    {"name": "Alameda County Library",             "slug": "aclibrary", "county": "Alameda"},
 ]
 
 GATEWAY = "https://gateway.bibliocommons.com/v2/libraries/{slug}/events"
