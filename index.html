@@ -137,9 +137,15 @@ input[type="date"]:focus { border-color: #fb923c; }
   flex-shrink: 0; transition: background 0.12s, border-color 0.12s, color 0.12s;
 }
 .reset-btn:hover { background: #fff7ed; border-color: #f97316; color: #c2410c; }
+/* ── Filter label value suffix ── */
+.filter-label em {
+  font-style: normal; font-weight: 700; color: var(--accent);
+  font-size: 0.78rem; margin-left: 3px; letter-spacing: 0;
+  text-transform: none;
+}
+
 /* Age dual-range slider */
 #age-row { align-items: center; gap: 0.75rem; }
-.age-range-label { font-size: 0.72rem; font-weight: 700; color: var(--accent); white-space: nowrap; min-width: 72px; }
 .age-wrap { display: flex; flex-direction: column; gap: 4px; flex: 1; max-width: 280px; }
 .age-slider-wrap { position: relative; height: 20px; }
 .age-slider-wrap input[type=range] {
@@ -236,24 +242,19 @@ input[type="date"]:focus { border-color: #fb923c; }
 
 /* ── Card emoji ── */
 .card-emoji { font-size: 1.6rem; line-height: 1; margin-bottom: 3px; display: inline-block; }
-@keyframes wiggle {
-  0%,100% { transform: rotate(0); }
-  25%      { transform: rotate(-14deg); }
-  75%      { transform: rotate(14deg); }
+@keyframes emojiPop {
+  0%   { transform: scale(1);    filter: brightness(1) drop-shadow(0 0 0px rgba(251,191,36,0)); }
+  45%  { transform: scale(1.28); filter: brightness(1.2) drop-shadow(0 0 10px rgba(251,191,36,0.75)); }
+  100% { transform: scale(1);    filter: brightness(1) drop-shadow(0 0 0px rgba(251,191,36,0)); }
 }
-.card:hover .card-emoji { animation: wiggle 0.35s ease; }
+.card:hover .card-emoji { animation: emojiPop 0.4s ease; }
 
-/* ── Card entrance ── */
+/* ── Card entrance (only new cards animate) ── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(10px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-.grid .card                { animation: fadeUp 0.22s ease both; }
-.grid .card:nth-child(2)   { animation-delay: 40ms; }
-.grid .card:nth-child(3)   { animation-delay: 80ms; }
-.grid .card:nth-child(4)   { animation-delay: 120ms; }
-.grid .card:nth-child(5)   { animation-delay: 160ms; }
-.grid .card:nth-child(6)   { animation-delay: 200ms; }
+.grid .card.is-new { animation: fadeUp 0.22s ease both; }
 
 /* ── Tag chip colors by category ── */
 .tag-chip[data-tag="storytime"],
@@ -322,16 +323,6 @@ input[type="date"]:focus { border-color: #fb923c; }
 .card.cost-free { border-left: 3.5px solid #6ee7b7; }
 .card.cost-paid { border-left: 3.5px solid #fcd34d; }
 
-/* ── Near-me button ── */
-.near-me-btn {
-  font-family: var(--sans); font-size: 0.72rem; font-weight: 700; color: var(--ink-2);
-  background: var(--pill-bg); border: 1.5px solid var(--rule);
-  border-radius: 99px; padding: 5px 12px; cursor: pointer;
-  white-space: nowrap; transition: background 0.12s, border-color 0.12s;
-  flex-shrink: 0;
-}
-.near-me-btn:hover { background: #fff7ed; border-color: #fb923c; color: var(--accent); }
-.near-me-btn[disabled] { opacity: 0.55; pointer-events: none; }
 
 /* ── Empty / loading ── */
 #loading, #empty {
@@ -441,7 +432,7 @@ footer a { color: var(--ink-3); text-decoration: underline; }
 .feedback-thanks { display: none; text-align: center; padding: 1rem 0; font-size: 0.85rem; color: var(--ink-2); }
 
 /* ── Radius slider ── */
-#radius-row { display: none; align-items: center; gap: 0.75rem; padding-left: 64px; }
+#radius-row { display: none; align-items: center; gap: 0.75rem; }
 .location-input-wrap { display: flex; align-items: center; gap: 4px; margin-left: 4px; }
 #location-input {
   font-size: 0.78rem; padding: 5px 12px; border-radius: 99px;
@@ -454,11 +445,6 @@ footer a { color: var(--ink-3); text-decoration: underline; }
 .location-chip-x { font-size: 1rem; line-height: 1; opacity: 0.7; cursor: pointer; margin-left: 1px; }
 .location-chip-x:hover { opacity: 1; }
 #radius-row.visible { display: flex; }
-.radius-within {
-  font-size: 0.72rem; font-weight: 700; color: var(--ink-3);
-  text-transform: uppercase; letter-spacing: 0.07em;
-  white-space: nowrap; min-width: 72px;
-}
 .radius-wrap { display: flex; flex-direction: column; gap: 5px; flex: 1; max-width: 280px; }
 #radius-slider {
   width: 100%; height: 6px; accent-color: #c2410c; cursor: pointer;
@@ -501,8 +487,6 @@ footer a { color: var(--ink-3); text-decoration: underline; }
   .chip-group, .date-chips { display: flex; flex-wrap: wrap; gap: 0.35rem; }
   .date-custom { flex-direction: column; align-items: flex-start; gap: 0.3rem; }
 
-  #radius-row { padding-left: 0; }
-  .radius-within { min-width: 60px; font-size: 0.65rem; }
   .radius-wrap { max-width: 200px; }
 
   .grid { grid-template-columns: 1fr; gap: 8px; padding: 0 0.75rem; }
@@ -654,7 +638,6 @@ footer a { color: var(--ink-3); text-decoration: underline; }
         <button class="chip" data-preset="all">All</button>
         <button class="chip active" data-preset="Palo Alto">Palo Alto</button>
         <button class="chip" data-preset="SF+Oakland">SF / Oakland</button>
-        <button class="chip" data-preset="East Bay">East Bay</button>
         <button id="location-chip" class="chip location-chip" style="display:none">
           <span id="location-chip-label"></span><span class="location-chip-x">×</span>
         </button>
@@ -665,17 +648,17 @@ footer a { color: var(--ink-3); text-decoration: underline; }
       </div>
     </div>
     <div class="filter-row" id="radius-row">
-      <span class="radius-within" id="radius-within-label">within 20 mi</span>
+      <span class="filter-label">Radius<em id="radius-within-label"> 5 mi</em></span>
       <div class="radius-wrap">
         <input type="range" id="radius-slider" min="1" max="40" step="1" value="5">
         <div class="radius-ticks">
-          <span data-snap="5">5 mi</span><span data-snap="10">10 mi</span><span data-snap="20" class="active-tick">20 mi</span><span data-snap="40">max</span>
+          <span data-snap="5">5</span><span data-snap="10">10</span><span data-snap="20">20</span><span data-snap="40">max</span>
         </div>
       </div>
     </div>
 
     <div class="filter-row" id="age-row">
-      <span class="age-range-label" id="age-range-label">Ages 0–18</span>
+      <span class="filter-label">Ages<em id="age-range-label"> 0–5</em></span>
       <div class="age-wrap">
         <div class="age-slider-wrap">
           <div class="age-track-fill" id="age-track-fill"></div>
@@ -685,14 +668,6 @@ footer a { color: var(--ink-3); text-decoration: underline; }
         <div class="age-ticks">
           <span>0</span><span>3</span><span>6</span><span>9</span><span>12</span><span>15</span><span>18</span>
         </div>
-      </div>
-    </div>
-
-    <div class="filter-row">
-      <span class="filter-label">Cost</span>
-      <div class="chip-group">
-        <button class="chip active-all" data-cost="all">All</button>
-        <button class="chip" data-cost="Free">Free</button>
       </div>
       <button class="reset-btn" id="reset-btn" title="Reset filters">↺</button>
     </div>
@@ -734,11 +709,11 @@ let healthData = {};
 let activePreset = 'Palo Alto';
 let activeRadius = 5; // miles
 let customCenter = null; // [lat, lng] when user types a city/zip
-let activeCost = 'all';
 let activeAgeMin = 0;
 let activeAgeMax = 5;
 let activeWhen = 'next-7';
 let activeSearchTags = [];
+let renderedKeys = new Set();
 
 const RADIUS_TICKS = [5, 10, 20, 40]; // visual reference ticks only
 
@@ -1060,7 +1035,7 @@ function updateRadiusTicks() {
   const slider = document.getElementById('radius-slider');
   if (slider) slider.style.setProperty('--pct', `${((activeRadius - 1) / 39) * 100}%`);
   const withinEl = document.getElementById('radius-within-label');
-  if (withinEl) withinEl.textContent = activeRadius === 40 ? 'within max' : `within ${activeRadius} mi`;
+  if (withinEl) withinEl.textContent = activeRadius === 40 ? ' max' : ` ${activeRadius} mi`;
 }
 
 function setPreset(p) {
@@ -1155,14 +1130,6 @@ function clearCustomLocation(resetInput = true) {
   });
 })();
 
-function setCost(val) {
-  activeCost = val;
-  document.querySelectorAll('[data-cost]').forEach(x => x.classList.remove('active', 'active-green', 'active-all'));
-  const target = document.querySelector(`[data-cost="${val}"]`);
-  if (target) target.classList.add(val === 'Free' ? 'active-green' : val === 'all' ? 'active-all' : 'active');
-  render();
-}
-document.querySelectorAll('[data-cost]').forEach(b => b.addEventListener('click', () => setCost(b.dataset.cost)));
 
 const AGE_GROUP_RANGES = {
   babies: [0, 2], toddlers: [1, 4], preschool: [3, 6],
@@ -1176,7 +1143,7 @@ function updateAgeSlider() {
   const fill = document.getElementById('age-track-fill');
   if (fill) { fill.style.setProperty('--fill-left', fillLeft + '%'); fill.style.setProperty('--fill-right', fillRight + '%'); }
   const label = document.getElementById('age-range-label');
-  if (label) label.textContent = (lo === 0 && hi === 18) ? 'All ages' : `Ages ${lo}–${hi}`;
+  if (label) label.textContent = (lo === 0 && hi === 18) ? ' all' : ` ${lo}–${hi}`;
 }
 
 (function initAgeSlider() {
@@ -1262,9 +1229,6 @@ document.getElementById('reset-btn').addEventListener('click', () => {
     b.classList.toggle('active', b.dataset.when === 'next-7');
   });
   document.getElementById('custom-dates').style.display = 'none';
-  activeCost = 'all';
-  document.querySelectorAll('[data-cost]').forEach(b => b.classList.remove('active', 'active-green', 'active-all'));
-  document.querySelector('[data-cost="all"]').classList.add('active-all');
   activeAgeMin = 0; activeAgeMax = 5;
   document.getElementById('age-min').value = 0;
   document.getElementById('age-max').value = 5;
@@ -1322,7 +1286,6 @@ function render() {
         if (!inRange) return false;
       }
     }
-    if (activeCost !== 'all' && e.cost !== activeCost) return false;
     if (activeAgeMin > 0 || activeAgeMax < 18) {
       const ag = (e.age_group || 'family').toLowerCase();
       const [lo, hi] = AGE_GROUP_RANGES[ag] || [0, 18];
@@ -1363,14 +1326,18 @@ function render() {
     return a.localeCompare(b);
   });
 
+  const prevKeys = renderedKeys;
+  renderedKeys = new Set(events.map(e => e.dedupe_key));
+
   const html = [];
+  let cardIdx = 0;
   sortedGroups.forEach(([k, evs]) => {
     const isUndated = k === 'no-date';
     const label = isUndated
       ? 'Also worth checking — date not confirmed'
       : new Date(k + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
     html.push(`<div class="date-group${isUndated ? ' undated' : ''}"><h2>${label} <span class="group-count">${evs.length}</span></h2></div><div class="grid">`);
-    evs.forEach(e => html.push(card(e, isUndated)));
+    evs.forEach(e => { html.push(card(e, isUndated, !prevKeys.has(e.dedupe_key), cardIdx++)); });
     html.push('</div>');
   });
   output.innerHTML = html.join('');
@@ -1388,7 +1355,7 @@ function fmt_time(iso) {
 
 const HIDDEN_TAGS = new Set(['venue','library','aggregator','eventbrite','weekend','weekday','summer','all ages','peninsula','palo alto']);
 
-function card(e, undated = false) {
+function card(e, undated = false, isNew = true, cardIdx = 0) {
   const startTime = fmt_time(e.start_datetime);
   const endTime = fmt_time(e.end_datetime);
   const timeStr = startTime ? (endTime ? `${startTime} – ${endTime}` : startTime) : '';
@@ -1412,7 +1379,9 @@ function card(e, undated = false) {
 
   const emoji = eventEmoji(e.tags);
   const costCls2 = e.cost === 'Free' ? ' cost-free' : e.cost === 'Paid' ? ' cost-paid' : '';
-  return `<div class="card${undated ? ' undated' : ''}${costCls2}">
+  const newCls = isNew ? ' is-new' : '';
+  const delayStyle = isNew && cardIdx < 8 ? ` style="animation-delay:${cardIdx * 35}ms"` : '';
+  return `<div class="card${undated ? ' undated' : ''}${costCls2}${newCls}"${delayStyle}>
     ${emoji ? `<div class="card-emoji">${emoji}</div>` : ''}
     <div class="card-title">${titleHtml}</div>
     <div class="card-meta">
@@ -1622,7 +1591,7 @@ function saveFilters() {
   const state = {
     preset: activePreset, radius: activeRadius,
     ageMin: activeAgeMin, ageMax: activeAgeMax,
-    cost: activeCost, when: activeWhen,
+    when: activeWhen,
   };
   if (activePreset === 'custom' && customCenter) {
     state.lat = customCenter[0]; state.lng = customCenter[1];
@@ -1647,7 +1616,6 @@ function applyFilterState(state) {
   activeRadius  = state.radius  ?? 5;
   activeAgeMin  = state.ageMin  ?? 0;
   activeAgeMax  = state.ageMax  ?? 5;
-  activeCost    = state.cost    ?? 'all';
   activeWhen    = state.when    ?? 'next-7';
 
   if (activePreset === 'custom' && state.lat) {
@@ -1668,9 +1636,6 @@ function applyFilterState(state) {
     b.classList.remove('active', 'active-all');
     if (b.dataset.when === activeWhen) b.classList.add(activeWhen === 'all' ? 'active-all' : 'active');
   });
-  document.querySelectorAll('[data-cost]').forEach(b => b.classList.remove('active', 'active-green', 'active-all'));
-  const costBtn = document.querySelector(`[data-cost="${activeCost}"]`);
-  if (costBtn) costBtn.classList.add(activeCost === 'Free' ? 'active-green' : 'active-all');
 }
 
 function restoreFilters() {
