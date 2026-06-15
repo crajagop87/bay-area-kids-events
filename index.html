@@ -135,7 +135,36 @@ input[type="date"]:focus { border-color: #fb923c; }
   flex-shrink: 0; transition: background 0.12s, border-color 0.12s, color 0.12s;
 }
 .reset-btn:hover { background: #fff7ed; border-color: #f97316; color: #c2410c; }
-.chip-sub { font-size: 0.6rem; font-weight: 500; opacity: 0.65; margin-left: 3px; }
+/* Age dual-range slider */
+#age-row { align-items: center; gap: 0.75rem; }
+.age-range-label { font-size: 0.72rem; font-weight: 700; color: var(--accent); white-space: nowrap; min-width: 72px; }
+.age-wrap { display: flex; flex-direction: column; gap: 4px; flex: 1; max-width: 280px; }
+.age-slider-wrap { position: relative; height: 20px; }
+.age-slider-wrap input[type=range] {
+  position: absolute; top: 0; left: 0; width: 100%; height: 20px;
+  -webkit-appearance: none; appearance: none;
+  background: transparent; pointer-events: none; margin: 0;
+}
+.age-slider-wrap input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 18px; height: 18px; border-radius: 50%;
+  background: var(--accent); border: 2px solid #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.18); cursor: pointer;
+  pointer-events: all; position: relative; z-index: 2;
+  transition: box-shadow 0.12s;
+}
+.age-slider-wrap input[type=range]::-webkit-slider-thumb:hover { box-shadow: 0 0 0 5px rgba(194,65,12,0.12); }
+.age-track-fill {
+  position: absolute; top: 7px; left: 0; right: 0; height: 6px;
+  background: #e8e0d8; border-radius: 3px; pointer-events: none;
+}
+.age-track-fill::after {
+  content: ''; position: absolute; top: 0; height: 100%;
+  background: var(--accent); border-radius: 3px;
+  left: var(--fill-left, 0%); right: var(--fill-right, 0%);
+}
+.age-ticks { display: flex; justify-content: space-between; }
+.age-ticks span { font-size: 0.62rem; font-weight: 600; color: var(--ink-3); }
 
 /* ── Count bar ── */
 .count-bar {
@@ -548,16 +577,17 @@ footer a { color: var(--ink-3); text-decoration: underline; }
       </div>
     </div>
 
-    <div class="filter-row">
-      <span class="filter-label">Age</span>
-      <div class="chip-group" id="age-chips">
-        <button class="chip active-all" data-age="all">All</button>
-        <button class="chip" data-age="babies">Babies<span class="chip-sub">0–2</span></button>
-        <button class="chip" data-age="toddlers">Toddlers<span class="chip-sub">2–4</span></button>
-        <button class="chip" data-age="preschool">Preschool<span class="chip-sub">3–6</span></button>
-        <button class="chip" data-age="kids">Kids<span class="chip-sub">5–12</span></button>
-        <button class="chip" data-age="teens">Teens<span class="chip-sub">12–18</span></button>
-        <button class="chip" data-age="family">Family</button>
+    <div class="filter-row" id="age-row">
+      <span class="age-range-label" id="age-range-label">Ages 0–18</span>
+      <div class="age-wrap">
+        <div class="age-slider-wrap">
+          <div class="age-track-fill" id="age-track-fill"></div>
+          <input type="range" id="age-min" min="0" max="18" step="1" value="0">
+          <input type="range" id="age-max" min="0" max="18" step="1" value="18">
+        </div>
+        <div class="age-ticks">
+          <span>0</span><span>3</span><span>6</span><span>9</span><span>12</span><span>15</span><span>18</span>
+        </div>
       </div>
     </div>
 
@@ -598,7 +628,8 @@ let healthData = {};
 let activePreset = 'Palo Alto';
 let activeRadius = 20; // miles
 let activeCost = 'all';
-let activeAge = 'all';
+let activeAgeMin = 0;
+let activeAgeMax = 18;
 let activeWhen = 'this-weekend';
 let activeSearchTags = [];
 
@@ -948,14 +979,35 @@ function setCost(val) {
 }
 document.querySelectorAll('[data-cost]').forEach(b => b.addEventListener('click', () => setCost(b.dataset.cost)));
 
-function setAge(val) {
-  activeAge = val;
-  document.querySelectorAll('[data-age]').forEach(x => x.classList.remove('active', 'active-all'));
-  const target = document.querySelector(`[data-age="${val}"]`);
-  if (target) target.classList.add(val === 'all' ? 'active-all' : 'active');
-  render();
+const AGE_GROUP_RANGES = {
+  babies: [0, 2], toddlers: [1, 4], preschool: [3, 6],
+  kids: [4, 12], teens: [11, 18], family: [0, 18],
+};
+
+function updateAgeSlider() {
+  const lo = activeAgeMin, hi = activeAgeMax;
+  const fillLeft = (lo / 18) * 100;
+  const fillRight = ((18 - hi) / 18) * 100;
+  const fill = document.getElementById('age-track-fill');
+  if (fill) { fill.style.setProperty('--fill-left', fillLeft + '%'); fill.style.setProperty('--fill-right', fillRight + '%'); }
+  const label = document.getElementById('age-range-label');
+  if (label) label.textContent = (lo === 0 && hi === 18) ? 'All ages' : `Ages ${lo}–${hi}`;
 }
-document.querySelectorAll('[data-age]').forEach(b => b.addEventListener('click', () => setAge(b.dataset.age)));
+
+(function initAgeSlider() {
+  const minEl = document.getElementById('age-min');
+  const maxEl = document.getElementById('age-max');
+  function sync() {
+    let lo = +minEl.value, hi = +maxEl.value;
+    if (lo > hi) { if (this === minEl) { lo = hi; minEl.value = lo; } else { hi = lo; maxEl.value = hi; } }
+    activeAgeMin = lo; activeAgeMax = hi;
+    updateAgeSlider();
+    render();
+  }
+  minEl.addEventListener('input', sync);
+  maxEl.addEventListener('input', sync);
+  updateAgeSlider();
+})();
 
 document.querySelectorAll('[data-preset]').forEach(b => b.addEventListener('click', () => setPreset(b.dataset.preset)));
 document.getElementById('radius-slider').addEventListener('input', e => {
@@ -1028,9 +1080,10 @@ document.getElementById('reset-btn').addEventListener('click', () => {
   activeCost = 'all';
   document.querySelectorAll('[data-cost]').forEach(b => b.classList.remove('active', 'active-green', 'active-all'));
   document.querySelector('[data-cost="all"]').classList.add('active-all');
-  activeAge = 'all';
-  document.querySelectorAll('[data-age]').forEach(b => b.classList.remove('active', 'active-all'));
-  document.querySelector('[data-age="all"]').classList.add('active-all');
+  activeAgeMin = 0; activeAgeMax = 18;
+  document.getElementById('age-min').value = 0;
+  document.getElementById('age-max').value = 18;
+  updateAgeSlider();
   activePreset = 'Palo Alto';
   activeRadius = 20;
   document.getElementById('radius-slider').value = 20;
@@ -1082,10 +1135,10 @@ function render() {
       }
     }
     if (activeCost !== 'all' && e.cost !== activeCost) return false;
-    if (activeAge !== 'all') {
-      const ag = (e.age_group || '').toLowerCase();
-      // "family" events show under every specific age filter (appropriate for all)
-      if (ag !== activeAge && ag !== 'family') return false;
+    if (activeAgeMin > 0 || activeAgeMax < 18) {
+      const ag = (e.age_group || 'family').toLowerCase();
+      const [lo, hi] = AGE_GROUP_RANGES[ag] || [0, 18];
+      if (lo > activeAgeMax || hi < activeAgeMin) return false;
     }
     const hay = [e.title, e.venue, e.city, e.age_range, e.category, e.source_name, (e.tags||[]).join(' ')]
       .join(' ').toLowerCase();
