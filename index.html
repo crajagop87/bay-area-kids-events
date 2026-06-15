@@ -254,6 +254,46 @@ input[type="date"]:focus { border-color: #fb923c; }
 .sticky-scroll-hint { font-size: 0.65rem; color: var(--ink-3); white-space: nowrap; cursor: pointer; margin-left: auto; flex-shrink: 0; }
 .sticky-scroll-hint:hover { color: var(--accent); }
 
+/* ── Skeleton loading ── */
+@keyframes shimmer {
+  0%   { background-position: -600px 0; }
+  100% { background-position:  600px 0; }
+}
+.skeleton-grid {
+  max-width: 1040px; margin: 1.5rem auto 0; padding: 0 1.5rem;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px;
+}
+.skeleton-card {
+  background: var(--bg-card); border: 1.5px solid var(--rule);
+  border-radius: 16px; padding: 1rem 1.1rem;
+  display: flex; flex-direction: column; gap: 0.55rem;
+}
+.sk {
+  border-radius: 6px; height: 13px;
+  background: linear-gradient(90deg, #f0ece8 25%, #e5dfda 50%, #f0ece8 75%);
+  background-size: 600px 100%;
+  animation: shimmer 1.5s ease infinite;
+}
+.sk.tall { height: 18px; }
+.sk.short { width: 58%; }
+.sk.xshort { width: 38%; }
+.sk.badge { width: 44px; height: 20px; border-radius: 99px; }
+
+/* ── Card cost left-border ── */
+.card.cost-free { border-left: 3.5px solid #6ee7b7; }
+.card.cost-paid { border-left: 3.5px solid #fcd34d; }
+
+/* ── Near-me button ── */
+.near-me-btn {
+  font-family: var(--sans); font-size: 0.72rem; font-weight: 700; color: var(--ink-2);
+  background: var(--pill-bg); border: 1.5px solid var(--rule);
+  border-radius: 99px; padding: 5px 12px; cursor: pointer;
+  white-space: nowrap; transition: background 0.12s, border-color 0.12s;
+  flex-shrink: 0;
+}
+.near-me-btn:hover { background: #fff7ed; border-color: #fb923c; color: var(--accent); }
+.near-me-btn[disabled] { opacity: 0.55; pointer-events: none; }
+
 /* ── Empty / loading ── */
 #loading, #empty {
   max-width: 980px; margin: 3rem auto; padding: 0 1.5rem;
@@ -584,6 +624,7 @@ footer a { color: var(--ink-3); text-decoration: underline; }
         <input id="location-input" type="search" placeholder="+ city or zip…" autocomplete="off" list="location-suggestions" spellcheck="false">
         <datalist id="location-suggestions"></datalist>
       </div>
+      <button class="near-me-btn" id="near-me-btn">📍 Near me</button>
     </div>
     <div class="filter-row" id="radius-row">
       <span class="radius-within" id="radius-within-label">within 20 mi</span>
@@ -622,7 +663,16 @@ footer a { color: var(--ink-3); text-decoration: underline; }
 </div>
 
 <div class="count-line count-bar" id="count-line"></div>
-<div id="loading">Fetching events…</div>
+<div id="loading">
+  <div class="skeleton-grid">
+    <div class="skeleton-card"><div class="sk tall short"></div><div class="sk xshort"></div><div class="sk badge"></div><div class="sk short"></div></div>
+    <div class="skeleton-card"><div class="sk tall"></div><div class="sk xshort"></div><div class="sk badge"></div><div class="sk short"></div></div>
+    <div class="skeleton-card"><div class="sk tall short"></div><div class="sk xshort"></div><div class="sk badge"></div><div class="sk short"></div></div>
+    <div class="skeleton-card"><div class="sk tall"></div><div class="sk xshort"></div><div class="sk badge"></div><div class="sk short"></div></div>
+    <div class="skeleton-card"><div class="sk tall short"></div><div class="sk xshort"></div><div class="sk badge"></div><div class="sk short"></div></div>
+    <div class="skeleton-card"><div class="sk tall"></div><div class="sk xshort"></div><div class="sk badge"></div><div class="sk short"></div></div>
+  </div>
+</div>
 <div id="empty">
   <div class="empty-msg">😕 Nothing matches those filters.</div>
   <div class="empty-suggestions" id="empty-suggestions"></div>
@@ -1182,7 +1232,7 @@ document.getElementById('reset-btn').addEventListener('click', () => {
   document.getElementById('age-max').value = 5;
   updateAgeSlider();
   activePreset = 'Palo Alto';
-  activeRadius = 20;
+  activeRadius = 5;
   document.getElementById('radius-slider').value = 5;
   updatePresetStyles();
   activeSearchTags = [];
@@ -1192,6 +1242,7 @@ document.getElementById('reset-btn').addEventListener('click', () => {
 
 // ── Render ─────────────────────────────────────────────────────────────────
 function render() {
+  if (allEvents.length) saveFilters();
   const query = document.getElementById('search').value.toLowerCase().trim();
   let fromDate, toDate;
 
@@ -1322,7 +1373,8 @@ function card(e, undated = false) {
     : '';
 
   const emoji = eventEmoji(e.tags);
-  return `<div class="card${undated ? ' undated' : ''}">
+  const costCls2 = e.cost === 'Free' ? ' cost-free' : e.cost === 'Paid' ? ' cost-paid' : '';
+  return `<div class="card${undated ? ' undated' : ''}${costCls2}">
     ${emoji ? `<div class="card-emoji">${emoji}</div>` : ''}
     <div class="card-title">${titleHtml}</div>
     <div class="card-meta">
@@ -1525,6 +1577,113 @@ async function loadRoadmap() {
   }
 }
 
+// ── Filter persistence + URL sharing ──────────────────────────────────────
+const LS_KEY = 'bake_filters_v2';
+
+function saveFilters() {
+  const state = {
+    preset: activePreset, radius: activeRadius,
+    ageMin: activeAgeMin, ageMax: activeAgeMax,
+    cost: activeCost, when: activeWhen,
+  };
+  if (activePreset === 'custom' && customCenter) {
+    state.lat = customCenter[0]; state.lng = customCenter[1];
+    state.label = document.getElementById('location-chip-label')?.textContent || '';
+  }
+  try { localStorage.setItem(LS_KEY, JSON.stringify(state)); } catch(e) {}
+  // Encode to URL so it's shareable
+  const p = new URLSearchParams();
+  if (state.preset && state.preset !== 'Palo Alto') p.set('p', state.preset);
+  if (state.radius !== 5) p.set('r', state.radius);
+  if (state.ageMin > 0)   p.set('a0', state.ageMin);
+  if (state.ageMax < 18)  p.set('a1', state.ageMax);
+  if (state.cost !== 'all') p.set('c', state.cost);
+  if (state.when !== 'next-7') p.set('w', state.when);
+  if (state.lat) { p.set('lat', state.lat); p.set('lng', state.lng); p.set('lbl', state.label || ''); }
+  history.replaceState(null, '', p.toString() ? '?' + p : location.pathname);
+}
+
+function applyFilterState(state) {
+  if (!state) return;
+  activePreset  = state.preset  ?? 'Palo Alto';
+  activeRadius  = state.radius  ?? 5;
+  activeAgeMin  = state.ageMin  ?? 0;
+  activeAgeMax  = state.ageMax  ?? 5;
+  activeCost    = state.cost    ?? 'all';
+  activeWhen    = state.when    ?? 'next-7';
+
+  if (activePreset === 'custom' && state.lat) {
+    customCenter = [+state.lat, +state.lng];
+    const chip = document.getElementById('location-chip');
+    const lbl  = document.getElementById('location-chip-label');
+    const wrap = document.getElementById('location-input-wrap');
+    if (lbl)  lbl.textContent = state.label || 'Custom';
+    if (chip) chip.style.display = 'inline-flex';
+    if (wrap) wrap.style.display = 'none';
+  }
+
+  document.getElementById('radius-slider').value = activeRadius;
+  document.getElementById('age-min').value = activeAgeMin;
+  document.getElementById('age-max').value = activeAgeMax;
+
+  document.querySelectorAll('[data-when]').forEach(b => {
+    b.classList.remove('active', 'active-all');
+    if (b.dataset.when === activeWhen) b.classList.add(activeWhen === 'all' ? 'active-all' : 'active');
+  });
+  document.querySelectorAll('[data-cost]').forEach(b => b.classList.remove('active', 'active-green', 'active-all'));
+  const costBtn = document.querySelector(`[data-cost="${activeCost}"]`);
+  if (costBtn) costBtn.classList.add(activeCost === 'Free' ? 'active-green' : 'active-all');
+}
+
+function restoreFilters() {
+  // URL params take priority (enables shared links)
+  const p = new URLSearchParams(location.search);
+  if (p.has('p') || p.has('r') || p.has('a0') || p.has('a1') || p.has('lat')) {
+    applyFilterState({
+      preset: p.get('p') || 'Palo Alto', radius: +(p.get('r') || 5),
+      ageMin: +(p.get('a0') || 0), ageMax: +(p.get('a1') || 5),
+      cost: p.get('c') || 'all', when: p.get('w') || 'next-7',
+      lat: p.get('lat'), lng: p.get('lng'), label: p.get('lbl'),
+    });
+    return;
+  }
+  try {
+    const saved = JSON.parse(localStorage.getItem(LS_KEY));
+    if (saved) applyFilterState(saved);
+  } catch(e) {}
+}
+
+// ── Near me ────────────────────────────────────────────────────────────────
+document.getElementById('near-me-btn').addEventListener('click', () => {
+  const btn = document.getElementById('near-me-btn');
+  if (!navigator.geolocation) { alert('Geolocation not supported by this browser.'); return; }
+  btn.disabled = true; btn.textContent = '⏳ Locating…';
+  navigator.geolocation.getCurrentPosition(
+    pos => {
+      customCenter = [pos.coords.latitude, pos.coords.longitude];
+      activePreset = 'custom';
+      const chip = document.getElementById('location-chip');
+      const lbl  = document.getElementById('location-chip-label');
+      const wrap = document.getElementById('location-input-wrap');
+      if (lbl)  lbl.textContent = 'Near me';
+      if (chip) chip.style.display = 'inline-flex';
+      if (wrap) wrap.style.display = 'none';
+      document.querySelectorAll('[data-preset]').forEach(b => b.classList.remove('active', 'active-all'));
+      updatePresetStyles();
+      btn.disabled = false; btn.textContent = '📍 Near me';
+      saveFilters(); render();
+    },
+    () => {
+      btn.disabled = false; btn.textContent = '📍 Near me';
+      alert('Could not get your location — check browser permissions.');
+    },
+    { timeout: 8000 }
+  );
+});
+
+restoreFilters();
+updateAgeSlider();
+updatePresetStyles();
 load();
 </script>
 </body>
