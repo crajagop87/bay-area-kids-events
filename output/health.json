@@ -1,10 +1,10 @@
 {
-  "run_at": "2026-06-15T06:45:33.991032+00:00",
+  "run_at": "2026-06-15T07:22:45.196936+00:00",
   "window_days": 16,
-  "channels_ok": 44,
-  "channels_total": 44,
-  "raw_events": 1574,
-  "deduped_events": 1221,
+  "channels_ok": 48,
+  "channels_total": 48,
+  "raw_events": 1618,
+  "deduped_events": 1222,
   "channels": [
     {
       "source": "Palo Alto City Library",
@@ -19,7 +19,7 @@
     {
       "source": "San Jose Public Library",
       "status": "ok",
-      "count": 220
+      "count": 221
     },
     {
       "source": "Santa Clara County Library District",
@@ -74,7 +74,7 @@
     {
       "source": "Eventbrite/Sunnyvale",
       "status": "ok",
-      "count": 10
+      "count": 11
     },
     {
       "source": "Eventbrite/San Mateo",
@@ -104,12 +104,32 @@
     {
       "source": "Eventbrite/Campbell",
       "status": "ok",
-      "count": 13
+      "count": 12
     },
     {
       "source": "Eventbrite/Los Gatos",
       "status": "ok",
       "count": 13
+    },
+    {
+      "source": "Eventbrite/Saratoga",
+      "status": "ok",
+      "count": 11
+    },
+    {
+      "source": "Eventbrite/Milpitas",
+      "status": "ok",
+      "count": 12
+    },
+    {
+      "source": "Eventbrite/Santa Clara",
+      "status": "ok",
+      "count": 11
+    },
+    {
+      "source": "Eventbrite/Los Altos Hills",
+      "status": "ok",
+      "count": 10
     },
     {
       "source": "Eventbrite/Burlingame",
@@ -164,7 +184,7 @@
     {
       "source": "Eventbrite/Santa Cruz",
       "status": "ok",
-      "count": 13
+      "count": 12
     },
     {
       "source": "Funcheap",
