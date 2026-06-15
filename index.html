@@ -605,12 +605,12 @@ footer a { color: var(--ink-3); text-decoration: underline; }
     <h2>📍 Area &amp; Radius</h2>
     <div id="map-container"></div>
     <div class="map-controls">
-      <span class="filter-label">Radius</span>
-      <div class="radius-chips">
-        <button class="chip" data-map-radius="5">5 mi</button>
-        <button class="chip" data-map-radius="10">10 mi</button>
-        <button class="chip" data-map-radius="20">20 mi</button>
-        <button class="chip" data-map-radius="40">max</button>
+      <span class="filter-label">Radius<em id="map-radius-value"> 5 mi</em></span>
+      <div class="radius-wrap">
+        <input type="range" id="map-radius-slider" min="1" max="40" step="1" value="5">
+        <div class="radius-ticks">
+          <span data-map-snap="5">5</span><span data-map-snap="10">10</span><span data-map-snap="20">20</span><span data-map-snap="40">max</span>
+        </div>
       </div>
       <button class="map-apply-btn" onclick="applyMapSettings()">Use this radius ✓</button>
     </div>
@@ -1772,7 +1772,7 @@ function openMapModal() {
     }
     _map.invalidateSize();
     _renderMapCircles();
-    _syncMapRadiusChips();
+    _syncMapRadiusDisplay();
   }, 80);
 }
 
@@ -1810,9 +1810,16 @@ function _renderMapCircles() {
   }
 }
 
-function _syncMapRadiusChips() {
-  document.querySelectorAll('[data-map-radius]').forEach(b => {
-    b.classList.toggle('active', +b.dataset.mapRadius === mapTempRadius);
+function _syncMapRadiusDisplay() {
+  const slider = document.getElementById('map-radius-slider');
+  if (slider) {
+    slider.value = mapTempRadius;
+    slider.style.setProperty('--pct', `${((mapTempRadius - 1) / 39) * 100}%`);
+  }
+  const val = document.getElementById('map-radius-value');
+  if (val) val.textContent = mapTempRadius === 40 ? ' max' : ` ${mapTempRadius} mi`;
+  document.querySelectorAll('.radius-ticks [data-map-snap]').forEach(el => {
+    el.classList.toggle('active-tick', +el.dataset.mapSnap === mapTempRadius);
   });
 }
 
@@ -1823,10 +1830,16 @@ function applyMapSettings() {
   closeModal('map-modal');
 }
 
-document.querySelectorAll('[data-map-radius]').forEach(b => {
-  b.addEventListener('click', () => {
-    mapTempRadius = +b.dataset.mapRadius;
-    _syncMapRadiusChips();
+const _mapSlider = document.getElementById('map-radius-slider');
+_mapSlider.addEventListener('input', () => {
+  mapTempRadius = +_mapSlider.value;
+  _syncMapRadiusDisplay();
+  _renderMapCircles();
+});
+document.querySelectorAll('.radius-ticks [data-map-snap]').forEach(el => {
+  el.addEventListener('click', () => {
+    mapTempRadius = +el.dataset.mapSnap;
+    _syncMapRadiusDisplay();
     _renderMapCircles();
   });
 });
