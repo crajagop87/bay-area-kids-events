@@ -556,8 +556,8 @@ footer a { color: var(--ink-3); text-decoration: underline; }
       <div class="date-chips" id="when-chips">
         <button class="chip" data-when="all">All</button>
         <button class="chip" data-when="today">Today</button>
-        <button class="chip active" data-when="this-weekend">This weekend</button>
-        <button class="chip" data-when="next-weekend">Next weekend</button>
+        <button class="chip active" data-when="next-7">Next week</button>
+        <button class="chip" data-when="next-14">Next 2 weeks</button>
         <button class="chip" data-when="custom">Custom</button>
       </div>
     </div>
@@ -572,7 +572,7 @@ footer a { color: var(--ink-3); text-decoration: underline; }
     <div class="filter-row" style="flex-wrap:wrap; gap:0.5rem;">
       <span class="filter-label">Area</span>
       <div class="chip-group" id="area-presets">
-        <button class="chip" data-preset="all">All areas</button>
+        <button class="chip" data-preset="all">All</button>
         <button class="chip active" data-preset="Palo Alto">Palo Alto</button>
         <button class="chip" data-preset="SF+Oakland">SF / Oakland</button>
         <button class="chip" data-preset="East Bay">East Bay</button>
@@ -649,7 +649,7 @@ let customCenter = null; // [lat, lng] when user types a city/zip
 let activeCost = 'all';
 let activeAgeMin = 0;
 let activeAgeMax = 18;
-let activeWhen = 'this-weekend';
+let activeWhen = 'next-7';
 let activeSearchTags = [];
 
 const RADIUS_TICKS = [5, 10, 20, 40]; // visual reference ticks only
@@ -885,21 +885,13 @@ function dateRangeForWhen(when) {
   const now = new Date();
   const todayStr = isoLocal(now);
   if (when === 'today') return [todayStr, todayStr];
-  if (when === 'this-weekend') {
-    const day = now.getDay();
-    if (day === 6) return [todayStr, isoLocal(new Date(now.getFullYear(), now.getMonth(), now.getDate()+1))];
-    if (day === 0) return [todayStr, todayStr];
-    const sat = new Date(now); sat.setDate(now.getDate() + (6 - day));
-    const sun = new Date(sat); sun.setDate(sat.getDate() + 1);
-    return [isoLocal(sat), isoLocal(sun)];
+  if (when === 'next-7') {
+    const end = new Date(now); end.setDate(now.getDate() + 7);
+    return [todayStr, isoLocal(end)];
   }
-  if (when === 'next-weekend') {
-    const day = now.getDay();
-    // On Sunday (day=0) the next Saturday is 6 days away; all other days use +7 offset
-    const daysToNextSat = day === 0 ? 6 : (6 - day + 7) % 7 + 7;
-    const sat = new Date(now); sat.setDate(now.getDate() + daysToNextSat);
-    const sun = new Date(sat); sun.setDate(sat.getDate() + 1);
-    return [isoLocal(sat), isoLocal(sun)];
+  if (when === 'next-14') {
+    const end = new Date(now); end.setDate(now.getDate() + 14);
+    return [todayStr, isoLocal(end)];
   }
   return [null, null]; // custom
 }
@@ -1176,10 +1168,10 @@ document.getElementById('date-to').addEventListener('change', render);
 
 document.getElementById('reset-btn').addEventListener('click', () => {
   document.getElementById('search').value = '';
-  activeWhen = 'this-weekend';
+  activeWhen = 'next-7';
   document.querySelectorAll('[data-when]').forEach(b => {
     b.classList.remove('active', 'active-all');
-    b.classList.toggle('active', b.dataset.when === 'this-weekend');
+    b.classList.toggle('active', b.dataset.when === 'next-7');
   });
   document.getElementById('custom-dates').style.display = 'none';
   activeCost = 'all';
@@ -1392,16 +1384,17 @@ function updateStickyBar() {
 
   const chips = [];
   // When
-  const whenLabel = { all:'All dates', today:'Today', 'this-weekend':'This weekend', 'next-weekend':'Next weekend', custom:'Custom' };
+  const whenLabel = { all:'All dates', today:'Today', 'next-7':'Next week', 'next-14':'Next 2 weeks', custom:'Custom' };
   chips.push(whenLabel[activeWhen] || activeWhen);
   // Area
-  const customName = activePreset === 'custom' ? (document.getElementById('location-input')?.value || 'Custom') : null;
-  const presetLabel = { 'all': 'All areas', 'Palo Alto': 'Palo Alto', 'SF+Oakland': 'SF / Oakland', 'East Bay': 'East Bay' };
+  const customName = activePreset === 'custom' ? (document.getElementById('location-chip-label')?.textContent || 'Custom') : null;
+  const presetLabel = { 'all': 'All', 'Palo Alto': 'Palo Alto', 'SF+Oakland': 'SF / Oakland', 'East Bay': 'East Bay' };
   const areaLabel = activePreset === 'all'
-    ? 'All areas'
+    ? 'All'
     : `${customName || presetLabel[activePreset]} · ${activeRadius === 40 ? 'max' : activeRadius + 'mi'}`;
   chips.push(areaLabel);
-  // Dates
+  // Age
+  if (activeAgeMin > 0 || activeAgeMax < 18) chips.push(`Ages ${activeAgeMin}–${activeAgeMax}`);
   // Cost
   if (activeCost !== 'all') chips.push('Free');
   // Search tags
@@ -1418,7 +1411,7 @@ window.addEventListener('scroll', updateStickyBar, { passive: true });
 function showSmartEmpty() {
   const suggs = [];
   if (activePreset !== 'all') suggs.push({ label: '🗺 Try All areas', fn: () => setPreset('all') });
-  if (activeWhen === 'this-weekend') suggs.push({ label: '📅 Try Next weekend', fn: () => { activeWhen = 'next-weekend'; document.querySelectorAll('[data-when]').forEach(b => b.classList.toggle('active', b.dataset.when === 'next-weekend')); render(); }});
+  if (activeWhen === 'next-7') suggs.push({ label: '📅 Try next 2 weeks', fn: () => { activeWhen = 'next-14'; document.querySelectorAll('[data-when]').forEach(b => { b.classList.remove('active','active-all'); b.classList.toggle('active', b.dataset.when === 'next-14'); }); render(); }});
   if (activeWhen !== 'all' && activeWhen !== 'custom') suggs.push({ label: '📋 See all dates', fn: () => { activeWhen = 'custom'; document.getElementById('custom-dates').style.display = 'flex'; document.querySelectorAll('[data-when]').forEach(b => b.classList.toggle('active', b.dataset.when === 'custom')); render(); }});
   if (activeSearchTags.length || document.getElementById('search').value) suggs.push({ label: '🔍 Clear search', fn: () => { document.getElementById('search').value = ''; activeSearchTags = []; renderSearchTags(); render(); }});
 
