@@ -371,7 +371,7 @@ footer a { color: var(--ink-3); text-decoration: underline; }
 }
 #location-input:focus { border-color: var(--accent); color: var(--ink-1); border-style: solid; }
 #location-input::placeholder { color: var(--ink-3); }
-.location-chip { display: flex !important; align-items: center; gap: 5px; cursor: default; }
+.location-chip { align-items: center; gap: 5px; cursor: default; }
 .location-chip-x { font-size: 1rem; line-height: 1; opacity: 0.7; cursor: pointer; margin-left: 1px; }
 .location-chip-x:hover { opacity: 1; }
 #radius-row.visible { display: flex; }
@@ -576,13 +576,13 @@ footer a { color: var(--ink-3); text-decoration: underline; }
         <button class="chip active" data-preset="Palo Alto">Palo Alto</button>
         <button class="chip" data-preset="SF+Oakland">SF / Oakland</button>
         <button class="chip" data-preset="East Bay">East Bay</button>
+        <button id="location-chip" class="chip location-chip" style="display:none">
+          <span id="location-chip-label"></span><span class="location-chip-x">×</span>
+        </button>
       </div>
       <div class="location-input-wrap" id="location-input-wrap">
         <input id="location-input" type="search" placeholder="+ city or zip…" autocomplete="off" list="location-suggestions" spellcheck="false">
         <datalist id="location-suggestions"></datalist>
-        <button id="location-chip" class="chip active location-chip" style="display:none">
-          <span id="location-chip-label"></span><span class="location-chip-x">×</span>
-        </button>
       </div>
     </div>
     <div class="filter-row" id="radius-row">
@@ -1026,17 +1026,20 @@ function applyCustomLocation(val) {
   if (ll) {
     customCenter = ll;
     activePreset = 'custom';
+    // Deselect all preset chips
     document.querySelectorAll('[data-preset]').forEach(b => b.classList.remove('active', 'active-all'));
     document.getElementById('radius-row').classList.add('visible');
-    // Show chip, hide input
+    // Build display name
     const display = /^\d{5}$/.test(val.trim())
       ? (ZIP_RADIUS_STUB[val.trim()]?.label || val.trim())
       : val.trim().replace(/\b\w/g, c => c.toUpperCase());
     label.textContent = display;
-    input.style.display = 'none';
-    chip.style.display = '';
+    // Hide input, show chip
+    document.getElementById('location-input-wrap').style.display = 'none';
+    chip.style.display = 'inline-flex';
+    chip.classList.add('active');
     render();
-  } else if (val) {
+  } else if (val.trim()) {
     input.style.borderColor = '#ef4444';
     setTimeout(() => input.style.borderColor = '', 1200);
   }
@@ -1047,8 +1050,9 @@ function clearCustomLocation(resetInput = true) {
   const input = document.getElementById('location-input');
   const chip  = document.getElementById('location-chip');
   if (resetInput && input) input.value = '';
-  if (input) input.style.display = '';
-  if (chip)  chip.style.display  = 'none';
+  document.getElementById('location-input-wrap').style.display = '';
+  chip.style.display = 'none';
+  chip.classList.remove('active');
 }
 
 (function initLocationInput() {
@@ -1062,7 +1066,8 @@ function clearCustomLocation(resetInput = true) {
   });
   input.addEventListener('input', () => { if (!input.value) clearCustomLocation(false); });
 
-  chip.querySelector('.location-chip-x').addEventListener('click', () => {
+  chip.querySelector('.location-chip-x').addEventListener('click', e => {
+    e.stopPropagation();
     clearCustomLocation(true);
     activePreset = 'Palo Alto';
     updatePresetStyles();
