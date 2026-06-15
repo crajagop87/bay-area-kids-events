@@ -461,7 +461,7 @@ footer a { color: var(--ink-3); text-decoration: underline; }
         <li><strong>Custom</strong> — pick any date range you like.</li>
         <li><strong>Palo Alto</strong> — centered on Palo Alto; radius slider controls how far out (5–40 miles).</li>
         <li><strong>SF / Oakland</strong> — events within the chosen radius of either San Francisco or Oakland city centers.</li>
-        <li><strong>East Bay</strong> — centered on Fremont; radius slider controls coverage across the East Bay.</li>
+        <li><strong>East Bay</strong> — dual circles centered on Fremont and Oakland; radius slider controls how far from either center.</li>
         <li><strong>All areas</strong> — no location filter; shows everything.</li>
         <li><strong>Radius slider</strong> — snap between 5, 10, 20, and 40 miles from the selected center.</li>
         <li><strong>Free only</strong> — filters to events with no admission cost. Some free events still require registration.</li>
@@ -688,8 +688,8 @@ const CITY_LATLNG = {
   'oakland public library':[37.8044,-122.2712],
   'berkeley public library':[37.8716,-122.2727],
   'santa cruz city libraries':[36.9741,-122.0308],
-  'contra costa county library':[37.9101,-122.0652],
-  'alameda county library':[37.6688,-122.0808],
+  'contra costa county library':[37.9101,-122.0652],  // Walnut Creek (central CCC)
+  'alameda county library':[37.5485,-121.9886],        // Fremont (main branch)
   // aggregator catch-alls — treated as "unknown location"
   'bay area':null,'east bay':null,'east bay ':null,
 };
@@ -698,7 +698,7 @@ const CITY_LATLNG = {
 const PRESET_CENTERS = {
   'Palo Alto':  [[37.4419, -122.1430]],
   'SF+Oakland': [[37.7749, -122.4194], [37.8044, -122.2712]],
-  'East Bay':   [[37.5485, -121.9886]],
+  'East Bay':   [[37.5485, -121.9886], [37.8044, -122.2712]],
 };
 
 // County-level fallback for events whose city field is a library name, not a city
