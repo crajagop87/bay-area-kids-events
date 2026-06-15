@@ -10,6 +10,7 @@ import hashlib
 import logging
 from datetime import datetime, timedelta, timezone
 import requests
+from scrapers.tagger import ADULT_NOISE
 
 log = logging.getLogger(__name__)
 
@@ -36,12 +37,7 @@ HEADERS = {
     "Accept": "application/json",
 }
 
-ADULT_NOISE = re.compile(
-    r"\b(job\s*fair|resume|career|financial\s*planning|tax|voter|citizenship|"
-    r"english\s*as\s*a\s*second|esl|gre\s*prep|sat\s*prep|21\+|adults?\s*only|"
-    r"senior\s*center|medicare|aarp|city\s*council|planning\s*commission)\b",
-    re.IGNORECASE,
-)
+
 
 MULTI_WEEK_CAMP = re.compile(
     r"\b(summer\s*camp|week[\-\s]?long\s*camp|multi[\-\s]?week)\b", re.IGNORECASE

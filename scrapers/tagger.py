@@ -7,6 +7,31 @@ Tags are designed to match natural search terms a parent would type.
 import re
 from datetime import datetime, timezone
 
+# Shared adult-noise filter — import this in every scraper
+ADULT_NOISE = re.compile(
+    r"\b("
+    # Substances / alcohol-focused events
+    r"wine\s*tasting|beer\s*tasting|cocktail|happy\s*hour|bar\s*crawl|nightclub|brewery|"
+    r"beer[\s,/&]+wine|wine[\s,/&]+beer|beer\s*garden|wine\s*garden|"
+    r"\$\d+\s*beer|\bcraft\s*beer\b|50\+\s*tast|"
+    r"winery|distillery|whiskey|whisky|spirits\s*tasting|alcohol|21\+|"
+    # Adult-only events
+    r"adults?\s*only|bachelorette|bachelor\s*party|strip\s*club|comedy\s*show|"
+    r"stand[\s-]?up\s*comedy|open\s*mic|karaoke|speed\s*dating|singles|"
+    # Financial / legal / professional
+    r"estate\s*planning|living\s*trust|financial\s*planning|financial\s*literacy\s*(?!.*teen)|"
+    r"wealth\s*management|investment\s*seminar|tax\s*planning|mortgage|insurance\s*seminar|"
+    r"capital\s*gains|inheritance\s*planning|legal\s*seminar|divorce|retirement\s*planning|"
+    r"real\s*estate\s*invest|crypto\s*invest|"
+    # Networking / career
+    r"networking\s*event|job\s*fair|career\s*fair|resume\s*workshop|linkedin|"
+    r"professional\s*development|b2b|"
+    # Explicitly adult
+    r"21\s*and\s*over|18\+|over\s*21|adults?\s*only|mature\s*audience"
+    r")\b",
+    re.IGNORECASE,
+)
+
 # Each entry: (tag, [patterns that trigger it])
 # Patterns match against a combined lowercase string of title + venue + description + category
 TAG_RULES = [

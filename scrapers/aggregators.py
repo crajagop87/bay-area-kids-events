@@ -11,15 +11,10 @@ from datetime import datetime, timedelta, timezone
 from typing import Optional
 import requests
 from bs4 import BeautifulSoup
+from scrapers.tagger import ADULT_NOISE
 
 log = logging.getLogger(__name__)
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; KidsEventsScraper/1.0)"}
-
-ADULT_NOISE = re.compile(
-    r"\b(21\+|adults?\s*only|happy\s*hour|wine\s*tasting|networking|nightclub|"
-    r"bachelorette|comedy\s*show|job\s*fair)\b",
-    re.IGNORECASE,
-)
 
 MULTI_WEEK_CAMP = re.compile(r"\b(summer\s*camp|week[\-\s]?long\s*camp|multi[\-\s]?week)\b", re.IGNORECASE)
 

@@ -10,6 +10,7 @@ import hashlib
 import logging
 from datetime import datetime, timedelta, timezone
 import requests
+from scrapers.tagger import ADULT_NOISE
 
 log = logging.getLogger(__name__)
 
@@ -46,11 +47,6 @@ CITIES = [
     ("santa-cruz",    "Santa Cruz",    "Santa Cruz"),
 ]
 
-ADULT_NOISE = re.compile(
-    r"\b(networking|job\s*fair|happy\s*hour|wine\s*tasting|comedy\s*show|21\+|"
-    r"adults?\s*only|bachelorette|bar\s*crawl|nightclub|constellation\s*session)\b",
-    re.IGNORECASE,
-)
 
 MULTI_WEEK_CAMP = re.compile(r"\b(summer\s*camp|week[\-\s]?long\s*camp|multi[\-\s]?week)\b", re.IGNORECASE)
 

@@ -1,10 +1,10 @@
 {
-  "run_at": "2026-06-15T06:08:41.140126+00:00",
+  "run_at": "2026-06-15T06:45:33.991032+00:00",
   "window_days": 16,
   "channels_ok": 44,
   "channels_total": 44,
-  "raw_events": 1603,
-  "deduped_events": 1228,
+  "raw_events": 1574,
+  "deduped_events": 1221,
   "channels": [
     {
       "source": "Palo Alto City Library",
@@ -24,7 +24,7 @@
     {
       "source": "Santa Clara County Library District",
       "status": "ok",
-      "count": 156
+      "count": 157
     },
     {
       "source": "San Francisco Public Library",
@@ -49,57 +49,57 @@
     {
       "source": "Contra Costa County Library",
       "status": "ok",
-      "count": 215
+      "count": 218
     },
     {
       "source": "Alameda County Library",
       "status": "ok",
-      "count": 166
+      "count": 163
     },
     {
       "source": "Eventbrite/Palo Alto",
       "status": "ok",
-      "count": 11
+      "count": 10
     },
     {
       "source": "Eventbrite/San Jose",
       "status": "ok",
-      "count": 13
+      "count": 12
     },
     {
       "source": "Eventbrite/Mountain View",
       "status": "ok",
-      "count": 12
+      "count": 11
     },
     {
       "source": "Eventbrite/Sunnyvale",
       "status": "ok",
-      "count": 12
+      "count": 10
     },
     {
       "source": "Eventbrite/San Mateo",
       "status": "ok",
-      "count": 11
+      "count": 10
     },
     {
       "source": "Eventbrite/Redwood City",
       "status": "ok",
-      "count": 11
+      "count": 10
     },
     {
       "source": "Eventbrite/Menlo Park",
       "status": "ok",
-      "count": 11
+      "count": 10
     },
     {
       "source": "Eventbrite/Cupertino",
       "status": "ok",
-      "count": 13
+      "count": 12
     },
     {
       "source": "Eventbrite/Los Altos",
       "status": "ok",
-      "count": 11
+      "count": 10
     },
     {
       "source": "Eventbrite/Campbell",
@@ -109,67 +109,67 @@
     {
       "source": "Eventbrite/Los Gatos",
       "status": "ok",
-      "count": 15
+      "count": 13
     },
     {
       "source": "Eventbrite/Burlingame",
       "status": "ok",
-      "count": 11
+      "count": 10
     },
     {
       "source": "Eventbrite/Foster City",
       "status": "ok",
-      "count": 11
+      "count": 10
     },
     {
       "source": "Eventbrite/San Francisco",
       "status": "ok",
-      "count": 11
+      "count": 10
     },
     {
       "source": "Eventbrite/Oakland",
       "status": "ok",
-      "count": 11
+      "count": 10
     },
     {
       "source": "Eventbrite/Berkeley",
       "status": "ok",
-      "count": 11
+      "count": 10
     },
     {
       "source": "Eventbrite/Fremont",
       "status": "ok",
-      "count": 12
+      "count": 11
     },
     {
       "source": "Eventbrite/Hayward",
       "status": "ok",
-      "count": 11
+      "count": 10
     },
     {
       "source": "Eventbrite/Walnut Creek",
       "status": "ok",
-      "count": 12
+      "count": 11
     },
     {
       "source": "Eventbrite/Pleasanton",
       "status": "ok",
-      "count": 12
+      "count": 10
     },
     {
       "source": "Eventbrite/Dublin",
       "status": "ok",
-      "count": 12
+      "count": 10
     },
     {
       "source": "Eventbrite/Santa Cruz",
       "status": "ok",
-      "count": 14
+      "count": 13
     },
     {
       "source": "Funcheap",
       "status": "ok",
-      "count": 90
+      "count": 85
     },
     {
       "source": "Bay Area Kid Fun",
