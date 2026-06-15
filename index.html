@@ -6,6 +6,8 @@
 <title>What's Going On: Park Parents Edition</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -246,19 +248,31 @@ input[type="date"]:focus { border-color: #fb923c; }
 
 /* ── Card emoji ── */
 .card-emoji { font-size: 1.6rem; line-height: 1; margin-bottom: 3px; display: inline-block; }
-@keyframes emojiPop {
-  0%   { transform: scale(1);    filter: brightness(1) drop-shadow(0 0 0px rgba(251,191,36,0)); }
-  45%  { transform: scale(1.28); filter: brightness(1.2) drop-shadow(0 0 10px rgba(251,191,36,0.75)); }
-  100% { transform: scale(1);    filter: brightness(1) drop-shadow(0 0 0px rgba(251,191,36,0)); }
+/* ── Map modal ── */
+#map-container { height: 380px; border-radius: 12px; overflow: hidden; margin-top: 0.75rem; }
+.map-controls { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; margin-top: 0.9rem; }
+.map-open-btn {
+  font-family: var(--sans); font-size: 0.72rem; font-weight: 700; color: var(--ink-2);
+  background: var(--pill-bg); border: 1.5px solid var(--rule); border-radius: 99px;
+  padding: 5px 12px; cursor: pointer; white-space: nowrap; flex-shrink: 0;
+  transition: background 0.12s, border-color 0.12s, color 0.12s, transform 0.1s cubic-bezier(.36,.07,.19,.97);
 }
-.card:hover .card-emoji { animation: emojiPop 0.4s ease; }
-
-/* ── Card entrance (only new cards animate) ── */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
+.map-open-btn:hover { background: #fff7ed; border-color: #fb923c; color: var(--accent); }
+.map-open-btn:active { transform: scale(0.88); }
+.city-label { background: transparent !important; border: none !important; box-shadow: none !important; }
+.city-label span {
+  font-family: 'Nunito', sans-serif; font-size: 11px; font-weight: 700; color: #44403c;
+  white-space: nowrap; pointer-events: none;
+  text-shadow: 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff;
 }
-.grid .card.is-new { animation: fadeUp 0.22s ease both; }
+.map-apply-btn {
+  font-family: var(--sans); font-size: 0.8rem; font-weight: 700; color: #fff;
+  background: var(--accent); border: none; border-radius: 99px;
+  padding: 7px 20px; cursor: pointer; margin-left: auto;
+  transition: background 0.12s, transform 0.1s cubic-bezier(.36,.07,.19,.97);
+}
+.map-apply-btn:hover { background: #9a3412; }
+.map-apply-btn:active { transform: scale(0.92); }
 
 /* ── Tag chip colors by category ── */
 .tag-chip[data-tag="storytime"],
@@ -561,6 +575,25 @@ footer a { color: var(--ink-3); text-decoration: underline; }
   </div>
 </div>
 
+<!-- ── Map modal ── -->
+<div class="modal-overlay" id="map-modal">
+  <div class="modal" style="max-width:580px;width:100%">
+    <button class="modal-close" onclick="closeModal('map-modal')">✕</button>
+    <h2>📍 Area &amp; Radius</h2>
+    <div id="map-container"></div>
+    <div class="map-controls">
+      <span class="filter-label">Radius</span>
+      <div class="radius-chips">
+        <button class="chip" data-map-radius="5">5 mi</button>
+        <button class="chip" data-map-radius="10">10 mi</button>
+        <button class="chip" data-map-radius="20">20 mi</button>
+        <button class="chip" data-map-radius="40">max</button>
+      </div>
+      <button class="map-apply-btn" onclick="applyMapSettings()">Use this radius ✓</button>
+    </div>
+  </div>
+</div>
+
 <div class="header">
   <div class="header-inner">
     <div class="header-left">
@@ -643,6 +676,7 @@ footer a { color: var(--ink-3); text-decoration: underline; }
         <button class="chip" data-radius="20">20 mi</button>
         <button class="chip" data-radius="40">max</button>
       </div>
+      <button class="map-open-btn" onclick="openMapModal()">🗺 Map</button>
     </div>
 
     <div class="filter-row" id="age-row">
@@ -701,7 +735,6 @@ let activeAgeMin = 0;
 let activeAgeMax = 5;
 let activeWhen = 'next-7';
 let activeSearchTags = [];
-let renderedKeys = new Set();
 
 const RADIUS_TICKS = [5, 10, 20, 40]; // visual reference ticks only
 
@@ -1316,18 +1349,14 @@ function render() {
     return a.localeCompare(b);
   });
 
-  const prevKeys = renderedKeys;
-  renderedKeys = new Set(events.map(e => e.dedupe_key));
-
   const html = [];
-  let cardIdx = 0;
   sortedGroups.forEach(([k, evs]) => {
     const isUndated = k === 'no-date';
     const label = isUndated
       ? 'Also worth checking — date not confirmed'
       : new Date(k + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
     html.push(`<div class="date-group${isUndated ? ' undated' : ''}"><h2>${label} <span class="group-count">${evs.length}</span></h2></div><div class="grid">`);
-    evs.forEach(e => { html.push(card(e, isUndated, !prevKeys.has(e.dedupe_key), cardIdx++)); });
+    evs.forEach(e => html.push(card(e, isUndated)));
     html.push('</div>');
   });
   output.innerHTML = html.join('');
@@ -1345,7 +1374,7 @@ function fmt_time(iso) {
 
 const HIDDEN_TAGS = new Set(['venue','library','aggregator','eventbrite','weekend','weekday','summer','all ages','peninsula','palo alto']);
 
-function card(e, undated = false, isNew = true, cardIdx = 0) {
+function card(e, undated = false) {
   const startTime = fmt_time(e.start_datetime);
   const endTime = fmt_time(e.end_datetime);
   const timeStr = startTime ? (endTime ? `${startTime} – ${endTime}` : startTime) : '';
@@ -1369,9 +1398,7 @@ function card(e, undated = false, isNew = true, cardIdx = 0) {
 
   const emoji = eventEmoji(e.tags);
   const costCls2 = e.cost === 'Free' ? ' cost-free' : e.cost === 'Paid' ? ' cost-paid' : '';
-  const newCls = isNew ? ' is-new' : '';
-  const delayStyle = isNew && cardIdx < 8 ? ` style="animation-delay:${cardIdx * 35}ms"` : '';
-  return `<div class="card${undated ? ' undated' : ''}${costCls2}${newCls}"${delayStyle}>
+  return `<div class="card${undated ? ' undated' : ''}${costCls2}">
     ${emoji ? `<div class="card-emoji">${emoji}</div>` : ''}
     <div class="card-title">${titleHtml}</div>
     <div class="card-meta">
@@ -1646,6 +1673,118 @@ function restoreFilters() {
   } catch(e) {}
 }
 
+
+// ── Map modal ──────────────────────────────────────────────────────────────
+const MAP_CITIES = [
+  { n:'Palo Alto',     lat:37.4419, lng:-122.1430 },
+  { n:'Mountain View', lat:37.3861, lng:-122.0839 },
+  { n:'Los Altos',     lat:37.3852, lng:-122.1141 },
+  { n:'Sunnyvale',     lat:37.3688, lng:-122.0363 },
+  { n:'Cupertino',     lat:37.3230, lng:-122.0322 },
+  { n:'Santa Clara',   lat:37.3541, lng:-121.9552 },
+  { n:'San Jose',      lat:37.3382, lng:-121.8863 },
+  { n:'Saratoga',      lat:37.2638, lng:-122.0231 },
+  { n:'Los Gatos',     lat:37.2358, lng:-121.9624 },
+  { n:'Campbell',      lat:37.2872, lng:-121.9500 },
+  { n:'Menlo Park',    lat:37.4529, lng:-122.1817 },
+  { n:'Redwood City',  lat:37.4852, lng:-122.2364 },
+  { n:'San Mateo',     lat:37.5630, lng:-122.3255 },
+  { n:'Burlingame',    lat:37.5841, lng:-122.3661 },
+  { n:'San Francisco', lat:37.7749, lng:-122.4194 },
+  { n:'Oakland',       lat:37.8044, lng:-122.2712 },
+  { n:'Berkeley',      lat:37.8716, lng:-122.2727 },
+  { n:'Fremont',       lat:37.5485, lng:-121.9886 },
+  { n:'Hayward',       lat:37.6688, lng:-122.0808 },
+  { n:'Dublin',        lat:37.7022, lng:-121.9358 },
+  { n:'Pleasanton',    lat:37.6624, lng:-121.8747 },
+  { n:'Walnut Creek',  lat:37.9101, lng:-122.0652 },
+  { n:'Milpitas',      lat:37.4323, lng:-121.8996 },
+];
+
+let _map = null;
+let _mapLayers = [];
+let mapTempRadius = 5;
+
+function _clearMapLayers() {
+  _mapLayers.forEach(l => _map.removeLayer(l));
+  _mapLayers = [];
+}
+function _addLayer(l) { l.addTo(_map); _mapLayers.push(l); return l; }
+
+function openMapModal() {
+  mapTempRadius = activeRadius;
+  openModal('map-modal');
+  setTimeout(() => {
+    if (!_map) {
+      _map = L.map('map-container', { zoomControl: true, attributionControl: false });
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 14 }).addTo(_map);
+      MAP_CITIES.forEach(({ n, lat, lng }) => {
+        L.marker([lat, lng], {
+          icon: L.divIcon({ className: 'city-label', html: `<span>${n}</span>`, iconSize: [100,16], iconAnchor: [50,8] }),
+          interactive: false,
+        }).addTo(_map);
+      });
+    }
+    _map.invalidateSize();
+    _renderMapCircles();
+    _syncMapRadiusChips();
+  }, 80);
+}
+
+function _getCenters() {
+  if (activePreset === 'custom' && customCenter) return [customCenter];
+  if (activePreset === 'all') return null;
+  return PRESET_CENTERS[activePreset] || [[37.4419, -122.1430]];
+}
+
+function _renderMapCircles() {
+  _clearMapLayers();
+  const centers = _getCenters();
+  const radiusM = mapTempRadius * 1609.34;
+
+  if (!centers) {
+    _map.setView([37.60, -122.15], 9);
+    return;
+  }
+
+  const circleLayers = centers.map(([lat, lng]) => {
+    _addLayer(L.circleMarker([lat, lng], {
+      radius: 7, color: '#c2410c', fillColor: '#c2410c', fillOpacity: 1, weight: 2,
+    }));
+    return _addLayer(L.circle([lat, lng], {
+      radius: radiusM, color: '#c2410c', weight: 2.5,
+      fillColor: '#c2410c', fillOpacity: 0.09, dashArray: '7 5',
+    }));
+  });
+
+  try {
+    const group = L.featureGroup(circleLayers);
+    _map.fitBounds(group.getBounds().pad(0.18));
+  } catch(e) {
+    _map.setView(centers[0], 11);
+  }
+}
+
+function _syncMapRadiusChips() {
+  document.querySelectorAll('[data-map-radius]').forEach(b => {
+    b.classList.toggle('active', +b.dataset.mapRadius === mapTempRadius);
+  });
+}
+
+function applyMapSettings() {
+  activeRadius = mapTempRadius;
+  updateRadiusChips();
+  render();
+  closeModal('map-modal');
+}
+
+document.querySelectorAll('[data-map-radius]').forEach(b => {
+  b.addEventListener('click', () => {
+    mapTempRadius = +b.dataset.mapRadius;
+    _syncMapRadiusChips();
+    _renderMapCircles();
+  });
+});
 
 restoreFilters();
 updateAgeSlider();
