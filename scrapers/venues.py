@@ -6,6 +6,7 @@ Each returns structured events directly from the venue's own calendar/page.
 import re
 import json
 import hashlib
+import html as html_mod
 import logging
 from datetime import datetime, timedelta, timezone
 import requests
@@ -61,7 +62,7 @@ def _json_ld_events(soup, source_name, source_url, city, county, cost, cost_amt,
         for item in items:
             if item.get("@type") not in ("Event", "SocialEvent", "EducationEvent"):
                 continue
-            title = item.get("name", "")
+            title = html_mod.unescape(item.get("name", ""))
             if not title:
                 continue
             try:

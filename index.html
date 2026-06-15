@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>What's Going On: Park Parents Edition</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -29,7 +29,7 @@ body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-
 
 /* ── Header ── */
 .header {
-  background: #fff7ed;
+  background: linear-gradient(135deg, #fff7ed 0%, #fef9c3 55%, #d1fae5 100%);
   border-bottom: 2px solid #fed7aa;
   padding: 1rem 1.75rem 0.9rem;
   margin-bottom: 1.5rem;
@@ -45,7 +45,7 @@ body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-
 }
 .tree-crown { animation: sway 4s ease-in-out infinite; transform-origin: 50% 90%; }
 
-.header h1 { font-size: 1.25rem; font-weight: 800; color: #9a3412; line-height: 1.2; }
+.header h1 { font-family: 'Fredoka One', var(--sans); font-size: 1.5rem; font-weight: 400; color: #9a3412; line-height: 1.2; letter-spacing: 0.01em; }
 .header h1 span { color: #c2410c; font-size: 0.85rem; font-weight: 600; display: block; margin-top: 1px; }
 
 .header-right { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
@@ -108,8 +108,10 @@ body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-
   font-family: var(--sans); font-size: 0.82rem; font-weight: 600;
   padding: 6px 16px; border-radius: 99px;
   border: 1.5px solid var(--rule); background: var(--pill-bg); color: var(--ink-2);
-  cursor: pointer; transition: all 0.14s; white-space: nowrap;
+  cursor: pointer; white-space: nowrap;
+  transition: background 0.12s, border-color 0.12s, color 0.12s, transform 0.1s cubic-bezier(.36,.07,.19,.97);
 }
+.chip:active { transform: scale(0.88); }
 .chip:hover { border-color: #fb923c; color: var(--ink); background: #fff7ed; }
 .chip.active { background: #c2410c; border-color: #c2410c; color: #fff; }
 .chip.active:hover { background: #9a3412; border-color: #9a3412; }
@@ -176,9 +178,9 @@ input[type="date"]:focus { border-color: #fb923c; }
 /* ── Date group ── */
 .date-group { max-width: 1040px; margin: 1.75rem auto 0.6rem; padding: 0 1.5rem; }
 .date-group h2 {
-  font-size: 0.78rem; font-weight: 800; text-transform: uppercase;
-  letter-spacing: 0.12em; color: #92400e;
-  border-top: 2px solid #fed7aa; padding-top: 0.7rem;
+  font-family: 'Fredoka One', var(--sans);
+  font-size: 1rem; font-weight: 400; letter-spacing: 0.03em; color: #92400e;
+  border-top: 3px solid #fed7aa; padding-top: 0.6rem;
 }
 .date-group.undated h2 { color: var(--ink-3); border-top-color: var(--rule); }
 .group-count {
@@ -233,7 +235,44 @@ input[type="date"]:focus { border-color: #fb923c; }
 }
 
 /* ── Card emoji ── */
-.card-emoji { font-size: 1.6rem; line-height: 1; margin-bottom: 3px; }
+.card-emoji { font-size: 1.6rem; line-height: 1; margin-bottom: 3px; display: inline-block; }
+@keyframes wiggle {
+  0%,100% { transform: rotate(0); }
+  25%      { transform: rotate(-14deg); }
+  75%      { transform: rotate(14deg); }
+}
+.card:hover .card-emoji { animation: wiggle 0.35s ease; }
+
+/* ── Card entrance ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.grid .card                { animation: fadeUp 0.22s ease both; }
+.grid .card:nth-child(2)   { animation-delay: 40ms; }
+.grid .card:nth-child(3)   { animation-delay: 80ms; }
+.grid .card:nth-child(4)   { animation-delay: 120ms; }
+.grid .card:nth-child(5)   { animation-delay: 160ms; }
+.grid .card:nth-child(6)   { animation-delay: 200ms; }
+
+/* ── Tag chip colors by category ── */
+.tag-chip[data-tag="storytime"],
+.tag-chip[data-tag="books & reading"] { background: #ede9fe; color: #5b21b6; }
+.tag-chip[data-tag="outdoors"],
+.tag-chip[data-tag="nature"]          { background: #d1fae5; color: #065f46; }
+.tag-chip[data-tag="music"],
+.tag-chip[data-tag="theatre"]         { background: #fce7f3; color: #9d174d; }
+.tag-chip[data-tag="science"],
+.tag-chip[data-tag="STEM"]            { background: #dbeafe; color: #1e40af; }
+.tag-chip[data-tag="arts & crafts"]   { background: #fef3c7; color: #78350f; }
+.tag-chip[data-tag="animals"],
+.tag-chip[data-tag="farm"]            { background: #fef9c3; color: #713f12; }
+.tag-chip[data-tag="sports & movement"] { background: #dcfce7; color: #14532d; }
+.tag-chip[data-tag="sensory"]         { background: #e0f2fe; color: #075985; }
+.tag-chip[data-tag="cooking"]         { background: #fff7ed; color: #9a3412; }
+.tag-chip[data-tag="festival"]        { background: #fdf4ff; color: #7e22ce; }
+.tag-chip[data-tag="film & movies"]   { background: #292524; color: #fef3c7; }
+.tag-chip[data-tag="hands-on"]        { background: #f0fdf4; color: #166534; }
 
 /* ── Sticky filter bar ── */
 .sticky-bar {
@@ -624,7 +663,6 @@ footer a { color: var(--ink-3); text-decoration: underline; }
         <input id="location-input" type="search" placeholder="+ city or zip…" autocomplete="off" list="location-suggestions" spellcheck="false">
         <datalist id="location-suggestions"></datalist>
       </div>
-      <button class="near-me-btn" id="near-me-btn">📍 Near me</button>
     </div>
     <div class="filter-row" id="radius-row">
       <span class="radius-within" id="radius-within-label">within 20 mi</span>
@@ -1369,7 +1407,7 @@ function card(e, undated = false) {
 
   const tags = (e.tags || []).filter(t => !HIDDEN_TAGS.has(t));
   const tagsHtml = tags.length
-    ? `<div class="card-tags">${tags.map(t => `<span class="tag-chip">${esc(t)}</span>`).join('')}</div>`
+    ? `<div class="card-tags">${tags.map(t => `<span class="tag-chip" data-tag="${esc(t)}">${esc(t)}</span>`).join('')}</div>`
     : '';
 
   const emoji = eventEmoji(e.tags);
@@ -1653,33 +1691,6 @@ function restoreFilters() {
   } catch(e) {}
 }
 
-// ── Near me ────────────────────────────────────────────────────────────────
-document.getElementById('near-me-btn').addEventListener('click', () => {
-  const btn = document.getElementById('near-me-btn');
-  if (!navigator.geolocation) { alert('Geolocation not supported by this browser.'); return; }
-  btn.disabled = true; btn.textContent = '⏳ Locating…';
-  navigator.geolocation.getCurrentPosition(
-    pos => {
-      customCenter = [pos.coords.latitude, pos.coords.longitude];
-      activePreset = 'custom';
-      const chip = document.getElementById('location-chip');
-      const lbl  = document.getElementById('location-chip-label');
-      const wrap = document.getElementById('location-input-wrap');
-      if (lbl)  lbl.textContent = 'Near me';
-      if (chip) chip.style.display = 'inline-flex';
-      if (wrap) wrap.style.display = 'none';
-      document.querySelectorAll('[data-preset]').forEach(b => b.classList.remove('active', 'active-all'));
-      updatePresetStyles();
-      btn.disabled = false; btn.textContent = '📍 Near me';
-      saveFilters(); render();
-    },
-    () => {
-      btn.disabled = false; btn.textContent = '📍 Near me';
-      alert('Could not get your location — check browser permissions.');
-    },
-    { timeout: 8000 }
-  );
-});
 
 restoreFilters();
 updateAgeSlider();

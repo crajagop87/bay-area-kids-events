@@ -39,6 +39,11 @@ CITIES = [
     ("los-altos-hills", "Los Altos Hills", "Santa Clara"),
     ("burlingame",      "Burlingame",      "San Mateo"),
     ("foster-city",     "Foster City",     "San Mateo"),
+    ("san-carlos",      "San Carlos",      "San Mateo"),
+    ("belmont",         "Belmont",         "San Mateo"),
+    ("san-bruno",       "San Bruno",       "San Mateo"),
+    ("millbrae",        "Millbrae",        "San Mateo"),
+    ("half-moon-bay",   "Half Moon Bay",   "San Mateo"),
     # SF / East Bay / Santa Cruz (within 40 miles of Palo Alto)
     ("san-francisco", "San Francisco", "San Francisco"),
     ("oakland",       "Oakland",       "Alameda"),
