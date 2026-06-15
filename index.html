@@ -363,6 +363,21 @@ footer a { color: var(--ink-3); text-decoration: underline; }
 
 /* ── Radius slider ── */
 #radius-row { display: none; align-items: center; gap: 0.75rem; padding-left: 64px; }
+.location-input-wrap { display: flex; align-items: center; gap: 4px; margin-left: 4px; }
+#location-input {
+  font-size: 0.78rem; padding: 5px 10px; border-radius: 99px;
+  border: 1.5px solid var(--rule); background: var(--surface);
+  color: var(--ink-1); width: 130px; outline: none; transition: border-color 0.15s;
+}
+#location-input:focus { border-color: var(--accent); }
+#location-input.has-value { border-color: var(--accent); font-weight: 600; }
+.location-clear {
+  font-size: 1rem; line-height: 1; width: 22px; height: 22px; border-radius: 50%;
+  border: none; background: var(--rule); color: var(--ink-2);
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; padding: 0;
+}
+.location-clear:hover { background: #fbd5c5; color: var(--accent); }
 #radius-row.visible { display: flex; }
 .radius-within {
   font-size: 0.72rem; font-weight: 700; color: var(--ink-3);
@@ -566,6 +581,11 @@ footer a { color: var(--ink-3); text-decoration: underline; }
         <button class="chip" data-preset="SF+Oakland">SF / Oakland</button>
         <button class="chip" data-preset="East Bay">East Bay</button>
       </div>
+      <div class="location-input-wrap" id="location-input-wrap">
+        <input id="location-input" type="search" placeholder="city or zip…" autocomplete="off" list="location-suggestions" spellcheck="false">
+        <datalist id="location-suggestions"></datalist>
+        <button id="location-clear" class="location-clear" title="Clear" style="display:none">×</button>
+      </div>
     </div>
     <div class="filter-row" id="radius-row">
       <span class="radius-within" id="radius-within-label">within 20 mi</span>
@@ -627,6 +647,7 @@ let allEvents = [];
 let healthData = {};
 let activePreset = 'Palo Alto';
 let activeRadius = 20; // miles
+let customCenter = null; // [lat, lng] when user types a city/zip
 let activeCost = 'all';
 let activeAgeMin = 0;
 let activeAgeMax = 18;
@@ -966,9 +987,82 @@ function updateRadiusTicks() {
 
 function setPreset(p) {
   activePreset = p;
+  clearCustomLocation(false);
   updatePresetStyles();
   render();
 }
+
+// ── Custom location (city name or zip) ────────────────────────────────────
+// Build ZIP→latlng from ZIP_RADIUS_STUB by looking up the label city
+const ZIP_LATLNG = {};
+for (const [zip, info] of Object.entries(ZIP_RADIUS_STUB)) {
+  const ll = CITY_LATLNG[(info.label || '').toLowerCase().trim()];
+  if (ll) ZIP_LATLNG[zip] = ll;
+}
+
+// Populate datalist with all known city names (title-cased)
+(function buildDatalist() {
+  const dl = document.getElementById('location-suggestions');
+  if (!dl) return;
+  const names = Object.keys(CITY_LATLNG)
+    .filter(k => CITY_LATLNG[k])
+    .map(k => k.replace(/\b\w/g, c => c.toUpperCase()))
+    .sort();
+  names.forEach(name => { const opt = document.createElement('option'); opt.value = name; dl.appendChild(opt); });
+})();
+
+function resolveLocation(raw) {
+  const val = (raw || '').trim();
+  if (!val) return null;
+  // ZIP code
+  if (/^\d{5}$/.test(val)) return ZIP_LATLNG[val] || null;
+  // City name
+  return CITY_LATLNG[val.toLowerCase()] || null;
+}
+
+function applyCustomLocation(val) {
+  const ll = resolveLocation(val);
+  const input = document.getElementById('location-input');
+  const clearBtn = document.getElementById('location-clear');
+  if (ll) {
+    customCenter = ll;
+    // Deselect presets (but keep radius row visible)
+    activePreset = 'custom';
+    document.querySelectorAll('[data-preset]').forEach(b => b.classList.remove('active', 'active-all'));
+    document.getElementById('radius-row').classList.add('visible');
+    input.classList.add('has-value');
+    clearBtn.style.display = '';
+    render();
+  } else if (val) {
+    input.style.borderColor = '#ef4444'; // red flash — unrecognised
+    setTimeout(() => input.style.borderColor = '', 1200);
+  }
+}
+
+function clearCustomLocation(resetInput = true) {
+  customCenter = null;
+  const input = document.getElementById('location-input');
+  const clearBtn = document.getElementById('location-clear');
+  if (resetInput && input) { input.value = ''; input.classList.remove('has-value'); }
+  if (clearBtn) clearBtn.style.display = 'none';
+}
+
+(function initLocationInput() {
+  const input = document.getElementById('location-input');
+  const clearBtn = document.getElementById('location-clear');
+  if (!input) return;
+
+  input.addEventListener('change', () => applyCustomLocation(input.value));
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); applyCustomLocation(input.value); input.blur(); } });
+  // Clear on empty
+  input.addEventListener('input', () => { if (!input.value) clearCustomLocation(false); });
+  clearBtn.addEventListener('click', () => {
+    clearCustomLocation(true);
+    activePreset = 'Palo Alto';
+    updatePresetStyles();
+    render();
+  });
+})();
 
 function setCost(val) {
   activeCost = val;
@@ -1122,13 +1216,15 @@ function render() {
     }
 
     if (activePreset !== 'all') {
-      const centers = PRESET_CENTERS[activePreset];
+      const centers = activePreset === 'custom' && customCenter
+        ? [customCenter]
+        : (PRESET_CENTERS[activePreset] || []);
       const radius = activeRadius;
       const cityKey = (e.city || '').toLowerCase().trim();
       const countyKey = (e.county || '').toLowerCase().trim();
       const latlng = CITY_LATLNG[cityKey] || COUNTY_LATLNG[countyKey] || null;
       if (!latlng) {
-        return false; // no location data — only visible under "All areas"
+        return false;
       } else {
         const inRange = centers.some(([lat, lon]) => distMi(lat, lon, latlng[0], latlng[1]) <= radius);
         if (!inRange) return false;
@@ -1288,10 +1384,11 @@ function updateStickyBar() {
   const whenLabel = { all:'All dates', today:'Today', 'this-weekend':'This weekend', 'next-weekend':'Next weekend', custom:'Custom' };
   chips.push(whenLabel[activeWhen] || activeWhen);
   // Area
+  const customName = activePreset === 'custom' ? (document.getElementById('location-input')?.value || 'Custom') : null;
   const presetLabel = { 'all': 'All areas', 'Palo Alto': 'Palo Alto', 'SF+Oakland': 'SF / Oakland', 'East Bay': 'East Bay' };
   const areaLabel = activePreset === 'all'
     ? 'All areas'
-    : `${presetLabel[activePreset]} · ${activeRadius === 40 ? 'max' : activeRadius + 'mi'}`;
+    : `${customName || presetLabel[activePreset]} · ${activeRadius === 40 ? 'max' : activeRadius + 'mi'}`;
   chips.push(areaLabel);
   // Dates
   // Cost
