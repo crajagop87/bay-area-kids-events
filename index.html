@@ -177,9 +177,13 @@ input[type="date"]:focus { border-color: #fb923c; }
 /* ── Count bar ── */
 .count-bar {
   max-width: 1040px; margin: 0 auto 1rem; padding: 0 1.5rem;
-  font-size: 0.82rem; color: var(--ink-3); display: flex; align-items: center; gap: 0.5rem;
+  font-size: 0.82rem; color: var(--ink-3); display: flex; align-items: center; gap: 0.35rem;
 }
-.count-bar strong { color: var(--ink); font-weight: 800; font-size: 1rem; }
+.count-num {
+  font-family: 'Fredoka One', var(--sans); font-size: 0.95rem; color: var(--accent);
+  background: #fff7ed; border: 1.5px solid #fed7aa; border-radius: 99px;
+  padding: 1px 10px; line-height: 1.5;
+}
 
 /* ── Date group ── */
 .date-group { max-width: 1040px; margin: 1.75rem auto 0.6rem; padding: 0 1.5rem; }
@@ -431,8 +435,9 @@ footer a { color: var(--ink-3); text-decoration: underline; }
 .submit-btn:hover { background: #9a3412; }
 .feedback-thanks { display: none; text-align: center; padding: 1rem 0; font-size: 0.85rem; color: var(--ink-2); }
 
-/* ── Radius slider ── */
-#radius-row { display: none; align-items: center; gap: 0.75rem; }
+/* ── Radius chips ── */
+#radius-row { display: none; align-items: center; gap: 0.6rem; }
+#radius-row.visible { display: flex; }
 .location-input-wrap { display: flex; align-items: center; gap: 4px; margin-left: 4px; }
 #location-input {
   font-size: 0.78rem; padding: 5px 12px; border-radius: 99px;
@@ -444,24 +449,7 @@ footer a { color: var(--ink-3); text-decoration: underline; }
 .location-chip { align-items: center; gap: 5px; cursor: default; }
 .location-chip-x { font-size: 1rem; line-height: 1; opacity: 0.7; cursor: pointer; margin-left: 1px; }
 .location-chip-x:hover { opacity: 1; }
-#radius-row.visible { display: flex; }
-.radius-wrap { display: flex; flex-direction: column; gap: 5px; flex: 1; max-width: 280px; }
-#radius-slider {
-  width: 100%; height: 6px; accent-color: #c2410c; cursor: pointer;
-  -webkit-appearance: none; appearance: none;
-  background: linear-gradient(to right, #c2410c 0%, #c2410c var(--pct,50%), #e8e0d8 var(--pct,50%));
-  border-radius: 3px; outline: none;
-}
-#radius-slider::-webkit-slider-thumb {
-  -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%;
-  background: #fff; border: 2.5px solid #c2410c; box-shadow: 0 1px 4px rgba(0,0,0,0.15); cursor: pointer;
-  transition: box-shadow 0.12s;
-}
-#radius-slider::-webkit-slider-thumb:hover { box-shadow: 0 0 0 5px rgba(194,65,12,0.12); }
-.radius-ticks { display: flex; justify-content: space-between; }
-.radius-ticks span { font-size: 0.65rem; font-weight: 600; color: var(--ink-3); cursor: pointer; transition: color 0.12s; }
-.radius-ticks span:hover { color: var(--ink-2); }
-.radius-ticks span.active-tick { color: var(--accent); font-weight: 800; }
+.radius-chips { display: flex; gap: 0.35rem; flex-wrap: wrap; }
 
 /* ── Mobile ── */
 @media (max-width: 640px) {
@@ -492,7 +480,7 @@ footer a { color: var(--ink-3); text-decoration: underline; }
   .grid { grid-template-columns: 1fr; gap: 8px; padding: 0 0.75rem; }
   .date-group { padding: 0 0.75rem; }
   .count-bar { padding: 0 0.75rem; font-size: 0.78rem; }
-  .count-bar strong { font-size: 0.95rem; }
+  .count-num { font-size: 0.88rem; }
 
   .card { padding: 0.85rem 0.95rem; border-radius: 14px; }
   .card-title { font-size: 0.9rem; }
@@ -586,7 +574,7 @@ footer a { color: var(--ink-3); text-decoration: underline; }
           <ellipse cx="21" cy="9.5" rx="3.5" ry="4" fill="#14532d"/>
         </g>
       </svg>
-      <h1>What's Going On <span>Park Parents Edition 🌳</span></h1>
+      <h1 id="home-link" title="Reset to home" style="cursor:pointer">What's Going On <span>Park Parents Edition 🌳</span></h1>
     </div>
     <div class="header-right">
       <span class="header-meta" id="meta">loading…</span>
@@ -648,12 +636,12 @@ footer a { color: var(--ink-3); text-decoration: underline; }
       </div>
     </div>
     <div class="filter-row" id="radius-row">
-      <span class="filter-label">Radius<em id="radius-within-label"> 5 mi</em></span>
-      <div class="radius-wrap">
-        <input type="range" id="radius-slider" min="1" max="40" step="1" value="5">
-        <div class="radius-ticks">
-          <span data-snap="5">5</span><span data-snap="10">10</span><span data-snap="20">20</span><span data-snap="40">max</span>
-        </div>
+      <span class="filter-label">Radius</span>
+      <div class="radius-chips" id="radius-chips">
+        <button class="chip active" data-radius="5">5 mi</button>
+        <button class="chip" data-radius="10">10 mi</button>
+        <button class="chip" data-radius="20">20 mi</button>
+        <button class="chip" data-radius="40">max</button>
       </div>
     </div>
 
@@ -1023,19 +1011,13 @@ function updatePresetStyles() {
   });
   const radiusRow = document.getElementById('radius-row');
   if (radiusRow) radiusRow.classList.toggle('visible', activePreset !== 'all');
-  updateRadiusTicks();
+  updateRadiusChips();
 }
 
-function updateRadiusTicks() {
-  const ticks = document.querySelectorAll('.radius-ticks span');
-  ticks.forEach(el => {
-    const snap = +el.dataset.snap;
-    el.classList.toggle('active-tick', snap === activeRadius);
+function updateRadiusChips() {
+  document.querySelectorAll('[data-radius]').forEach(b => {
+    b.classList.toggle('active', +b.dataset.radius === activeRadius);
   });
-  const slider = document.getElementById('radius-slider');
-  if (slider) slider.style.setProperty('--pct', `${((activeRadius - 1) / 39) * 100}%`);
-  const withinEl = document.getElementById('radius-within-label');
-  if (withinEl) withinEl.textContent = activeRadius === 40 ? ' max' : ` ${activeRadius} mi`;
 }
 
 function setPreset(p) {
@@ -1162,20 +1144,11 @@ function updateAgeSlider() {
 })();
 
 document.querySelectorAll('[data-preset]').forEach(b => b.addEventListener('click', () => setPreset(b.dataset.preset)));
-document.getElementById('radius-slider').addEventListener('input', e => {
-  activeRadius = +e.target.value;
-  updateRadiusTicks();
+document.querySelectorAll('[data-radius]').forEach(b => b.addEventListener('click', () => {
+  activeRadius = +b.dataset.radius;
+  updateRadiusChips();
   render();
-});
-// Clicking a tick label snaps the slider to that value
-document.querySelectorAll('.radius-ticks span').forEach(el => {
-  el.addEventListener('click', () => {
-    activeRadius = +el.dataset.snap;
-    document.getElementById('radius-slider').value = activeRadius;
-    updateRadiusTicks();
-    render();
-  });
-});
+}));
 
 document.querySelectorAll('[data-when]').forEach(b => {
   b.addEventListener('click', () => {
@@ -1218,8 +1191,25 @@ function removeSearchTag(i) {
   renderSearchTags();
   render();
 }
-document.getElementById('date-from').addEventListener('change', render);
-document.getElementById('date-to').addEventListener('change', render);
+document.getElementById('date-from').addEventListener('change', () => {
+  const from = document.getElementById('date-from');
+  const to   = document.getElementById('date-to');
+  to.min = from.value;
+  if (to.value && to.value < from.value) to.value = from.value;
+  render();
+});
+document.getElementById('date-to').addEventListener('change', () => {
+  const from = document.getElementById('date-from');
+  const to   = document.getElementById('date-to');
+  from.max = to.value;
+  if (from.value && from.value > to.value) from.value = to.value;
+  render();
+});
+
+document.getElementById('home-link').addEventListener('click', () => {
+  try { localStorage.removeItem(LS_KEY); } catch(e) {}
+  window.location.href = location.pathname;
+});
 
 document.getElementById('reset-btn').addEventListener('click', () => {
   document.getElementById('search').value = '';
@@ -1235,7 +1225,7 @@ document.getElementById('reset-btn').addEventListener('click', () => {
   updateAgeSlider();
   activePreset = 'Palo Alto';
   activeRadius = 5;
-  document.getElementById('radius-slider').value = 5;
+  updateRadiusChips();
   updatePresetStyles();
   activeSearchTags = [];
   renderSearchTags();
@@ -1305,7 +1295,7 @@ function render() {
   });
 
   const total = events.length;
-  document.getElementById('count-line').innerHTML = `Showing <strong>${total}</strong> of ${allEvents.length} events`;
+  document.getElementById('count-line').innerHTML = `<span class="count-num">${total}</span> of ${allEvents.length} events`;
 
   const empty = document.getElementById('empty');
   const output = document.getElementById('output');
@@ -1628,7 +1618,7 @@ function applyFilterState(state) {
     if (wrap) wrap.style.display = 'none';
   }
 
-  document.getElementById('radius-slider').value = activeRadius;
+  updateRadiusChips();
   document.getElementById('age-min').value = activeAgeMin;
   document.getElementById('age-max').value = activeAgeMax;
 
