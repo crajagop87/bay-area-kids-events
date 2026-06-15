@@ -463,7 +463,30 @@ footer a { color: var(--ink-3); text-decoration: underline; }
 .location-chip { align-items: center; gap: 5px; cursor: default; }
 .location-chip-x { font-size: 1rem; line-height: 1; opacity: 0.7; cursor: pointer; margin-left: 1px; }
 .location-chip-x:hover { opacity: 1; }
+/* ── Radius slider (main) ── */
+.radius-wrap { display: flex; flex-direction: column; gap: 5px; flex: 1; max-width: 260px; }
+#radius-slider {
+  width: 100%; height: 6px; cursor: pointer;
+  -webkit-appearance: none; appearance: none;
+  background: linear-gradient(to right, #c2410c 0%, #c2410c var(--pct,10%), #e8e0d8 var(--pct,10%));
+  border-radius: 3px; outline: none;
+}
+#radius-slider::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%;
+  background: #fff; border: 2.5px solid #c2410c; box-shadow: 0 1px 4px rgba(0,0,0,0.15); cursor: pointer;
+  transition: box-shadow 0.12s;
+}
+#radius-slider::-webkit-slider-thumb:hover { box-shadow: 0 0 0 5px rgba(194,65,12,0.12); }
+.radius-ticks { display: flex; justify-content: space-between; }
+.radius-ticks span { font-size: 0.65rem; font-weight: 600; color: var(--ink-3); cursor: pointer; transition: color 0.12s; }
+.radius-ticks span:hover { color: var(--ink-2); }
+.radius-ticks span.active-tick { color: var(--accent); font-weight: 800; }
+/* map modal chips */
 .radius-chips { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+
+/* ── Card grid exit/enter transition ── */
+#output { transition: opacity 0.14s ease; }
+#output.wiping { opacity: 0; pointer-events: none; }
 
 /* ── Mobile ── */
 @media (max-width: 640px) {
@@ -669,12 +692,12 @@ footer a { color: var(--ink-3); text-decoration: underline; }
       </div>
     </div>
     <div class="filter-row" id="radius-row">
-      <span class="filter-label">Radius</span>
-      <div class="radius-chips" id="radius-chips">
-        <button class="chip active" data-radius="5">5 mi</button>
-        <button class="chip" data-radius="10">10 mi</button>
-        <button class="chip" data-radius="20">20 mi</button>
-        <button class="chip" data-radius="40">max</button>
+      <span class="filter-label">Radius<em id="radius-value"> 5 mi</em></span>
+      <div class="radius-wrap">
+        <input type="range" id="radius-slider" min="1" max="40" step="1" value="5">
+        <div class="radius-ticks">
+          <span data-snap="5">5</span><span data-snap="10">10</span><span data-snap="20">20</span><span data-snap="40">max</span>
+        </div>
       </div>
       <button class="map-open-btn" onclick="openMapModal()">🗺 Map</button>
     </div>
@@ -1044,12 +1067,19 @@ function updatePresetStyles() {
   });
   const radiusRow = document.getElementById('radius-row');
   if (radiusRow) radiusRow.classList.toggle('visible', activePreset !== 'all');
-  updateRadiusChips();
+  updateRadiusDisplay();
 }
 
-function updateRadiusChips() {
-  document.querySelectorAll('[data-radius]').forEach(b => {
-    b.classList.toggle('active', +b.dataset.radius === activeRadius);
+function updateRadiusDisplay() {
+  const slider = document.getElementById('radius-slider');
+  if (slider) {
+    slider.value = activeRadius;
+    slider.style.setProperty('--pct', `${((activeRadius - 1) / 39) * 100}%`);
+  }
+  const val = document.getElementById('radius-value');
+  if (val) val.textContent = activeRadius === 40 ? ' max' : ` ${activeRadius} mi`;
+  document.querySelectorAll('.radius-ticks span').forEach(el => {
+    el.classList.toggle('active-tick', +el.dataset.snap === activeRadius);
   });
 }
 
@@ -1177,11 +1207,19 @@ function updateAgeSlider() {
 })();
 
 document.querySelectorAll('[data-preset]').forEach(b => b.addEventListener('click', () => setPreset(b.dataset.preset)));
-document.querySelectorAll('[data-radius]').forEach(b => b.addEventListener('click', () => {
-  activeRadius = +b.dataset.radius;
-  updateRadiusChips();
+const _radiusSlider = document.getElementById('radius-slider');
+_radiusSlider.addEventListener('input', () => {
+  activeRadius = +_radiusSlider.value;
+  updateRadiusDisplay();
   render();
-}));
+});
+document.querySelectorAll('.radius-ticks span').forEach(el => {
+  el.addEventListener('click', () => {
+    activeRadius = +el.dataset.snap;
+    updateRadiusDisplay();
+    render();
+  });
+});
 
 document.querySelectorAll('[data-when]').forEach(b => {
   b.addEventListener('click', () => {
@@ -1258,7 +1296,7 @@ document.getElementById('reset-btn').addEventListener('click', () => {
   updateAgeSlider();
   activePreset = 'Palo Alto';
   activeRadius = 5;
-  updateRadiusChips();
+  updateRadiusDisplay();
   updatePresetStyles();
   activeSearchTags = [];
   renderSearchTags();
@@ -1266,6 +1304,7 @@ document.getElementById('reset-btn').addEventListener('click', () => {
 });
 
 // ── Render ─────────────────────────────────────────────────────────────────
+let _renderTimer = null;
 function render() {
   if (allEvents.length) saveFilters();
   const query = document.getElementById('search').value.toLowerCase().trim();
@@ -1359,8 +1398,14 @@ function render() {
     evs.forEach(e => html.push(card(e, isUndated)));
     html.push('</div>');
   });
-  output.innerHTML = html.join('');
-  updateStickyBar();
+  output.classList.add('wiping');
+  clearTimeout(_renderTimer);
+  _renderTimer = setTimeout(() => {
+    output.innerHTML = html.join('');
+    requestAnimationFrame(() => output.classList.remove('wiping'));
+    updateStickyBar();
+    _renderTimer = null;
+  }, 140);
 }
 
 function fmt_time(iso) {
@@ -1645,7 +1690,7 @@ function applyFilterState(state) {
     if (wrap) wrap.style.display = 'none';
   }
 
-  updateRadiusChips();
+  updateRadiusDisplay();
   document.getElementById('age-min').value = activeAgeMin;
   document.getElementById('age-max').value = activeAgeMax;
 
@@ -1773,7 +1818,7 @@ function _syncMapRadiusChips() {
 
 function applyMapSettings() {
   activeRadius = mapTempRadius;
-  updateRadiusChips();
+  updateRadiusDisplay();
   render();
   closeModal('map-modal');
 }
