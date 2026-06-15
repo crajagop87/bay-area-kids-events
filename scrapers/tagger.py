@@ -123,6 +123,84 @@ def tag_event(event: dict) -> list[str]:
     return sorted(tags)
 
 
+_AGE_BABY = re.compile(
+    r"\b(baby|babies|infant|lapsit|lap[\s-]sit|0[\s-]?to[\s-]?[12]|ages?\s*0|newborn|birth[\s-]?to)\b",
+    re.IGNORECASE,
+)
+_AGE_TODDLER = re.compile(
+    r"\b(toddler|tiny\s*tot|little\s*one|1[\s-]?to[\s-]?3|2[\s-]?to[\s-]?4|ages?\s*[123](\b|[\s-]?(and|to|&)[\s-]?[234])|"
+    r"pre[\s-]?walker|waddler|crawler)\b",
+    re.IGNORECASE,
+)
+_AGE_PRESCHOOL = re.compile(
+    r"\b(preschool|pre[\s-]?k|pre[\s-]?school|ages?\s*[34][\s-]?(?:to|and|&|-)[\s-]?[56]|"
+    r"ages?\s*3[\s-]5|ages?\s*4[\s-]6|[34][\s-]?year[\s-]?old)\b",
+    re.IGNORECASE,
+)
+_AGE_TEEN = re.compile(
+    r"\b(teen|tween|youth\s*group|middle\s*school|high\s*school|ages?\s*1[2-9]|"
+    r"ages?\s*13[\s-]?(?:to|and|&|-)?\s*1[89]|gr(?:ade)?s?\s*[6-9]|grades?\s*(?:six|seven|eight|nine|ten|eleven|twelve))\b",
+    re.IGNORECASE,
+)
+_AGE_KIDS = re.compile(
+    r"\b(kids?|children|child|elementary|school[\s-]age|ages?\s*[5-9]|ages?\s*[5-9]\s*(?:to|and|&|-)\s*1[012]|"
+    r"gr(?:ade)?s?\s*[1-5]|grades?\s*(?:one|two|three|four|five)|after[\s-]school)\b",
+    re.IGNORECASE,
+)
+_AGE_FAMILY = re.compile(
+    r"\b(family|families|all\s*ages|kids\s*and\s*adults?|everyone|whole\s*family|open\s*to\s*all)\b",
+    re.IGNORECASE,
+)
+_AGE_RANGE_NUM = re.compile(
+    r"\bages?\s*(\d+)\s*(?:to|and|&|[-–])\s*(\d+)\b",
+    re.IGNORECASE,
+)
+
+
+def infer_age_group(event: dict) -> str:
+    """
+    Returns one of: 'babies', 'toddlers', 'preschool', 'kids', 'teens', 'family', or '' (unknown).
+    Priority: explicit numeric range > keyword signals.
+    """
+    haystack = " ".join(filter(None, [
+        event.get("title", ""),
+        event.get("age_range", ""),
+        event.get("venue", ""),
+    ]))
+
+    # Numeric age range: classify by midpoint
+    m = _AGE_RANGE_NUM.search(haystack)
+    if m:
+        lo, hi = int(m.group(1)), int(m.group(2))
+        mid = (lo + hi) / 2
+        if hi <= 2:
+            return "babies"
+        if hi <= 4 and lo <= 2:
+            return "toddlers"
+        if hi <= 6 and lo <= 4:
+            return "preschool"
+        if lo >= 12:
+            return "teens"
+        if mid <= 8:
+            return "kids"
+        return "kids"
+
+    # Keyword signals (order matters — most specific first)
+    if _AGE_BABY.search(haystack):
+        return "babies"
+    if _AGE_TODDLER.search(haystack):
+        return "toddlers"
+    if _AGE_PRESCHOOL.search(haystack):
+        return "preschool"
+    if _AGE_TEEN.search(haystack):
+        return "teens"
+    if _AGE_KIDS.search(haystack):
+        return "kids"
+    if _AGE_FAMILY.search(haystack):
+        return "family"
+    return "family"  # default: broadly family-appropriate
+
+
 def enrich_title(event: dict) -> str:
     """
     For venue events where the title is generic (doesn't mention the venue),

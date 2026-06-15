@@ -1,9 +1,9 @@
 {
-  "run_at": "2026-06-15T05:54:47.326339+00:00",
+  "run_at": "2026-06-15T06:08:41.140126+00:00",
   "window_days": 16,
   "channels_ok": 44,
   "channels_total": 44,
-  "raw_events": 1605,
+  "raw_events": 1603,
   "deduped_events": 1228,
   "channels": [
     {
@@ -64,7 +64,7 @@
     {
       "source": "Eventbrite/San Jose",
       "status": "ok",
-      "count": 14
+      "count": 13
     },
     {
       "source": "Eventbrite/Mountain View",
@@ -104,7 +104,7 @@
     {
       "source": "Eventbrite/Campbell",
       "status": "ok",
-      "count": 14
+      "count": 13
     },
     {
       "source": "Eventbrite/Los Gatos",

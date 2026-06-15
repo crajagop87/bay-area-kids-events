@@ -135,6 +135,7 @@ input[type="date"]:focus { border-color: #fb923c; }
   flex-shrink: 0; transition: background 0.12s, border-color 0.12s, color 0.12s;
 }
 .reset-btn:hover { background: #fff7ed; border-color: #f97316; color: #c2410c; }
+.chip-sub { font-size: 0.6rem; font-weight: 500; opacity: 0.65; margin-left: 3px; }
 
 /* ── Count bar ── */
 .count-bar {
@@ -548,6 +549,19 @@ footer a { color: var(--ink-3); text-decoration: underline; }
     </div>
 
     <div class="filter-row">
+      <span class="filter-label">Age</span>
+      <div class="chip-group" id="age-chips">
+        <button class="chip active-all" data-age="all">All</button>
+        <button class="chip" data-age="babies">Babies<span class="chip-sub">0–2</span></button>
+        <button class="chip" data-age="toddlers">Toddlers<span class="chip-sub">2–4</span></button>
+        <button class="chip" data-age="preschool">Preschool<span class="chip-sub">3–6</span></button>
+        <button class="chip" data-age="kids">Kids<span class="chip-sub">5–12</span></button>
+        <button class="chip" data-age="teens">Teens<span class="chip-sub">12–18</span></button>
+        <button class="chip" data-age="family">Family</button>
+      </div>
+    </div>
+
+    <div class="filter-row">
       <span class="filter-label">Cost</span>
       <div class="chip-group">
         <button class="chip active-all" data-cost="all">All</button>
@@ -584,6 +598,7 @@ let healthData = {};
 let activePreset = 'Palo Alto';
 let activeRadius = 20; // miles
 let activeCost = 'all';
+let activeAge = 'all';
 let activeWhen = 'this-weekend';
 let activeSearchTags = [];
 
@@ -933,6 +948,15 @@ function setCost(val) {
 }
 document.querySelectorAll('[data-cost]').forEach(b => b.addEventListener('click', () => setCost(b.dataset.cost)));
 
+function setAge(val) {
+  activeAge = val;
+  document.querySelectorAll('[data-age]').forEach(x => x.classList.remove('active', 'active-all'));
+  const target = document.querySelector(`[data-age="${val}"]`);
+  if (target) target.classList.add(val === 'all' ? 'active-all' : 'active');
+  render();
+}
+document.querySelectorAll('[data-age]').forEach(b => b.addEventListener('click', () => setAge(b.dataset.age)));
+
 document.querySelectorAll('[data-preset]').forEach(b => b.addEventListener('click', () => setPreset(b.dataset.preset)));
 document.getElementById('radius-slider').addEventListener('input', e => {
   activeRadius = +e.target.value;
@@ -1004,6 +1028,9 @@ document.getElementById('reset-btn').addEventListener('click', () => {
   activeCost = 'all';
   document.querySelectorAll('[data-cost]').forEach(b => b.classList.remove('active', 'active-green', 'active-all'));
   document.querySelector('[data-cost="all"]').classList.add('active-all');
+  activeAge = 'all';
+  document.querySelectorAll('[data-age]').forEach(b => b.classList.remove('active', 'active-all'));
+  document.querySelector('[data-age="all"]').classList.add('active-all');
   activePreset = 'Palo Alto';
   activeRadius = 20;
   document.getElementById('radius-slider').value = 20;
@@ -1055,6 +1082,11 @@ function render() {
       }
     }
     if (activeCost !== 'all' && e.cost !== activeCost) return false;
+    if (activeAge !== 'all') {
+      const ag = (e.age_group || '').toLowerCase();
+      // "family" events show under every specific age filter (appropriate for all)
+      if (ag !== activeAge && ag !== 'family') return false;
+    }
     const hay = [e.title, e.venue, e.city, e.age_range, e.category, e.source_name, (e.tags||[]).join(' ')]
       .join(' ').toLowerCase();
     if (query && !hay.includes(query)) return false;
