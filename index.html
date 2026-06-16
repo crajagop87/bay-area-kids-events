@@ -1782,13 +1782,16 @@ function _getCenters() {
   return PRESET_CENTERS[activePreset] || [[37.4419, -122.1430]];
 }
 
-function _renderMapCircles() {
+let _mapCircles = []; // just the radius circles, kept for live radius updates
+
+function _renderMapCircles(fitView = true) {
   _clearMapLayers();
+  _mapCircles = [];
   const centers = _getCenters();
   const radiusM = mapTempRadius * 1609.34;
 
   if (!centers) {
-    _map.setView([37.60, -122.15], 9);
+    if (fitView) _map.setView([37.60, -122.15], 9);
     return;
   }
 
@@ -1796,18 +1799,27 @@ function _renderMapCircles() {
     _addLayer(L.circleMarker([lat, lng], {
       radius: 7, color: '#c2410c', fillColor: '#c2410c', fillOpacity: 1, weight: 2,
     }));
-    return _addLayer(L.circle([lat, lng], {
+    const c = _addLayer(L.circle([lat, lng], {
       radius: radiusM, color: '#c2410c', weight: 2.5,
       fillColor: '#c2410c', fillOpacity: 0.09, dashArray: '7 5',
     }));
+    _mapCircles.push(c);
+    return c;
   });
 
-  try {
-    const group = L.featureGroup(circleLayers);
-    _map.fitBounds(group.getBounds().pad(0.18));
-  } catch(e) {
-    _map.setView(centers[0], 11);
+  if (fitView) {
+    try {
+      const group = L.featureGroup(circleLayers);
+      _map.fitBounds(group.getBounds().pad(0.18));
+    } catch(e) {
+      _map.setView(centers[0], 11);
+    }
   }
+}
+
+function _updateMapCircleRadius() {
+  const radiusM = mapTempRadius * 1609.34;
+  _mapCircles.forEach(c => c.setRadius(radiusM));
 }
 
 function _syncMapRadiusDisplay() {
@@ -1834,13 +1846,13 @@ const _mapSlider = document.getElementById('map-radius-slider');
 _mapSlider.addEventListener('input', () => {
   mapTempRadius = +_mapSlider.value;
   _syncMapRadiusDisplay();
-  _renderMapCircles();
+  _updateMapCircleRadius();
 });
 document.querySelectorAll('.radius-ticks [data-map-snap]').forEach(el => {
   el.addEventListener('click', () => {
     mapTempRadius = +el.dataset.mapSnap;
     _syncMapRadiusDisplay();
-    _renderMapCircles();
+    _updateMapCircleRadius();
   });
 });
 
