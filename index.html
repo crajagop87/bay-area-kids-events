@@ -263,6 +263,11 @@ input[type="date"]:focus { border-color: #fb923c; }
 /* ── Map modal ── */
 #map-container { height: 380px; border-radius: 12px; overflow: hidden; margin-top: 0.75rem; }
 .map-controls { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; margin-top: 0.9rem; }
+.map-custom-area-btn {
+  background: var(--bg); border: 1.5px dashed #fb923c; color: var(--accent);
+}
+.map-custom-area-btn:hover { background: #fff7ed; border-style: solid; }
+.map-custom-area-btn.active { background: #fff3e0; border-style: solid; border-color: var(--accent); }
 .map-open-btn {
   font-family: var(--sans); font-size: 0.72rem; font-weight: 700; color: var(--ink-2);
   background: var(--pill-bg); border: 1.5px solid var(--rule); border-radius: 99px;
@@ -566,39 +571,62 @@ footer a { color: var(--ink-3); text-decoration: underline; }
 @media (max-width: 640px) {
   body { font-size: 15px; }
 
-  .header { padding: 0.8rem 1rem 0.7rem; margin-bottom: 1rem; }
-  .header h1 { font-size: 1rem; }
-  .header-tree { width: 36px; height: 36px; }
-  .header-meta { font-size: 0.7rem; padding: 3px 10px; }
-  .feedback-btn { font-size: 0.72rem; padding: 5px 13px; }
+  /* Header — tighter, keep info scannable */
+  .header { padding: 0.7rem 1rem 0.6rem; margin-bottom: 0.75rem; }
+  .header h1 { font-size: 0.95rem; }
+  .header-tree { width: 32px; height: 32px; }
+  .header-meta { display: none; } /* moved to footer on mobile */
+  .header-right { gap: 0.35rem; }
+  .info-btn, .feedback-btn { font-size: 0.72rem; padding: 5px 11px; min-height: 34px; }
 
+  /* Filters */
   .filters { padding: 0 0.75rem; margin-bottom: 0.75rem; }
-  .filter-card { padding: 0.85rem 1rem; gap: 0.7rem; border-radius: 16px; }
+  .filter-card { padding: 0.75rem 0.9rem; gap: 0.6rem; border-radius: 14px; }
 
-  .filter-row { gap: 0.4rem; }
-  .filter-label { min-width: 44px; font-size: 0.65rem; }
+  /* Each filter row: label above chips, full width */
+  .filter-row { flex-direction: column; align-items: flex-start; gap: 0.35rem; }
+  .filter-label { min-width: unset; font-size: 0.68rem; letter-spacing: 0.04em; }
 
-  .chip { padding: 7px 14px; font-size: 0.78rem; min-height: 36px; }
-  .reset-btn { width: 32px; height: 32px; font-size: 1.1rem; }
-  input[type="date"] { padding: 6px 8px; font-size: 0.8rem; min-height: 36px; }
-  #search { padding: 9px 12px 9px 36px; font-size: 0.85rem; min-height: 42px; }
+  /* Chips — bigger tap targets */
+  .chip { padding: 8px 14px; font-size: 0.8rem; min-height: 38px; }
+  .chip-group, .date-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .reset-btn { width: 34px; height: 34px; font-size: 1.1rem; }
 
-  .chip-group, .date-chips { display: flex; flex-wrap: wrap; gap: 0.35rem; }
-  .date-custom { flex-direction: column; align-items: flex-start; gap: 0.3rem; }
+  /* Date inputs */
+  input[type="date"] { padding: 7px 10px; font-size: 0.82rem; min-height: 38px; }
+  .date-custom { flex-direction: column; align-items: flex-start; gap: 0.35rem; }
 
-  .radius-wrap { max-width: 200px; }
+  /* Radius row: keep horizontal but label above */
+  #radius-row { flex-direction: column; align-items: flex-start; }
+  .radius-wrap { max-width: 100%; width: 100%; }
+  .map-open-btn { align-self: flex-end; margin-top: -2.2rem; }
 
+  /* Age row */
+  #age-row { flex-direction: column; align-items: flex-start; }
+  .age-wrap { width: 100%; }
+
+  /* Search */
+  #search { padding: 10px 12px 10px 38px; font-size: 0.88rem; min-height: 44px; }
+
+  /* Cards */
   .grid { grid-template-columns: 1fr; gap: 8px; padding: 0 0.75rem; }
-  .date-group { padding: 0 0.75rem; }
+  .date-group { padding: 0 0.75rem; margin-top: 1.25rem; }
   .count-bar { padding: 0 0.75rem; font-size: 0.78rem; }
   .count-num { font-size: 0.88rem; }
-
   .card { padding: 0.85rem 0.95rem; border-radius: 14px; }
+  /* Disable lift on touch — avoid sticky hover state */
+  .card:hover { transform: none; box-shadow: 0 3px 14px rgba(194,65,12,0.09); }
   .card-title { font-size: 0.9rem; }
   .card-emoji { font-size: 1.4rem; }
 
+  /* Modals — full-width, taller */
+  .modal { border-radius: 16px 16px 0 0; max-height: 92dvh; overflow-y: auto; }
+  .modal-overlay { align-items: flex-end; }
+  #map-container { height: 280px; }
+
+  /* Footer */
   footer { padding: 0.4rem 0.75rem; font-size: 0.65rem; }
-  #output { padding-bottom: 2.5rem; }
+  #output { padding-bottom: env(safe-area-inset-bottom, 1rem); }
 }
 </style>
 </head>
@@ -646,7 +674,8 @@ footer a { color: var(--ink-3); text-decoration: underline; }
         <h3>Where</h3>
         <ul class="info-list">
           <li><strong>Palo Alto</strong> — haversine distance filter centered on Palo Alto. Default radius 5 mi.</li>
-          <li><strong>SF / Oakland</strong> — dual circles: events within radius of either SF or Oakland city centers.</li>
+          <li><strong>SF</strong> — centered on downtown San Francisco.</li>
+          <li><strong>📍 Custom</strong> — opens the map so you can drag the pin anywhere in the Bay Area.</li>
           <li><strong>All areas</strong> — no location filter; every scraped event is shown.</li>
           <li><strong>Radius slider</strong> — drag freely 1–40 mi, or snap to 5 / 10 / 20 / max tick marks. Updates live. The 🗺 Map button shows the coverage circle visually; radius set in the map transfers back when you tap "Use this radius."</li>
         </ul>
@@ -832,14 +861,11 @@ footer a { color: var(--ink-3); text-decoration: underline; }
       <div class="chip-group" id="area-presets">
         <button class="chip" data-preset="all">All</button>
         <button class="chip active" data-preset="Palo Alto">Palo Alto</button>
-        <button class="chip" data-preset="SF+Oakland">SF / Oakland</button>
+        <button class="chip" data-preset="SF">SF</button>
+        <button class="chip map-custom-area-btn" id="custom-area-btn" onclick="openMapFromArea()">📍 Custom</button>
         <button id="location-chip" class="chip location-chip" style="display:none">
           <span id="location-chip-label"></span><span class="location-chip-x">×</span>
         </button>
-      </div>
-      <div class="location-input-wrap" id="location-input-wrap">
-        <input id="location-input" type="search" placeholder="+ city or zip…" autocomplete="off" list="location-suggestions" spellcheck="false">
-        <datalist id="location-suggestions"></datalist>
       </div>
     </div>
     <div class="filter-row" id="radius-row">
@@ -952,11 +978,10 @@ const CITY_LATLNG = {
   'bay area':null,'east bay':null,'east bay ':null,
 };
 
-// Preset → center points for distance filter (SF+Oakland uses union of two circles)
+// Preset → center points for distance filter
 const PRESET_CENTERS = {
-  'Palo Alto':  [[37.4419, -122.1430]],
-  'SF+Oakland': [[37.7749, -122.4194], [37.8044, -122.2712]],
-  'East Bay':   [[37.5485, -121.9886], [37.8044, -122.2712]],
+  'Palo Alto': [[37.4419, -122.1430]],
+  'SF':        [[37.7749, -122.4194]],
 };
 
 // County-level fallback for events whose city field is a library name, not a city
@@ -1216,6 +1241,8 @@ function updatePresetStyles() {
     b.classList.remove('active', 'active-all');
     if (p === activePreset) b.classList.add(p === 'all' ? 'active-all' : 'active');
   });
+  const customBtn = document.getElementById('custom-area-btn');
+  if (customBtn) customBtn.classList.toggle('active', activePreset === 'custom');
   const radiusRow = document.getElementById('radius-row');
   if (radiusRow) radiusRow.classList.toggle('visible', activePreset !== 'all');
   updateRadiusDisplay();
@@ -1269,62 +1296,20 @@ function resolveLocation(raw) {
   return CITY_LATLNG[val.toLowerCase()] || null;
 }
 
-function applyCustomLocation(val) {
-  const ll = resolveLocation(val);
-  const input = document.getElementById('location-input');
-  const chip  = document.getElementById('location-chip');
-  const label = document.getElementById('location-chip-label');
-  if (ll) {
-    customCenter = ll;
-    activePreset = 'custom';
-    // Deselect all preset chips
-    document.querySelectorAll('[data-preset]').forEach(b => b.classList.remove('active', 'active-all'));
-    document.getElementById('radius-row').classList.add('visible');
-    // Build display name
-    const display = /^\d{5}$/.test(val.trim())
-      ? (ZIP_RADIUS_STUB[val.trim()]?.label || val.trim())
-      : val.trim().replace(/\b\w/g, c => c.toUpperCase());
-    label.textContent = display;
-    // Hide input, show chip
-    document.getElementById('location-input-wrap').style.display = 'none';
-    chip.style.display = 'inline-flex';
-    chip.classList.add('active');
-    render();
-  } else if (val.trim()) {
-    input.style.borderColor = '#ef4444';
-    setTimeout(() => input.style.borderColor = '', 1200);
-  }
-}
-
-function clearCustomLocation(resetInput = true) {
+function clearCustomLocation() {
   customCenter = null;
-  const input = document.getElementById('location-input');
-  const chip  = document.getElementById('location-chip');
-  if (resetInput && input) input.value = '';
-  document.getElementById('location-input-wrap').style.display = '';
+  const chip = document.getElementById('location-chip');
   chip.style.display = 'none';
   chip.classList.remove('active');
 }
 
-(function initLocationInput() {
-  const input = document.getElementById('location-input');
-  const chip  = document.getElementById('location-chip');
-  if (!input) return;
-
-  input.addEventListener('change', () => applyCustomLocation(input.value));
-  input.addEventListener('keydown', e => {
-    if (e.key === 'Enter') { e.preventDefault(); applyCustomLocation(input.value); input.blur(); }
-  });
-  input.addEventListener('input', () => { if (!input.value) clearCustomLocation(false); });
-
-  chip.querySelector('.location-chip-x').addEventListener('click', e => {
-    e.stopPropagation();
-    clearCustomLocation(true);
-    activePreset = 'Palo Alto';
-    updatePresetStyles();
-    render();
-  });
-})();
+document.getElementById('location-chip').querySelector('.location-chip-x').addEventListener('click', e => {
+  e.stopPropagation();
+  clearCustomLocation();
+  activePreset = 'Palo Alto';
+  updatePresetStyles();
+  render();
+});
 
 
 const AGE_GROUP_RANGES = {
@@ -1660,7 +1645,7 @@ function updateStickyBar() {
   chips.push(whenLabel[activeWhen] || activeWhen);
   // Area
   const customName = activePreset === 'custom' ? (document.getElementById('location-chip-label')?.textContent || 'Custom') : null;
-  const presetLabel = { 'all': 'All', 'Palo Alto': 'Palo Alto', 'SF+Oakland': 'SF / Oakland', 'East Bay': 'East Bay' };
+  const presetLabel = { 'all': 'All', 'Palo Alto': 'Palo Alto', 'SF': 'SF' };
   const areaLabel = activePreset === 'all'
     ? 'All'
     : `${customName || presetLabel[activePreset]} · ${activeRadius === 40 ? 'max' : activeRadius + 'mi'}`;
@@ -1877,10 +1862,8 @@ function applyFilterState(state) {
     customCenter = [+state.lat, +state.lng];
     const chip = document.getElementById('location-chip');
     const lbl  = document.getElementById('location-chip-label');
-    const wrap = document.getElementById('location-input-wrap');
     if (lbl)  lbl.textContent = state.label || 'Custom';
     if (chip) chip.style.display = 'inline-flex';
-    if (wrap) wrap.style.display = 'none';
   }
 
   updateRadiusDisplay();
@@ -1962,9 +1945,21 @@ function _getCenters() {
   return PRESET_CENTERS[activePreset] || [[37.4419, -122.1430]];
 }
 
+// Starting centroid for map when coming from a preset or custom area button
+function _mapSeedCenter() {
+  if (activePreset === 'custom' && customCenter) return customCenter;
+  if (activePreset === 'SF') return [37.7749, -122.4194];
+  return [37.4419, -122.1430]; // Palo Alto default for All / Palo Alto
+}
+
+function openMapFromArea() {
+  // Seed the map with the right centroid, then open it
+  openMapModal();
+}
+
 function openMapModal() {
   mapTempRadius = activeRadius;
-  mapTempCenter = null;
+  mapTempCenter = activePreset === 'custom' && customCenter ? customCenter : null;
   openModal('map-modal');
   setTimeout(() => {
     if (!_map) {
@@ -1972,7 +1967,9 @@ function openMapModal() {
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 14 }).addTo(_map);
     }
     _map.invalidateSize();
-    _mapPresetCenters = _getCenters();
+    // Always seed with at least one center so there's a draggable pin
+    _mapPresetCenters = _getCenters() || [_mapSeedCenter()];
+    if (!mapTempCenter) mapTempCenter = null; // don't override if already set
     _renderMapCircles(true);
     _syncMapRadiusDisplay();
     _syncMapCustomChip();
@@ -2069,10 +2066,8 @@ function applyMapSettings() {
     activePreset = 'custom';
     const chip  = document.getElementById('location-chip');
     const label = document.getElementById('location-chip-label');
-    const wrap  = document.getElementById('location-input-wrap');
     if (label) label.textContent = 'Custom';
     if (chip)  chip.style.display = 'inline-flex';
-    if (wrap)  wrap.style.display = 'none';
     document.querySelectorAll('[data-preset]').forEach(b => b.classList.remove('active','active-all'));
     updatePresetStyles();
   }
