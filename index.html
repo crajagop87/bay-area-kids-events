@@ -258,7 +258,7 @@ input[type="date"]:focus { border-color: #fb923c; }
 }
 
 /* ── Card emoji ── */
-.card-emoji { font-size: 1.6rem; line-height: 1; margin-bottom: 3px; display: inline-block; }
+.card-emoji { font-size: 1.1rem; line-height: 1; margin-right: 5px; display: inline; vertical-align: middle; }
 /* ── Map modal ── */
 #map-container { height: 380px; border-radius: 12px; overflow: hidden; margin-top: 0.75rem; }
 .map-controls { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; margin-top: 0.9rem; }
@@ -613,7 +613,7 @@ footer a { color: var(--ink-3); text-decoration: underline; }
   /* Disable lift on touch — avoid sticky hover state */
   .card:hover { transform: none; box-shadow: 0 3px 14px rgba(194,65,12,0.09); }
   .card-title { font-size: 0.9rem; }
-  .card-emoji { font-size: 1.4rem; }
+  .card-emoji { font-size: 1rem; }
 
   /* Modals — full-width, taller */
   .modal { border-radius: 16px 16px 0 0; max-height: 92dvh; overflow-y: auto; }
@@ -1674,8 +1674,7 @@ function card(e, undated = false) {
   const emoji = eventEmoji(e.tags);
   const costCls2 = e.cost === 'Free' ? ' cost-free' : e.cost === 'Paid' ? ' cost-paid' : '';
   return `<div class="card${undated ? ' undated' : ''}${costCls2}">
-    ${emoji ? `<div class="card-emoji">${emoji}</div>` : ''}
-    <div class="card-title">${titleHtml}</div>
+    <div class="card-title">${emoji ? `<span class="card-emoji">${emoji}</span>` : ''}${titleHtml}</div>
     <div class="card-meta">
       ${timeStr ? `<span class="m-time">${timeStr}</span>` : ''}
       <span class="badge ${costCls}">${costLbl}</span>
