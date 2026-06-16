@@ -344,22 +344,24 @@ input[type="date"]:focus { border-color: #fb923c; }
 #floating-date {
   position: fixed; top: 38px; left: 0; right: 0;
   z-index: 49;
-  background: rgba(255,251,247,0.97); backdrop-filter: blur(6px);
-  border-bottom: 1.5px solid #fed7aa;
-  padding: 5px 1.25rem;
-  display: flex; align-items: center; gap: 0.5rem;
+  background: rgba(255,251,247,0.97); backdrop-filter: blur(4px);
+  padding: 4px 1.5rem;
   pointer-events: none;
-  transform: translateY(-100%);
-  transition: transform 0.15s ease;
+  opacity: 0; transform: translateY(-4px);
+  transition: opacity 0.15s, transform 0.15s;
 }
-#floating-date.visible { transform: translateY(0); }
+#floating-date.visible { opacity: 1; transform: translateY(0); }
 #floating-date-text {
-  font-family: var(--display); font-size: 0.8rem; font-weight: 700; color: var(--ink-1);
+  font-family: var(--display); font-size: 1rem; font-weight: 700;
+  color: #92400e; letter-spacing: 0.01em;
+  border-left: 4px solid #fb923c; padding-left: 0.65rem;
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  display: inline-block;
 }
 #floating-date-count {
-  font-size: 0.7rem; font-weight: 600; color: var(--ink-3);
-  background: var(--tag-bg); border-radius: 99px; padding: 1px 7px; white-space: nowrap;
+  display: inline-block; font-size: 0.72rem; font-weight: 700;
+  background: #fed7aa; color: #92400e; border-radius: 99px;
+  padding: 1px 8px; margin-left: 6px; vertical-align: middle; letter-spacing: 0;
 }
 
 /* ── Skeleton loading ── */
