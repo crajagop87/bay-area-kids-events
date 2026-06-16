@@ -15,6 +15,7 @@ from scrapers.eventbrite import scrape_all_eventbrite
 from scrapers.aggregators import scrape_all_aggregators
 from scrapers.venues import scrape_all_venues
 from scrapers.libcal_ics import scrape_all_libcal_ics
+from scrapers.libcal_widget import scrape_all_libcal_widget
 from scrapers.tagger import tag_event, enrich_title, infer_age_group
 
 logging.basicConfig(
@@ -67,6 +68,7 @@ def main(window_days: int = 45):
     channels = [
         ("Libraries (BiblioCommons)", scrape_all_libraries),
         ("Libraries (LibCal ICS)", scrape_all_libcal_ics),
+        ("Libraries (LibCal Widget)", scrape_all_libcal_widget),
         ("Eventbrite", scrape_all_eventbrite),
         ("Aggregators", scrape_all_aggregators),
         ("Venues", scrape_all_venues),
@@ -92,6 +94,34 @@ def main(window_days: int = 45):
         event["title"] = enrich_title(event)
         event["tags"] = tag_event(event)
         event["age_group"] = infer_age_group(event)
+
+    # Timezone sanity check: flag any event whose Pacific local hour is between
+    # midnight and 6am — almost certainly a timezone conversion error for family events.
+    from zoneinfo import ZoneInfo
+    PACIFIC = ZoneInfo("America/Los_Angeles")
+    tz_warnings = []
+    for e in all_events:
+        iso = e.get("start_datetime")
+        if not iso:
+            continue
+        try:
+            dt = datetime.fromisoformat(iso).astimezone(PACIFIC)
+            if dt.hour < 6:
+                tz_warnings.append(
+                    f"  TZ WARNING: '{e['title']}' ({e.get('source_name','?')}) "
+                    f"starts at {dt.strftime('%I:%M %p PT')} — likely a UTC conversion error"
+                )
+        except Exception:
+            pass
+    if tz_warnings:
+        log.warning("=== TIMEZONE SANITY CHECK: %d suspicious events ===", len(tz_warnings))
+        for w in tz_warnings:
+            log.warning(w)
+        print(f"\nTZ WARNINGS ({len(tz_warnings)} events with suspiciously early start times):")
+        for w in tz_warnings:
+            print(w)
+    else:
+        log.info("Timezone sanity check passed: no events with suspiciously early PT start times")
 
     # Emit health summary
     total_ok = sum(1 for h in all_health if h["status"] == "ok")

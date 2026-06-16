@@ -1,30 +1,30 @@
 {
-  "run_at": "2026-06-16T17:14:02.950357+00:00",
+  "run_at": "2026-06-16T17:19:06.429235+00:00",
   "window_days": 16,
-  "channels_ok": 55,
-  "channels_total": 55,
-  "raw_events": 1682,
-  "deduped_events": 1242,
+  "channels_ok": 57,
+  "channels_total": 57,
+  "raw_events": 868,
+  "deduped_events": 502,
   "channels": [
     {
       "source": "Palo Alto City Library",
       "status": "ok",
-      "count": 28
+      "count": 32
     },
     {
       "source": "San Mateo County Library",
       "status": "ok",
-      "count": 153
+      "count": 22
     },
     {
       "source": "San Jose Public Library",
       "status": "ok",
-      "count": 187
+      "count": 22
     },
     {
       "source": "Santa Clara County Library District",
       "status": "ok",
-      "count": 160
+      "count": 33
     },
     {
       "source": "San Francisco Public Library",
@@ -34,7 +34,7 @@
     {
       "source": "Oakland Public Library",
       "status": "ok",
-      "count": 163
+      "count": 26
     },
     {
       "source": "Berkeley Public Library",
@@ -49,17 +49,27 @@
     {
       "source": "Contra Costa County Library",
       "status": "ok",
-      "count": 234
+      "count": 38
     },
     {
       "source": "Alameda County Library",
       "status": "ok",
-      "count": 158
+      "count": 67
     },
     {
       "source": "Mountain View Public Library",
       "status": "ok",
-      "count": 24
+      "count": 25
+    },
+    {
+      "source": "Sunnyvale Public Library",
+      "status": "ok",
+      "count": 26
+    },
+    {
+      "source": "San Mateo Public Library",
+      "status": "ok",
+      "count": 2
     },
     {
       "source": "Eventbrite/Palo Alto",
