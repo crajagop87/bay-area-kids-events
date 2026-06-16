@@ -277,6 +277,29 @@ input[type="date"]:focus { border-color: #fb923c; }
   white-space: nowrap; pointer-events: none;
   text-shadow: 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff;
 }
+.map-drag-pin { background: none; border: none; }
+.map-pin-dot {
+  width: 24px; height: 24px; border-radius: 50%;
+  background: #c2410c; border: 3px solid #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  cursor: grab; transition: transform 0.1s;
+}
+.map-pin-dot:active { cursor: grabbing; transform: scale(1.2); }
+.map-footer {
+  display: flex; align-items: center; justify-content: flex-end;
+  gap: 0.5rem; margin-top: 0.9rem; flex-wrap: wrap;
+}
+.map-custom-chip {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 0.75rem; font-weight: 700;
+  background: #fff3e0; color: var(--accent);
+  border: 1.5px solid #fb923c; border-radius: 99px;
+  padding: 4px 10px;
+}
+.map-custom-x {
+  font-size: 1rem; line-height: 1; opacity: 0.7; cursor: pointer; margin-left: 1px;
+}
+.map-custom-x:hover { opacity: 1; }
 .map-apply-btn {
   font-family: var(--sans); font-size: 0.8rem; font-weight: 700; color: #fff;
   background: var(--accent); border: none; border-radius: 99px;
@@ -726,6 +749,7 @@ footer a { color: var(--ink-3); text-decoration: underline; }
   <div class="modal" style="max-width:580px;width:100%">
     <button class="modal-close" onclick="closeModal('map-modal')">✕</button>
     <h2>📍 Area &amp; Radius</h2>
+    <p id="map-drag-hint" style="font-size:0.75rem;color:var(--ink-3);margin:0.25rem 0 0.5rem">Drag the pin to set a custom center.</p>
     <div id="map-container"></div>
     <div class="map-controls">
       <span class="filter-label">Radius<em id="map-radius-value"> 5 mi</em></span>
@@ -735,6 +759,11 @@ footer a { color: var(--ink-3); text-decoration: underline; }
           <span data-map-snap="5">5</span><span data-map-snap="10">10</span><span data-map-snap="20">20</span><span data-map-snap="40">max</span>
         </div>
       </div>
+    </div>
+    <div class="map-footer">
+      <span id="map-custom-chip" class="map-custom-chip" style="display:none">
+        📍 Custom <span class="map-custom-x" onclick="resetMapCenter()">×</span>
+      </span>
       <button class="map-apply-btn" onclick="applyMapSettings()">Use this radius ✓</button>
     </div>
   </div>
@@ -1912,20 +1941,34 @@ const MAP_CITIES = [
 
 let _map = null;
 let _mapLayers = [];
+let _mapDragMarkers = [];
+let _mapCircles = [];
 let mapTempRadius = 5;
+let mapTempCenter = null;    // [lat, lng] if user dragged; null = use preset
+let _mapPresetCenters = null; // the preset centers when modal opened
 
 function _clearMapLayers() {
   _mapLayers.forEach(l => _map.removeLayer(l));
   _mapLayers = [];
+  _mapDragMarkers.forEach(m => _map.removeLayer(m));
+  _mapDragMarkers = [];
+  _mapCircles = [];
 }
 function _addLayer(l) { l.addTo(_map); _mapLayers.push(l); return l; }
 
+function _getCenters() {
+  if (activePreset === 'custom' && customCenter) return [customCenter];
+  if (activePreset === 'all') return null;
+  return PRESET_CENTERS[activePreset] || [[37.4419, -122.1430]];
+}
+
 function openMapModal() {
   mapTempRadius = activeRadius;
+  mapTempCenter = null;
   openModal('map-modal');
   setTimeout(() => {
     if (!_map) {
-      _map = L.map('map-container', { zoomControl: true, attributionControl: false });
+      _map = L.map('map-container', { zoomControl: true, attributionControl: false, tap: false });
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 14 }).addTo(_map);
       MAP_CITIES.forEach(({ n, lat, lng }) => {
         L.marker([lat, lng], {
@@ -1935,23 +1978,16 @@ function openMapModal() {
       });
     }
     _map.invalidateSize();
-    _renderMapCircles();
+    _mapPresetCenters = _getCenters();
+    _renderMapCircles(true);
     _syncMapRadiusDisplay();
+    _syncMapCustomChip();
   }, 80);
 }
 
-function _getCenters() {
-  if (activePreset === 'custom' && customCenter) return [customCenter];
-  if (activePreset === 'all') return null;
-  return PRESET_CENTERS[activePreset] || [[37.4419, -122.1430]];
-}
-
-let _mapCircles = []; // just the radius circles, kept for live radius updates
-
 function _renderMapCircles(fitView = true) {
   _clearMapLayers();
-  _mapCircles = [];
-  const centers = _getCenters();
+  const centers = mapTempCenter ? [mapTempCenter] : (_mapPresetCenters || _getCenters());
   const radiusM = mapTempRadius * 1609.34;
 
   if (!centers) {
@@ -1959,21 +1995,42 @@ function _renderMapCircles(fitView = true) {
     return;
   }
 
-  const circleLayers = centers.map(([lat, lng]) => {
-    _addLayer(L.circleMarker([lat, lng], {
-      radius: 7, color: '#c2410c', fillColor: '#c2410c', fillOpacity: 1, weight: 2,
-    }));
-    const c = _addLayer(L.circle([lat, lng], {
+  const circleLayers = centers.map(([lat, lng], i) => {
+    // Draggable pin marker
+    const pinIcon = L.divIcon({
+      className: 'map-drag-pin',
+      html: `<div class="map-pin-dot"></div>`,
+      iconSize: [24, 24], iconAnchor: [12, 12],
+    });
+    const marker = L.marker([lat, lng], { draggable: true, icon: pinIcon });
+    marker.addTo(_map);
+    _mapDragMarkers.push(marker);
+
+    const circle = L.circle([lat, lng], {
       radius: radiusM, color: '#c2410c', weight: 2.5,
       fillColor: '#c2410c', fillOpacity: 0.09, dashArray: '7 5',
-    }));
-    _mapCircles.push(c);
-    return c;
+    });
+    _addLayer(circle);
+    _mapCircles.push(circle);
+
+    marker.on('drag', e => {
+      const { lat: la, lng: ln } = e.latlng;
+      circle.setLatLng([la, ln]);
+      mapTempCenter = [la, ln];
+      _syncMapCustomChip();
+    });
+    marker.on('dragend', e => {
+      const { lat: la, lng: ln } = e.target.getLatLng();
+      mapTempCenter = [la, ln];
+      _syncMapCustomChip();
+    });
+
+    return circle;
   });
 
   if (fitView) {
     try {
-      const group = L.featureGroup(circleLayers);
+      const group = L.featureGroup([...circleLayers, ..._mapDragMarkers]);
       _map.fitBounds(group.getBounds().pad(0.18));
     } catch(e) {
       _map.setView(centers[0], 11);
@@ -1984,6 +2041,18 @@ function _renderMapCircles(fitView = true) {
 function _updateMapCircleRadius() {
   const radiusM = mapTempRadius * 1609.34;
   _mapCircles.forEach(c => c.setRadius(radiusM));
+}
+
+function _syncMapCustomChip() {
+  const chip = document.getElementById('map-custom-chip');
+  if (chip) chip.style.display = mapTempCenter ? 'inline-flex' : 'none';
+}
+
+function resetMapCenter() {
+  mapTempCenter = null;
+  _mapPresetCenters = _getCenters();
+  _renderMapCircles(true);
+  _syncMapCustomChip();
 }
 
 function _syncMapRadiusDisplay() {
@@ -2001,6 +2070,18 @@ function _syncMapRadiusDisplay() {
 
 function applyMapSettings() {
   activeRadius = mapTempRadius;
+  if (mapTempCenter) {
+    customCenter = mapTempCenter;
+    activePreset = 'custom';
+    const chip  = document.getElementById('location-chip');
+    const label = document.getElementById('location-chip-label');
+    const wrap  = document.getElementById('location-input-wrap');
+    if (label) label.textContent = 'Custom';
+    if (chip)  chip.style.display = 'inline-flex';
+    if (wrap)  wrap.style.display = 'none';
+    document.querySelectorAll('[data-preset]').forEach(b => b.classList.remove('active','active-all'));
+    updatePresetStyles();
+  }
   updateRadiusDisplay();
   render();
   closeModal('map-modal');
