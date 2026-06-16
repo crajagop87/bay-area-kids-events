@@ -342,14 +342,24 @@ input[type="date"]:focus { border-color: #fb923c; }
 
 /* ── Floating date header ── */
 #floating-date {
-  position: fixed; bottom: 1rem; left: 50%; transform: translateX(-50%);
+  position: fixed; top: 38px; left: 0; right: 0;
   z-index: 49;
-  background: rgba(30,20,10,0.82); backdrop-filter: blur(6px);
-  color: #fff; font-family: var(--display); font-size: 0.78rem; font-weight: 700;
-  padding: 5px 16px; border-radius: 99px;
+  background: rgba(255,251,247,0.97); backdrop-filter: blur(6px);
+  border-bottom: 1.5px solid #fed7aa;
+  padding: 5px 1.25rem;
+  display: flex; align-items: center; gap: 0.5rem;
   pointer-events: none;
-  transition: opacity 0.2s;
-  white-space: nowrap;
+  transform: translateY(-100%);
+  transition: transform 0.15s ease;
+}
+#floating-date.visible { transform: translateY(0); }
+#floating-date-text {
+  font-family: var(--display); font-size: 0.8rem; font-weight: 700; color: var(--ink-1);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+#floating-date-count {
+  font-size: 0.7rem; font-weight: 600; color: var(--ink-3);
+  background: var(--tag-bg); border-radius: 99px; padding: 1px 7px; white-space: nowrap;
 }
 
 /* ── Skeleton loading ── */
@@ -778,9 +788,9 @@ footer a { color: var(--ink-3); text-decoration: underline; }
     <div class="map-controls">
       <span class="filter-label">Radius<em id="map-radius-value"> 5 mi</em></span>
       <div class="radius-wrap">
-        <input type="range" id="map-radius-slider" min="1" max="40" step="1" value="5">
+        <input type="range" id="map-radius-slider" min="0.5" max="20" step="0.1" value="5">
         <div class="radius-ticks">
-          <span data-map-snap="5">5</span><span data-map-snap="10">10</span><span data-map-snap="20">20</span><span data-map-snap="40">max</span>
+          <span data-map-snap="5">5</span><span data-map-snap="10">10</span><span data-map-snap="15">15</span><span data-map-snap="20">20</span>
         </div>
       </div>
     </div>
@@ -824,8 +834,9 @@ footer a { color: var(--ink-3); text-decoration: underline; }
 </div>
 
 <!-- Floating date header -->
-<div id="floating-date" style="display:none">
+<div id="floating-date">
   <span id="floating-date-text"></span>
+  <span id="floating-date-count"></span>
 </div>
 
 <div class="filters">
@@ -1126,6 +1137,9 @@ const ZIP_RADIUS_STUB = {
 // ── Modals ─────────────────────────────────────────────────────────────────
 function openModal(id) { document.getElementById(id).classList.add('open'); }
 function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') ['map-modal','feedback-modal','info-modal'].forEach(id => closeModal(id));
+});
 document.querySelectorAll('.modal-overlay').forEach(el => {
   el.addEventListener('click', e => { if (e.target === el) el.classList.remove('open'); });
 });
@@ -1464,7 +1478,7 @@ function render() {
       const countyKey = (e.county || '').toLowerCase().trim();
       const latlng = CITY_LATLNG[cityKey] || COUNTY_LATLNG[countyKey] || null;
       if (!latlng) {
-        if (hasDate) return false; // undated events without location: show anyway
+        return false;
       } else {
         const inRange = centers.some(([lat, lon]) => distMi(lat, lon, latlng[0], latlng[1]) <= radius);
         if (!inRange) return false;
@@ -1654,25 +1668,31 @@ window.addEventListener('scroll', updateStickyBar, { passive: true });
 // ── Floating date header ───────────────────────────────────────────────────
 const _floatingDate = document.getElementById('floating-date');
 const _floatingDateText = document.getElementById('floating-date-text');
+const _floatingDateCount = document.getElementById('floating-date-count');
 
 function updateFloatingDate() {
   const filterRect = filterCard?.getBoundingClientRect();
-  if (!filterRect || filterRect.bottom >= 0) { _floatingDate.style.display = 'none'; return; }
+  const pastFilters = filterRect && filterRect.bottom < 0;
+  if (!pastFilters) { _floatingDate.classList.remove('visible'); return; }
 
+  // Find the date-group whose h2 most recently scrolled past top
   let current = null;
-  document.querySelectorAll('.date-group h2').forEach(h => {
-    if (h.getBoundingClientRect().top <= 80) current = h;
+  document.querySelectorAll('.date-group').forEach(g => {
+    if (g.getBoundingClientRect().top <= 42) current = g;
   });
-  if (!current) { _floatingDate.style.display = 'none'; return; }
-  // Text node only (strip count badge)
-  const text = [...current.childNodes].filter(n => n.nodeType === 3).map(n => n.textContent).join('').trim();
+  if (!current) { _floatingDate.classList.remove('visible'); return; }
+
+  const h2 = current.querySelector('h2');
+  if (!h2) { _floatingDate.classList.remove('visible'); return; }
+  // Text node only (strip count badge span)
+  const text = [...h2.childNodes].filter(n => n.nodeType === 3).map(n => n.textContent).join('').trim();
+  const countEl = h2.querySelector('.group-count');
   _floatingDateText.textContent = text;
-  _floatingDate.style.display = '';
+  _floatingDateCount.textContent = countEl ? countEl.textContent + ' events' : '';
+  _floatingDate.classList.add('visible');
 }
 
-function initFloatingDateObserver() {
-  updateFloatingDate();
-}
+function initFloatingDateObserver() { updateFloatingDate(); }
 
 window.addEventListener('scroll', updateFloatingDate, { passive: true });
 
@@ -2060,12 +2080,12 @@ function _syncMapRadiusDisplay() {
   const slider = document.getElementById('map-radius-slider');
   if (slider) {
     slider.value = mapTempRadius;
-    slider.style.setProperty('--pct', `${((mapTempRadius - 1) / 39) * 100}%`);
+    slider.style.setProperty('--pct', `${((mapTempRadius - 0.5) / 19.5) * 100}%`);
   }
   const val = document.getElementById('map-radius-value');
-  if (val) val.textContent = mapTempRadius === 40 ? ' max' : ` ${mapTempRadius} mi`;
+  if (val) val.textContent = ` ${Math.round(mapTempRadius)} mi`;
   document.querySelectorAll('.radius-ticks [data-map-snap]').forEach(el => {
-    el.classList.toggle('active-tick', +el.dataset.mapSnap === mapTempRadius);
+    el.classList.toggle('active-tick', Math.abs(+el.dataset.mapSnap - mapTempRadius) < 0.05);
   });
 }
 
