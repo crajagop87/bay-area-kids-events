@@ -14,6 +14,7 @@ from scrapers.bibliocommons import scrape_all_libraries
 from scrapers.eventbrite import scrape_all_eventbrite
 from scrapers.aggregators import scrape_all_aggregators
 from scrapers.venues import scrape_all_venues
+from scrapers.libcal_ics import scrape_all_libcal_ics
 from scrapers.tagger import tag_event, enrich_title, infer_age_group
 
 logging.basicConfig(
@@ -65,6 +66,7 @@ def main(window_days: int = 45):
 
     channels = [
         ("Libraries (BiblioCommons)", scrape_all_libraries),
+        ("Libraries (LibCal ICS)", scrape_all_libcal_ics),
         ("Eventbrite", scrape_all_eventbrite),
         ("Aggregators", scrape_all_aggregators),
         ("Venues", scrape_all_venues),
