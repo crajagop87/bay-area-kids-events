@@ -154,7 +154,7 @@ input[type="date"]:focus { border-color: #fb923c; }
 .filter-label em {
   font-style: normal; font-weight: 700; color: var(--accent);
   font-size: 0.78rem; margin-left: 3px; letter-spacing: 0;
-  text-transform: none;
+  text-transform: none; display: inline-block; min-width: 3.8ch;
 }
 
 /* Age dual-range slider */
@@ -1397,9 +1397,15 @@ function updateAgeSlider() {
   const fillLeft = (lo / 18) * 100;
   const fillRight = ((18 - hi) / 18) * 100;
   const fill = document.getElementById('age-track-fill');
-  if (fill) { fill.style.setProperty('--fill-left', fillLeft + '%'); fill.style.setProperty('--fill-right', fillRight + '%'); }
+  if (fill) {
+    // When min===max the fill collapses to zero; clamp so a 3% dot stays visible
+    const safeLeft = lo === hi ? Math.max(0, fillLeft - 1.5) : fillLeft;
+    const safeRight = lo === hi ? Math.max(0, fillRight - 1.5) : fillRight;
+    fill.style.setProperty('--fill-left', safeLeft + '%');
+    fill.style.setProperty('--fill-right', safeRight + '%');
+  }
   const label = document.getElementById('age-range-label');
-  if (label) label.textContent = (lo === 0 && hi === 18) ? ' all' : ` ${lo}–${hi}`;
+  if (label) label.textContent = (lo === 0 && hi === 18) ? ' all' : lo === hi ? ` age ${lo}` : ` ${lo}–${hi}`;
 }
 
 (function initAgeSlider() {
