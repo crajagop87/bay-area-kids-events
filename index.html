@@ -254,8 +254,7 @@ input[type="date"]:focus { border-color: #fb923c; }
 .card-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 5px; }
 .tag-chip {
   font-size: 0.65rem; font-weight: 600; padding: 3px 9px; border-radius: 99px;
-  background: linear-gradient(135deg, var(--tag-bg) 0%, #ebe5de 100%);
-  color: var(--tag-fg); white-space: nowrap;
+  background: #ede9e4; color: #6b6259; white-space: nowrap;
 }
 
 /* ── Card emoji ── */
@@ -303,23 +302,6 @@ input[type="date"]:focus { border-color: #fb923c; }
 .map-apply-btn:active { transform: scale(0.92); }
 
 /* ── Tag chip colors by category ── */
-.tag-chip[data-tag="storytime"],
-.tag-chip[data-tag="books & reading"] { background: #ede9fe; color: #5b21b6; }
-.tag-chip[data-tag="outdoors"],
-.tag-chip[data-tag="nature"]          { background: #d1fae5; color: #065f46; }
-.tag-chip[data-tag="music"],
-.tag-chip[data-tag="theatre"]         { background: #fce7f3; color: #9d174d; }
-.tag-chip[data-tag="science"],
-.tag-chip[data-tag="STEM"]            { background: #dbeafe; color: #1e40af; }
-.tag-chip[data-tag="arts & crafts"]   { background: #fef3c7; color: #78350f; }
-.tag-chip[data-tag="animals"],
-.tag-chip[data-tag="farm"]            { background: #fef9c3; color: #713f12; }
-.tag-chip[data-tag="sports & movement"] { background: #dcfce7; color: #14532d; }
-.tag-chip[data-tag="sensory"]         { background: #e0f2fe; color: #075985; }
-.tag-chip[data-tag="cooking"]         { background: #fff7ed; color: #9a3412; }
-.tag-chip[data-tag="festival"]        { background: #fdf4ff; color: #7e22ce; }
-.tag-chip[data-tag="film & movies"]   { background: #292524; color: #fef3c7; }
-.tag-chip[data-tag="hands-on"]        { background: #f0fdf4; color: #166534; }
 
 /* ── Sticky filter bar ── */
 .sticky-bar {
@@ -342,7 +324,7 @@ input[type="date"]:focus { border-color: #fb923c; }
 
 /* ── Floating date header ── */
 #floating-date {
-  position: fixed; top: 38px; left: 0; right: 0;
+  position: fixed; top: 0; left: 0; right: 0;
   z-index: 49;
   background: rgba(255,251,247,0.97); backdrop-filter: blur(4px);
   padding: 4px 1.5rem;
@@ -363,6 +345,11 @@ input[type="date"]:focus { border-color: #fb923c; }
   background: #fed7aa; color: #92400e; border-radius: 99px;
   padding: 1px 8px; margin-left: 6px; vertical-align: middle; letter-spacing: 0;
 }
+#floating-date-filter {
+  margin-left: auto; font-size: 0.68rem; font-weight: 600; color: var(--ink-3);
+  white-space: nowrap; flex-shrink: 0;
+}
+#floating-date { display: flex; align-items: center; gap: 0; }
 
 /* ── Skeleton loading ── */
 @keyframes shimmer {
@@ -432,7 +419,7 @@ footer a { color: var(--ink-3); text-decoration: underline; }
   background: #fff; border-radius: 18px;
   padding: 1.5rem; max-width: 420px; width: 100%;
   box-shadow: 0 8px 40px rgba(0,0,0,0.18);
-  max-height: 85vh; overflow-y: auto;
+  max-height: 85vh; overflow-y: auto; position: relative;
 }
 .modal h2 { font-size: 1rem; font-weight: 700; color: var(--accent); margin-bottom: 0.75rem; }
 .modal-section { margin-bottom: 0.75rem; }
@@ -440,8 +427,9 @@ footer a { color: var(--ink-3); text-decoration: underline; }
 .modal-section p, .modal-section li { font-size: 0.8rem; color: var(--ink-2); line-height: 1.5; }
 .modal-section ul { padding-left: 1rem; }
 .modal-close {
-  float: right; font-size: 1.1rem; font-weight: 700; color: var(--ink-3);
-  background: none; border: none; cursor: pointer; line-height: 1; margin-top: -2px;
+  position: absolute; top: 0.9rem; right: 1rem;
+  font-size: 1.1rem; font-weight: 700; color: var(--ink-3);
+  background: none; border: none; cursor: pointer; line-height: 1; z-index: 1;
 }
 .modal-close:hover { color: var(--ink); }
 .modal-version { font-size: 0.68rem; color: var(--ink-3); margin-top: 0.5rem; }
@@ -449,8 +437,8 @@ footer a { color: var(--ink-3); text-decoration: underline; }
 /* ── Roadmap modal ── */
 .modal-tabs { display: flex; gap: 0; border-bottom: 2px solid var(--rule); margin-bottom: 1rem; }
 .modal-tab {
-  font-family: var(--sans); font-size: 0.8rem; font-weight: 700;
-  padding: 6px 16px; border: none; background: none; cursor: pointer;
+  font-family: var(--sans); font-size: 0.78rem; font-weight: 700;
+  padding: 6px 12px; border: none; background: none; cursor: pointer;
   color: var(--ink-3); border-bottom: 2.5px solid transparent; margin-bottom: -2px;
   transition: color 0.12s;
 }
@@ -565,8 +553,9 @@ footer a { color: var(--ink-3); text-decoration: underline; }
   transition: box-shadow 0.12s;
 }
 #radius-slider::-webkit-slider-thumb:hover { box-shadow: 0 0 0 5px rgba(194,65,12,0.12); }
-.radius-ticks { display: flex; justify-content: space-between; }
-.radius-ticks span { font-size: 0.65rem; font-weight: 600; color: var(--ink-3); cursor: pointer; transition: color 0.12s; }
+.radius-ticks { position: relative; height: 14px; margin-top: 1px; }
+.radius-ticks span { position: absolute; font-size: 0.65rem; font-weight: 600; color: var(--ink-3); cursor: pointer; transition: color 0.12s; transform: translateX(-50%); white-space: nowrap; }
+.radius-ticks span:last-child { transform: translateX(-100%); }
 .radius-ticks span:hover { color: var(--ink-2); }
 .radius-ticks span.active-tick { color: var(--accent); font-weight: 800; }
 /* map modal chips */
@@ -644,9 +633,10 @@ footer a { color: var(--ink-3); text-decoration: underline; }
   <div class="modal" style="max-width:520px">
     <button class="modal-close" onclick="closeModal('info-modal')">✕</button>
     <div class="modal-tabs">
-      <button class="modal-tab active" id="info-tab-about"   onclick="switchInfoTab('about')">👋 About</button>
-      <button class="modal-tab"        id="info-tab-filters" onclick="switchInfoTab('filters')">🔍 How it works</button>
-      <button class="modal-tab"        id="info-tab-design"  onclick="switchInfoTab('design')">🎨 Design notes</button>
+      <button class="modal-tab active" id="info-tab-about"   onclick="switchInfoTab('about')">About</button>
+      <button class="modal-tab"        id="info-tab-sources" onclick="switchInfoTab('sources')">Sources</button>
+      <button class="modal-tab"        id="info-tab-filters" onclick="switchInfoTab('filters')">Filters</button>
+      <button class="modal-tab"        id="info-tab-design"  onclick="switchInfoTab('design')">Dev</button>
     </div>
 
     <!-- About pane -->
@@ -656,14 +646,36 @@ footer a { color: var(--ink-3); text-decoration: underline; }
         <p style="margin-top:6px">A volunteer project. Questions or ideas? Hit <strong>Feedback</strong>.</p>
       </div>
       <div class="modal-section">
-        <h3>Sources <span id="info-source-summary"></span></h3>
-        <ul id="info-sources"></ul>
-      </div>
-      <div class="modal-section">
         <h3>Last scraped</h3>
-        <p>Events are pulled every day at 6am PT from public library systems, Eventbrite, and venue websites. The timestamp in the header shows when the last pull completed.</p>
+        <p>Events are pulled every day at 6 am PT from public library systems, Eventbrite, and venue websites. The timestamp in the header shows when the last pull completed.</p>
       </div>
       <div class="modal-version" id="info-version"></div>
+    </div>
+
+    <!-- Sources pane -->
+    <div id="info-pane-sources" style="display:none">
+      <div class="modal-section">
+        <p style="font-size:0.78rem;color:var(--ink-2)">Last scrape: <span id="src-run-at">—</span> · <span id="src-summary"></span></p>
+      </div>
+      <div class="modal-section" id="src-active-section">
+        <h3>✅ Active sources</h3>
+        <ul id="src-active" class="info-list"></ul>
+      </div>
+      <div class="modal-section" id="src-zero-section">
+        <h3>⚪ Scraped — no events in window</h3>
+        <p style="font-size:0.75rem;color:var(--ink-3);margin-bottom:6px">These sources responded successfully but returned 0 events in the current 45-day window. They may have events outside that range or on an irregular schedule.</p>
+        <ul id="src-zero" class="info-list"></ul>
+      </div>
+      <div class="modal-section" id="src-jsonly-section">
+        <h3>🟡 Requires browser automation</h3>
+        <p style="font-size:0.75rem;color:var(--ink-3);margin-bottom:6px">These sites render events via JavaScript and can't be scraped with a simple HTTP request. Adding them would require Playwright or a headless browser in the CI pipeline.</p>
+        <ul id="src-jsonly" class="info-list"></ul>
+      </div>
+      <div class="modal-section" id="src-error-section">
+        <h3>🔴 Scrape errors</h3>
+        <p style="font-size:0.75rem;color:var(--ink-3);margin-bottom:6px">These sources failed during the last scrape run.</p>
+        <ul id="src-errors" class="info-list"></ul>
+      </div>
     </div>
 
     <!-- How it works pane -->
@@ -704,45 +716,54 @@ footer a { color: var(--ink-3); text-decoration: underline; }
       </div>
     </div>
 
-    <!-- Design notes pane -->
+    <!-- Dev notes pane -->
     <div id="info-pane-design" style="display:none">
       <div class="modal-section">
-        <h3>Philosophy</h3>
+        <h3>Versioning strategy</h3>
         <ul class="info-list">
-          <li>No login, no tracking, no ads. One URL, shareable with filter state encoded in query params.</li>
-          <li>Static frontend served from GitHub Pages — zero server cost, zero maintenance surface.</li>
-          <li>Python scraper runs daily on GitHub Actions and writes a single <code>events.json</code> — the page just fetches that.</li>
+          <li><strong>Format:</strong> <code>v YYYY.MMDD · FE · BE</code> — the date is the "push day" (calendar date of the deploy), making it easy to trace which day a change shipped.</li>
+          <li><strong>FE version</strong> is the frontend deploy date. Increments whenever <code>index.html</code> is pushed to GitHub Pages.</li>
+          <li><strong>BE version</strong> is the scraper run timestamp — visible in the footer. Increments daily with the 6 am scrape, independent of FE deploys.</li>
+          <li>No build number within a day — if multiple FE pushes happen on the same day, the date stays the same and git log is the source of truth for ordering.</li>
         </ul>
       </div>
       <div class="modal-section">
-        <h3>UX choices</h3>
+        <h3>Architecture</h3>
         <ul class="info-list">
-          <li>Defaults to Palo Alto / 5 mi / ages 0–5 / next 7 days — the most common use case, not a blank slate.</li>
-          <li>Filter state persists in localStorage so returning visits remember your preferences. Sharing a URL snapshots the current state via query params.</li>
-          <li>Cards fade out before re-rendering on filter change — avoids the jarring pop of immediate replacement.</li>
-          <li>Radius is a continuous slider (not fixed chips) because families think in "how far am I willing to drive," not preset buckets.</li>
-          <li>Map modal shows coverage circle live as you drag — makes radius feel tangible rather than abstract.</li>
-          <li>Tag chips on cards are clickable filters — discovery-led search, not just keyword search.</li>
-          <li>Clicking the title resets all filters and returns to the default view.</li>
+          <li>No login, no tracking, no ads. One URL, shareable with filter state encoded in query params.</li>
+          <li>Static frontend on GitHub Pages — zero server cost, zero maintenance surface.</li>
+          <li>Python scraper runs daily on GitHub Actions and writes <code>events.json</code> + <code>health.json</code> — the page fetches both at load.</li>
+          <li>Filter state persists in localStorage; URL params allow sharing a specific filtered view.</li>
+        </ul>
+      </div>
+      <div class="modal-section">
+        <h3>UX decisions</h3>
+        <ul class="info-list">
+          <li>Defaults to Palo Alto · 5 mi · ages 0–5 · next 7 days — the most common use case, not a blank slate.</li>
+          <li>Radius is a continuous slider (0.1 mi steps, displayed as integers) — families think "how far am I willing to drive," not preset buckets.</li>
+          <li>Cards fade on filter change — avoids jarring pop of immediate replacement.</li>
+          <li>Tag chips are clickable — discovery-led browsing rather than keyword-only search.</li>
+          <li>Map modal shows live coverage circle while dragging — makes radius tangible.</li>
+          <li>Sticky filter summary + floating date label when scrolled — keeps orientation in long event lists.</li>
         </ul>
       </div>
       <div class="modal-section">
         <h3>Visual design</h3>
         <ul class="info-list">
-          <li>Fredoka One for the header wordmark — playful but legible. Nunito for body — warm, rounded, family-appropriate.</li>
-          <li>Warm off-white background (<code>#fdf8f3</code>) instead of pure white — easier on the eyes for browsing lists.</li>
-          <li>Orange accent (<code>#c2410c</code>) throughout — energetic but not garish. Free events get a green left-border; paid get orange.</li>
-          <li>Skeleton shimmer on load instead of a spinner — communicates structure before content arrives.</li>
-          <li>No emoji bounce animations — they were distracting. Hover just adds a subtle glow behind the emoji.</li>
+          <li>Bricolage Grotesque for headers — editorial, confident. Plus Jakarta Sans for body — clean, modern.</li>
+          <li>Warm off-white (<code>#fdf8f3</code>) background — easier on the eyes than pure white for list browsing.</li>
+          <li>Orange accent throughout. Free events: green left-border. Paid: orange. Tags: uniform neutral grey — color by category added noise without helping navigation.</li>
+          <li>Skeleton shimmer on load — communicates structure before content arrives.</li>
         </ul>
       </div>
       <div class="modal-section">
-        <h3>Data &amp; sourcing</h3>
+        <h3>Data &amp; scraping</h3>
         <ul class="info-list">
-          <li>Adult-noise filter strips wine tastings, networking events, comedy shows, and financial seminars before events ever reach the frontend.</li>
-          <li>Age groups inferred by regex chain — babies → toddlers → preschool → kids → teens → family, with numeric range support.</li>
-          <li>Eventbrite searched across 30+ Peninsula and Bay Area cities; deduped by title + date + city hash.</li>
-          <li>BiblioCommons JSON API used for library events — filters to children/family audience IDs before storing.</li>
+          <li>Adult-noise filter strips wine tastings, networking events, comedy shows, and financial seminars before events reach the frontend.</li>
+          <li>Age groups inferred by regex chain — babies → toddlers → preschool → kids → teens → family, with numeric range support (e.g. "ages 3–5").</li>
+          <li>Eventbrite scraped across 30+ Peninsula and Bay Area cities; deduped by title + date + city hash.</li>
+          <li>BiblioCommons JSON gateway API covers Palo Alto, San Mateo County, Santa Clara County, San Jose, SFPL, and East Bay systems.</li>
+          <li>Midpeninsula Open Space: table-scraper paginating youth-family events.</li>
         </ul>
       </div>
     </div>
@@ -839,6 +860,7 @@ footer a { color: var(--ink-3); text-decoration: underline; }
 <div id="floating-date">
   <span id="floating-date-text"></span>
   <span id="floating-date-count"></span>
+  <span id="floating-date-filter"></span>
 </div>
 
 <div class="filters">
@@ -930,7 +952,7 @@ footer a { color: var(--ink-3); text-decoration: underline; }
 </footer>
 
 <script>
-const FE_VERSION = '1.4.0';
+const FE_VERSION = '2026.0616';
 const IS_LOCAL = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
 const JSON_URL   = IS_LOCAL ? '/output/events.json'  : 'https://raw.githubusercontent.com/crajagop87/bay-area-kids-events/main/output/events.json';
 const HEALTH_URL = IS_LOCAL ? '/output/health.json'  : 'https://raw.githubusercontent.com/crajagop87/bay-area-kids-events/main/output/health.json';
@@ -1223,20 +1245,41 @@ async function load() {
     document.getElementById('meta').textContent = `Last scraped: ${runAt}`;
     document.getElementById('footer-count').textContent = `v${FE_VERSION} · ${allEvents.length} events`;
 
-    // Info modal sources
-    const okCount = healthData.channels_ok || 0;
-    const totalCount = healthData.channels_total || 0;
-    const srcSummary = document.getElementById('info-source-summary');
-    if (srcSummary) srcSummary.textContent = `(${okCount}/${totalCount} ok)`;
-    const srcList = document.getElementById('info-sources');
-    (healthData.channels || []).forEach(ch => {
-      const li = document.createElement('li');
-      li.style.cssText = 'font-size:0.78rem;color:var(--ink-2);margin-bottom:2px';
-      li.textContent = `${ch.source}: ${ch.status === 'ok' ? ch.count + ' events' : '⚠ ' + (ch.error || ch.status)}`;
-      srcList.appendChild(li);
+    // Sources pane
+    const channels = healthData.channels || [];
+    const runAtStr = healthData.run_at ? new Date(healthData.run_at).toLocaleString('en-US', { month:'short', day:'numeric', hour:'numeric', minute:'2-digit', timeZone:'America/Los_Angeles', timeZoneName:'short' }) : '—';
+    const srcRunAt = document.getElementById('src-run-at');
+    if (srcRunAt) srcRunAt.textContent = runAtStr;
+    const srcSummaryEl = document.getElementById('src-summary');
+    if (srcSummaryEl) srcSummaryEl.textContent = `${healthData.channels_ok || 0}/${healthData.channels_total || 0} sources ok · ${healthData.deduped_events || 0} events`;
+
+    const JS_RENDER_ERRORS = /playwright|javascript.rendered|libcal|springshare|js.only|headless/i;
+    const active = [], zero = [], jsOnly = [], errors = [];
+    channels.forEach(ch => {
+      if (ch.status !== 'ok') {
+        if (JS_RENDER_ERRORS.test(ch.error || '')) jsOnly.push(ch);
+        else errors.push(ch);
+      } else if (ch.count > 0) active.push(ch);
+      else zero.push(ch);
     });
+
+    function fillList(listId, items, fmt) {
+      const el = document.getElementById(listId);
+      if (!el) return;
+      el.innerHTML = items.map(ch => `<li style="font-size:0.78rem;color:var(--ink-2);margin-bottom:2px">${fmt(ch)}</li>`).join('');
+    }
+    fillList('src-active', active, ch => `${ch.source} <span style="color:var(--ink-3)">${ch.count} events</span>`);
+    fillList('src-zero',   zero,   ch => ch.source);
+    fillList('src-jsonly', jsOnly, ch => ch.source);
+    fillList('src-errors', errors, ch => `${ch.source} <span style="color:#b91c1c">${ch.error || ch.status}</span>`);
+    ['active','zero','jsonly','errors'].forEach(k => {
+      const sec = document.getElementById(`src-${k}-section`);
+      const list = document.getElementById(`src-${k}`);
+      if (sec && list) sec.style.display = list.children.length ? '' : 'none';
+    });
+
     document.getElementById('info-version').textContent =
-      `FE v${FE_VERSION} · BE scrape: ${healthData.run_at ? healthData.run_at.slice(0,19).replace('T',' ') + ' UTC' : 'unknown'}`;
+      `v${FE_VERSION} (FE) · BE ${healthData.run_at ? healthData.run_at.slice(0,10) : 'unknown'}`;
 
     document.getElementById('loading').style.display = 'none';
     updatePresetStyles();
@@ -1339,10 +1382,27 @@ function updateAgeSlider() {
     updateAgeSlider();
     render();
   }
+  // Keep last-touched handle on top so it stays grabbable
+  minEl.addEventListener('pointerdown', () => { minEl.style.zIndex = 4; maxEl.style.zIndex = 2; });
+  maxEl.addEventListener('pointerdown', () => { maxEl.style.zIndex = 4; minEl.style.zIndex = 2; });
   minEl.addEventListener('input', sync);
   maxEl.addEventListener('input', sync);
   updateAgeSlider();
 })();
+
+// Position tick labels at their exact slider percentage so they align with thumb
+function positionRadiusTicks(wrapperId, sliderId, snapAttr) {
+  const slider = document.getElementById(sliderId);
+  if (!slider) return;
+  const min = +slider.min, max = +slider.max, range = max - min;
+  document.querySelectorAll(`${wrapperId} .radius-ticks span`).forEach(el => {
+    const val = +(el.dataset[snapAttr] ?? el.dataset.snap);
+    if (isNaN(val)) return;
+    const pct = (val - min) / range * 100;
+    el.style.left = pct + '%';
+    el.style.transform = pct >= 98 ? 'translateX(-100%)' : pct <= 2 ? 'translateX(0)' : 'translateX(-50%)';
+  });
+}
 
 document.querySelectorAll('[data-preset]').forEach(b => b.addEventListener('click', () => setPreset(b.dataset.preset)));
 const _radiusSlider = document.getElementById('radius-slider');
@@ -1358,6 +1418,7 @@ document.querySelectorAll('.radius-ticks span').forEach(el => {
     render();
   });
 });
+positionRadiusTicks('#radius-row', 'radius-slider', 'snap');
 
 document.querySelectorAll('[data-when]').forEach(b => {
   b.addEventListener('click', () => {
@@ -1671,26 +1732,37 @@ window.addEventListener('scroll', updateStickyBar, { passive: true });
 const _floatingDate = document.getElementById('floating-date');
 const _floatingDateText = document.getElementById('floating-date-text');
 const _floatingDateCount = document.getElementById('floating-date-count');
+const _floatingDateFilter = document.getElementById('floating-date-filter');
 
 function updateFloatingDate() {
   const filterRect = filterCard?.getBoundingClientRect();
   const pastFilters = filterRect && filterRect.bottom < 0;
   if (!pastFilters) { _floatingDate.classList.remove('visible'); return; }
 
-  // Find the date-group whose h2 most recently scrolled past top
+  // Flush immediately below sticky bar
+  const sbH = stickyBar.classList.contains('visible') ? stickyBar.offsetHeight : 0;
+  _floatingDate.style.top = sbH + 'px';
+
+  // Find date-group whose top has passed the floating bar position
+  const threshold = sbH + 42;
   let current = null;
   document.querySelectorAll('.date-group').forEach(g => {
-    if (g.getBoundingClientRect().top <= 42) current = g;
+    if (g.getBoundingClientRect().top <= threshold) current = g;
   });
   if (!current) { _floatingDate.classList.remove('visible'); return; }
 
   const h2 = current.querySelector('h2');
   if (!h2) { _floatingDate.classList.remove('visible'); return; }
-  // Text node only (strip count badge span)
   const text = [...h2.childNodes].filter(n => n.nodeType === 3).map(n => n.textContent).join('').trim();
   const countEl = h2.querySelector('.group-count');
   _floatingDateText.textContent = text;
-  _floatingDateCount.textContent = countEl ? countEl.textContent + ' events' : '';
+  _floatingDateCount.textContent = countEl ? countEl.textContent : '';
+
+  // Compact filter summary
+  const whenLabels = { all:'All dates', today:'Today', 'next-7':'Next 7d', 'next-14':'Next 14d', custom:'Custom' };
+  const areaLabel = activePreset === 'all' ? 'All areas' : activePreset === 'custom' ? `Custom·${Math.round(activeRadius)}mi` : `${activePreset}·${Math.round(activeRadius)}mi`;
+  _floatingDateFilter.textContent = `${areaLabel} · ${whenLabels[activeWhen] || activeWhen}`;
+
   _floatingDate.classList.add('visible');
 }
 
@@ -1716,7 +1788,7 @@ function emptySugg(i) { window._emptySuggs[i]?.fn(); }
 
 // ── Feedback modal tab switching ───────────────────────────────────────────
 function switchInfoTab(tab) {
-  ['about','filters','design'].forEach(t => {
+  ['about','sources','filters','design'].forEach(t => {
     document.getElementById(`info-tab-${t}`).classList.toggle('active', t === tab);
     document.getElementById(`info-pane-${t}`).style.display = t === tab ? '' : 'none';
   });
@@ -2119,6 +2191,7 @@ document.querySelectorAll('.radius-ticks [data-map-snap]').forEach(el => {
     _updateMapCircleRadius();
   });
 });
+positionRadiusTicks('#map-modal', 'map-radius-slider', 'mapSnap');
 
 restoreFilters();
 updateAgeSlider();
