@@ -721,10 +721,10 @@ footer a { color: var(--ink-3); text-decoration: underline; }
       <div class="modal-section">
         <h3>Versioning strategy</h3>
         <ul class="info-list">
-          <li><strong>Format:</strong> <code>v YYYY.MMDD · FE · BE</code> — the date is the "push day" (calendar date of the deploy), making it easy to trace which day a change shipped.</li>
-          <li><strong>FE version</strong> is the frontend deploy date. Increments whenever <code>index.html</code> is pushed to GitHub Pages.</li>
-          <li><strong>BE version</strong> is the scraper run timestamp — visible in the footer. Increments daily with the 6 am scrape, independent of FE deploys.</li>
-          <li>No build number within a day — if multiple FE pushes happen on the same day, the date stays the same and git log is the source of truth for ordering.</li>
+          <li><strong>Format:</strong> <code>v YYYY.MMDD.N</code> — the date is the "push day"; N is a manual build counter that resets to 1 on each new calendar date and increments with every FE push that day.</li>
+          <li><strong>FE version</strong> (e.g. <code>2026.0616.4</code>) — increment N in <code>FE_VERSION</code> before each push. Reset to .1 on a new date.</li>
+          <li><strong>BE version</strong> is the scraper run timestamp shown in the footer — increments automatically with each daily 6 am scrape, independent of FE deploys.</li>
+          <li>Git log is always the authoritative ordering within a day if N ever gets out of sync.</li>
         </ul>
       </div>
       <div class="modal-section">
@@ -952,7 +952,7 @@ footer a { color: var(--ink-3); text-decoration: underline; }
 </footer>
 
 <script>
-const FE_VERSION = '2026.0616';
+const FE_VERSION = '2026.0616.4';
 const IS_LOCAL = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
 const JSON_URL   = IS_LOCAL ? '/output/events.json'  : 'https://raw.githubusercontent.com/crajagop87/bay-area-kids-events/main/output/events.json';
 const HEALTH_URL = IS_LOCAL ? '/output/health.json'  : 'https://raw.githubusercontent.com/crajagop87/bay-area-kids-events/main/output/health.json';
