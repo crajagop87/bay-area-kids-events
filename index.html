@@ -405,15 +405,46 @@ footer a { color: var(--ink-3); text-decoration: underline; }
 .modal-tab:hover { color: var(--ink); }
 .modal-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
 
-.roadmap-list { display: flex; flex-direction: column; gap: 0.6rem; max-height: 340px; overflow-y: auto; }
+.roadmap-list { display: flex; flex-direction: column; gap: 0.5rem; max-height: 380px; overflow-y: auto; }
 .roadmap-item {
   border: 1.5px solid var(--rule); border-radius: 10px;
-  padding: 0.6rem 0.8rem; display: flex; flex-direction: column; gap: 3px;
+  display: flex; flex-direction: column;
+  cursor: pointer; transition: border-color 0.12s;
 }
-.roadmap-item-title { font-size: 0.82rem; font-weight: 700; color: var(--ink); }
+.roadmap-item:hover { border-color: #fb923c; }
+.roadmap-item-header {
+  padding: 0.6rem 0.8rem; display: flex; flex-direction: column; gap: 4px;
+}
+.roadmap-item-title-row {
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 0.5rem;
+}
+.roadmap-item-title { font-size: 0.82rem; font-weight: 700; color: var(--ink); flex: 1; }
+.roadmap-item-gh-link {
+  font-size: 0.7rem; color: var(--ink-3); text-decoration: none; flex-shrink: 0;
+  padding: 1px 4px; border-radius: 4px; transition: color 0.12s, background 0.12s;
+}
+.roadmap-item-gh-link:hover { color: var(--accent); background: #fff3e0; }
 .roadmap-item-meta { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
 .roadmap-item-date { font-size: 0.68rem; color: var(--ink-3); }
-.roadmap-item-note { font-size: 0.75rem; color: var(--ink-2); font-style: italic; margin-top: 2px; }
+.roadmap-item-expand {
+  display: none; flex-direction: column; gap: 0.5rem;
+  border-top: 1.5px solid var(--rule);
+  padding: 0.65rem 0.8rem; background: var(--card-bg);
+  border-radius: 0 0 9px 9px;
+}
+.roadmap-item.open .roadmap-item-expand { display: flex; }
+.roadmap-item-body {
+  font-size: 0.78rem; color: var(--ink-2); white-space: pre-wrap; line-height: 1.5;
+}
+.roadmap-item-body-raw { color: var(--ink-2); }
+.roadmap-item-body-meta { color: var(--ink-3); font-size: 0.72rem; font-style: italic; margin-top: 2px; }
+.roadmap-comments { display: flex; flex-direction: column; gap: 0.4rem; margin-top: 0.25rem; }
+.roadmap-comment {
+  background: #fff8f3; border: 1px solid #ffe0c8; border-radius: 7px;
+  padding: 0.45rem 0.65rem; font-size: 0.77rem; color: var(--ink);
+}
+.roadmap-comment-meta { font-size: 0.67rem; color: var(--ink-3); margin-top: 2px; }
+.roadmap-comments-loading { font-size: 0.72rem; color: var(--ink-3); font-style: italic; }
 .label-chip {
   font-size: 0.62rem; font-weight: 700; padding: 1px 7px; border-radius: 99px;
 }
@@ -573,7 +604,7 @@ footer a { color: var(--ink-3); text-decoration: underline; }
     <button class="modal-close" onclick="closeModal('feedback-modal')">✕</button>
     <div class="modal-tabs">
       <button class="modal-tab active" id="fb-tab-feedback" onclick="switchFeedbackTab('feedback')">💬 Feedback</button>
-      <button class="modal-tab" id="fb-tab-roadmap" onclick="switchFeedbackTab('roadmap')">🗺 What's on deck</button>
+      <button class="modal-tab" id="fb-tab-roadmap" onclick="switchFeedbackTab('roadmap')">📂 Repository</button>
     </div>
     <!-- Feedback pane -->
     <div id="fb-pane-feedback">
@@ -587,7 +618,7 @@ footer a { color: var(--ink-3); text-decoration: underline; }
     </div>
     <!-- Roadmap pane -->
     <div id="fb-pane-roadmap" style="display:none">
-      <p style="font-size:0.78rem;color:var(--ink-2);margin-bottom:0.75rem">Feedback from the community, tracked publicly. Open issues are on our radar; closed ones have shipped.</p>
+      <p style="font-size:0.78rem;color:var(--ink-2);margin-bottom:0.75rem">Community feedback, tracked publicly. Click any item to see the full note and developer comments.</p>
       <div class="modal-tabs" style="margin-bottom:0.75rem">
         <button class="modal-tab active" id="tab-backlog" onclick="switchRoadmapTab('backlog')">📋 Backlog</button>
         <button class="modal-tab" id="tab-shipped" onclick="switchRoadmapTab('shipped')">✅ Shipped</button>
@@ -1588,6 +1619,14 @@ function relativeDate(iso) {
   return `${Math.floor(days/365)}y ago`;
 }
 
+function parseIssueBody(body) {
+  if (!body) return { userText: '', meta: '' };
+  const parts = body.split(/\n---\n/);
+  const userText = parts[0].trim();
+  const meta = parts.slice(1).join('\n---\n').trim();
+  return { userText, meta };
+}
+
 function renderIssues(issues, containerId, isShipped) {
   const el = document.getElementById(containerId);
   if (!issues.length) {
@@ -1596,32 +1635,59 @@ function renderIssues(issues, containerId, isShipped) {
   }
   el.innerHTML = issues.map(issue => {
     const labels = (issue.labels || []).map(labelChip).join('');
-    // For shipped items, look for a "dev note" label like "shipped: v1.2.0"
-    const shippedLabel = (issue.labels || []).find(l => l.name.toLowerCase().startsWith('shipped'));
-    const noteHtml = isShipped && issue.body
-      ? `<div class="roadmap-item-note">${esc(extractDevNote(issue.body))}</div>` : '';
     const dateLabel = isShipped
       ? `Closed ${relativeDate(issue.closed_at)}`
       : `Opened ${relativeDate(issue.created_at)}`;
-    return `<div class="roadmap-item">
-      <div class="roadmap-item-title">${esc(issue.title)}</div>
-      <div class="roadmap-item-meta">
-        ${labels}
-        <span class="roadmap-item-date">${dateLabel}</span>
+    const { userText, meta } = parseIssueBody(issue.body);
+    const ghUrl = issue.html_url || `https://github.com/${REPO}/issues/${issue.number}`;
+    return `<div class="roadmap-item" data-issue="${issue.number}" data-comments-url="${issue.comments_url || ''}" onclick="toggleIssue(this, event)">
+      <div class="roadmap-item-header">
+        <div class="roadmap-item-title-row">
+          <div class="roadmap-item-title">${esc(issue.title)}</div>
+          <a class="roadmap-item-gh-link" href="${esc(ghUrl)}" target="_blank" rel="noopener" title="Open on GitHub">↗</a>
+        </div>
+        <div class="roadmap-item-meta">
+          ${labels}
+          <span class="roadmap-item-date">${dateLabel}</span>
+        </div>
       </div>
-      ${noteHtml}
+      <div class="roadmap-item-expand">
+        ${userText ? `<div class="roadmap-item-body"><span class="roadmap-item-body-raw">${esc(userText)}</span>${meta ? `<br><span class="roadmap-item-body-meta">${esc(meta)}</span>` : ''}</div>` : '<div class="roadmap-item-body" style="color:var(--ink-3);font-style:italic">No description.</div>'}
+        <div class="roadmap-comments" id="comments-${issue.number}"><div class="roadmap-comments-loading">Loading comments…</div></div>
+      </div>
     </div>`;
   }).join('');
 }
 
-function extractDevNote(body) {
-  // Pull the last non-empty line after "---" separator (our dev note convention)
-  const parts = body.split('---');
-  if (parts.length < 2) return '';
-  // The content before --- is the user's text; look for a "Dev note:" line if present
-  const meta = parts[parts.length - 1];
-  const noteMatch = meta.match(/Dev note:\s*(.+)/i);
-  return noteMatch ? noteMatch[1].trim() : '';
+async function toggleIssue(el, event) {
+  if (event.target.closest('a')) return; // don't intercept the ↗ link
+  const wasOpen = el.classList.contains('open');
+  // close all others
+  document.querySelectorAll('.roadmap-item.open').forEach(i => i.classList.remove('open'));
+  if (wasOpen) return;
+  el.classList.add('open');
+
+  const commentsUrl = el.dataset.commentsUrl;
+  const issueNum = el.dataset.issue;
+  const commentsEl = document.getElementById(`comments-${issueNum}`);
+  if (!commentsUrl || commentsEl.dataset.loaded) return;
+
+  try {
+    const res = await fetch(commentsUrl);
+    const comments = await res.json();
+    commentsEl.dataset.loaded = '1';
+    if (!Array.isArray(comments) || !comments.length) {
+      commentsEl.innerHTML = '<div class="roadmap-comments-loading">No developer comments yet.</div>';
+      return;
+    }
+    commentsEl.innerHTML = comments.map(c => `
+      <div class="roadmap-comment">
+        <div>${esc(c.body)}</div>
+        <div class="roadmap-comment-meta">${relativeDate(c.created_at)}</div>
+      </div>`).join('');
+  } catch {
+    commentsEl.innerHTML = '<div class="roadmap-comments-loading">Couldn\'t load comments.</div>';
+  }
 }
 
 async function loadRoadmap() {
