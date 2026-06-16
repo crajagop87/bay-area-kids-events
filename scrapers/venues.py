@@ -9,8 +9,11 @@ import hashlib
 import html as html_mod
 import logging
 from datetime import datetime, timedelta, timezone
+from zoneinfo import ZoneInfo
 import requests
 from bs4 import BeautifulSoup
+
+PACIFIC = ZoneInfo("America/Los_Angeles")
 
 log = logging.getLogger(__name__)
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; KidsEventsScraper/1.0)"}
@@ -386,11 +389,14 @@ def scrape_libcal_ics(domain: str, cid: int, city: str, county: str,
         s = s.strip()
         try:
             if s.endswith("Z"):
-                return datetime.strptime(s, "%Y%m%dT%H%M%SZ").replace(tzinfo=timezone.utc)
+                # UTC — convert to Pacific so fmt_time (which reads raw hours) shows local time
+                dt_utc = datetime.strptime(s, "%Y%m%dT%H%M%SZ").replace(tzinfo=timezone.utc)
+                dt_pt = dt_utc.astimezone(PACIFIC)
+                return dt_pt.replace(tzinfo=timezone.utc)
             elif "T" in s:
                 dt = datetime.strptime(s[:15], "%Y%m%dT%H%M%S")
-                # LibCal stores times in local time — assume Pacific (UTC-7 summer)
-                return dt.replace(tzinfo=timezone(timedelta(hours=-7)))
+                # LibCal naive local times — treat as Pacific
+                return dt.replace(tzinfo=timezone.utc)
             else:
                 return datetime.strptime(s[:8], "%Y%m%d").replace(tzinfo=timezone.utc)
         except Exception:
@@ -438,16 +444,6 @@ def scrape_libcal_ics(domain: str, cid: int, city: str, county: str,
     log.info("%s: %d kid events from ICS", source_name, len(events))
     return events
 
-
-def scrape_mountain_view_library(window_days: int = 45) -> list[dict]:
-    return scrape_libcal_ics(
-        domain="mountainview.libcal.com",
-        cid=8800,
-        city="Mountain View",
-        county="Santa Clara",
-        source_name="Mountain View Public Library",
-        window_days=window_days,
-    )
 
 
 def scrape_midpeninsula_openspace(window_days: int = 45) -> list[dict]:
@@ -675,8 +671,6 @@ VENUE_SCRAPERS = [
     ("Hidden Villa Farm", scrape_hidden_villa),
     # Peninsula / open space
     ("Midpeninsula Open Space", scrape_midpeninsula_openspace),
-    # LibCal libraries
-    ("Mountain View Public Library", scrape_mountain_view_library),
     # SF / East Bay (expanded)
     ("Exploratorium", scrape_exploratorium),
     ("Oakland Children's Fairyland", scrape_fairyland),
