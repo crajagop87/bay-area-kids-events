@@ -1970,12 +1970,6 @@ function openMapModal() {
     if (!_map) {
       _map = L.map('map-container', { zoomControl: true, attributionControl: false, tap: false });
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 14 }).addTo(_map);
-      MAP_CITIES.forEach(({ n, lat, lng }) => {
-        L.marker([lat, lng], {
-          icon: L.divIcon({ className: 'city-label', html: `<span>${n}</span>`, iconSize: [100,16], iconAnchor: [50,8] }),
-          interactive: false,
-        }).addTo(_map);
-      });
     }
     _map.invalidateSize();
     _mapPresetCenters = _getCenters();
