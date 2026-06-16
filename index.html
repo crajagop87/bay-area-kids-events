@@ -91,6 +91,17 @@ body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-
 .filter-row { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
 .filter-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-3); min-width: 58px; }
 
+.search-toggle-row { padding: 0; margin-bottom: -4px; }
+.search-toggle-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-family: var(--sans); font-size: 0.72rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--ink-3); background: transparent; border: none;
+  padding: 2px 0; cursor: pointer; transition: color 0.12s;
+}
+.search-toggle-btn:hover, .search-toggle-btn.active { color: var(--accent); }
+.search-toggle-btn svg { transition: transform 0.15s; }
+.search-toggle-btn.active svg { transform: rotate(90deg); }
 .search-wrap { position: relative; flex: 1; min-width: 200px; }
 .search-wrap svg { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--ink-3); }
 #search {
@@ -250,6 +261,7 @@ input[type="date"]:focus { border-color: #fb923c; }
 .badge-camp  { background: #ede9fe; color: #5b21b6; }
 
 .card-venue { font-size: 0.76rem; color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.card-venue-city { color: var(--ink-3); opacity: 0.7; }
 
 .card-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 5px; }
 .tag-chip {
@@ -300,6 +312,14 @@ input[type="date"]:focus { border-color: #fb923c; }
 }
 .map-apply-btn:hover { background: #9a3412; }
 .map-apply-btn:active { transform: scale(0.92); }
+.map-zip-btn {
+  font-family: var(--sans); font-size: 0.75rem; font-weight: 700;
+  background: transparent; border: 1.5px solid var(--border);
+  border-radius: 99px; padding: 5px 13px; cursor: pointer; color: var(--ink-2);
+  transition: background 0.12s, border-color 0.12s;
+}
+.map-zip-btn.active { background: #eff6ff; border-color: #3b82f6; color: #1d4ed8; }
+.map-zip-btn:hover { border-color: #3b82f6; color: #1d4ed8; }
 /* Sub-tabs (Developer pane) */
 .modal-subtabs .modal-tab { font-size: 0.72rem; padding: 5px 12px; }
 /* Changelog */
@@ -910,13 +930,21 @@ footer a { color: var(--ink-3); text-decoration: underline; }
 <div class="filters">
   <div class="filter-card">
 
-    <div class="filter-row">
-      <div class="search-wrap">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <input id="search" type="search" placeholder="Try: outdoors, storytime, free, animals, crafts…" autocomplete="off">
-      </div>
+    <div class="filter-row search-toggle-row">
+      <button class="search-toggle-btn" id="search-toggle-btn" onclick="toggleSearchBar()" aria-expanded="false">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        Search
+      </button>
     </div>
-    <div class="search-tags" id="search-tags" style="display:none"></div>
+    <div id="search-collapsible" style="display:none">
+      <div class="filter-row">
+        <div class="search-wrap">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input id="search" type="search" placeholder="Try: outdoors, storytime, free, animals, crafts…" autocomplete="off">
+        </div>
+      </div>
+      <div class="search-tags" id="search-tags" style="display:none"></div>
+    </div>
 
     <div class="filter-row">
       <span class="filter-label">When</span>
@@ -996,7 +1024,7 @@ footer a { color: var(--ink-3); text-decoration: underline; }
 </footer>
 
 <script>
-const FE_VERSION = '2026.0616.7';
+const FE_VERSION = '2026.0616.11';
 const IS_LOCAL = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
 const JSON_URL   = IS_LOCAL ? '/output/events.json'  : 'https://raw.githubusercontent.com/crajagop87/bay-area-kids-events/main/output/events.json';
 const HEALTH_URL = IS_LOCAL ? '/output/health.json'  : 'https://raw.githubusercontent.com/crajagop87/bay-area-kids-events/main/output/health.json';
@@ -1007,6 +1035,7 @@ let healthData = {};
 let activePreset = 'Palo Alto';
 let activeRadius = 5; // miles
 let customCenter = null; // [lat, lng] when user types a city/zip
+let customSuburb = '';  // suburb name resolved from map geocoding
 let activeAgeMin = 0;
 let activeAgeMax = 5;
 let activeWhen = 'next-7';
@@ -1373,7 +1402,13 @@ function updatePresetStyles() {
     if (p === activePreset) b.classList.add(p === 'all' ? 'active-all' : 'active');
   });
   const customBtn = document.getElementById('custom-area-btn');
-  if (customBtn) customBtn.classList.toggle('active', activePreset === 'custom');
+  if (customBtn) {
+    customBtn.classList.toggle('active', activePreset === 'custom');
+    customBtn.textContent = (activePreset === 'custom' && customSuburb) ? `📍 ${customSuburb}` : '📍 Custom';
+  }
+  // Feed suburb into the hidden span the sticky bar reads from
+  const locLabel = document.getElementById('location-chip-label');
+  if (locLabel) locLabel.textContent = customSuburb || 'Custom';
   const radiusRow = document.getElementById('radius-row');
   if (radiusRow) radiusRow.classList.toggle('visible', activePreset !== 'all');
   updateRadiusDisplay();
@@ -1512,7 +1547,7 @@ document.querySelectorAll('[data-when]').forEach(b => {
   });
 });
 
-document.getElementById('search').addEventListener('input', render);
+document.getElementById('search').addEventListener('input', () => { toggleSearchBar(true); render(); });
 document.getElementById('search').addEventListener('keydown', e => {
   if (e.key === 'Enter') {
     const val = e.target.value.trim();
@@ -1689,14 +1724,12 @@ function render() {
   }, 140);
 }
 
+const _ptFmt = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Los_Angeles', hour: 'numeric', minute: '2-digit', hour12: true });
 function fmt_time(iso) {
   if (!iso) return '';
   const d = new Date(iso);
   if (isNaN(d)) return '';
-  const str = d.toLocaleTimeString('en-US', {
-    timeZone: 'America/Los_Angeles',
-    hour: 'numeric', minute: '2-digit', hour12: true
-  });
+  const str = _ptFmt.format(d);
   // Hide midnight (date-only events stored as T00:00:00Z)
   if (str.startsWith('12:00') && str.endsWith('AM')) return '';
   return str;
@@ -1716,7 +1749,9 @@ function card(e, undated = false) {
     ? `<a href="${esc(e.ticket_url)}" target="_blank" rel="noopener">${esc(e.title)} ↗</a>`
     : esc(e.title);
 
-  const venue = (e.venue && e.venue !== e.city) ? e.venue : (e.city || '');
+  const venueBase = (e.venue && e.venue !== e.city) ? e.venue : (e.city || '');
+  const cityLabel = e.city && !venueBase.toLowerCase().includes(e.city.toLowerCase()) ? e.city : '';
+  const venueHtml = venueBase ? `${esc(venueBase)}${cityLabel ? `<span class="card-venue-city"> | ${esc(cityLabel)}</span>` : ''}` : '';
 
   const warnHtml = e.ticket_status && !['free walk-up','walk-up or reserve'].includes(e.ticket_status)
     ? `<span class="badge badge-warn">${esc(e.ticket_status)}</span>` : '';
@@ -1733,14 +1768,12 @@ function card(e, undated = false) {
       ${e.is_camp ? '<span class="badge badge-camp">camp</span>' : ''}
       ${warnHtml}
     </div>
-    ${venue ? `<div class="card-venue">${esc(venue)}</div>` : ''}
+    ${venueHtml ? `<div class="card-venue">${venueHtml}</div>` : ''}
   </div>`;
 }
 
 function esc(s) {
-  const d = document.createElement('div');
-  d.textContent = String(s);
-  return d.innerHTML;
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
 // ── Emoji map (priority order — first match wins) ─────────────────────────
@@ -1867,6 +1900,15 @@ function showSmartEmpty() {
 function emptySugg(i) { window._emptySuggs[i]?.fn(); }
 
 // ── Feedback modal tab switching ───────────────────────────────────────────
+function toggleSearchBar(forceOpen) {
+  const el = document.getElementById('search-collapsible');
+  const btn = document.getElementById('search-toggle-btn');
+  if (!el) return;
+  const open = forceOpen !== undefined ? forceOpen : el.style.display === 'none';
+  el.style.display = open ? '' : 'none';
+  if (btn) { btn.classList.toggle('active', open); btn.setAttribute('aria-expanded', open); }
+}
+
 function switchInfoTab(tab) {
   ['about','sources','filters','design'].forEach(t => {
     document.getElementById(`info-tab-${t}`).classList.toggle('active', t === tab);
@@ -1886,6 +1928,41 @@ function switchDevTab(tab) {
 // Format: { date, ver, summary, items[] }
 // "date" groups into a daily release header.
 const DEV_CHANGELOG = [
+  {
+    date: '2026-06-16', ver: 'v2026.0616.11',
+    summary: 'Remove zip overlay UI; clean up pending changes',
+    items: [
+      'Zip overlay button removed from map footer (work-in-progress, deferred)',
+      '_drawZipOverlay() calls removed from drag handlers to keep map clean',
+    ]
+  },
+  {
+    date: '2026-06-16', ver: 'v2026.0616.10',
+    summary: 'Search bar collapsed by default + custom suburb in area button & sticky bar',
+    items: [
+      'Search bar hidden behind expandable toggle button (collapsed on load)',
+      'Custom area button label updates to "📍 <suburb>" after applying map radius',
+      'Sticky scroll bar location chip shows suburb name (no "Custom" prefix) when custom radius active',
+      'customSuburb global carries suburb from map modal → button → sticky bar',
+    ]
+  },
+  {
+    date: '2026-06-16', ver: 'v2026.0616.9',
+    summary: 'Venue + city suffix on event cards',
+    items: [
+      'Cards now show "Venue | City" (e.g. "Hiller Aviation Museum | San Carlos")',
+      'City suffix skipped when venue name already contains city, or when venue === city',
+      'Muted color for city suffix via .card-venue-city class',
+    ]
+  },
+  {
+    date: '2026-06-16', ver: 'v2026.0616.8',
+    summary: 'Performance fixes: esc() and Intl.DateTimeFormat',
+    items: [
+      'esc() rewritten to use string .replace() instead of DOM createElement — removes GC pressure per card render',
+      '_ptFmt cached as module-level Intl.DateTimeFormat instance; fmt_time() no longer re-instantiates on every call',
+    ]
+  },
   {
     date: '2026-06-16', ver: 'v2026.0616.6',
     summary: 'Dynamic suburb / city label in map modal',
@@ -2309,7 +2386,7 @@ function _renderMapCircles(fitView = true) {
       const { lat: la, lng: ln } = e.target.getLatLng();
       mapTempCenter = [la, ln];
       _syncMapCustomChip();
-      _scheduleSuburbUpdate(la, ln);
+      _scheduleSuburbUpdate(la, ln, true);
     });
 
     return circle;
@@ -2346,9 +2423,9 @@ function resetMapCenter() {
 
 let _suburbTimer = null;
 
-function _scheduleSuburbUpdate(lat, lng) {
+function _scheduleSuburbUpdate(lat, lng, immediate) {
   clearTimeout(_suburbTimer);
-  _suburbTimer = setTimeout(() => _doSuburbFetch(lat, lng), 420);
+  _suburbTimer = setTimeout(() => _doSuburbFetch(lat, lng), immediate ? 0 : 180);
 }
 
 async function _doSuburbFetch(lat, lng) {
@@ -2409,13 +2486,154 @@ function _syncMapRadiusDisplay() {
   });
 }
 
+// ── Zip overlay ──────────────────────────────────────────────────────────────
+const _ZIP_BOUNDS = [
+  { zip:'94301', label:'PA Central',  s:37.425, n:37.462, w:-122.160, e:-122.112 },
+  { zip:'94303', label:'PA North',    s:37.455, n:37.490, w:-122.156, e:-122.098 },
+  { zip:'94306', label:'PA South',    s:37.397, n:37.428, w:-122.155, e:-122.108 },
+  { zip:'94305', label:'Stanford',    s:37.410, n:37.445, w:-122.200, e:-122.152 },
+  { zip:'94304', label:'PA Hills',    s:37.430, n:37.470, w:-122.245, e:-122.195 },
+  { zip:'94025', label:'Menlo Park',  s:37.440, n:37.490, w:-122.215, e:-122.155 },
+  { zip:'94027', label:'Atherton',    s:37.452, n:37.475, w:-122.265, e:-122.210 },
+  { zip:'94028', label:'Portola Vly', s:37.356, n:37.415, w:-122.245, e:-122.185 },
+  { zip:'94022', label:'Los Altos N', s:37.375, n:37.410, w:-122.145, e:-122.090 },
+  { zip:'94024', label:'Los Altos S', s:37.342, n:37.378, w:-122.135, e:-122.070 },
+  { zip:'94040', label:'Mtn View W',  s:37.384, n:37.420, w:-122.100, e:-122.060 },
+  { zip:'94041', label:'Mtn View C',  s:37.382, n:37.412, w:-122.060, e:-122.030 },
+  { zip:'94043', label:'Mtn View E',  s:37.400, n:37.430, w:-122.030, e:-122.000 },
+  { zip:'94061', label:'RWC South',   s:37.455, n:37.490, w:-122.230, e:-122.148 },
+  { zip:'94062', label:'RWC',         s:37.462, n:37.498, w:-122.260, e:-122.205 },
+];
+
+let _zipOverlayOn = false;
+let _zipLayers = [];
+
+function _haversineM(lat1,lng1,lat2,lng2){
+  const R=6371000,dL=(lat2-lat1)*Math.PI/180,dG=(lng2-lng1)*Math.PI/180;
+  const a=Math.sin(dL/2)**2+Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dG/2)**2;
+  return R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
+}
+
+function _zipIntersectsCircle(z, cLat, cLng, rM) {
+  const clLat = Math.max(z.s, Math.min(z.n, cLat));
+  const clLng = Math.max(z.w, Math.min(z.e, cLng));
+  return _haversineM(cLat, cLng, clLat, clLng) <= rM;
+}
+
+function _clearZipLayers() {
+  _zipLayers.forEach(l => { try { _map.removeLayer(l); } catch(_){} });
+  _zipLayers = [];
+}
+
+// Bay Area ZCTA polygons from US Census Bureau TIGER API (single bounding-box fetch)
+let _zipGeoCache = null; // Map: zip → GeoJSON feature
+let _zipGeoFetching = false;
+
+async function _ensureZipGeo() {
+  if (_zipGeoCache) return _zipGeoCache;
+  // Try sessionStorage first
+  try {
+    const stored = sessionStorage.getItem('zp_tiger_v1');
+    if (stored) { _zipGeoCache = new Map(JSON.parse(stored)); return _zipGeoCache; }
+  } catch(_) {}
+
+  if (_zipGeoFetching) {
+    // Wait for the in-flight fetch
+    await new Promise(res => { const t = setInterval(() => { if (!_zipGeoFetching) { clearInterval(t); res(); } }, 200); });
+    return _zipGeoCache;
+  }
+  _zipGeoFetching = true;
+
+  try {
+    const url = 'https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/PUMA_TAD_TAZ_UGA_ZCTA/MapServer/2/query' +
+      '?geometry=-122.55%2C37.15%2C-121.75%2C37.62' +
+      '&geometryType=esriGeometryEnvelope&spatialRel=esriSpatialRelIntersects' +
+      '&outFields=ZCTA5CE10&f=geojson&geometryPrecision=5&outSR=4326';
+    const r = await fetch(url);
+    const d = await r.json();
+    _zipGeoCache = new Map();
+    (d.features || []).forEach(feat => {
+      const zip = feat.properties?.ZCTA5CE10 || feat.properties?.ZCTA5;
+      if (zip) _zipGeoCache.set(zip, feat.geometry);
+    });
+    try { sessionStorage.setItem('zp_tiger_v1', JSON.stringify([..._zipGeoCache])); } catch(_) {}
+  } catch(e) {
+    _zipGeoCache = new Map(); // empty but non-null so we don't retry on error
+  }
+  _zipGeoFetching = false;
+  return _zipGeoCache;
+}
+
+async function _drawZipOverlay() {
+  _clearZipLayers();
+  if (!_map || !_zipOverlayOn) return;
+  const center = mapTempCenter || (_mapPresetCenters && _mapPresetCenters[0]);
+  if (!center) return;
+  const [cLat, cLng] = center;
+  const rM = mapTempRadius * 1609.34;
+
+  // Show placeholder rects immediately while geo data loads
+  const hitting = _ZIP_BOUNDS.filter(z => _zipIntersectsCircle(z, cLat, cLng, rM));
+  const placeholders = new Map();
+  hitting.forEach(z => {
+    const ph = L.rectangle([[z.s,z.w],[z.n,z.e]], {
+      color:'#3b82f6', weight:1, fillColor:'#3b82f6', fillOpacity:0.10,
+      dashArray:'4 3', interactive:false,
+    });
+    ph.addTo(_map); _zipLayers.push(ph);
+    placeholders.set(z.zip, ph);
+  });
+
+  // Fetch real polygons, replace placeholders
+  const geoMap = await _ensureZipGeo();
+  if (!_zipOverlayOn || !_map) return; // user may have toggled off while loading
+
+  // Render all zip polygons in view — covered ones filled, others faint
+  geoMap.forEach((geom, zip) => {
+    const zBound = _ZIP_BOUNDS.find(z => z.zip === zip);
+    const isHit = zBound ? _zipIntersectsCircle(zBound, cLat, cLng, rM) : false;
+    // Remove placeholder if exists
+    const ph = placeholders.get(zip);
+    if (ph) { try { _map.removeLayer(ph); } catch(_) {} const i = _zipLayers.indexOf(ph); if (i>=0) _zipLayers.splice(i,1); }
+
+    const layer = L.geoJSON(geom, {
+      style: isHit
+        ? { color:'#1d4ed8', weight:1.5, fillColor:'#3b82f6', fillOpacity:0.16, interactive:false }
+        : { color:'#94a3b8', weight:0.5, fillColor:'#94a3b8', fillOpacity:0.03, dashArray:'2 5', interactive:false },
+      interactive:false, pointToLayer:()=>null,
+    });
+    layer.addTo(_map); _zipLayers.push(layer);
+
+    if (isHit) {
+      try {
+        const bounds = layer.getBounds();
+        if (bounds.isValid()) {
+          const icon = L.divIcon({
+            className:'', iconAnchor:[14,5],
+            html:`<span style="font-size:9px;font-weight:800;color:#1e3a8a;text-shadow:0 0 3px #fff,0 0 3px #fff,0 0 3px #fff;white-space:nowrap">${zip}</span>`,
+          });
+          const lbl = L.marker(bounds.getCenter(), { icon, interactive:false });
+          lbl.addTo(_map); _zipLayers.push(lbl);
+        }
+      } catch(_) {}
+    }
+  });
+}
+
+function toggleZipOverlay() {
+  _zipOverlayOn = !_zipOverlayOn;
+  const btn = document.getElementById('map-zip-btn');
+  if (btn) btn.classList.toggle('active', _zipOverlayOn);
+  _drawZipOverlay();
+}
+
 function applyMapSettings() {
   activeRadius = mapTempRadius;
   if (mapTempCenter) {
     customCenter = mapTempCenter;
     activePreset = 'custom';
-    const label = document.getElementById('location-chip-label');
-    if (label) label.textContent = 'Custom';
+    // Capture suburb name from the live map label (already geocoded)
+    customSuburb = (document.getElementById('map-suburb-label')?.textContent || '').trim();
     document.querySelectorAll('[data-preset]').forEach(b => b.classList.remove('active','active-all'));
     updatePresetStyles();
   }
@@ -2429,12 +2647,14 @@ _mapSlider.addEventListener('input', () => {
   mapTempRadius = +_mapSlider.value;
   _syncMapRadiusDisplay();
   _updateMapCircleRadius();
+  _drawZipOverlay();
 });
 document.querySelectorAll('.radius-ticks [data-map-snap]').forEach(el => {
   el.addEventListener('click', () => {
     mapTempRadius = +el.dataset.mapSnap;
     _syncMapRadiusDisplay();
     _updateMapCircleRadius();
+    _drawZipOverlay();
   });
 });
 positionRadiusTicks('#map-modal', 'map-radius-slider', 'mapSnap');
