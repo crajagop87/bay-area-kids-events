@@ -55,7 +55,7 @@ def sort_events(events: list[dict]) -> list[dict]:
     return sorted(events, key=sort_key)
 
 
-def main(window_days: int = 16):
+def main(window_days: int = 45):
     OUTPUT_DIR.mkdir(exist_ok=True)
     now = datetime.now(timezone.utc)
     all_events: list[dict] = []
