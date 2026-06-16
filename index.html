@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>What's Going On: Park Parents Edition</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
@@ -24,7 +25,8 @@
   --warn-bg:  #fee2e2; --warn-fg: #991b1b;
   --tag-bg:   #f1ede8; --tag-fg: #57534e;
   --pill-bg:  #f5f0eb;
-  --sans: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
+  --display: 'Bricolage Grotesque', -apple-system, sans-serif;
+  --sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.5; }
@@ -35,6 +37,15 @@ body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-
   border-bottom: 2px solid #fed7aa;
   padding: 1rem 1.75rem 0.9rem;
   margin-bottom: 1.5rem;
+  position: relative;
+  isolation: isolate;
+}
+.header::after {
+  content: '';
+  position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
 }
 .header-inner { max-width: 1040px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
 .header-left { display: flex; align-items: center; gap: 0.75rem; }
@@ -47,7 +58,7 @@ body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-
 }
 .tree-crown { animation: sway 4s ease-in-out infinite; transform-origin: 50% 90%; }
 
-.header h1 { font-family: 'Fredoka One', var(--sans); font-size: 1.5rem; font-weight: 400; color: #9a3412; line-height: 1.2; letter-spacing: 0.01em; }
+.header h1 { font-family: var(--display); font-size: 1.5rem; font-weight: 400; color: #9a3412; line-height: 1.2; letter-spacing: 0.01em; }
 .header h1 span { color: #c2410c; font-size: 0.85rem; font-weight: 600; display: block; margin-top: 1px; }
 
 .header-right { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
@@ -182,7 +193,7 @@ input[type="date"]:focus { border-color: #fb923c; }
   font-size: 0.82rem; color: var(--ink-3); display: flex; align-items: center; gap: 0.35rem;
 }
 .count-num {
-  font-family: 'Fredoka One', var(--sans); font-size: 0.95rem; color: var(--accent);
+  font-family: var(--display); font-size: 0.95rem; color: var(--accent);
   background: #fff7ed; border: 1.5px solid #fed7aa; border-radius: 99px;
   padding: 1px 10px; line-height: 1.5;
 }
@@ -190,11 +201,11 @@ input[type="date"]:focus { border-color: #fb923c; }
 /* ── Date group ── */
 .date-group { max-width: 1040px; margin: 1.75rem auto 0.6rem; padding: 0 1.5rem; }
 .date-group h2 {
-  font-family: 'Fredoka One', var(--sans);
-  font-size: 1rem; font-weight: 400; letter-spacing: 0.03em; color: #92400e;
-  border-top: 3px solid #fed7aa; padding-top: 0.6rem;
+  font-family: var(--display);
+  font-size: 1rem; font-weight: 700; letter-spacing: 0.01em; color: #92400e;
+  border-left: 4px solid #fb923c; padding-left: 0.65rem; margin-left: -0.05rem;
 }
-.date-group.undated h2 { color: var(--ink-3); border-top-color: var(--rule); }
+.date-group.undated h2 { color: var(--ink-3); border-left-color: var(--rule); }
 .group-count {
   display: inline-block; font-size: 0.72rem; font-weight: 700;
   background: #fed7aa; color: #92400e; border-radius: 99px;
@@ -216,9 +227,9 @@ input[type="date"]:focus { border-color: #fb923c; }
   background: var(--bg-card); border: 1.5px solid var(--rule);
   border-radius: 16px; padding: 1rem 1.1rem 0.95rem;
   display: flex; flex-direction: column; gap: 0.35rem;
-  transition: border-color 0.14s, box-shadow 0.14s;
+  transition: border-color 0.14s, box-shadow 0.14s, transform 0.14s;
 }
-.card:hover { border-color: #fb923c; box-shadow: 0 3px 14px rgba(194,65,12,0.09); }
+.card:hover { border-color: #fb923c; box-shadow: 0 6px 18px rgba(194,65,12,0.11); transform: translateY(-2px); }
 .card.undated { background: #f7f6f3; border-color: #e5e2db; }
 .card.undated:hover { border-color: var(--ink-3); box-shadow: none; }
 .card.undated .card-title a { color: var(--ink-2); border-bottom-color: #e5e2db; }
@@ -243,7 +254,8 @@ input[type="date"]:focus { border-color: #fb923c; }
 .card-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 5px; }
 .tag-chip {
   font-size: 0.65rem; font-weight: 600; padding: 3px 9px; border-radius: 99px;
-  background: var(--tag-bg); color: var(--tag-fg); white-space: nowrap;
+  background: linear-gradient(135deg, var(--tag-bg) 0%, #ebe5de 100%);
+  color: var(--tag-fg); white-space: nowrap;
 }
 
 /* ── Card emoji ── */
