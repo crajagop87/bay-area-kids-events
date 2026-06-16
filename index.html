@@ -456,6 +456,14 @@ footer a { color: var(--ink-3); text-decoration: underline; }
 .roadmap-empty  { font-size: 0.8rem; color: var(--ink-3); text-align: center; padding: 1.5rem 0; }
 .roadmap-loading { font-size: 0.8rem; color: var(--ink-3); text-align: center; padding: 1rem 0; }
 
+/* ── Info modal ── */
+.info-list {
+  list-style: none; padding: 0; display: flex; flex-direction: column; gap: 6px;
+}
+.info-list li { font-size: 0.8rem; color: var(--ink-2); line-height: 1.5; padding-left: 1em; position: relative; }
+.info-list li::before { content: '·'; position: absolute; left: 0; color: var(--accent); font-weight: 900; }
+.info-list code { background: var(--tag-bg); padding: 1px 5px; border-radius: 4px; font-size: 0.75rem; }
+
 /* ── Feedback modal ── */
 .feedback-textarea {
   width: 100%; min-height: 100px; font-family: var(--sans); font-size: 0.82rem;
@@ -563,38 +571,110 @@ footer a { color: var(--ink-3); text-decoration: underline; }
 
 <!-- ── Info modal ── -->
 <div class="modal-overlay" id="info-modal">
-  <div class="modal">
+  <div class="modal" style="max-width:520px">
     <button class="modal-close" onclick="closeModal('info-modal')">✕</button>
-    <h2>About this dashboard</h2>
-    <div class="modal-section">
-      <h3>About</h3>
-      <p>Built by a Palo Alto parent who wanted a faster way to find things to do with the kids. A volunteer project, made for busy families.</p>
-      <p style="margin-top:4px">Questions or ideas? Hit the <strong>Feedback</strong> button.</p>
+    <div class="modal-tabs">
+      <button class="modal-tab active" id="info-tab-about"   onclick="switchInfoTab('about')">👋 About</button>
+      <button class="modal-tab"        id="info-tab-filters" onclick="switchInfoTab('filters')">🔍 How it works</button>
+      <button class="modal-tab"        id="info-tab-design"  onclick="switchInfoTab('design')">🎨 Design notes</button>
     </div>
-    <div class="modal-section">
-      <h3>How filters work</h3>
-      <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:6px">
-        <li><strong>Today</strong> — events happening on today's date only.</li>
-        <li><strong>This weekend</strong> — Saturday and Sunday of the current week.</li>
-        <li><strong>Next weekend</strong> — the following Saturday and Sunday.</li>
-        <li><strong>Custom</strong> — pick any date range you like.</li>
-        <li><strong>Palo Alto</strong> — centered on Palo Alto; radius slider controls how far out (5–40 miles).</li>
-        <li><strong>SF / Oakland</strong> — events within the chosen radius of either San Francisco or Oakland city centers.</li>
-        <li><strong>East Bay</strong> — dual circles centered on Fremont and Oakland; radius slider controls how far from either center.</li>
-        <li><strong>All areas</strong> — no location filter; shows everything.</li>
-        <li><strong>Radius slider</strong> — snap between 5, 10, 20, and 40 miles from the selected center.</li>
-        <li><strong>Free only</strong> — filters to events with no admission cost. Some free events still require registration.</li>
-      </ul>
+
+    <!-- About pane -->
+    <div id="info-pane-about">
+      <div class="modal-section">
+        <p>Built by a Palo Alto parent who wanted a faster way to find things to do with the kids — no newsletter subscriptions, no app downloads, just a clean feed of what's actually happening nearby.</p>
+        <p style="margin-top:6px">A volunteer project. Questions or ideas? Hit <strong>Feedback</strong>.</p>
+      </div>
+      <div class="modal-section">
+        <h3>Sources <span id="info-source-summary"></span></h3>
+        <ul id="info-sources"></ul>
+      </div>
+      <div class="modal-section">
+        <h3>Last scraped</h3>
+        <p>Events are pulled every day at 6am PT from public library systems, Eventbrite, and venue websites. The timestamp in the header shows when the last pull completed.</p>
+      </div>
+      <div class="modal-version" id="info-version"></div>
     </div>
-    <div class="modal-section">
-      <h3>Last scraped</h3>
-      <p>Events are automatically pulled every day at 6am PT from public library systems, Eventbrite, venue websites, and Bay Area family blogs. The timestamp in the header shows when the last pull completed.</p>
+
+    <!-- How it works pane -->
+    <div id="info-pane-filters" style="display:none">
+      <div class="modal-section">
+        <h3>When</h3>
+        <ul class="info-list">
+          <li><strong>All</strong> — no date filter; shows everything in the scraped window.</li>
+          <li><strong>Today</strong> — events happening on today's date only.</li>
+          <li><strong>Next week</strong> — rolling 7-day window from today.</li>
+          <li><strong>Custom</strong> — pick a start and end date. End date can't be set before start date.</li>
+        </ul>
+      </div>
+      <div class="modal-section">
+        <h3>Where</h3>
+        <ul class="info-list">
+          <li><strong>Palo Alto</strong> — haversine distance filter centered on Palo Alto. Default radius 5 mi.</li>
+          <li><strong>SF / Oakland</strong> — dual circles: events within radius of either SF or Oakland city centers.</li>
+          <li><strong>All areas</strong> — no location filter; every scraped event is shown.</li>
+          <li><strong>Radius slider</strong> — drag freely 1–40 mi, or snap to 5 / 10 / 20 / max tick marks. Updates live. The 🗺 Map button shows the coverage circle visually; radius set in the map transfers back when you tap "Use this radius."</li>
+        </ul>
+      </div>
+      <div class="modal-section">
+        <h3>Age</h3>
+        <ul class="info-list">
+          <li>Dual-handle slider for ages 0–18. Events are shown if their inferred age range overlaps your selection at all — not just exact matches.</li>
+          <li>Age groups are inferred from event titles and descriptions using keyword patterns (e.g. "toddler", "ages 3–5", "elementary").</li>
+        </ul>
+      </div>
+      <div class="modal-section">
+        <h3>Search &amp; tags</h3>
+        <ul class="info-list">
+          <li>The search bar filters by title, venue, and tags simultaneously.</li>
+          <li>Clicking a tag chip on any card adds it as an active filter — orange pills appear above the search bar. Click a pill to remove it.</li>
+          <li>Multiple active tags are AND-filtered (event must match all of them).</li>
+        </ul>
+      </div>
     </div>
-    <div class="modal-section">
-      <h3>Sources <span id="info-source-summary"></span></h3>
-      <ul id="info-sources"></ul>
+
+    <!-- Design notes pane -->
+    <div id="info-pane-design" style="display:none">
+      <div class="modal-section">
+        <h3>Philosophy</h3>
+        <ul class="info-list">
+          <li>No login, no tracking, no ads. One URL, shareable with filter state encoded in query params.</li>
+          <li>Static frontend served from GitHub Pages — zero server cost, zero maintenance surface.</li>
+          <li>Python scraper runs daily on GitHub Actions and writes a single <code>events.json</code> — the page just fetches that.</li>
+        </ul>
+      </div>
+      <div class="modal-section">
+        <h3>UX choices</h3>
+        <ul class="info-list">
+          <li>Defaults to Palo Alto / 5 mi / ages 0–5 / next 7 days — the most common use case, not a blank slate.</li>
+          <li>Filter state persists in localStorage so returning visits remember your preferences. Sharing a URL snapshots the current state via query params.</li>
+          <li>Cards fade out before re-rendering on filter change — avoids the jarring pop of immediate replacement.</li>
+          <li>Radius is a continuous slider (not fixed chips) because families think in "how far am I willing to drive," not preset buckets.</li>
+          <li>Map modal shows coverage circle live as you drag — makes radius feel tangible rather than abstract.</li>
+          <li>Tag chips on cards are clickable filters — discovery-led search, not just keyword search.</li>
+          <li>Clicking the title resets all filters and returns to the default view.</li>
+        </ul>
+      </div>
+      <div class="modal-section">
+        <h3>Visual design</h3>
+        <ul class="info-list">
+          <li>Fredoka One for the header wordmark — playful but legible. Nunito for body — warm, rounded, family-appropriate.</li>
+          <li>Warm off-white background (<code>#fdf8f3</code>) instead of pure white — easier on the eyes for browsing lists.</li>
+          <li>Orange accent (<code>#c2410c</code>) throughout — energetic but not garish. Free events get a green left-border; paid get orange.</li>
+          <li>Skeleton shimmer on load instead of a spinner — communicates structure before content arrives.</li>
+          <li>No emoji bounce animations — they were distracting. Hover just adds a subtle glow behind the emoji.</li>
+        </ul>
+      </div>
+      <div class="modal-section">
+        <h3>Data &amp; sourcing</h3>
+        <ul class="info-list">
+          <li>Adult-noise filter strips wine tastings, networking events, comedy shows, and financial seminars before events ever reach the frontend.</li>
+          <li>Age groups inferred by regex chain — babies → toddlers → preschool → kids → teens → family, with numeric range support.</li>
+          <li>Eventbrite searched across 30+ Peninsula and Bay Area cities; deduped by title + date + city hash.</li>
+          <li>BiblioCommons JSON API used for library events — filters to children/family audience IDs before storing.</li>
+        </ul>
+      </div>
     </div>
-    <div class="modal-version" id="info-version"></div>
   </div>
 </div>
 
@@ -665,7 +745,7 @@ footer a { color: var(--ink-3); text-decoration: underline; }
     </div>
     <div class="header-right">
       <span class="header-meta" id="meta">loading…</span>
-      <button class="info-btn" onclick="openModal('info-modal')">Info</button>
+      <button class="info-btn" onclick="openModal('info-modal')">About</button>
       <button class="feedback-btn" onclick="openModal('feedback-modal')">Feedback</button>
     </div>
   </div>
@@ -1575,6 +1655,13 @@ function showSmartEmpty() {
 function emptySugg(i) { window._emptySuggs[i]?.fn(); }
 
 // ── Feedback modal tab switching ───────────────────────────────────────────
+function switchInfoTab(tab) {
+  ['about','filters','design'].forEach(t => {
+    document.getElementById(`info-tab-${t}`).classList.toggle('active', t === tab);
+    document.getElementById(`info-pane-${t}`).style.display = t === tab ? '' : 'none';
+  });
+}
+
 function switchFeedbackTab(tab) {
   document.getElementById('fb-tab-feedback').classList.toggle('active', tab === 'feedback');
   document.getElementById('fb-tab-roadmap').classList.toggle('active', tab === 'roadmap');
