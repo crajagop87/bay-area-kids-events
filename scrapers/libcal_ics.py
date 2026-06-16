@@ -11,9 +11,7 @@ import logging
 import re
 import time
 from datetime import datetime, timedelta, timezone
-from zoneinfo import ZoneInfo
-
-PACIFIC = ZoneInfo("America/Los_Angeles")
+from scrapers.utils import ensure_utc
 
 import requests
 
@@ -124,23 +122,14 @@ def _parse_ics_text(ics_text: str) -> list[dict]:
         if dtstart:
             val = dtstart.dt
             if hasattr(val, "hour"):
-                if val.tzinfo is None:
-                    val = val.replace(tzinfo=PACIFIC)
-                # Convert to Pacific so fmt_time (which reads raw hours) shows local time.
-                # All other scrapers store local PT hours with a dummy +00:00 suffix;
-                # we follow the same convention so display is consistent.
-                val_pt = val.astimezone(PACIFIC)
-                start_dt = val_pt.replace(tzinfo=timezone.utc)
+                start_dt = ensure_utc(val)
             else:
                 start_dt = datetime(val.year, val.month, val.day, tzinfo=timezone.utc)
 
         if dtend:
             val = dtend.dt
             if hasattr(val, "hour"):
-                if val.tzinfo is None:
-                    val = val.replace(tzinfo=PACIFIC)
-                val_pt = val.astimezone(PACIFIC)
-                end_dt = val_pt.replace(tzinfo=timezone.utc)
+                end_dt = ensure_utc(val)
             else:
                 end_dt = datetime(val.year, val.month, val.day, tzinfo=timezone.utc)
 

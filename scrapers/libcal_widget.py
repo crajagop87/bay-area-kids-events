@@ -143,11 +143,11 @@ def _parse_datetime_text(dt_text: str) -> tuple:
         start_dt = base
         end_dt = None
 
-    # Convert to UTC-with-local-hours convention (same as other scrapers)
+    # Convert Pacific-aware times to true UTC
     if start_dt:
-        start_dt = start_dt.replace(tzinfo=timezone.utc)
+        start_dt = start_dt.astimezone(timezone.utc)
     if end_dt:
-        end_dt = end_dt.replace(tzinfo=timezone.utc)
+        end_dt = end_dt.astimezone(timezone.utc)
 
     return start_dt, end_dt
 
@@ -204,9 +204,8 @@ def _parse_widget_html(html: str, source: dict, now: datetime, cutoff: datetime)
         start_dt, end_dt = _parse_datetime_text(dt_text)
 
         if start_dt:
-            # Filter to requested time window
-            start_utc = start_dt.replace(tzinfo=timezone.utc)
-            if start_utc < now or start_utc > cutoff:
+            # Filter to requested time window (start_dt is already UTC after _parse_datetime_text)
+            if start_dt < now or start_dt > cutoff:
                 continue
 
         # Filter to kids/family content

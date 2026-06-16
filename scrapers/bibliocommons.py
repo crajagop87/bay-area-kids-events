@@ -9,6 +9,7 @@ import re
 import hashlib
 import logging
 from datetime import datetime, timedelta, timezone
+from scrapers.utils import local_to_utc
 import requests
 from scrapers.tagger import ADULT_NOISE
 
@@ -105,17 +106,13 @@ def scrape_library(lib: dict, window_days: int = 16) -> list[dict]:
 
             start_raw = defn.get("start", "")
             end_raw = defn.get("end", "")
-            # BiblioCommons returns naive local times (America/Los_Angeles) — store as-is
+            # BiblioCommons returns naive local Pacific times — convert to true UTC
             try:
-                start_dt = datetime.fromisoformat(start_raw)
-                if start_dt.tzinfo is None:
-                    start_dt = start_dt.replace(tzinfo=timezone.utc)  # placeholder; display layer reads raw ISO
+                start_dt = local_to_utc(datetime.fromisoformat(start_raw))
             except Exception:
                 start_dt = None
             try:
-                end_dt = datetime.fromisoformat(end_raw)
-                if end_dt.tzinfo is None:
-                    end_dt = end_dt.replace(tzinfo=timezone.utc)
+                end_dt = local_to_utc(datetime.fromisoformat(end_raw)) if end_raw else None
             except Exception:
                 end_dt = None
 

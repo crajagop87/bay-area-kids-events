@@ -646,8 +646,12 @@ footer a { color: var(--ink-3); text-decoration: underline; }
         <p style="margin-top:6px">A volunteer project. Questions or ideas? Hit <strong>Feedback</strong>.</p>
       </div>
       <div class="modal-section">
-        <h3>Last scraped</h3>
-        <p>Events are pulled every day at 6 am PT from public library systems, Eventbrite, and venue websites. The timestamp in the header shows when the last pull completed.</p>
+        <h3>Coverage</h3>
+        <p>Events within ~20 miles of Palo Alto, pulled from public library systems (BiblioCommons + LibCal), Eventbrite, local aggregators (Funcheap, Bay Area Kid Fun, 510 Families), and specific venues (Hidden Villa, Hiller Aviation, Cantor Arts, Exploratorium, Palo Alto Junior Museum, CuriOdyssey, Midpeninsula Open Space). New: Sunnyvale Public Library and San Mateo Public Library via LibCal widget.</p>
+      </div>
+      <div class="modal-section">
+        <h3>Scrape schedule</h3>
+        <p>Events are pulled every day at 6 am PT. The timestamp in the header shows when the last pull completed.</p>
       </div>
       <div class="modal-version" id="info-version"></div>
     </div>
@@ -706,11 +710,10 @@ footer a { color: var(--ink-3); text-decoration: underline; }
         </ul>
       </div>
       <div class="modal-section">
-        <h3>Search &amp; tags</h3>
+        <h3>Search</h3>
         <ul class="info-list">
-          <li>The search bar filters by title, venue, and tags simultaneously.</li>
-          <li>Clicking a tag chip on any card adds it as an active filter — orange pills appear above the search bar. Click a pill to remove it.</li>
-          <li>Multiple active tags are AND-filtered (event must match all of them).</li>
+          <li>The search bar filters by title, venue, city, and tags simultaneously — tags are indexed but not shown on cards.</li>
+          <li>Try: "storytime", "science", "free", "farm", "ice cream", "music", "drop-in".</li>
         </ul>
       </div>
     </div>
@@ -761,8 +764,10 @@ footer a { color: var(--ink-3); text-decoration: underline; }
           <li>Adult-noise filter strips wine tastings, networking events, comedy shows, and financial seminars before events reach the frontend.</li>
           <li>Age groups inferred by regex chain — babies → toddlers → preschool → kids → teens → family, with numeric range support (e.g. "ages 3–5").</li>
           <li>Eventbrite scraped across 30+ Peninsula and Bay Area cities; deduped by title + date + city hash.</li>
-          <li>BiblioCommons JSON gateway API covers Palo Alto, San Mateo County, Santa Clara County, San Jose, SFPL, and East Bay systems.</li>
-          <li>Midpeninsula Open Space: table-scraper paginating youth-family events.</li>
+          <li>BiblioCommons API covers Palo Alto, SMCL, SCCL, SJPL, and East Bay systems. LibCal ICS covers Mountain View. LibCal widget covers Sunnyvale and San Mateo City.</li>
+          <li>All datetimes stored as true UTC; displayed in America/Los_Angeles via Intl.DateTimeFormat. A post-scrape sanity check flags any event with a Pacific start time between 1–5 AM as a likely timezone error.</li>
+          <li>Tags use a closed canonical taxonomy (CANONICAL_TAGS in tagger.py) + SYNONYM_MAP to prevent drift. Tags are indexed for search but hidden from card UI.</li>
+          <li>To revert to a previous UX: <code>git checkout &lt;hash&gt; -- index.html</code>. Named UX snapshots: <code>git tag -l 'ux/*'</code>.</li>
         </ul>
       </div>
     </div>
@@ -1646,11 +1651,15 @@ function render() {
 
 function fmt_time(iso) {
   if (!iso) return '';
-  const m = iso.match(/T(\d{2}):(\d{2})/);
-  if (!m) return '';
-  const h = parseInt(m[1]), min = m[2];
-  if (h === 0 && min === '00') return '';
-  return `${h % 12 || 12}:${min} ${h >= 12 ? 'PM' : 'AM'}`;
+  const d = new Date(iso);
+  if (isNaN(d)) return '';
+  const str = d.toLocaleTimeString('en-US', {
+    timeZone: 'America/Los_Angeles',
+    hour: 'numeric', minute: '2-digit', hour12: true
+  });
+  // Hide midnight (date-only events stored as T00:00:00Z)
+  if (str.startsWith('12:00') && str.endsWith('AM')) return '';
+  return str;
 }
 
 const HIDDEN_TAGS = new Set(['venue','library','aggregator','eventbrite','weekend','weekday','summer','all ages','peninsula','palo alto']);
@@ -1672,10 +1681,7 @@ function card(e, undated = false) {
   const warnHtml = e.ticket_status && !['free walk-up','walk-up or reserve'].includes(e.ticket_status)
     ? `<span class="badge badge-warn">${esc(e.ticket_status)}</span>` : '';
 
-  const tags = (e.tags || []).filter(t => !HIDDEN_TAGS.has(t));
-  const tagsHtml = tags.length
-    ? `<div class="card-tags">${tags.map(t => `<span class="tag-chip" data-tag="${esc(t)}">${esc(t)}</span>`).join('')}</div>`
-    : '';
+  // Tags hidden from cards for cleaner look — still in data for search/filtering
 
   const emoji = eventEmoji(e.tags);
   const costCls2 = e.cost === 'Free' ? ' cost-free' : e.cost === 'Paid' ? ' cost-paid' : '';
@@ -1688,7 +1694,6 @@ function card(e, undated = false) {
       ${warnHtml}
     </div>
     ${venue ? `<div class="card-venue">${esc(venue)}</div>` : ''}
-    ${tagsHtml}
   </div>`;
 }
 

@@ -1,7 +1,11 @@
 """
 Rule-based event tagger. Generates a rich `tags` list from event fields.
 No LLM — pure regex patterns over title + description + venue + category.
-Tags are designed to match natural search terms a parent would type.
+
+Tag discipline:
+- Only tags in CANONICAL_TAGS may appear in output (no freeform strings).
+- SYNONYM_MAP collapses common variants to canonical forms before lookup.
+- Source-channel names (venue/library/etc.) are NOT exposed as tags.
 """
 
 import re
@@ -10,96 +14,161 @@ from datetime import datetime, timezone
 # Shared adult-noise filter — import this in every scraper
 ADULT_NOISE = re.compile(
     r"\b("
-    # Substances / alcohol-focused events
     r"wine\s*tasting|beer\s*tasting|cocktail|happy\s*hour|bar\s*crawl|nightclub|brewery|"
     r"beer[\s,/&]+wine|wine[\s,/&]+beer|beer\s*garden|wine\s*garden|"
-    r"\$\d+\s*beer|\bcraft\s*beer\b|50\+\s*tast|"
     r"winery|distillery|whiskey|whisky|spirits\s*tasting|alcohol|21\+|"
-    # Adult-only events
     r"adults?\s*only|bachelorette|bachelor\s*party|strip\s*club|comedy\s*show|"
     r"stand[\s-]?up\s*comedy|open\s*mic|karaoke|speed\s*dating|singles|"
-    # Financial / legal / professional
     r"estate\s*planning|living\s*trust|financial\s*planning|financial\s*literacy\s*(?!.*teen)|"
     r"wealth\s*management|investment\s*seminar|tax\s*planning|mortgage|insurance\s*seminar|"
     r"capital\s*gains|inheritance\s*planning|legal\s*seminar|divorce|retirement\s*planning|"
     r"real\s*estate\s*invest|crypto\s*invest|"
-    # Networking / career
     r"networking\s*event|job\s*fair|career\s*fair|resume\s*workshop|linkedin|"
     r"professional\s*development|b2b|"
-    # Explicitly adult
-    r"21\s*and\s*over|18\+|over\s*21|adults?\s*only|mature\s*audience"
+    r"21\s*and\s*over|18\+|over\s*21|mature\s*audience"
     r")\b",
     re.IGNORECASE,
 )
 
-# Each entry: (tag, [patterns that trigger it])
-# Patterns match against a combined lowercase string of title + venue + description + category
-TAG_RULES = [
-    # ── Setting / environment ──────────────────────────────────────────────
-    ("outdoors",        [r"\b(outdoor|outside|park|trail|garden|farm|beach|nature|hike|hiking|forest|lawn|plaza|open[\s-]air|creek|bay|lake|pond)\b"]),
-    ("indoors",         [r"\b(museum|library|theatre|theater|center|hall|studio|gallery|indoor|classroom|auditorium)\b"]),
-    ("water",           [r"\b(beach|pool|splash|aquatic|lake|creek|river|sand|ocean|water[\s-]play|splash\s*pad)\b"]),
-    ("farm",            [r"\b(farm|barn|petting\s*zoo|livestock|chickens?|goats?|cows?|pigs?|horses?|hayride|pick[- ]your[\s-]own)\b"]),
-    ("nature",          [r"\b(nature|wildlife|wild|bird|butterfly|insect|plant|trail|hike|ecology|environment|garden|outdoor)\b"]),
+# ── Canonical tag taxonomy ────────────────────────────────────────────────────
+# These are the ONLY strings that may appear in event["tags"].
+# Grouped for readability; order here doesn't matter for logic.
 
-    # ── Activity type ──────────────────────────────────────────────────────
-    ("storytime",       [r"\b(storytime|story[\s-]time|read[\s-]aloud|picture\s*book|nursery\s*rhyme|lap\s*sit)\b"]),
-    ("arts & crafts",   [r"\b(art|craft|crafts|make|create|draw|paint|drawing|painting|sculpt|collage|pottery|clay|sewing|knit|weave|printmak|build|lego)\b"]),
-    ("music",           [r"\b(music|concert|band|sing|song|dance|choir|orchestra|instrument|rhythm|drum|guitar|violin|musical|performance)\b"]),
-    ("science",         [r"\b(science|stem|engineering|experiment|maker|robot|code|coding|chemistry|physics|astronomy|space|tech|technology|inventor|invention|innovation)\b"]),
-    ("hands-on",        [r"\b(workshop|hands[\s-]on|interactive|make|build|create|experiment|activity|activities|project|maker|tinker|diy)\b"]),
-    ("sensory",         [r"\b(sensory|tactile|touch|texture|messy\s*play|sand|water\s*play|slime|kinetic)\b"]),
-    ("animals",         [r"\b(animal|zoo|petting|wildlife|bird|butterfly|insect|reptile|fish|mammal|creature|nature|farm|flamingo|penguin|aquarium)\b"]),
-    ("theatre",         [r"\b(theatre|theater|show|performance|play|puppet|puppetry|stage|acting|improv|drama|musical|circus|magic|magician)\b"]),
-    ("festival",        [r"\b(festival|fair|carnival|expo|celebration|parade|fiesta|feria|market|faire)\b"]),
-    ("film & movies",   [r"\b(movie|film|cinema|screening|outdoor\s*movie|movie\s*night|drive[\s-]in)\b"]),
-    ("sports & movement",[r"\b(soccer|baseball|basketball|swim|climb|gym|sport|yoga|movement|run|race|obstacle|martial\s*arts|karate|dance|tumbl|gymnastics|parkour)\b"]),
-    ("cooking",         [r"\b(cook|bake|food|kitchen|recipe|chef|culinary|taste|snack)\b"]),
-    ("books & reading", [r"\b(storytime|read[\s-]aloud|picture\s*book|author|library|literature|poetry|poem)\b"]),
-    ("STEM",            [r"\b(stem|science|technology|engineering|math|robot|code|coding|programming|computer|3d\s*print)\b"]),
+CANONICAL_TAGS: set[str] = {
+    # Environment
+    "outdoors", "indoors", "water play",
+    # Setting
+    "farm", "nature", "beach",
+    # Activity
+    "storytime", "arts & crafts", "music & dance", "science & STEM",
+    "theatre & performance", "sports & movement", "cooking & food",
+    "books & reading", "sensory play", "animals",
+    "film & movies", "festival & fair", "food & drink",
+    # Vibe / logistics
+    "free", "drop-in", "book ahead", "rainy day",
+    # Age shorthand
+    "toddler-friendly", "all ages",
+    # Time
+    "weekend", "weekday", "summer",
+    # Location
+    "palo alto", "san francisco", "east bay", "peninsula", "south bay",
+}
 
-    # ── Vibe / practical ──────────────────────────────────────────────────
-    ("free",            [r"^.*$"]),          # applied conditionally below
-    ("drop-in",         [r"\b(walk[\s-]?up|drop[\s-]?in|no\s*registration|no\s*ticket|free\s*admission|open\s*to\s*all)\b"]),
-    ("book ahead",      [r"\b(register|registration|ticket|reserve|reservation|sell[\s-]?out|selling\s*out|capacity|limited\s*space|sign[\s-]?up)\b"]),
-    ("rainy day",       [r"\b(indoor|museum|library|theatre|theater|center|hall|studio|gallery|classroom|auditorium)\b"]),
-    ("toddler-friendly",[r"\b(toddler|baby|babies|infant|0[\s-]?to[\s-]?3|1[\s-]?to[\s-]?3|lap[\s-]sit|little\s*one|little\s*ones|tiny|family|stroller[\s-]?friendly)\b"]),
-    ("preschool",       [r"\b(preschool|pre[\s-]k|pre[\s-]school|3[\s-]5\s*(years?|yrs?)|ages?\s*[23]|ages?\s*3[\s-]5)\b"]),
-    ("school-age",      [r"\b(school[\s-]age|elementary|ages?\s*[5-9]|kids|children|tween|grade)\b"]),
-    ("all ages",        [r"\b(all\s*ages|family[\s-]friendly|everyone|whole\s*family|open\s*to\s*all)\b"]),
+# Synonyms → canonical.  Add new variants here as they appear in source data.
+SYNONYM_MAP: dict[str, str] = {
+    # Activity duplicates
+    "science":           "science & STEM",
+    "STEM":              "science & STEM",
+    "stem":              "science & STEM",
+    "arts and crafts":   "arts & crafts",
+    "craft":             "arts & crafts",
+    "crafts":            "arts & crafts",
+    "music":             "music & dance",
+    "dance":             "music & dance",
+    "theater":           "theatre & performance",
+    "theatre":           "theatre & performance",
+    "performance":       "theatre & performance",
+    "puppet":            "theatre & performance",
+    "cooking":           "cooking & food",
+    "baking":            "cooking & food",
+    "food":              "cooking & food",
+    "sports":            "sports & movement",
+    "movement":          "sports & movement",
+    "exercise":          "sports & movement",
+    "water":             "water play",
+    "splash":            "water play",
+    "pool":              "water play",
+    "festival":          "festival & fair",
+    "fair":              "festival & fair",
+    "carnival":          "festival & fair",
+    "hands-on":          "arts & crafts",   # usually craft/make context
+    "hands on":          "arts & crafts",
+    "school-age":        "all ages",         # too narrow to be useful as tag
+    "preschool":         "toddler-friendly", # close enough in practice
+    # Food specifics → food & drink
+    "ice cream":         "food & drink",
+    "dessert":           "food & drink",
+    "snack":             "food & drink",
+    "taste":             "food & drink",
+    "tasting":           "food & drink",
+    # Location variants
+    "sf":                "san francisco",
+    "the city":          "san francisco",
+    "south bay":         "south bay",
+    "silicon valley":    "south bay",
+}
 
-    # ── Location shortcuts ─────────────────────────────────────────────────
-    ("palo alto",       [r"\b(palo\s*alto|junior\s*museum|cantor|stanford)\b"]),
-    ("san francisco",   [r"\b(san\s*francisco|\bsf\b|golden\s*gate|mission|soma|presidio|marin\b)\b"]),
-    ("east bay",        [r"\b(east\s*bay|oakland|berkeley|alameda|fremont|hayward|contra\s*costa|livermore|walnut\s*creek|danville)\b"]),
-    ("peninsula",       [r"\b(peninsula|menlo\s*park|redwood\s*city|san\s*mateo|burlingame|foster\s*city|san\s*carlos|belmont|half\s*moon)\b"]),
+# ── Tag rules: (canonical_tag, [regex patterns]) ──────────────────────────────
+# Patterns match the full lowercase haystack (title + venue + city + etc.)
 
-    # ── Seasonal / occasion ────────────────────────────────────────────────
-    ("summer",          [r"\b(summer|june|july|august|pool|splash|outdoor|beach|camp)\b"]),
-    ("weekend",         []),                 # applied conditionally below
-    ("weekday",         []),                 # applied conditionally below
+TAG_RULES: list[tuple[str, list[str]]] = [
+    # Environment
+    ("outdoors",              [r"\b(outdoor|outside|park|trail|garden|farm|beach|nature|hike|hiking|forest|lawn|plaza|open[\s-]air|creek|bay|lake|pond)\b"]),
+    ("indoors",               [r"\b(museum|library|theatre|theater|center|hall|studio|gallery|indoor|classroom|auditorium)\b"]),
+    ("water play",            [r"\b(beach|pool|splash|aquatic|lake|creek|river|sand|ocean|water[\s-]play|splash\s*pad|swim)\b"]),
+    ("farm",                  [r"\b(farm|barn|petting\s*zoo|livestock|chickens?|goats?|cows?|pigs?|horses?|hayride|pick[- ]your[\s-]own)\b"]),
+    ("nature",                [r"\b(nature|wildlife|wild|bird|butterfly|insect|plant|trail|hike|ecology|environment)\b"]),
+    ("beach",                 [r"\b(beach|ocean|shore|sand|surf|coastal)\b"]),
+
+    # Activity
+    ("storytime",             [r"\b(storytime|story[\s-]time|read[\s-]aloud|picture\s*book|nursery\s*rhyme|lap\s*sit|lapsit)\b"]),
+    ("arts & crafts",         [r"\b(art|craft|crafts|make|create|draw|paint|drawing|painting|sculpt|collage|pottery|clay|sewing|weave|printmak|lego|build)\b"]),
+    ("music & dance",         [r"\b(music|concert|band|sing|song|dance|choir|orchestra|instrument|rhythm|drum|guitar|violin|musical)\b"]),
+    ("science & STEM",        [r"\b(science|stem|engineering|experiment|maker|robot|code|coding|chemistry|physics|astronomy|space|tech|technology|inventor|innovation|math|3d\s*print|computer)\b"]),
+    ("theatre & performance", [r"\b(theatre|theater|show|performance|play|puppet|puppetry|stage|acting|improv|drama|musical|circus|magic|magician)\b"]),
+    ("sports & movement",     [r"\b(soccer|baseball|basketball|swim|climb|gym|sport|yoga|movement|run|race|obstacle|martial\s*arts|karate|tumbl|gymnastics|parkour|fitness)\b"]),
+    ("cooking & food",        [r"\b(cook|bake|kitchen|recipe|chef|culinary)\b"]),
+    ("food & drink",          [r"\b(ice\s*cream|dessert|snack|tasting|food\s*truck|farmers?\s*market|taste|gelato|pastry|donut|doughnut|pizza|cupcake)\b"]),
+    ("books & reading",       [r"\b(read[\s-]aloud|picture\s*book|author|literature|poetry|poem|book\s*club|reading\s*program|summer\s*reading)\b"]),
+    ("sensory play",          [r"\b(sensory|tactile|touch|texture|messy\s*play|slime|kinetic|sand\s*play)\b"]),
+    ("animals",               [r"\b(animal|zoo|petting|wildlife|bird|butterfly|insect|reptile|fish|mammal|creature|farm|flamingo|penguin|aquarium|horse|goat|chicken|cow)\b"]),
+    ("theatre & performance", [r"\b(theatre|theater|show|performance|play|puppet|stage|drama|circus|magic)\b"]),
+    ("film & movies",         [r"\b(movie|film|cinema|screening|outdoor\s*movie|movie\s*night|drive[\s-]in)\b"]),
+    ("festival & fair",       [r"\b(festival|fair|carnival|expo|celebration|parade|fiesta|feria|market|faire)\b"]),
+
+    # Vibe / logistics
+    ("free",                  []),  # applied conditionally
+    ("drop-in",               [r"\b(walk[\s-]?up|drop[\s-]?in|no\s*registration|free\s*admission|open\s*to\s*all)\b"]),
+    ("book ahead",            [r"\b(register|registration|ticket|reserve|reservation|limited\s*space|sign[\s-]?up|selling\s*out)\b"]),
+    ("rainy day",             [r"\b(indoor|museum|library|theatre|theater|center|hall|studio|gallery|classroom|auditorium)\b"]),
+    ("toddler-friendly",      [r"\b(toddler|baby|babies|infant|0[\s-]?to[\s-]?3|1[\s-]?to[\s-]?3|lap[\s-]sit|lapsit|little\s*one|stroller[\s-]?friendly|preschool|pre[\s-]k)\b"]),
+    ("all ages",              [r"\b(all\s*ages|family[\s-]friendly|everyone|whole\s*family|open\s*to\s*all|every\s*age)\b"]),
+
+    # Location
+    ("palo alto",             [r"\b(palo\s*alto|junior\s*museum|cantor|stanford)\b"]),
+    ("san francisco",         [r"\b(san\s*francisco|\bsf\b|golden\s*gate|mission|soma|presidio)\b"]),
+    ("east bay",              [r"\b(east\s*bay|oakland|berkeley|alameda|fremont|hayward|contra\s*costa|livermore|walnut\s*creek|danville)\b"]),
+    ("peninsula",             [r"\b(peninsula|menlo\s*park|redwood\s*city|san\s*mateo|burlingame|foster\s*city|san\s*carlos|belmont|half\s*moon)\b"]),
+    ("south bay",             [r"\b(san\s*jose|sunnyvale|santa\s*clara|cupertino|mountain\s*view|los\s*altos|milpitas|campbell|saratoga|los\s*gatos)\b"]),
+
+    # Seasonal
+    ("summer",                [r"\b(summer|june|july|august|camp)\b"]),
+    ("weekend",               []),  # applied conditionally
+    ("weekday",               []),  # applied conditionally
 ]
 
-# Patterns that mark event as likely kid/family-relevant (used as quality signal, not a tag)
-_KID_SIGNAL = re.compile(
-    r"\b(child|children|kids?|family|families|toddler|baby|babies|infant|storytime|preschool|"
-    r"pre-?k|tween|youth|junior|playground|school|learning|creative)\b",
-    re.IGNORECASE,
-)
 
-
-def _compile(patterns):
+def _compile(patterns: list[str]):
     if not patterns:
         return None
     return re.compile("|".join(patterns), re.IGNORECASE)
 
 
-_COMPILED = [(tag, _compile(pats)) for tag, pats in TAG_RULES]
+_COMPILED: list[tuple[str, object]] = [(tag, _compile(pats)) for tag, pats in TAG_RULES]
+
+
+def _canonicalize(tag: str):
+    """Normalize a tag to its canonical form, or return None if not allowed."""
+    if tag in CANONICAL_TAGS:
+        return tag
+    mapped = SYNONYM_MAP.get(tag) or SYNONYM_MAP.get(tag.lower())
+    if mapped and mapped in CANONICAL_TAGS:
+        return mapped
+    return None
 
 
 def tag_event(event: dict) -> list[str]:
-    """Return a deduplicated list of tags for an event."""
-    # Build haystack from all text fields
+    """Return a sorted, deduplicated list of canonical tags for an event."""
     haystack = " ".join(filter(None, [
         event.get("title", ""),
         event.get("venue", ""),
@@ -110,10 +179,9 @@ def tag_event(event: dict) -> list[str]:
         event.get("ticket_status", ""),
     ])).lower()
 
-    tags = set()
+    tags: set[str] = set()
 
     for tag, pattern in _COMPILED:
-        # Conditional tags
         if tag == "free":
             if event.get("cost") == "Free":
                 tags.add("free")
@@ -122,31 +190,31 @@ def tag_event(event: dict) -> list[str]:
             dt_str = event.get("start_datetime", "")
             if dt_str:
                 try:
-                    dt = datetime.fromisoformat(dt_str)
-                    if dt.weekday() in (5, 6):
-                        tags.add("weekend")
-                    else:
-                        tags.add("weekday")
+                    from zoneinfo import ZoneInfo
+                    dt = datetime.fromisoformat(dt_str).astimezone(ZoneInfo("America/Los_Angeles"))
+                    tags.add("weekend" if dt.weekday() in (5, 6) else "weekday")
                 except Exception:
                     pass
             continue
         if tag == "weekday":
-            continue  # handled above
+            continue  # handled in weekend branch
 
         if pattern and pattern.search(haystack):
-            tags.add(tag)
+            canonical = _canonicalize(tag)
+            if canonical:
+                tags.add(canonical)
 
-    # Ensure "outdoors" and "rainy day" don't both appear — outdoors wins
+    # outdoors beats rainy day
     if "outdoors" in tags:
         tags.discard("rainy day")
 
-    # Always include the source channel as a tag
-    ch = event.get("source_channel", "")
-    if ch:
-        tags.add(ch)
+    # Validate every tag is canonical (safety net)
+    tags = {t for t in tags if t in CANONICAL_TAGS}
 
     return sorted(tags)
 
+
+# ── Age group inference ───────────────────────────────────────────────────────
 
 _AGE_BABY = re.compile(
     r"\b(baby|babies|infant|lapsit|lap[\s-]sit|0[\s-]?to[\s-]?[12]|ages?\s*0|newborn|birth[\s-]?to)\b",
@@ -183,21 +251,15 @@ _AGE_RANGE_NUM = re.compile(
 
 
 def infer_age_group(event: dict) -> str:
-    """
-    Returns one of: 'babies', 'toddlers', 'preschool', 'kids', 'teens', 'family', or '' (unknown).
-    Priority: explicit numeric range > keyword signals.
-    """
     haystack = " ".join(filter(None, [
         event.get("title", ""),
         event.get("age_range", ""),
         event.get("venue", ""),
     ]))
 
-    # Numeric age range: classify by midpoint
     m = _AGE_RANGE_NUM.search(haystack)
     if m:
         lo, hi = int(m.group(1)), int(m.group(2))
-        mid = (lo + hi) / 2
         if hi <= 2:
             return "babies"
         if hi <= 4 and lo <= 2:
@@ -206,11 +268,8 @@ def infer_age_group(event: dict) -> str:
             return "preschool"
         if lo >= 12:
             return "teens"
-        if mid <= 8:
-            return "kids"
         return "kids"
 
-    # Keyword signals (order matters — most specific first)
     if _AGE_BABY.search(haystack):
         return "babies"
     if _AGE_TODDLER.search(haystack):
@@ -223,28 +282,22 @@ def infer_age_group(event: dict) -> str:
         return "kids"
     if _AGE_FAMILY.search(haystack):
         return "family"
-    return "family"  # default: broadly family-appropriate
+    return "family"
 
 
 def enrich_title(event: dict) -> str:
-    """
-    For venue events where the title is generic (doesn't mention the venue),
-    prepend the venue name so titles are self-explanatory.
-    """
     title = event.get("title", "")
     venue = event.get("source_name", "") or event.get("venue", "")
 
     if event.get("source_channel") != "venue":
         return title
 
-    # If venue name already appears in title, leave it
     venue_short = venue.split("—")[0].strip().split(" ")[0].lower()
     if venue_short and venue_short in title.lower():
         return title
 
-    # Generic titles that don't self-identify
     GENERIC = re.compile(
-        r"^(today[’']?s?\s+schedule|open|hours|general\s+admission|visit|"
+        r"^(today['']?s?\s+schedule|open|hours|general\s+admission|visit|"
         r"drop[\s-]?in|walk[\s-]?in|open\s+house|weekend\s+open|daily\s+program)",
         re.IGNORECASE,
     )

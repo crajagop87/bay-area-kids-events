@@ -11,6 +11,7 @@ import logging
 from datetime import datetime, timedelta, timezone
 import requests
 from scrapers.tagger import ADULT_NOISE
+from scrapers.utils import local_to_utc
 
 log = logging.getLogger(__name__)
 
@@ -146,7 +147,7 @@ def scrape_city(city_slug: str, city_name: str, county: str, window_days: int = 
         end_time = item.get("end_time", "")
 
         try:
-            start_dt = datetime.fromisoformat(f"{start_date}T{start_time}").replace(tzinfo=timezone.utc)
+            start_dt = local_to_utc(datetime.fromisoformat(f"{start_date}T{start_time}"))
         except Exception:
             start_dt = None
 
@@ -154,7 +155,7 @@ def scrape_city(city_slug: str, city_name: str, county: str, window_days: int = 
             continue
 
         try:
-            end_dt = datetime.fromisoformat(f"{end_date}T{end_time}").replace(tzinfo=timezone.utc) if end_date and end_time else None
+            end_dt = local_to_utc(datetime.fromisoformat(f"{end_date}T{end_time}")) if end_date and end_time else None
         except Exception:
             end_dt = None
 

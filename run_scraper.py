@@ -106,7 +106,8 @@ def main(window_days: int = 45):
             continue
         try:
             dt = datetime.fromisoformat(iso).astimezone(PACIFIC)
-            if dt.hour < 6:
+            # Midnight (00:00) is the all-day/date-only convention — not a bug
+            if 0 < dt.hour < 6:
                 tz_warnings.append(
                     f"  TZ WARNING: '{e['title']}' ({e.get('source_name','?')}) "
                     f"starts at {dt.strftime('%I:%M %p PT')} — likely a UTC conversion error"

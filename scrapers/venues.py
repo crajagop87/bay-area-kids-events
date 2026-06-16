@@ -12,8 +12,7 @@ from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 import requests
 from bs4 import BeautifulSoup
-
-PACIFIC = ZoneInfo("America/Los_Angeles")
+from scrapers.utils import ensure_utc, local_to_utc, PACIFIC
 
 log = logging.getLogger(__name__)
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; KidsEventsScraper/1.0)"}
@@ -69,17 +68,13 @@ def _json_ld_events(soup, source_name, source_url, city, county, cost, cost_amt,
             if not title:
                 continue
             try:
-                start_dt = datetime.fromisoformat(item.get("startDate", ""))
-                if start_dt.tzinfo is None:
-                    start_dt = start_dt.replace(tzinfo=timezone.utc)
+                start_dt = ensure_utc(datetime.fromisoformat(item.get("startDate", "")))
             except Exception:
                 start_dt = None
             if start_dt and (start_dt < now or start_dt > cutoff):
                 continue
             try:
-                end_dt = datetime.fromisoformat(item.get("endDate", ""))
-                if end_dt.tzinfo is None:
-                    end_dt = end_dt.replace(tzinfo=timezone.utc)
+                end_dt = ensure_utc(datetime.fromisoformat(item.get("endDate", ""))) if item.get("endDate") else None
             except Exception:
                 end_dt = None
             link = item.get("url", source_url)
@@ -102,13 +97,15 @@ def scrape_palo_alto_junior_museum(window_days: int = 16) -> list[dict]:
                                   "reserve ahead", "Palo Alto Junior Museum & Zoo", now, cutoff)
         if not events:
             # Fallback: treat venue itself as always open (weekend anchor)
+            now_pt = now.astimezone(PACIFIC)
             for day_offset in range(window_days):
-                dt = now + timedelta(days=day_offset)
-                if dt.weekday() in (5, 6):  # Sat/Sun
+                dt_pt = (now_pt + timedelta(days=day_offset)).replace(hour=0, minute=0, second=0, microsecond=0)
+                if dt_pt.weekday() in (5, 6):  # Sat/Sun
+                    start = dt_pt.replace(hour=10).astimezone(timezone.utc)
+                    end = dt_pt.replace(hour=17).astimezone(timezone.utc)
                     events.append(_make_event(
                         "Palo Alto Junior Museum & Zoo — Open",
-                        dt.replace(hour=10, minute=0, second=0),
-                        dt.replace(hour=17, minute=0, second=0),
+                        start, end,
                         "Palo Alto Junior Museum & Zoo",
                         "Palo Alto", "Santa Clara",
                         "Paid", 10.0, "reserve ahead",
@@ -214,11 +211,12 @@ def scrape_cantor_arts(window_days: int = 16) -> list[dict]:
     now = datetime.now(timezone.utc)
     events = []
     # Cantor is always open Sun 10am–5pm with free drop-in; emit one record per Sunday in window
+    now_pt = now.astimezone(PACIFIC)
     for day_offset in range(window_days):
-        dt = now + timedelta(days=day_offset)
-        if dt.weekday() == 6:  # Sunday
-            start = dt.replace(hour=10, minute=0, second=0, microsecond=0)
-            end = dt.replace(hour=17, minute=0, second=0, microsecond=0)
+        dt_pt = (now_pt + timedelta(days=day_offset)).replace(hour=0, minute=0, second=0, microsecond=0)
+        if dt_pt.weekday() == 6:  # Sunday
+            start = dt_pt.replace(hour=10).astimezone(timezone.utc)
+            end = dt_pt.replace(hour=17).astimezone(timezone.utc)
             events.append(_make_event(
                 "Cantor Arts Center — Free Sunday Drop-in (art packs, galleries)",
                 start, end, "Cantor Arts Center",
@@ -275,13 +273,15 @@ def scrape_exploratorium(window_days: int = 16) -> list[dict]:
                                   "walk-up or reserve", "Exploratorium", now, cutoff)
         if not events:
             # Emit weekend open hours as a standing anchor event
+            now_pt = now.astimezone(PACIFIC)
             for day_offset in range(window_days):
-                dt = now + timedelta(days=day_offset)
-                if dt.weekday() in (5, 6):
+                dt_pt = (now_pt + timedelta(days=day_offset)).replace(hour=0, minute=0, second=0, microsecond=0)
+                if dt_pt.weekday() in (5, 6):
+                    start = dt_pt.replace(hour=10).astimezone(timezone.utc)
+                    end = dt_pt.replace(hour=17).astimezone(timezone.utc)
                     events.append(_make_event(
                         "Exploratorium — Open (hands-on science exhibits)",
-                        dt.replace(hour=10, minute=0, second=0, microsecond=0),
-                        dt.replace(hour=17, minute=0, second=0, microsecond=0),
+                        start, end,
                         "Exploratorium", "San Francisco", "San Francisco",
                         "Paid", 20.0, "walk-up or reserve",
                         "https://www.exploratorium.edu/visit",
@@ -389,14 +389,9 @@ def scrape_libcal_ics(domain: str, cid: int, city: str, county: str,
         s = s.strip()
         try:
             if s.endswith("Z"):
-                # UTC — convert to Pacific so fmt_time (which reads raw hours) shows local time
-                dt_utc = datetime.strptime(s, "%Y%m%dT%H%M%SZ").replace(tzinfo=timezone.utc)
-                dt_pt = dt_utc.astimezone(PACIFIC)
-                return dt_pt.replace(tzinfo=timezone.utc)
+                return datetime.strptime(s, "%Y%m%dT%H%M%SZ").replace(tzinfo=timezone.utc)
             elif "T" in s:
-                dt = datetime.strptime(s[:15], "%Y%m%dT%H%M%S")
-                # LibCal naive local times — treat as Pacific
-                return dt.replace(tzinfo=timezone.utc)
+                return local_to_utc(datetime.strptime(s[:15], "%Y%m%dT%H%M%S"))
             else:
                 return datetime.strptime(s[:8], "%Y%m%d").replace(tzinfo=timezone.utc)
         except Exception:

@@ -1,20 +1,20 @@
 {
-  "run_at": "2026-06-16T17:19:06.429235+00:00",
+  "run_at": "2026-06-16T17:38:55.263224+00:00",
   "window_days": 16,
   "channels_ok": 57,
   "channels_total": 57,
-  "raw_events": 868,
-  "deduped_events": 502,
+  "raw_events": 859,
+  "deduped_events": 495,
   "channels": [
     {
       "source": "Palo Alto City Library",
       "status": "ok",
-      "count": 32
+      "count": 20
     },
     {
       "source": "San Mateo County Library",
       "status": "ok",
-      "count": 22
+      "count": 23
     },
     {
       "source": "San Jose Public Library",
@@ -34,7 +34,7 @@
     {
       "source": "Oakland Public Library",
       "status": "ok",
-      "count": 26
+      "count": 27
     },
     {
       "source": "Berkeley Public Library",
@@ -59,12 +59,12 @@
     {
       "source": "Mountain View Public Library",
       "status": "ok",
-      "count": 25
+      "count": 24
     },
     {
       "source": "Sunnyvale Public Library",
       "status": "ok",
-      "count": 26
+      "count": 27
     },
     {
       "source": "San Mateo Public Library",
@@ -74,7 +74,7 @@
     {
       "source": "Eventbrite/Palo Alto",
       "status": "ok",
-      "count": 10
+      "count": 11
     },
     {
       "source": "Eventbrite/San Jose",
