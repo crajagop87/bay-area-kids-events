@@ -352,6 +352,104 @@ def scrape_lawrence_hall(window_days: int = 16) -> list[dict]:
     return events
 
 
+def scrape_libcal_ics(domain: str, cid: int, city: str, county: str,
+                      source_name: str, window_days: int = 45) -> list[dict]:
+    """Generic LibCal ICS scraper — works for any library using LibCal with a public calendar."""
+    import email.utils
+    KID_RE = re.compile(
+        r"\b(child|children|kids?|family|families|toddler|baby|babies|infant|"
+        r"storytime|story\s*time|preschool|pre-?k|tween|teen|youth|junior)\b",
+        re.IGNORECASE,
+    )
+    url = f"https://{domain}/ical_subscribe.php?cid={cid}&cat=0&format=ics"
+    now = datetime.now(timezone.utc)
+    cutoff = now + timedelta(days=window_days)
+    try:
+        resp = requests.get(url, headers=HEADERS, timeout=15)
+        resp.raise_for_status()
+        text = resp.text
+    except Exception as exc:
+        log.warning("%s ICS fetch failed: %s", source_name, exc)
+        return []
+
+    if not text.strip().startswith("BEGIN:VCALENDAR"):
+        log.warning("%s: unexpected ICS response: %s", source_name, text[:60])
+        return []
+
+    def unfold(s):
+        return re.sub(r"\r?\n[ \t]", "", s)
+
+    def unescape(s):
+        return s.replace("\\,", ",").replace("\\;", ";").replace("\\n", "\n").replace("\\\\", "\\")
+
+    def parse_dt(s):
+        s = s.strip()
+        try:
+            if s.endswith("Z"):
+                return datetime.strptime(s, "%Y%m%dT%H%M%SZ").replace(tzinfo=timezone.utc)
+            elif "T" in s:
+                dt = datetime.strptime(s[:15], "%Y%m%dT%H%M%S")
+                # LibCal stores times in local time — assume Pacific (UTC-7 summer)
+                return dt.replace(tzinfo=timezone(timedelta(hours=-7)))
+            else:
+                return datetime.strptime(s[:8], "%Y%m%d").replace(tzinfo=timezone.utc)
+        except Exception:
+            return None
+
+    events = []
+    for raw_block in unfold(text).split("BEGIN:VEVENT")[1:]:
+        def field(name):
+            m = re.search(rf"^{name}[^:]*:(.*)$", raw_block, re.MULTILINE)
+            return unescape(m.group(1).strip()) if m else ""
+
+        summary = field("SUMMARY")
+        categories = field("CATEGORIES")
+        description = field("DESCRIPTION")
+        url_field = field("URL")
+        location = field("LOCATION")
+
+        haystack = f"{summary} {categories} {description}"
+        if not KID_RE.search(haystack):
+            continue
+
+        start = parse_dt(field("DTSTART"))
+        end_raw = field("DTEND")
+        end = parse_dt(end_raw) if end_raw else None
+
+        if not start or start < now or start > cutoff:
+            continue
+
+        cost = "free" if re.search(r"\bfree\b", haystack, re.I) else "unknown"
+        events.append(_make_event(
+            title=summary,
+            start_dt=start,
+            end_dt=end,
+            venue_name=source_name,
+            city=city,
+            county=county,
+            cost=cost,
+            cost_amt=0 if cost == "free" else None,
+            ticket_status="available",
+            ticket_url=url_field or f"https://{domain}/calendar/events",
+            source_name=source_name,
+            source_url=f"https://{domain}/calendar/events",
+        ))
+
+    log.info("%s: %d kid events from ICS", source_name, len(events))
+    return events
+
+
+def scrape_mountain_view_library(window_days: int = 45) -> list[dict]:
+    return scrape_libcal_ics(
+        domain="mountainview.libcal.com",
+        cid=8800,
+        city="Mountain View",
+        county="Santa Clara",
+        source_name="Mountain View Public Library",
+        window_days=window_days,
+    )
+
+
 def scrape_midpeninsula_openspace(window_days: int = 45) -> list[dict]:
     """Midpeninsula Regional Open Space District — youth & families programs."""
     base_url = "https://www.openspace.org/events"
@@ -577,6 +675,8 @@ VENUE_SCRAPERS = [
     ("Hidden Villa Farm", scrape_hidden_villa),
     # Peninsula / open space
     ("Midpeninsula Open Space", scrape_midpeninsula_openspace),
+    # LibCal libraries
+    ("Mountain View Public Library", scrape_mountain_view_library),
     # SF / East Bay (expanded)
     ("Exploratorium", scrape_exploratorium),
     ("Oakland Children's Fairyland", scrape_fairyland),
