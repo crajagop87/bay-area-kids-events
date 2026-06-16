@@ -263,19 +263,7 @@ input[type="date"]:focus { border-color: #fb923c; }
 /* ── Map modal ── */
 #map-container { height: 380px; border-radius: 12px; overflow: hidden; margin-top: 0.75rem; }
 .map-controls { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; margin-top: 0.9rem; }
-.map-custom-area-btn {
-  background: var(--bg); border: 1.5px dashed #fb923c; color: var(--accent);
-}
-.map-custom-area-btn:hover { background: #fff7ed; border-style: solid; }
-.map-custom-area-btn.active { background: #fff3e0; border-style: solid; border-color: var(--accent); }
-.map-open-btn {
-  font-family: var(--sans); font-size: 0.72rem; font-weight: 700; color: var(--ink-2);
-  background: var(--pill-bg); border: 1.5px solid var(--rule); border-radius: 99px;
-  padding: 5px 12px; cursor: pointer; white-space: nowrap; flex-shrink: 0;
-  transition: background 0.12s, border-color 0.12s, color 0.12s, transform 0.1s cubic-bezier(.36,.07,.19,.97);
-}
-.map-open-btn:hover { background: #fff7ed; border-color: #fb923c; color: var(--accent); }
-.map-open-btn:active { transform: scale(0.88); }
+.map-custom-area-btn.active { background: #fff3e0; border-color: var(--accent); color: var(--accent); }
 .city-label { background: transparent !important; border: none !important; box-shadow: none !important; }
 .city-label span {
   font-family: 'Nunito', sans-serif; font-size: 11px; font-weight: 700; color: #44403c;
@@ -351,6 +339,18 @@ input[type="date"]:focus { border-color: #fb923c; }
 .sticky-label { font-size: 0.65rem; font-weight: 700; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.06em; white-space: nowrap; }
 .sticky-scroll-hint { font-size: 0.65rem; color: var(--ink-3); white-space: nowrap; cursor: pointer; margin-left: auto; flex-shrink: 0; }
 .sticky-scroll-hint:hover { color: var(--accent); }
+
+/* ── Floating date header ── */
+#floating-date {
+  position: fixed; bottom: 1rem; left: 50%; transform: translateX(-50%);
+  z-index: 49;
+  background: rgba(30,20,10,0.82); backdrop-filter: blur(6px);
+  color: #fff; font-family: var(--display); font-size: 0.78rem; font-weight: 700;
+  padding: 5px 16px; border-radius: 99px;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
 
 /* ── Skeleton loading ── */
 @keyframes shimmer {
@@ -539,9 +539,6 @@ footer a { color: var(--ink-3); text-decoration: underline; }
 }
 #location-input:focus { border-color: var(--accent); color: var(--ink-1); border-style: solid; }
 #location-input::placeholder { color: var(--ink-3); }
-.location-chip { align-items: center; gap: 5px; cursor: default; }
-.location-chip-x { font-size: 1rem; line-height: 1; opacity: 0.7; cursor: pointer; margin-left: 1px; }
-.location-chip-x:hover { opacity: 1; }
 /* ── Radius slider (main) ── */
 .radius-wrap { display: flex; flex-direction: column; gap: 5px; flex: 1; max-width: 260px; }
 #radius-slider {
@@ -599,8 +596,6 @@ footer a { color: var(--ink-3); text-decoration: underline; }
   /* Radius row: keep horizontal but label above */
   #radius-row { flex-direction: column; align-items: flex-start; }
   .radius-wrap { max-width: 100%; width: 100%; }
-  .map-open-btn { align-self: flex-end; margin-top: -2.2rem; }
-
   /* Age row */
   #age-row { flex-direction: column; align-items: flex-start; }
   .age-wrap { width: 100%; }
@@ -828,6 +823,11 @@ footer a { color: var(--ink-3); text-decoration: underline; }
   <span class="sticky-scroll-hint" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ filters</span>
 </div>
 
+<!-- Floating date header -->
+<div id="floating-date" style="display:none">
+  <span id="floating-date-text"></span>
+</div>
+
 <div class="filters">
   <div class="filter-card">
 
@@ -863,20 +863,17 @@ footer a { color: var(--ink-3); text-decoration: underline; }
         <button class="chip active" data-preset="Palo Alto">Palo Alto</button>
         <button class="chip" data-preset="SF">SF</button>
         <button class="chip map-custom-area-btn" id="custom-area-btn" onclick="openMapFromArea()">📍 Custom</button>
-        <button id="location-chip" class="chip location-chip" style="display:none">
-          <span id="location-chip-label"></span><span class="location-chip-x">×</span>
-        </button>
+        <span id="location-chip-label" style="display:none"></span>
       </div>
     </div>
     <div class="filter-row" id="radius-row">
       <span class="filter-label">Radius<em id="radius-value"> 5 mi</em></span>
       <div class="radius-wrap">
-        <input type="range" id="radius-slider" min="1" max="40" step="1" value="5">
+        <input type="range" id="radius-slider" min="0.5" max="20" step="0.1" value="5">
         <div class="radius-ticks">
-          <span data-snap="5">5</span><span data-snap="10">10</span><span data-snap="20">20</span><span data-snap="40">max</span>
+          <span data-snap="5">5</span><span data-snap="10">10</span><span data-snap="15">15</span><span data-snap="20">20</span>
         </div>
       </div>
-      <button class="map-open-btn" onclick="openMapModal()">🗺 Map</button>
     </div>
 
     <div class="filter-row" id="age-row">
@@ -1252,12 +1249,12 @@ function updateRadiusDisplay() {
   const slider = document.getElementById('radius-slider');
   if (slider) {
     slider.value = activeRadius;
-    slider.style.setProperty('--pct', `${((activeRadius - 1) / 39) * 100}%`);
+    slider.style.setProperty('--pct', `${((activeRadius - 0.5) / 19.5) * 100}%`);
   }
   const val = document.getElementById('radius-value');
-  if (val) val.textContent = activeRadius === 40 ? ' max' : ` ${activeRadius} mi`;
+  if (val) val.textContent = ` ${Math.round(activeRadius)} mi`;
   document.querySelectorAll('.radius-ticks span').forEach(el => {
-    el.classList.toggle('active-tick', +el.dataset.snap === activeRadius);
+    el.classList.toggle('active-tick', Math.abs(+el.dataset.snap - activeRadius) < 0.05);
   });
 }
 
@@ -1298,18 +1295,7 @@ function resolveLocation(raw) {
 
 function clearCustomLocation() {
   customCenter = null;
-  const chip = document.getElementById('location-chip');
-  chip.style.display = 'none';
-  chip.classList.remove('active');
 }
-
-document.getElementById('location-chip').querySelector('.location-chip-x').addEventListener('click', e => {
-  e.stopPropagation();
-  clearCustomLocation();
-  activePreset = 'Palo Alto';
-  updatePresetStyles();
-  render();
-});
 
 
 const AGE_GROUP_RANGES = {
@@ -1478,7 +1464,7 @@ function render() {
       const countyKey = (e.county || '').toLowerCase().trim();
       const latlng = CITY_LATLNG[cityKey] || COUNTY_LATLNG[countyKey] || null;
       if (!latlng) {
-        return false;
+        if (hasDate) return false; // undated events without location: show anyway
       } else {
         const inRange = centers.some(([lat, lon]) => distMi(lat, lon, latlng[0], latlng[1]) <= radius);
         if (!inRange) return false;
@@ -1540,6 +1526,7 @@ function render() {
     output.innerHTML = html.join('');
     requestAnimationFrame(() => output.classList.remove('wiping'));
     updateStickyBar();
+    initFloatingDateObserver();
     _renderTimer = null;
   }, 140);
 }
@@ -1648,7 +1635,7 @@ function updateStickyBar() {
   const presetLabel = { 'all': 'All', 'Palo Alto': 'Palo Alto', 'SF': 'SF' };
   const areaLabel = activePreset === 'all'
     ? 'All'
-    : `${customName || presetLabel[activePreset]} · ${activeRadius === 40 ? 'max' : activeRadius + 'mi'}`;
+    : `${customName || presetLabel[activePreset]} · ${Math.round(activeRadius)}mi`;
   chips.push(areaLabel);
   // Age
   if (activeAgeMin > 0 || activeAgeMax < 18) chips.push(`Ages ${activeAgeMin}–${activeAgeMax}`);
@@ -1663,6 +1650,31 @@ function updateStickyBar() {
 }
 
 window.addEventListener('scroll', updateStickyBar, { passive: true });
+
+// ── Floating date header ───────────────────────────────────────────────────
+const _floatingDate = document.getElementById('floating-date');
+const _floatingDateText = document.getElementById('floating-date-text');
+
+function updateFloatingDate() {
+  const filterRect = filterCard?.getBoundingClientRect();
+  if (!filterRect || filterRect.bottom >= 0) { _floatingDate.style.display = 'none'; return; }
+
+  let current = null;
+  document.querySelectorAll('.date-group h2').forEach(h => {
+    if (h.getBoundingClientRect().top <= 80) current = h;
+  });
+  if (!current) { _floatingDate.style.display = 'none'; return; }
+  // Text node only (strip count badge)
+  const text = [...current.childNodes].filter(n => n.nodeType === 3).map(n => n.textContent).join('').trim();
+  _floatingDateText.textContent = text;
+  _floatingDate.style.display = '';
+}
+
+function initFloatingDateObserver() {
+  updateFloatingDate();
+}
+
+window.addEventListener('scroll', updateFloatingDate, { passive: true });
 
 // ── Smart empty state ──────────────────────────────────────────────────────
 function showSmartEmpty() {
@@ -1860,10 +1872,8 @@ function applyFilterState(state) {
 
   if (activePreset === 'custom' && state.lat) {
     customCenter = [+state.lat, +state.lng];
-    const chip = document.getElementById('location-chip');
-    const lbl  = document.getElementById('location-chip-label');
-    if (lbl)  lbl.textContent = state.label || 'Custom';
-    if (chip) chip.style.display = 'inline-flex';
+    const lbl = document.getElementById('location-chip-label');
+    if (lbl) lbl.textContent = state.label || 'Custom';
   }
 
   updateRadiusDisplay();
@@ -2064,10 +2074,8 @@ function applyMapSettings() {
   if (mapTempCenter) {
     customCenter = mapTempCenter;
     activePreset = 'custom';
-    const chip  = document.getElementById('location-chip');
     const label = document.getElementById('location-chip-label');
     if (label) label.textContent = 'Custom';
-    if (chip)  chip.style.display = 'inline-flex';
     document.querySelectorAll('[data-preset]').forEach(b => b.classList.remove('active','active-all'));
     updatePresetStyles();
   }
