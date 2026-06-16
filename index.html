@@ -300,6 +300,29 @@ input[type="date"]:focus { border-color: #fb923c; }
 }
 .map-apply-btn:hover { background: #9a3412; }
 .map-apply-btn:active { transform: scale(0.92); }
+/* Sub-tabs (Developer pane) */
+.modal-subtabs .modal-tab { font-size: 0.72rem; padding: 5px 12px; }
+/* Changelog */
+.cl-day { margin-bottom: 1.1rem; }
+.cl-day-header {
+  display: flex; align-items: baseline; gap: 0.5rem;
+  font-size: 0.7rem; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 0.07em; color: var(--ink-3); margin-bottom: 0.4rem;
+}
+.cl-day-date { color: var(--ink-1); }
+.cl-day-tag {
+  font-size: 0.62rem; font-weight: 700; padding: 1px 7px; border-radius: 99px;
+  background: #e7f3ec; color: #166534;
+}
+.cl-push { margin-bottom: 0.55rem; padding-left: 0.1rem; }
+.cl-push-header { display:flex; align-items:center; gap:0.45rem; margin-bottom:0.2rem; }
+.cl-push-ver { font-size:0.68rem; font-weight:800; color:var(--ink-3); font-family:monospace; }
+.cl-push-summary { font-size:0.78rem; font-weight:700; color:var(--ink-1); }
+.cl-push ul { margin:0; padding-left:1.1rem; list-style:disc; }
+.cl-push li { font-size:0.72rem; color:var(--ink-2); line-height:1.5; }
+.map-suburb-row { display:flex; align-items:center; gap:0.6rem; margin-top:0.5rem; min-height:1.4rem; }
+.map-suburb-text { font-size:0.8rem; font-weight:700; color:var(--accent); letter-spacing:0.01em; transition:opacity 0.2s; }
+.map-suburb-text.loading { opacity:0.35; }
 
 /* ── Tag chip colors by category ── */
 
@@ -635,8 +658,8 @@ footer a { color: var(--ink-3); text-decoration: underline; }
     <div class="modal-tabs">
       <button class="modal-tab active" id="info-tab-about"   onclick="switchInfoTab('about')">About</button>
       <button class="modal-tab"        id="info-tab-sources" onclick="switchInfoTab('sources')">Sources</button>
-      <button class="modal-tab"        id="info-tab-filters" onclick="switchInfoTab('filters')">Filters</button>
-      <button class="modal-tab"        id="info-tab-design"  onclick="switchInfoTab('design')">Dev</button>
+      <button class="modal-tab"        id="info-tab-filters" onclick="switchInfoTab('filters')">How it works</button>
+      <button class="modal-tab"        id="info-tab-design"  onclick="switchInfoTab('design')">Developer ⚙</button>
     </div>
 
     <!-- About pane -->
@@ -718,57 +741,70 @@ footer a { color: var(--ink-3); text-decoration: underline; }
       </div>
     </div>
 
-    <!-- Dev notes pane -->
+    <!-- Developer pane -->
     <div id="info-pane-design" style="display:none">
-      <div class="modal-section">
-        <h3>Versioning strategy</h3>
-        <ul class="info-list">
-          <li><strong>Format:</strong> <code>v YYYY.MMDD.N</code> — the date is the "push day"; N is a manual build counter that resets to 1 on each new calendar date and increments with every FE push that day.</li>
-          <li><strong>FE version</strong> (e.g. <code>2026.0616.4</code>) — increment N in <code>FE_VERSION</code> before each push. Reset to .1 on a new date.</li>
-          <li><strong>BE version</strong> is the scraper run timestamp shown in the footer — increments automatically with each daily 6 am scrape, independent of FE deploys.</li>
-          <li>Git log is always the authoritative ordering within a day if N ever gets out of sync.</li>
-        </ul>
+      <div class="modal-tabs modal-subtabs" style="margin:0 0 0.85rem">
+        <button class="modal-tab active" id="dev-tab-notes"     onclick="switchDevTab('notes')">Notes</button>
+        <button class="modal-tab"        id="dev-tab-changelog" onclick="switchDevTab('changelog')">Changelog</button>
       </div>
-      <div class="modal-section">
-        <h3>Architecture</h3>
-        <ul class="info-list">
-          <li>No login, no tracking, no ads. One URL, shareable with filter state encoded in query params.</li>
-          <li>Static frontend on GitHub Pages — zero server cost, zero maintenance surface.</li>
-          <li>Python scraper runs daily on GitHub Actions and writes <code>events.json</code> + <code>health.json</code> — the page fetches both at load.</li>
-          <li>Filter state persists in localStorage; URL params allow sharing a specific filtered view.</li>
-        </ul>
+
+      <!-- Dev: Notes sub-pane -->
+      <div id="dev-pane-notes">
+        <div class="modal-section">
+          <h3>Versioning strategy</h3>
+          <ul class="info-list">
+            <li><strong>Format:</strong> <code>vYYYY.MMDD.N</code> — date is the push day; N is a manual counter that resets to 1 on each new date and increments with every FE push.</li>
+            <li><strong>FE version</strong> — increment N in <code>FE_VERSION</code> before each push.</li>
+            <li><strong>BE version</strong> — scraper run timestamp in footer; increments automatically each daily 6 am scrape.</li>
+            <li>Git log is authoritative ordering within a day if N goes out of sync.</li>
+          </ul>
+        </div>
+        <div class="modal-section">
+          <h3>Architecture</h3>
+          <ul class="info-list">
+            <li>No login, no tracking, no ads. One URL, shareable with filter state in query params.</li>
+            <li>Static frontend on GitHub Pages — zero server cost, zero maintenance surface.</li>
+            <li>Python scraper runs daily on GitHub Actions, writes <code>events.json</code> + <code>health.json</code>.</li>
+            <li>Filter state persists in localStorage; URL params allow sharing a filtered view.</li>
+          </ul>
+        </div>
+        <div class="modal-section">
+          <h3>UX decisions</h3>
+          <ul class="info-list">
+            <li>Defaults to Palo Alto · 5 mi · ages 0–5 · next 7 days — common case, not a blank slate.</li>
+            <li>Radius is continuous (0.1 mi steps) — families think "how far am I willing to drive."</li>
+            <li>Cards fade on filter change — avoids jarring pop of immediate replacement.</li>
+            <li>Map modal shows live coverage circle while dragging + dynamic suburb label.</li>
+            <li>Sticky filter summary + floating date label when scrolled.</li>
+          </ul>
+        </div>
+        <div class="modal-section">
+          <h3>Visual design</h3>
+          <ul class="info-list">
+            <li>Bricolage Grotesque for headers; Plus Jakarta Sans for body.</li>
+            <li>Warm off-white (<code>#fdf8f3</code>) — easier on the eyes than pure white for list browsing.</li>
+            <li>Orange accent. Free events: green left-border. Tags: neutral grey (color by category added noise).</li>
+            <li>Skeleton shimmer on load communicates structure before content arrives.</li>
+          </ul>
+        </div>
+        <div class="modal-section">
+          <h3>Data &amp; scraping</h3>
+          <ul class="info-list">
+            <li>Adult-noise filter strips wine tastings, networking, comedy, financial seminars pre-frontend.</li>
+            <li>Age groups inferred by regex chain: babies → toddlers → preschool → kids → teens → family.</li>
+            <li>Eventbrite scraped across 30+ Peninsula/Bay Area cities; deduped by title+date+city hash.</li>
+            <li>BiblioCommons API: Palo Alto, SMCL, SCCL, SJPL, East Bay. LibCal ICS: Mountain View. LibCal widget: Sunnyvale, San Mateo City.</li>
+            <li>All datetimes stored as true UTC; displayed in America/Los_Angeles via <code>Intl.DateTimeFormat</code>. Post-scrape sanity check flags PT start times 1–5 AM.</li>
+            <li>Tags: closed canonical taxonomy (35 tags in <code>tagger.py</code>) + SYNONYM_MAP. Hidden from cards, indexed for search.</li>
+            <li>UX revert: <code>git checkout &lt;hash&gt; -- index.html</code>. Named snapshots: <code>git tag -l 'ux/*'</code>.</li>
+          </ul>
+        </div>
       </div>
-      <div class="modal-section">
-        <h3>UX decisions</h3>
-        <ul class="info-list">
-          <li>Defaults to Palo Alto · 5 mi · ages 0–5 · next 7 days — the most common use case, not a blank slate.</li>
-          <li>Radius is a continuous slider (0.1 mi steps, displayed as integers) — families think "how far am I willing to drive," not preset buckets.</li>
-          <li>Cards fade on filter change — avoids jarring pop of immediate replacement.</li>
-          <li>Tag chips are clickable — discovery-led browsing rather than keyword-only search.</li>
-          <li>Map modal shows live coverage circle while dragging — makes radius tangible.</li>
-          <li>Sticky filter summary + floating date label when scrolled — keeps orientation in long event lists.</li>
-        </ul>
-      </div>
-      <div class="modal-section">
-        <h3>Visual design</h3>
-        <ul class="info-list">
-          <li>Bricolage Grotesque for headers — editorial, confident. Plus Jakarta Sans for body — clean, modern.</li>
-          <li>Warm off-white (<code>#fdf8f3</code>) background — easier on the eyes than pure white for list browsing.</li>
-          <li>Orange accent throughout. Free events: green left-border. Paid: orange. Tags: uniform neutral grey — color by category added noise without helping navigation.</li>
-          <li>Skeleton shimmer on load — communicates structure before content arrives.</li>
-        </ul>
-      </div>
-      <div class="modal-section">
-        <h3>Data &amp; scraping</h3>
-        <ul class="info-list">
-          <li>Adult-noise filter strips wine tastings, networking events, comedy shows, and financial seminars before events reach the frontend.</li>
-          <li>Age groups inferred by regex chain — babies → toddlers → preschool → kids → teens → family, with numeric range support (e.g. "ages 3–5").</li>
-          <li>Eventbrite scraped across 30+ Peninsula and Bay Area cities; deduped by title + date + city hash.</li>
-          <li>BiblioCommons API covers Palo Alto, SMCL, SCCL, SJPL, and East Bay systems. LibCal ICS covers Mountain View. LibCal widget covers Sunnyvale and San Mateo City.</li>
-          <li>All datetimes stored as true UTC; displayed in America/Los_Angeles via Intl.DateTimeFormat. A post-scrape sanity check flags any event with a Pacific start time between 1–5 AM as a likely timezone error.</li>
-          <li>Tags use a closed canonical taxonomy (CANONICAL_TAGS in tagger.py) + SYNONYM_MAP to prevent drift. Tags are indexed for search but hidden from card UI.</li>
-          <li>To revert to a previous UX: <code>git checkout &lt;hash&gt; -- index.html</code>. Named UX snapshots: <code>git tag -l 'ux/*'</code>.</li>
-        </ul>
+
+      <!-- Dev: Changelog sub-pane -->
+      <div id="dev-pane-changelog" style="display:none">
+        <p style="font-size:0.73rem;color:var(--ink-3);margin:0 0 0.85rem">Every push, newest first. Each date is a daily release; individual builds listed within.</p>
+        <div id="dev-changelog-list"></div>
       </div>
     </div>
   </div>
@@ -820,6 +856,10 @@ footer a { color: var(--ink-3); text-decoration: underline; }
           <span data-map-snap="5">5</span><span data-map-snap="10">10</span><span data-map-snap="15">15</span><span data-map-snap="20">20</span>
         </div>
       </div>
+    </div>
+    <div class="map-suburb-row">
+      <span class="filter-label">Center</span>
+      <span id="map-suburb-label" class="map-suburb-text"></span>
     </div>
     <div class="map-footer">
       <span id="map-custom-chip" class="map-custom-chip" style="display:none">
@@ -956,7 +996,7 @@ footer a { color: var(--ink-3); text-decoration: underline; }
 </footer>
 
 <script>
-const FE_VERSION = '2026.0616.5';
+const FE_VERSION = '2026.0616.7';
 const IS_LOCAL = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
 const JSON_URL   = IS_LOCAL ? '/output/events.json'  : 'https://raw.githubusercontent.com/crajagop87/bay-area-kids-events/main/output/events.json';
 const HEALTH_URL = IS_LOCAL ? '/output/health.json'  : 'https://raw.githubusercontent.com/crajagop87/bay-area-kids-events/main/output/health.json';
@@ -1834,6 +1874,113 @@ function switchInfoTab(tab) {
   });
 }
 
+function switchDevTab(tab) {
+  ['notes','changelog'].forEach(t => {
+    document.getElementById(`dev-tab-${t}`).classList.toggle('active', t === tab);
+    document.getElementById(`dev-pane-${t}`).style.display = t === tab ? '' : 'none';
+  });
+  if (tab === 'changelog') _renderChangelog();
+}
+
+// ── Changelog data — append newest entry at the TOP ──────────────────────────
+// Format: { date, ver, summary, items[] }
+// "date" groups into a daily release header.
+const DEV_CHANGELOG = [
+  {
+    date: '2026-06-16', ver: 'v2026.0616.6',
+    summary: 'Dynamic suburb / city label in map modal',
+    items: [
+      'CENTER row below radius slider shows current suburb via Nominatim reverse geocoding',
+      'Dual-suburb display ("Palo Alto / East Palo Alto") when pin is within 1 mi of a city boundary',
+      '400 ms debounce on drag; max 2 API calls per update via bounding-box edge check',
+    ]
+  },
+  {
+    date: '2026-06-16', ver: 'v2026.0616.5',
+    summary: 'Canonical tag taxonomy + cleaner card UI',
+    items: [
+      'Closed 35-tag set (CANONICAL_TAGS in tagger.py) prevents tag sprawl',
+      'SYNONYM_MAP collapses variants: "ice cream" → "food & drink", "STEM" → "science & STEM", etc.',
+      'Tags hidden from cards for cleaner look — still fully searchable in data',
+      'UX revert strategy: git tag snapshots at ux/tags-visible-v2026.0616; docs in Dev tab',
+      'About section updated: new sources listed, search examples, revert instructions',
+    ]
+  },
+  {
+    date: '2026-06-16', ver: 'v2026.0616.4',
+    summary: 'Sunnyvale & San Mateo libraries + timezone guardrail system',
+    items: [
+      'Added Sunnyvale Public Library and San Mateo Public Library via LibCal mini-calendar widget',
+      'New scrapers/utils.py: shared local_to_utc() and ensure_utc() for all scrapers',
+      'All scraper channels migrated to true UTC storage; fmt_time() rewired to Intl.DateTimeFormat PT display',
+      'Post-scrape sanity check in run_scraper.py flags any event with PT start time 1–5 AM',
+      '57/57 channels OK, zero TZ warnings on latest run',
+    ]
+  },
+  {
+    date: '2026-06-16', ver: 'v2026.0616.3',
+    summary: 'Timezone fix: "Summer Reading Seed Art" and "Baby Storytime" correct times',
+    items: [
+      'fmt_time() rewritten to use Intl.DateTimeFormat with America/Los_Angeles — was reading raw UTC hour as PT',
+      'Fixes events showing 10 PM when official source says 3 PM',
+      'Systematic fix applies to all events, not just individually patched ones',
+    ]
+  },
+  {
+    date: '2026-06-16', ver: 'v2026.0616.2',
+    summary: 'Age slider min=max visual fix + radius/age label layout fix',
+    items: [
+      'Age slider: when min === max, shows "age X" instead of "5–5"',
+      'Visible track dot still rendered at correct position when handles overlap',
+      'filter-label em uses min-width: 3.8ch to prevent layout shift at single→double digit boundary',
+    ]
+  },
+  {
+    date: '2026-06-16', ver: 'v2026.0616.1',
+    summary: 'Emoji inline with card title',
+    items: [
+      'Card emoji moved inline with title (was on its own line) — saves vertical space per card',
+    ]
+  },
+];
+
+let _changelogRendered = false;
+function _renderChangelog() {
+  if (_changelogRendered) return;
+  _changelogRendered = true;
+  const container = document.getElementById('dev-changelog-list');
+  if (!container) return;
+
+  // Group entries by date
+  const byDate = [];
+  const seen = {};
+  for (const entry of DEV_CHANGELOG) {
+    if (!seen[entry.date]) { seen[entry.date] = []; byDate.push({ date: entry.date, entries: seen[entry.date] }); }
+    seen[entry.date].push(entry);
+  }
+
+  container.innerHTML = byDate.map(({ date, entries }) => {
+    const [y, m, d] = date.split('-');
+    const label = new Date(+y, +m - 1, +d).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+    const pushesHtml = entries.map(e => `
+      <div class="cl-push">
+        <div class="cl-push-header">
+          <span class="cl-push-ver">${e.ver}</span>
+          <span class="cl-push-summary">${e.summary}</span>
+        </div>
+        <ul>${e.items.map(i => `<li>${i}</li>`).join('')}</ul>
+      </div>`).join('');
+    return `
+      <div class="cl-day">
+        <div class="cl-day-header">
+          <span class="cl-day-date">${label}</span>
+          <span class="cl-day-tag">${entries.length} push${entries.length > 1 ? 'es' : ''}</span>
+        </div>
+        ${pushesHtml}
+      </div>`;
+  }).join('<hr style="border:none;border-top:1px solid var(--border);margin:0.85rem 0">');
+}
+
 function switchFeedbackTab(tab) {
   document.getElementById('fb-tab-feedback').classList.toggle('active', tab === 'feedback');
   document.getElementById('fb-tab-roadmap').classList.toggle('active', tab === 'roadmap');
@@ -2117,6 +2264,9 @@ function openMapModal() {
     _renderMapCircles(true);
     _syncMapRadiusDisplay();
     _syncMapCustomChip();
+    // Seed suburb label with current center
+    const _seedCenter = mapTempCenter || (_mapPresetCenters && _mapPresetCenters[0]);
+    if (_seedCenter) _scheduleSuburbUpdate(_seedCenter[0], _seedCenter[1]);
   }, 80);
 }
 
@@ -2153,11 +2303,13 @@ function _renderMapCircles(fitView = true) {
       circle.setLatLng([la, ln]);
       mapTempCenter = [la, ln];
       _syncMapCustomChip();
+      _scheduleSuburbUpdate(la, ln);
     });
     marker.on('dragend', e => {
       const { lat: la, lng: ln } = e.target.getLatLng();
       mapTempCenter = [la, ln];
       _syncMapCustomChip();
+      _scheduleSuburbUpdate(la, ln);
     });
 
     return circle;
@@ -2188,6 +2340,60 @@ function resetMapCenter() {
   _mapPresetCenters = _getCenters();
   _renderMapCircles(true);
   _syncMapCustomChip();
+  const centers = _mapPresetCenters || _getCenters();
+  if (centers && centers[0]) _scheduleSuburbUpdate(centers[0][0], centers[0][1]);
+}
+
+let _suburbTimer = null;
+
+function _scheduleSuburbUpdate(lat, lng) {
+  clearTimeout(_suburbTimer);
+  _suburbTimer = setTimeout(() => _doSuburbFetch(lat, lng), 420);
+}
+
+async function _doSuburbFetch(lat, lng) {
+  const el = document.getElementById('map-suburb-label');
+  if (!el) return;
+  el.classList.add('loading');
+
+  const nominatim = async (la, ln) => {
+    try {
+      const r = await fetch(
+        `https://nominatim.openstreetmap.org/reverse?lat=${la}&lon=${ln}&format=json&zoom=13&addressdetails=1`,
+        { headers: { 'Accept-Language': 'en' } }
+      );
+      const d = await r.json();
+      const a = d.address || {};
+      const name = a.suburb || a.neighbourhood || a.city_district || a.city || a.town || a.village || '';
+      return { name, bbox: d.boundingbox };
+    } catch { return { name: '', bbox: null }; }
+  };
+
+  const { name, bbox } = await nominatim(lat, lng);
+  if (!name) { el.textContent = ''; el.classList.remove('loading'); return; }
+
+  // Check if within ~1 mile of a bounding box edge → query neighbor
+  let label = name;
+  if (bbox) {
+    const [south, north, west, east] = bbox.map(Number);
+    const miLat = 1 / 69;
+    const miLng = 1 / (69 * Math.cos(lat * Math.PI / 180));
+    // Find which edge is within 1 mile, pick that direction
+    let offLat = lat, offLng = lng;
+    let nearEdge = false;
+    if (lat - south < miLat)       { offLat = lat - miLat * 1.8; nearEdge = true; }
+    else if (north - lat < miLat)  { offLat = lat + miLat * 1.8; nearEdge = true; }
+    else if (lng - west < miLng)   { offLng = lng - miLng * 1.8; nearEdge = true; }
+    else if (east - lng < miLng)   { offLng = lng + miLng * 1.8; nearEdge = true; }
+
+    if (nearEdge) {
+      const { name: neighbor } = await nominatim(offLat, offLng);
+      if (neighbor && neighbor !== name) label = `${name} / ${neighbor}`;
+    }
+  }
+
+  el.textContent = label;
+  el.classList.remove('loading');
 }
 
 function _syncMapRadiusDisplay() {
