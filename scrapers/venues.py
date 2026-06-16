@@ -352,6 +352,221 @@ def scrape_lawrence_hall(window_days: int = 16) -> list[dict]:
     return events
 
 
+def scrape_midpeninsula_openspace(window_days: int = 45) -> list[dict]:
+    """Midpeninsula Regional Open Space District — youth & families programs."""
+    base_url = "https://www.openspace.org/events"
+    now = datetime.now(timezone.utc)
+    cutoff = now + timedelta(days=window_days)
+    events = []
+    seen = set()
+
+    for page in range(1, 8):
+        url = f"{base_url}?type=youth-families&page={page}"
+        try:
+            resp = requests.get(url, headers=HEADERS, timeout=20)
+            resp.raise_for_status()
+        except Exception as exc:
+            log.warning("OpenSpace fetch failed page %d: %s", page, exc)
+            break
+
+        soup = BeautifulSoup(resp.text, "lxml")
+        rows = soup.select("table tbody tr")
+        if not rows:
+            break
+
+        for row in rows:
+            tds = row.find_all("td")
+            if len(tds) < 3:
+                continue
+            # Columns: Category | Title | Date | [Preserve] | [Miles]
+            link_el = row.select_one("a[href*='/events/']")
+            if not link_el:
+                continue
+            title = link_el.get_text(strip=True)
+            if not title or title in seen:
+                continue
+            ticket_url = "https://www.openspace.org" + link_el["href"] if link_el["href"].startswith("/") else link_el["href"]
+
+            # Date is in the td after the title td
+            date_text = ""
+            for td in tds:
+                if link_el in td.descendants:
+                    siblings = td.find_next_siblings("td")
+                    if siblings:
+                        date_text = siblings[0].get_text(strip=True)
+                    break
+
+            start_dt = None
+            if date_text:
+                # e.g. "Monday, Jun 29, 20269:00 am" — date+time concatenated, abbrev month
+                m = re.search(r"[A-Za-z]+,\s*([A-Za-z]+\s+\d+,\s*\d{4})(\d+:\d+\s*[ap]m)?", date_text, re.IGNORECASE)
+                if m:
+                    ds = m.group(1).strip()
+                    ts = m.group(2).strip() if m.group(2) else "9:00 AM"
+                    try:
+                        naive = datetime.strptime(f"{ds} {ts.upper()}", "%b %d, %Y %I:%M %p")
+                        start_dt = naive.replace(tzinfo=timezone(timedelta(hours=-7)))
+                    except Exception:
+                        pass
+
+            if start_dt and (start_dt < now or start_dt > cutoff):
+                continue
+
+            seen.add(title)
+            events.append(_make_event(
+                title, start_dt, None,
+                "Midpeninsula Open Space", "Los Altos Hills", "Santa Clara",
+                "Free", 0.0, "free walk-up", ticket_url,
+                "Midpeninsula Open Space", base_url,
+            ))
+
+        if len(rows) < 10:
+            break
+
+    log.info("OpenSpace: scraped %d events", len(events))
+    return events
+
+
+_STANFORD_KID_RE = re.compile(
+    r"\b(family|families|child|children|kids?|youth|teen|toddler|baby|babies|"
+    r"preschool|elementary|storytime|science\s*fair|junior|puppet|magic\s*show|"
+    r"summer\s*camp|art\s*camp|maker|lego|robot|coding\s*for\s*kids)\b",
+    re.IGNORECASE,
+)
+
+def scrape_stanford_events(window_days: int = 45) -> list[dict]:
+    """Stanford public events — filtered to family/kids-relevant content."""
+    now = datetime.now(timezone.utc)
+    cutoff = now + timedelta(days=window_days)
+    events = []
+    seen = set()
+
+    for page in range(1, 6):
+        try:
+            resp = requests.get(
+                "https://events.stanford.edu/api/2/events/",
+                params={"audience": "Everyone", "page_size": 100, "page": page},
+                headers=HEADERS, timeout=20,
+            )
+            resp.raise_for_status()
+            data = resp.json()
+        except Exception as exc:
+            log.warning("Stanford Events API failed page %d: %s", page, exc)
+            break
+
+        items = data.get("events", [])
+        if not items:
+            break
+
+        for wrapper in items:
+            ev = wrapper.get("event", wrapper)
+            title = ev.get("title", "").strip()
+            if not title:
+                continue
+
+            desc = ev.get("description_text", "") or ""
+            haystack = f"{title} {desc}"
+            if not _STANFORD_KID_RE.search(haystack):
+                continue
+
+            # Date from first event_instance
+            instances = ev.get("event_instances", [])
+            start_dt = end_dt = None
+            if instances:
+                inst = instances[0].get("event_instance", instances[0])
+                try:
+                    start_dt = datetime.fromisoformat(inst["start"])
+                except Exception:
+                    pass
+                try:
+                    end_dt = datetime.fromisoformat(inst["end"]) if inst.get("end") else None
+                except Exception:
+                    pass
+
+            if start_dt and (start_dt < now or start_dt > cutoff):
+                continue
+
+            key = f"{title}|{ev.get('first_date','')}"
+            if key in seen:
+                continue
+            seen.add(key)
+
+            ticket_url = ev.get("localist_url") or ev.get("url") or "https://events.stanford.edu"
+            is_free = ev.get("free", False)
+            location = ev.get("location_name", "") or "Stanford University"
+
+            events.append(_make_event(
+                title, start_dt, end_dt,
+                location, "Stanford", "Santa Clara",
+                "Free" if is_free else "Paid",
+                0.0 if is_free else 1.0,
+                "free walk-up" if is_free else "check website",
+                ticket_url, "Stanford Events", "https://events.stanford.edu",
+            ))
+
+        if len(items) < 100:
+            break
+
+    log.info("Stanford Events: scraped %d family-relevant events", len(events))
+    return events
+
+
+def scrape_allied_arts_guild(window_days: int = 45) -> list[dict]:
+    """Allied Arts Guild (Menlo Park) — seasonal family events."""
+    url = "https://alliedartsguild.org/events/"
+    now = datetime.now(timezone.utc)
+    cutoff = now + timedelta(days=window_days)
+    events = []
+
+    try:
+        resp = requests.get(url, headers=HEADERS, timeout=20)
+        resp.raise_for_status()
+    except Exception as exc:
+        log.warning("Allied Arts Guild fetch failed: %s", exc)
+        return []
+
+    soup = BeautifulSoup(resp.text, "lxml")
+
+    DATE_RE = re.compile(
+        r"(January|February|March|April|May|June|July|August|September|October|November|December)"
+        r"\s+\d{1,2}(?:–\d{1,2})?,?\s+\d{4}",
+        re.IGNORECASE,
+    )
+
+    for article in soup.select("article, .entry-content > *"):
+        title_el = article.select_one("h1, h2, h3, h4")
+        if not title_el:
+            continue
+        title = title_el.get_text(strip=True)
+        if not title or len(title) < 4:
+            continue
+
+        body = article.get_text(" ", strip=True)
+        m = DATE_RE.search(body)
+        start_dt = None
+        if m:
+            try:
+                start_dt = datetime.strptime(m.group(0).replace("–", " ").split()[0] + " " + " ".join(m.group(0).split()[-2:]), "%B %d %Y").replace(tzinfo=timezone.utc)
+            except Exception:
+                pass
+
+        if start_dt and (start_dt < now or start_dt > cutoff):
+            continue
+
+        link_el = article.select_one("a[href]")
+        ticket_url = link_el["href"] if link_el else url
+
+        events.append(_make_event(
+            title, start_dt, None,
+            "Allied Arts Guild", "Menlo Park", "San Mateo",
+            "check website", 0.0, "check website", ticket_url,
+            "Allied Arts Guild", url,
+        ))
+
+    log.info("Allied Arts Guild: scraped %d events", len(events))
+    return events
+
+
 VENUE_SCRAPERS = [
     # Peninsula / South Bay core
     ("Palo Alto Junior Museum & Zoo", scrape_palo_alto_junior_museum),
@@ -360,6 +575,8 @@ VENUE_SCRAPERS = [
     ("Children's Discovery Museum SJ", scrape_childrens_discovery_museum_sj),
     ("Cantor Arts Center", scrape_cantor_arts),
     ("Hidden Villa Farm", scrape_hidden_villa),
+    # Peninsula / open space
+    ("Midpeninsula Open Space", scrape_midpeninsula_openspace),
     # SF / East Bay (expanded)
     ("Exploratorium", scrape_exploratorium),
     ("Oakland Children's Fairyland", scrape_fairyland),
