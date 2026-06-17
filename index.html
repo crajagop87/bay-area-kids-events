@@ -629,9 +629,9 @@ footer a { color: var(--ink-3); text-decoration: underline; }
 }
 #location-input:focus { border-color: var(--accent); color: var(--ink-1); border-style: solid; }
 #location-input::placeholder { color: var(--ink-3); }
-/* ── Radius slider (main) ── */
+/* ── Radius slider (main + map modal) ── */
 .radius-wrap { display: flex; flex-direction: column; gap: 5px; flex: 1; max-width: 260px; }
-#radius-slider {
+#radius-slider, #map-radius-slider {
   width: 100%; height: 6px; cursor: pointer;
   -webkit-appearance: none; appearance: none;
   background: linear-gradient(to right,
@@ -641,7 +641,7 @@ footer a { color: var(--ink-3); text-decoration: underline; }
     #e8e0d8 var(--pct,10%));
   border-radius: 3px; outline: none; transition: background 0.2s;
 }
-#radius-slider::-webkit-slider-thumb {
+#radius-slider::-webkit-slider-thumb, #map-radius-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   width: calc(16px + var(--thumb-grow, 0px));
   height: calc(16px + var(--thumb-grow, 0px));
@@ -651,8 +651,8 @@ footer a { color: var(--ink-3); text-decoration: underline; }
   box-shadow: 0 1px 4px rgba(0,0,0,0.18); cursor: grab;
   transition: box-shadow 0.12s, width 0.15s, height 0.15s;
 }
-#radius-slider:active::-webkit-slider-thumb { cursor: grabbing; }
-#radius-slider::-webkit-slider-thumb:hover { box-shadow: 0 0 0 6px rgba(194,65,12,0.13); }
+#radius-slider:active::-webkit-slider-thumb, #map-radius-slider:active::-webkit-slider-thumb { cursor: grabbing; }
+#radius-slider::-webkit-slider-thumb:hover, #map-radius-slider::-webkit-slider-thumb:hover { box-shadow: 0 0 0 6px rgba(194,65,12,0.13); }
 @keyframes slider-wobble {
   0%   { transform: scale(1) rotate(0deg); }
   20%  { transform: scale(1.18) rotate(-4deg); }
@@ -661,7 +661,7 @@ footer a { color: var(--ink-3); text-decoration: underline; }
   80%  { transform: scale(0.97) rotate(1deg); }
   100% { transform: scale(1) rotate(0deg); }
 }
-#radius-slider.wobbling::-webkit-slider-thumb { animation: slider-wobble 0.45s ease; }
+#radius-slider.wobbling::-webkit-slider-thumb, #map-radius-slider.wobbling::-webkit-slider-thumb { animation: slider-wobble 0.45s ease; }
 .radius-ticks { position: relative; height: 14px; margin-top: 1px; }
 .radius-ticks span { position: absolute; font-size: 0.65rem; font-weight: 600; color: var(--ink-3); cursor: pointer; transition: color 0.12s; transform: translateX(-50%); white-space: nowrap; }
 .radius-ticks span:last-child { transform: translateX(-100%); }
@@ -2619,7 +2619,10 @@ function _syncMapRadiusDisplay() {
   const slider = document.getElementById('map-radius-slider');
   if (slider) {
     slider.value = mapTempRadius;
-    slider.style.setProperty('--pct', `${((mapTempRadius - 0.5) / 19.5) * 100}%`);
+    const pct = ((mapTempRadius - 0.5) / 19.5) * 100;
+    slider.style.setProperty('--pct', `${pct}%`);
+    slider.style.setProperty('--thumb-grow', `${Math.round((pct / 100) * 10)}px`);
+    slider.style.setProperty('--thumb-color', pct < 33 ? '#16a34a' : pct < 66 ? '#d97706' : '#dc2626');
   }
   const val = document.getElementById('map-radius-value');
   if (val) val.textContent = ` ${Math.round(mapTempRadius)} mi`;
@@ -2785,6 +2788,10 @@ function applyMapSettings() {
 }
 
 const _mapSlider = document.getElementById('map-radius-slider');
+_mapSlider.addEventListener('pointerdown', () => {
+  _mapSlider.classList.add('wobbling');
+  _mapSlider.addEventListener('animationend', () => _mapSlider.classList.remove('wobbling'), { once: true });
+});
 _mapSlider.addEventListener('input', () => {
   mapTempRadius = +_mapSlider.value;
   _syncMapRadiusDisplay();
