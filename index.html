@@ -1071,7 +1071,7 @@ footer a { color: var(--ink-3); text-decoration: underline; }
 </footer>
 
 <script>
-const FE_VERSION = '2026.0616.15';;
+const FE_VERSION = '2026.0616.16';;
 const IS_LOCAL = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
 const JSON_URL   = IS_LOCAL ? '/output/events.json'  : 'https://raw.githubusercontent.com/crajagop87/bay-area-kids-events/main/output/events.json';
 const HEALTH_URL = IS_LOCAL ? '/output/health.json'  : 'https://raw.githubusercontent.com/crajagop87/bay-area-kids-events/main/output/health.json';
@@ -1871,25 +1871,72 @@ function render() {
     return a.localeCompare(b);
   });
 
-  const html = [];
+  _renderIncremental(output, sortedGroups);
+  updateStickyBar();
+  initFloatingDateObserver();
+}
+
+// Stable per-event fingerprint (title + datetime + source)
+function _eid(e) {
+  const s = (e.title || '') + '|' + (e.start_datetime || '') + '|' + (e.source_name || '');
+  let h = 0;
+  for (let i = 0; i < s.length; i++) h = Math.imul(31, h) + s.charCodeAt(i) | 0;
+  return 'e' + (h >>> 0).toString(36);
+}
+
+function _renderIncremental(output, sortedGroups) {
+  // Index existing card elements by eid
+  const existingCards = new Map();
+  output.querySelectorAll('.card[data-eid]').forEach(el => existingCards.set(el.dataset.eid, el));
+
+  // Build new structure in a fragment, reusing existing card elements
+  // (moving a node out of output before replaceChildren preserves it)
+  const frag = document.createDocumentFragment();
+  const entering = [];
+
   sortedGroups.forEach(([k, evs]) => {
     const isUndated = k === 'no-date';
     const label = isUndated
       ? 'Also worth checking — date not confirmed'
       : new Date(k + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
-    html.push(`<div class="date-group${isUndated ? ' undated' : ''}"><h2>${label} <span class="group-count">${evs.length}</span></h2></div><div class="grid">`);
-    evs.forEach(e => html.push(card(e, isUndated)));
-    html.push('</div>');
+
+    const header = document.createElement('div');
+    header.className = `date-group${isUndated ? ' undated' : ''}`;
+    header.innerHTML = `<h2>${label} <span class="group-count">${evs.length}</span></h2>`;
+    frag.appendChild(header);
+
+    const grid = document.createElement('div');
+    grid.className = 'grid';
+
+    evs.forEach(e => {
+      const eid = _eid(e);
+      if (existingCards.has(eid)) {
+        grid.appendChild(existingCards.get(eid)); // moves element out of output
+      } else {
+        const tmp = document.createElement('div');
+        tmp.innerHTML = card(e, isUndated);
+        const cardEl = tmp.firstElementChild;
+        cardEl.style.opacity = '0';
+        grid.appendChild(cardEl);
+        entering.push(cardEl);
+      }
+    });
+    frag.appendChild(grid);
   });
-  output.classList.add('wiping');
-  clearTimeout(_renderTimer);
-  _renderTimer = setTimeout(() => {
-    output.innerHTML = html.join('');
-    requestAnimationFrame(() => output.classList.remove('wiping'));
-    updateStickyBar();
-    initFloatingDateObserver();
-    _renderTimer = null;
-  }, 140);
+
+  // Replace output content — anything still in output (old structure) is discarded
+  output.replaceChildren(frag);
+
+  // Fade in new cards
+  if (entering.length) {
+    requestAnimationFrame(() => {
+      entering.forEach(el => {
+        el.style.transition = 'opacity 0.18s';
+        el.style.opacity = '1';
+        el.addEventListener('transitionend', () => { el.style.transition = ''; el.style.opacity = ''; }, { once: true });
+      });
+    });
+  }
 }
 
 const _ptFmt = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Los_Angeles', hour: 'numeric', minute: '2-digit', hour12: true });
@@ -1928,7 +1975,7 @@ function card(e, undated = false) {
 
   const emoji = eventEmoji(e.tags);
   const costCls2 = e.cost === 'Free' ? ' cost-free' : e.cost === 'Paid' ? ' cost-paid' : '';
-  return `<div class="card${undated ? ' undated' : ''}${costCls2}">
+  return `<div class="card${undated ? ' undated' : ''}${costCls2}" data-eid="${_eid(e)}">
     <div class="card-title">${emoji ? `<span class="card-emoji">${emoji}</span>` : ''}${titleHtml}</div>
     <div class="card-meta">
       ${timeStr ? `<span class="m-time">${timeStr}</span>` : ''}
@@ -2108,6 +2155,16 @@ function switchDevTab(tab) {
 // Format: { date, ver, summary, items[] }
 // "date" groups into a daily release header.
 const DEV_CHANGELOG = [
+  {
+    date: '2026-06-16', ver: 'v2026.0616.16',
+    summary: 'Incremental card rendering — no flash on slider drag',
+    items: [
+      'Existing cards stay in place when widening filter (width, age sliders)',
+      'New cards fade in smoothly; filtered-out cards removed without re-rendering everything',
+      'Date group rows appear/disappear only when their event set changes',
+      'Removed full wipe+fade cycle — render is now a DOM patch using stable per-event fingerprints',
+    ]
+  },
   {
     date: '2026-06-16', ver: 'v2026.0616.15',
     summary: 'Width slider: diameter semantics, fiery color, dotted ring matches slider color',
