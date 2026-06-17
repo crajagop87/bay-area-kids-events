@@ -295,7 +295,7 @@ def scrape_exploratorium(window_days: int = 16) -> list[dict]:
 
 def scrape_fairyland(window_days: int = 16) -> list[dict]:
     """Oakland Children's Fairyland — classic storybook theme park, ages 1–10."""
-    url = "https://www.fairyland.org/plan-your-visit/"
+    url = "https://fairyland.org/upcoming-events/"
     now = datetime.now(timezone.utc)
     cutoff = now + timedelta(days=window_days)
     events = []
@@ -307,13 +307,15 @@ def scrape_fairyland(window_days: int = 16) -> list[dict]:
                                   "Oakland", "Alameda", "Paid", 16.0,
                                   "book ahead", "Oakland Children's Fairyland", now, cutoff)
         if not events:
-            for article in soup.select("article, .event, .tribe-event"):
-                title_el = article.select_one("h2, h3, .tribe-event-url")
+            for article in soup.select("article, .tribe-events-list-item, .event, .tribe-event"):
+                title_el = article.select_one("h2, h3, h4, .tribe-event-url")
                 if not title_el:
                     continue
                 title = title_el.get_text(strip=True)
                 link_el = article.select_one("a")
-                link = link_el["href"] if link_el else url
+                link = link_el["href"] if link_el and link_el.get("href") else url
+                if not link.startswith("http"):
+                    link = "https://fairyland.org" + link
                 events.append(_make_event(title, None, None, "Oakland Children's Fairyland",
                                            "Oakland", "Alameda", "Paid", 16.0,
                                            "book ahead", link,
@@ -326,7 +328,7 @@ def scrape_fairyland(window_days: int = 16) -> list[dict]:
 
 def scrape_lawrence_hall(window_days: int = 16) -> list[dict]:
     """Lawrence Hall of Science — UC Berkeley's public science center."""
-    url = "https://www.lawrencehallofscience.org/visit/programs-and-events/"
+    url = "https://www.lawrencehallofscience.org/visitors/events/"
     now = datetime.now(timezone.utc)
     cutoff = now + timedelta(days=window_days)
     events = []
@@ -338,16 +340,27 @@ def scrape_lawrence_hall(window_days: int = 16) -> list[dict]:
                                   "Berkeley", "Alameda", "Paid", 15.0,
                                   "walk-up or reserve", "Lawrence Hall of Science", now, cutoff)
         if not events:
-            for article in soup.select("article, .event-item, .program"):
-                title_el = article.select_one("h2, h3, .event-title")
+            for a in soup.select("a[href]"):
+                title_el = a.select_one("h2, h3, h4")
                 if not title_el:
                     continue
                 title = title_el.get_text(strip=True)
-                link_el = article.select_one("a")
-                link = link_el["href"] if link_el else url
-                events.append(_make_event(title, None, None, "Lawrence Hall of Science",
+                if not title or len(title) < 5:
+                    continue
+                link = a["href"]
+                if not link.startswith("http"):
+                    link = "https://www.lawrencehallofscience.org" + link
+                # grab date text from sibling div if present
+                date_div = a.select_one("div")
+                start_dt = None
+                if date_div:
+                    from scrapers.aggregators import _parse_date_fuzzy
+                    start_dt = _parse_date_fuzzy(date_div.get_text(strip=True))
+                if start_dt and start_dt > cutoff:
+                    continue
+                events.append(_make_event(title, start_dt, None, "Lawrence Hall of Science",
                                            "Berkeley", "Alameda", "Paid", 15.0,
-                                           "walk-up", link,
+                                           "walk-up or reserve", link,
                                            "Lawrence Hall of Science", url))
     except Exception as exc:
         log.warning("Lawrence Hall of Science scrape failed: %s", exc)
@@ -656,6 +669,41 @@ def scrape_allied_arts_guild(window_days: int = 45) -> list[dict]:
     return events
 
 
+def scrape_los_altos_concerts(window_days: int = 60) -> list[dict]:
+    """Los Altos 2026 Summer Concert Series — free outdoor concerts, family-friendly.
+    Source: https://www.losaltosca.gov/766/2026-Summer-Concert-Series
+    Hardcoded since the CivicPlus iCal feed is empty; revisit for 2027.
+    """
+    now = datetime.now(timezone.utc)
+    cutoff = now + timedelta(days=window_days)
+    source_url = "https://www.losaltosca.gov/766/2026-Summer-Concert-Series"
+    concerts = [
+        # Grant Park Soccer Field (1575 Holt Ave)
+        ("Peninsula Symphony",       "2026-06-13", "Grant Park Soccer Field", "Los Altos"),
+        ("Big Bang Beat",            "2026-06-18", "Grant Park Soccer Field", "Los Altos"),
+        ("Mercy & The Heartbeats",   "2026-06-25", "Grant Park Soccer Field", "Los Altos"),
+        ("Carnaval",                 "2026-07-09", "Grant Park Soccer Field", "Los Altos"),
+        # Hillview Soccer Field (97 Hillview Ave)
+        ("Smokin' Slice of Mojo",    "2026-07-16", "Hillview Soccer Field",   "Los Altos"),
+        ("Petty Theft",              "2026-07-23", "Hillview Soccer Field",   "Los Altos"),
+        ("Mustache Harbor",          "2026-07-30", "Hillview Soccer Field",   "Los Altos"),
+    ]
+    events = []
+    for band, date_str, venue, city in concerts:
+        start_dt = local_to_utc(datetime.strptime(f"{date_str} 18:30", "%Y-%m-%d %H:%M"))
+        end_dt   = local_to_utc(datetime.strptime(f"{date_str} 20:00", "%Y-%m-%d %H:%M"))
+        if start_dt < now or start_dt > cutoff:
+            continue
+        title = f"Los Altos Summer Concert: {band}"
+        events.append(_make_event(
+            title, start_dt, end_dt, venue, city, "Santa Clara",
+            "Free", 0.0, "free walk-up", source_url,
+            "Los Altos Summer Concert Series", source_url,
+        ))
+    log.info("Los Altos Summer Concerts: %d events", len(events))
+    return events
+
+
 VENUE_SCRAPERS = [
     # Peninsula / South Bay core
     ("Palo Alto Junior Museum & Zoo", scrape_palo_alto_junior_museum),
@@ -670,6 +718,7 @@ VENUE_SCRAPERS = [
     ("Exploratorium", scrape_exploratorium),
     ("Oakland Children's Fairyland", scrape_fairyland),
     ("Lawrence Hall of Science", scrape_lawrence_hall),
+    ("Los Altos Summer Concert Series", scrape_los_altos_concerts),
 ]
 
 
