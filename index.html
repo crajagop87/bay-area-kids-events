@@ -214,47 +214,8 @@ input[type="date"]:focus { border-color: #fb923c; }
   transform: translateY(-50%);
   background: #e2eef0; border-radius: 3px; pointer-events: none;
 }
-/* the elastic fill band */
-.age-track-fill {
-  position: absolute;
-  height: var(--band-h, 8px);
-  top: calc(50% - var(--band-h, 8px) / 2);
-  background: var(--band-color, #22d3ee);
-  border-radius: var(--band-radius, 3px);
-  pointer-events: none;
-  transform-origin: center center;
-}
-/* vibration while dragging — JS sets animation-duration to control speed */
-@keyframes band-vibrate {
-  0%   { transform: scaleY(1)   skewY(0deg);  }
-  15%  { transform: scaleY(3.2) skewY(1.5deg); }
-  30%  { transform: scaleY(0.3) skewY(-1deg); }
-  45%  { transform: scaleY(2.6) skewY(0.8deg); }
-  60%  { transform: scaleY(0.5) skewY(-0.5deg); }
-  75%  { transform: scaleY(2)   skewY(0.3deg); }
-  88%  { transform: scaleY(0.7) skewY(0deg);  }
-  100% { transform: scaleY(1)   skewY(0deg);  }
-}
-.age-track-fill.vibrating {
-  animation: band-vibrate var(--vibe-dur, 0.12s) linear infinite;
-}
-/* snap on release */
-@keyframes age-band-snap {
-  0%   { transform: scaleY(1); }
-  8%   { transform: scaleY(4.5) skewY(2deg); }
-  18%  { transform: scaleY(0.2) skewY(-1deg); }
-  30%  { transform: scaleY(3)   skewY(1deg); }
-  42%  { transform: scaleY(0.55) skewY(-0.5deg); }
-  55%  { transform: scaleY(2)   skewY(0.3deg); }
-  67%  { transform: scaleY(0.75); }
-  78%  { transform: scaleY(1.4); }
-  88%  { transform: scaleY(0.92); }
-  95%  { transform: scaleY(1.06); }
-  100% { transform: scaleY(1); }
-}
-.age-track-fill.snapping {
-  animation: age-band-snap 0.7s cubic-bezier(0.36,0.07,0.19,0.97) forwards;
-}
+/* age band is SVG-driven — no fill div */
+#age-band-svg { position:absolute; top:0; left:0; width:100%; height:100%; overflow:visible; pointer-events:none; }
 .age-ticks { display: flex; justify-content: space-between; }
 .age-ticks span { font-size: 0.62rem; font-weight: 600; color: var(--ink-3); }
 
@@ -649,8 +610,9 @@ footer a { color: var(--ink-3); text-decoration: underline; }
   -webkit-appearance: none; appearance: none;
   background: linear-gradient(to right,
     #22c55e 0%,
-    #f59e0b calc(var(--pct,10%) * 0.6),
-    #ef4444 var(--pct,10%),
+    #f59e0b calc(var(--pct,10%) * 0.55),
+    #ef4444 calc(var(--pct,10%) * 0.82),
+    #b91c1c var(--pct,10%),
     #e8e0d8 var(--pct,10%));
   border-radius: 3px; outline: none; transition: background 0.2s;
 }
@@ -821,7 +783,7 @@ footer a { color: var(--ink-3); text-decoration: underline; }
           <li><strong>SF</strong> — centered on downtown San Francisco.</li>
           <li><strong>📍 Custom</strong> — opens the map so you can drag the pin anywhere in the Bay Area.</li>
           <li><strong>All areas</strong> — no location filter; every scraped event is shown.</li>
-          <li><strong>Radius slider</strong> — drag freely 1–40 mi, or snap to 5 / 10 / 20 / max tick marks. Updates live. The 🗺 Map button shows the coverage circle visually; radius set in the map transfers back when you tap "Use this radius."</li>
+          <li><strong>Width slider</strong> — sets the diameter of the coverage circle; drag freely or snap to tick marks. The 📍 Custom button opens a map showing the circle; width set in the map transfers back when you tap "Use this width."</li>
         </ul>
       </div>
       <div class="modal-section">
@@ -944,11 +906,11 @@ footer a { color: var(--ink-3); text-decoration: underline; }
 <div class="modal-overlay" id="map-modal">
   <div class="modal" style="max-width:580px;width:100%">
     <button class="modal-close" onclick="closeModal('map-modal')">✕</button>
-    <h2>📍 Area &amp; Radius</h2>
+    <h2>📍 Area &amp; Width</h2>
     <p id="map-drag-hint" style="font-size:0.75rem;color:var(--ink-3);margin:0.25rem 0 0.5rem">Drag the pin to set a custom center.</p>
     <div id="map-container"></div>
     <div class="map-controls">
-      <span class="filter-label">Radius<em id="map-radius-value"> 5 mi</em></span>
+      <span class="filter-label">Width<em id="map-radius-value"> 5 mi</em></span>
       <div class="radius-wrap">
         <input type="range" id="map-radius-slider" min="0.5" max="20" step="0.1" value="5">
         <div class="radius-ticks">
@@ -964,7 +926,7 @@ footer a { color: var(--ink-3); text-decoration: underline; }
       <span id="map-custom-chip" class="map-custom-chip" style="display:none">
         📍 Custom <span class="map-custom-x" onclick="resetMapCenter()">×</span>
       </span>
-      <button class="map-apply-btn" onclick="applyMapSettings()">Use this radius ✓</button>
+      <button class="map-apply-btn" onclick="applyMapSettings()">Use this width ✓</button>
     </div>
   </div>
 </div>
@@ -1054,7 +1016,7 @@ footer a { color: var(--ink-3); text-decoration: underline; }
       </div>
     </div>
     <div class="filter-row" id="radius-row">
-      <span class="filter-label">Radius<em id="radius-value"> 5 mi</em></span>
+      <span class="filter-label">Width<em id="radius-value"> 5 mi</em></span>
       <div class="radius-wrap">
         <input type="range" id="radius-slider" min="0.5" max="20" step="0.1" value="5">
         <div class="radius-ticks">
@@ -1068,7 +1030,7 @@ footer a { color: var(--ink-3); text-decoration: underline; }
       <div class="age-wrap">
         <div class="age-slider-wrap">
           <div class="age-track-bg"></div>
-          <div class="age-track-fill" id="age-track-fill"></div>
+          <svg id="age-band-svg" aria-hidden="true"><path id="age-band-path" fill="#0891b2"/></svg>
           <input type="range" id="age-min" min="0" max="18" step="1" value="0">
           <input type="range" id="age-max" min="0" max="18" step="1" value="5">
         </div>
@@ -1109,7 +1071,7 @@ footer a { color: var(--ink-3); text-decoration: underline; }
 </footer>
 
 <script>
-const FE_VERSION = '2026.0616.14';;
+const FE_VERSION = '2026.0616.15';;
 const IS_LOCAL = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
 const JSON_URL   = IS_LOCAL ? '/output/events.json'  : 'https://raw.githubusercontent.com/crajagop87/bay-area-kids-events/main/output/events.json';
 const HEALTH_URL = IS_LOCAL ? '/output/health.json'  : 'https://raw.githubusercontent.com/crajagop87/bay-area-kids-events/main/output/health.json';
@@ -1499,24 +1461,50 @@ function updatePresetStyles() {
   updateRadiusDisplay();
 }
 
+// Interpolate color from green→amber→red→fiery-crimson matching the track gradient
+function _sliderColor(pct) {
+  // pct: 0–100
+  if (pct < 40) {
+    // green → amber
+    const t = pct / 40;
+    const r = Math.round(34  + t * (217 - 34));
+    const g = Math.round(197 - t * (197 - 119));
+    const b = Math.round(94  - t * 94);
+    return `rgb(${r},${g},${b})`;
+  } else if (pct < 75) {
+    // amber → red
+    const t = (pct - 40) / 35;
+    const r = Math.round(217 + t * (239 - 217));
+    const g = Math.round(119 - t * 119);
+    const b = 0;
+    return `rgb(${r},${g},${b})`;
+  } else {
+    // red → deep fiery crimson
+    const t = (pct - 75) / 25;
+    const r = Math.round(239 - t * (239 - 153));
+    const g = 0;
+    const b = Math.round(t * 20);
+    return `rgb(${r},${g},${b})`;
+  }
+}
+
+function _applySliderStyle(slider, val) {
+  const pct = ((val - 0.5) / 19.5) * 100;
+  slider.style.setProperty('--pct', `${pct}%`);
+  slider.style.setProperty('--thumb-grow', `${Math.round((pct / 100) * 10)}px`);
+  slider.style.setProperty('--thumb-color', _sliderColor(pct));
+  return pct;
+}
+
 function updateRadiusDisplay() {
   const slider = document.getElementById('radius-slider');
-  if (slider) {
-    slider.value = activeRadius;
-    const pct = ((activeRadius - 0.5) / 19.5) * 100;
-    slider.style.setProperty('--pct', `${pct}%`);
-    // Thumb grows from 0px extra at min to 10px extra at max
-    const grow = Math.round((pct / 100) * 10);
-    slider.style.setProperty('--thumb-grow', `${grow}px`);
-    // Color transitions: green(small) → amber → red(large)
-    const color = pct < 33 ? '#16a34a' : pct < 66 ? '#d97706' : '#dc2626';
-    slider.style.setProperty('--thumb-color', color);
-  }
+  if (slider) _applySliderStyle(slider, activeRadius);
   const val = document.getElementById('radius-value');
   if (val) val.textContent = ` ${Math.round(activeRadius)} mi`;
   document.querySelectorAll('.radius-ticks span').forEach(el => {
     el.classList.toggle('active-tick', Math.abs(+el.dataset.snap - activeRadius) < 0.05);
   });
+  _syncMapCircleColor();
 }
 
 function setPreset(p) {
@@ -1564,48 +1552,76 @@ const AGE_GROUP_RANGES = {
   kids: [4, 12], teens: [11, 18], family: [0, 18],
 };
 
-function updateAgeSlider(isDragging) {
+// ── Age band SVG wave engine ───────────────────────────────────────────────
+let _abRAF = null;
+let _abMode = 'idle'; // 'idle' | 'drag' | 'wave'
+let _abT0 = 0;
+let _abWaveDir = 1; // 1 = left→right, -1 = right→left
+
+function _abGeom() {
+  const wrap = document.querySelector('.age-slider-wrap');
+  if (!wrap) return null;
+  const W = wrap.offsetWidth || 260;
+  const cy = 12; // vertical center of 24px wrap
+  const t  = Math.max(0, activeAgeMax - activeAgeMin) / 18;
+  const x1 = (activeAgeMin / 18) * W;
+  const x2 = (activeAgeMax / 18) * W;
+  const bandH = Math.max(2, 7 * (1 - t * 0.7)); // 7px → 2px
+  return { W, cy, x1, x2, t, bandH };
+}
+
+function _abPath(x1, x2, cy, amp, freq, phase, bandH) {
+  const n = 60, h = bandH / 2;
+  const top = [], bot = [];
+  for (let i = 0; i <= n; i++) {
+    const px   = x1 + (x2 - x1) * (i / n);
+    const wave = amp * Math.sin(2 * Math.PI * freq * (i / n) + phase);
+    top.push(px.toFixed(1) + ',' + (cy + wave - h).toFixed(1));
+    bot.unshift(px.toFixed(1) + ',' + (cy + wave + h).toFixed(1));
+  }
+  return 'M ' + top.join(' L ') + ' L ' + bot.join(' L ') + ' Z';
+}
+
+function _abTick(ts) {
+  const path = document.getElementById('age-band-path');
+  if (!path || _abMode === 'idle') return;
+  const elapsed = (ts - _abT0) / 1000;
+  const g = _abGeom();
+  if (!g) return;
+  const { x1, x2, cy, t, bandH } = g;
+
+  if (_abMode === 'drag') {
+    // Gentle transverse shiver while held — gets faster with tension
+    const speed = 3 + t * 12;
+    const amp   = 1.5 + t * 2.5;
+    const freq  = 1 + t * 2;
+    path.setAttribute('d', _abPath(x1, x2, cy, amp, freq, elapsed * speed * Math.PI * 2, bandH));
+
+  } else if (_abMode === 'wave') {
+    // Traveling wave: courses along the band then damps to flat
+    const decay = 4;
+    const amp   = 9 * Math.exp(-decay * elapsed);
+    if (amp < 0.2) {
+      path.setAttribute('d', _abPath(x1, x2, cy, 0, 1, 0, bandH));
+      _abMode = 'idle';
+      return;
+    }
+    const travelSpeed = 4; // how fast the wave travels
+    const freq  = 2.5;
+    // Phase advances in direction of pull so wave starts from the released handle
+    const phase = _abWaveDir * elapsed * travelSpeed * Math.PI * 2;
+    path.setAttribute('d', _abPath(x1, x2, cy, amp, freq, phase, bandH));
+  }
+  _abRAF = requestAnimationFrame(_abTick);
+}
+
+function updateAgeSlider() {
   const lo = activeAgeMin, hi = activeAgeMax;
-  const fillLeft  = (lo / 18) * 100;
-  const fillRight = ((18 - hi) / 18) * 100;
-  const fill = document.getElementById('age-track-fill');
-  if (fill) {
-    const safeLeft  = lo === hi ? Math.max(0, fillLeft - 1.5)  : fillLeft;
-    const safeRight = lo === hi ? Math.max(0, fillRight - 1.5) : fillRight;
-    fill.style.left  = safeLeft + '%';
-    fill.style.right = safeRight + '%';
-
-    const t = (hi - lo) / 18; // 0 = relaxed → 1 = max stretch
-
-    // Thinning: 8px relaxed → 1px fully stretched
-    const bandH = Math.max(1, 8 * (1 - t * 0.88));
-    fill.style.height = `${bandH}px`;
-    fill.style.top = `calc(50% - ${bandH / 2}px)`;
-
-    // Lens shape: oval ends get more pronounced as band thins
-    const radius = Math.round(t * 50);
-    fill.style.borderRadius = `${radius}%`;
-
-    // Color shift: teal → amber → red
-    const r = Math.round(34  + t * 220);
-    const g = Math.round(211 - t * 155);
-    const b = Math.round(238 - t * 230);
-    fill.style.background = `rgb(${r},${g},${b})`;
-
-    // Glow: intensifies with tension
-    const glow = t > 0.2 ? Math.round((t - 0.2) / 0.8 * 10) : 0;
-    fill.style.boxShadow = glow > 0
-      ? `0 0 ${glow}px ${Math.round(glow/2)}px rgba(${r},${g},${b},0.55)`
-      : 'none';
-
-    // Blur at extreme stretch (vibrating so fast it blurs)
-    const blurPx = t > 0.7 ? ((t - 0.7) / 0.3) * 1.5 : 0;
-    fill.style.filter = blurPx > 0.1 ? `blur(${blurPx.toFixed(1)}px)` : 'none';
-
-    // Vibration speed while dragging: 140ms (gentle) → 45ms (frantic)
-    if (isDragging) {
-      const dur = (0.14 - t * 0.095).toFixed(3);
-      fill.style.setProperty('--vibe-dur', `${dur}s`);
+  if (_abMode === 'idle') {
+    const path = document.getElementById('age-band-path');
+    if (path) {
+      const g = _abGeom();
+      if (g) path.setAttribute('d', _abPath(g.x1, g.x2, g.cy, 0, 1, 0, g.bandH));
     }
   }
   const label = document.getElementById('age-range-label');
@@ -1615,40 +1631,38 @@ function updateAgeSlider(isDragging) {
 (function initAgeSlider() {
   const minEl = document.getElementById('age-min');
   const maxEl = document.getElementById('age-max');
-  const fill  = document.getElementById('age-track-fill');
 
-  function startVibrate() {
-    if (!fill) return;
-    fill.classList.remove('snapping');
-    fill.classList.add('vibrating');
+  function startDrag(draggedEl, otherEl, dir) {
+    draggedEl.style.zIndex = 4; otherEl.style.zIndex = 2;
+    _abWaveDir = dir;
+    cancelAnimationFrame(_abRAF);
+    _abMode = 'drag';
+    _abT0 = performance.now();
+    _abRAF = requestAnimationFrame(_abTick);
   }
 
-  function snapRelease() {
-    if (!fill) return;
-    fill.classList.remove('vibrating');
-    void fill.offsetWidth;
-    fill.classList.add('snapping');
-    fill.addEventListener('animationend', () => fill.classList.remove('snapping'), { once: true });
+  function release() {
+    if (_abMode !== 'drag') return;
+    _abMode = 'wave';
+    _abT0 = performance.now();
+    _abRAF = requestAnimationFrame(_abTick);
   }
 
   function sync() {
     let lo = +minEl.value, hi = +maxEl.value;
     if (lo > hi) { if (this === minEl) { lo = hi; minEl.value = lo; } else { hi = lo; maxEl.value = hi; } }
     activeAgeMin = lo; activeAgeMax = hi;
-    updateAgeSlider(true);
+    updateAgeSlider();
     render();
   }
 
-  minEl.addEventListener('pointerdown', () => { minEl.style.zIndex = 4; maxEl.style.zIndex = 2; startVibrate(); });
-  maxEl.addEventListener('pointerdown', () => { maxEl.style.zIndex = 4; minEl.style.zIndex = 2; startVibrate(); });
+  minEl.addEventListener('pointerdown', () => startDrag(minEl, maxEl, 1));   // left handle → wave goes right
+  maxEl.addEventListener('pointerdown', () => startDrag(maxEl, minEl, -1));  // right handle → wave goes left
   minEl.addEventListener('input', sync);
   maxEl.addEventListener('input', sync);
-  minEl.addEventListener('pointerup', snapRelease);
-  maxEl.addEventListener('pointerup', snapRelease);
-  // Cancel if pointer leaves (e.g. fast drag off-screen)
-  window.addEventListener('pointerup', () => {
-    if (fill?.classList.contains('vibrating')) snapRelease();
-  });
+  minEl.addEventListener('pointerup', release);
+  maxEl.addEventListener('pointerup', release);
+  window.addEventListener('pointerup', release); // catch off-screen releases
   updateAgeSlider();
 })();
 
@@ -1806,7 +1820,7 @@ function render() {
       const centers = activePreset === 'custom' && customCenter
         ? [customCenter]
         : (PRESET_CENTERS[activePreset] || []);
-      const radius = activeRadius;
+      const radius = activeRadius / 2; // slider = diameter/width, radius = half
       const cityKey = (e.city || '').toLowerCase().trim();
       const countyKey = (e.county || '').toLowerCase().trim();
       const latlng = CITY_LATLNG[cityKey] || COUNTY_LATLNG[countyKey] || null;
@@ -2094,6 +2108,16 @@ function switchDevTab(tab) {
 // Format: { date, ver, summary, items[] }
 // "date" groups into a daily release header.
 const DEV_CHANGELOG = [
+  {
+    date: '2026-06-16', ver: 'v2026.0616.15',
+    summary: 'Width slider: diameter semantics, fiery color, dotted ring matches slider color',
+    items: [
+      '"Radius" renamed to "Width" (slider value = diameter of coverage circle)',
+      'Slider thumb color interpolates smoothly green→amber→red→deep crimson; fiery at high end',
+      'Map circle: thinner dotted ring, color and fill dynamically matched to slider ball color',
+      'Age slider: SVG traveling sine wave on release (blue, no glow), shiver while dragging',
+    ]
+  },
   {
     date: '2026-06-16', ver: 'v2026.0616.12',
     summary: 'UI polish: sliders, search bar, disclaimer, area cleanup',
@@ -2528,7 +2552,7 @@ function openMapModal() {
 function _renderMapCircles(fitView = true) {
   _clearMapLayers();
   const centers = mapTempCenter ? [mapTempCenter] : (_mapPresetCenters || _getCenters());
-  const radiusM = mapTempRadius * 1609.34;
+  const radiusM = (mapTempRadius / 2) * 1609.34; // mapTempRadius = diameter/width
 
   if (!centers) {
     if (fitView) _map.setView([37.60, -122.15], 9);
@@ -2546,9 +2570,10 @@ function _renderMapCircles(fitView = true) {
     marker.addTo(_map);
     _mapDragMarkers.push(marker);
 
+    const circleColor = _sliderColor(((mapTempRadius - 0.5) / 19.5) * 100);
     const circle = L.circle([lat, lng], {
-      radius: radiusM, color: '#c2410c', weight: 2.5,
-      fillColor: '#c2410c', fillOpacity: 0.09, dashArray: '7 5',
+      radius: radiusM, color: circleColor, weight: 2.5,
+      fillColor: circleColor, fillOpacity: 0.07, dashArray: '6 5',
     });
     _addLayer(circle);
     _mapCircles.push(circle);
@@ -2581,7 +2606,7 @@ function _renderMapCircles(fitView = true) {
 }
 
 function _updateMapCircleRadius() {
-  const radiusM = mapTempRadius * 1609.34;
+  const radiusM = (mapTempRadius / 2) * 1609.34;
   _mapCircles.forEach(c => c.setRadius(radiusM));
 }
 
@@ -2651,20 +2676,24 @@ async function _doSuburbFetch(lat, lng) {
   el.classList.remove('loading');
 }
 
+function _syncMapCircleColor() {
+  const color = _sliderColor(((activeRadius - 0.5) / 19.5) * 100);
+  _mapCircles.forEach(c => {
+    c.setStyle({ color, fillColor: color });
+  });
+}
+
 function _syncMapRadiusDisplay() {
   const slider = document.getElementById('map-radius-slider');
-  if (slider) {
-    slider.value = mapTempRadius;
-    const pct = ((mapTempRadius - 0.5) / 19.5) * 100;
-    slider.style.setProperty('--pct', `${pct}%`);
-    slider.style.setProperty('--thumb-grow', `${Math.round((pct / 100) * 10)}px`);
-    slider.style.setProperty('--thumb-color', pct < 33 ? '#16a34a' : pct < 66 ? '#d97706' : '#dc2626');
-  }
+  if (slider) _applySliderStyle(slider, mapTempRadius);
   const val = document.getElementById('map-radius-value');
   if (val) val.textContent = ` ${Math.round(mapTempRadius)} mi`;
   document.querySelectorAll('.radius-ticks [data-map-snap]').forEach(el => {
     el.classList.toggle('active-tick', Math.abs(+el.dataset.mapSnap - mapTempRadius) < 0.05);
   });
+  // Sync circle color to map slider position
+  const color = _sliderColor(((mapTempRadius - 0.5) / 19.5) * 100);
+  _mapCircles.forEach(c => c.setStyle({ color, fillColor: color }));
 }
 
 // ── Zip overlay ──────────────────────────────────────────────────────────────
@@ -2751,7 +2780,7 @@ async function _drawZipOverlay() {
   const center = mapTempCenter || (_mapPresetCenters && _mapPresetCenters[0]);
   if (!center) return;
   const [cLat, cLng] = center;
-  const rM = mapTempRadius * 1609.34;
+  const rM = (mapTempRadius / 2) * 1609.34;
 
   // Show placeholder rects immediately while geo data loads
   const hitting = _ZIP_BOUNDS.filter(z => _zipIntersectsCircle(z, cLat, cLng, rM));
