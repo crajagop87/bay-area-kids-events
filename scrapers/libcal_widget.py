@@ -208,23 +208,7 @@ def _parse_widget_html(html: str, source: dict, now: datetime, cutoff: datetime)
             if start_dt < now or start_dt > cutoff:
                 continue
 
-        # Filter to kids/family content
-        if not KIDS_KEYWORDS.search(title):
-            if ADULT_NOISE.search(title):
-                continue
-            # Skip non-matching titles with no kids keywords
-            # (be permissive for library events — most are family-friendly)
-            # We'll keep events that aren't adult-noise-only
-            if not KIDS_KEYWORDS.search(title):
-                # Further filter: keep storytime, SRP (Summer Reading Program), crafts etc.
-                if not re.search(
-                    r"\b(SRP|storytime|story\s*time|puppet|circus|show|performance|"
-                    r"display|reading|program|workshop|class|activity|activities)\b",
-                    title,
-                    re.IGNORECASE,
-                ):
-                    continue
-
+        # Skip only events that are clearly adults-only
         if ADULT_NOISE.search(title):
             continue
 

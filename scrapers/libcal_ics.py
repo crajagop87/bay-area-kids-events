@@ -28,25 +28,12 @@ MULTI_WEEK_CAMP = re.compile(
 )
 
 # Keywords that indicate kids/family relevance
-KIDS_KEYWORDS = re.compile(
-    r"\b(kid|child|children|youth|teen|toddler|baby|infant|junior|family|"
-    r"storytime|story\s*time|craft|art|music|stem|lego|game|camp|"
-    r"summer\s*reading|school.age|preschool|kindergarten|puppet|"
-    r"bilingual|draw|sing|dance|make|explore|learn)\b",
-    re.IGNORECASE,
-)
-
-# Categories that signal kids content
-KIDS_CATEGORIES = re.compile(
-    r"\b(youth|kids?|children|families?|storytime|teens?|juvenile|"
-    r"junior|summer\s*reading|amplify)\b",
-    re.IGNORECASE,
-)
-
-# Adult-only noise terms to filter out
-ADULT_NOISE = re.compile(
-    r"\b(adult|senior|genealogy|ESL|citizenship|knit|needle\s*craft|"
-    r"board\s*of\s*trustee|book\s*club\s+for\s+adult|wine|beer)\b",
+# Adult-only events to exclude — must be clearly not family-friendly
+ADULT_ONLY = re.compile(
+    r"\b(adult\s+only|adults?\s+only|21\+|over\s+21|senior\s+(?:yoga|fit|aerobic|dance|lunch|center)|"
+    r"genealogy|ESL\b|citizenship\s+class|knit(?:ting)?|needle\s*craft|"
+    r"board\s+of\s+trustee|book\s+club\s+for\s+adult|wine\s+tasting|beer\s+tasting|"
+    r"cocktail|speed\s+dating|singles\s+night)\b",
     re.IGNORECASE,
 )
 
@@ -70,17 +57,13 @@ def _dedupe_key(title: str, date_str: str, city: str) -> str:
 
 
 def _is_kids_relevant(summary: str, description: str, categories: str) -> bool:
-    """Return True if event is likely kids/family relevant."""
+    """Return True unless the event is clearly adults-only."""
+    # Explicit adult-only signals → skip
     combined = f"{summary} {description} {categories}"
-    # Explicit adult-only keywords → skip
-    if ADULT_NOISE.search(summary):
+    if ADULT_ONLY.search(combined):
         return False
-    # Positive kids signal
-    if KIDS_KEYWORDS.search(combined):
-        return True
-    if KIDS_CATEGORIES.search(categories):
-        return True
-    return False
+    # Everything else is assumed family-friendly
+    return True
 
 
 def _parse_ics_text(ics_text: str) -> list[dict]:
