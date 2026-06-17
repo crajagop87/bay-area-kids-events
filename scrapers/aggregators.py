@@ -377,13 +377,76 @@ def scrape_bayareakidsgo(window_days: int = 60) -> list[dict]:
     return events
 
 
+# ---------------------------------------------------------------------------
+# Ronnie's Awesome List — festivals
+# ---------------------------------------------------------------------------
+
+def scrape_ronnies_awesome_list(window_days: int = 60) -> list[dict]:
+    """Scrape ronniesawesomelist.com/festivals-1 via Squarespace JSON API."""
+    api_url = "https://www.ronniesawesomelist.com/festivals-1?format=json"
+    source_url = "https://www.ronniesawesomelist.com/festivals-1"
+    now = datetime.now(timezone.utc)
+    cutoff = now + timedelta(days=window_days)
+    events = []
+
+    try:
+        resp = requests.get(api_url, headers=HEADERS, timeout=20)
+        resp.raise_for_status()
+        data = resp.json()
+    except Exception as exc:
+        log.warning("Ronnie's Awesome List fetch failed: %s", exc)
+        return []
+
+    items = data.get("upcoming", [])
+
+    for item in items:
+        title = (item.get("title") or "").strip()
+        if not title or ADULT_NOISE.search(title):
+            continue
+
+        # Squarespace timestamps are milliseconds
+        start_ms = item.get("startDate")
+        end_ms   = item.get("endDate")
+        start_dt = datetime.fromtimestamp(start_ms / 1000, tz=timezone.utc) if start_ms else None
+        end_dt   = datetime.fromtimestamp(end_ms   / 1000, tz=timezone.utc) if end_ms   else None
+
+        if start_dt and (start_dt < now or start_dt > cutoff):
+            continue
+
+        loc = item.get("location") or {}
+        venue = loc.get("addressTitle") or ""
+        line2 = loc.get("addressLine2") or ""  # e.g. "Mountain View, CA, 94043"
+        city = line2.split(",")[0].strip() if line2 else "Bay Area"
+
+        # ticket URL: prefer sourceUrl (the actual event page), fall back to fullUrl
+        ticket_url = item.get("sourceUrl") or ("https://www.ronniesawesomelist.com" + item.get("fullUrl", ""))
+
+        events.append(_base_event(
+            title=title,
+            start_dt=start_dt,
+            end_dt=end_dt,
+            venue=venue or city,
+            city=city,
+            county="Bay Area",
+            cost_label="Free" if re.search(r"\bfree\b", (item.get("excerpt") or "") + title, re.I) else "Unknown",
+            cost_amt=0.0,
+            ticket_url=ticket_url,
+            source_name="Ronnie's Awesome List",
+            source_url=source_url,
+        ))
+
+    log.info("Ronnie's Awesome List: scraped %d events", len(events))
+    return events
+
+
 def scrape_all_aggregators(window_days: int = 16) -> tuple[list[dict], list[dict]]:
     all_events = []
     health = []
     for name, fn in [("Funcheap", scrape_funcheap),
                      ("Bay Area Kid Fun", scrape_bayareakidfun),
                      ("510 Families", scrape_510families),
-                     ("Bay Area Kids Go", scrape_bayareakidsgo)]:
+                     ("Bay Area Kids Go", scrape_bayareakidsgo),
+                     ("Ronnie's Awesome List", scrape_ronnies_awesome_list)]:
         try:
             events = fn(window_days)
             all_events.extend(events)

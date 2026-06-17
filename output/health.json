@@ -1,10 +1,10 @@
 {
-  "run_at": "2026-06-17T05:40:05.275149+00:00",
+  "run_at": "2026-06-17T05:50:07.289203+00:00",
   "window_days": 16,
-  "channels_ok": 59,
-  "channels_total": 59,
-  "raw_events": 898,
-  "deduped_events": 536,
+  "channels_ok": 60,
+  "channels_total": 60,
+  "raw_events": 916,
+  "deduped_events": 555,
   "channels": [
     {
       "source": "Palo Alto City Library",
@@ -139,7 +139,7 @@
     {
       "source": "Eventbrite/Santa Clara",
       "status": "ok",
-      "count": 12
+      "count": 11
     },
     {
       "source": "Eventbrite/Los Altos Hills",
@@ -245,6 +245,11 @@
       "source": "Bay Area Kids Go",
       "status": "ok",
       "count": 5
+    },
+    {
+      "source": "Ronnie's Awesome List",
+      "status": "ok",
+      "count": 19
     },
     {
       "source": "Palo Alto Junior Museum & Zoo",
