@@ -192,9 +192,9 @@ input[type="date"]:focus { border-color: #fb923c; }
 /* Age dual-range slider — elastic band style */
 #age-row { align-items: center; gap: 0.75rem; }
 .age-wrap { display: flex; flex-direction: column; gap: 4px; flex: 1; max-width: 280px; }
-.age-slider-wrap { position: relative; height: 22px; }
+.age-slider-wrap { position: relative; height: 24px; }
 .age-slider-wrap input[type=range] {
-  position: absolute; top: 0; left: 0; width: 100%; height: 22px;
+  position: absolute; top: 0; left: 0; width: 100%; height: 24px;
   -webkit-appearance: none; appearance: none;
   background: transparent; pointer-events: none; margin: 0;
 }
@@ -208,18 +208,39 @@ input[type="date"]:focus { border-color: #fb923c; }
   transition: box-shadow 0.12s;
 }
 .age-slider-wrap input[type=range]::-webkit-slider-thumb:hover { box-shadow: 0 0 0 5px rgba(8,145,178,0.15); }
-.age-track-fill {
-  position: absolute; top: 8px; left: 0; right: 0;
-  height: var(--band-h, 6px);
-  background: #e2f6fa; border-radius: 3px; pointer-events: none;
-  transition: height 0.18s cubic-bezier(0.34,1.56,0.64,1);
+/* band track background (inactive zone) */
+.age-track-bg {
+  position: absolute; top: 50%; left: 0; right: 0; height: 4px;
+  transform: translateY(-50%);
+  background: #e2eef0; border-radius: 3px; pointer-events: none;
 }
-.age-track-fill::after {
-  content: ''; position: absolute; top: 0; height: 100%;
-  background: linear-gradient(to right, #22d3ee, #0891b2);
-  border-radius: 3px;
+/* the elastic fill band */
+.age-track-fill {
+  position: absolute; left: 0; right: 0;
+  height: var(--band-h, 8px);
+  top: calc(50% - var(--band-h, 8px) / 2);
+  background: var(--band-color, #22d3ee);
+  border-radius: 2px; pointer-events: none;
+  transform-origin: center;
   left: var(--fill-left, 0%); right: var(--fill-right, 0%);
-  transition: left 0.04s, right 0.04s;
+}
+/* transition only when not dragging (snap release) */
+.age-track-fill.settling {
+  transition: height 0.05s, top 0.05s;
+}
+@keyframes age-band-snap {
+  0%   { transform: scaleY(1); }
+  10%  { transform: scaleY(3.5); }
+  22%  { transform: scaleY(0.4); }
+  36%  { transform: scaleY(2.2); }
+  50%  { transform: scaleY(0.7); }
+  64%  { transform: scaleY(1.5); }
+  78%  { transform: scaleY(0.88); }
+  90%  { transform: scaleY(1.1); }
+  100% { transform: scaleY(1); }
+}
+.age-track-fill.snapping {
+  animation: age-band-snap 0.55s cubic-bezier(0.36,0.07,0.19,0.97) forwards;
 }
 .age-ticks { display: flex; justify-content: space-between; }
 .age-ticks span { font-size: 0.62rem; font-weight: 600; color: var(--ink-3); }
@@ -1033,6 +1054,7 @@ footer a { color: var(--ink-3); text-decoration: underline; }
       <span class="filter-label">Ages<em id="age-range-label"> 0–5</em></span>
       <div class="age-wrap">
         <div class="age-slider-wrap">
+          <div class="age-track-bg"></div>
           <div class="age-track-fill" id="age-track-fill"></div>
           <input type="range" id="age-min" min="0" max="18" step="1" value="0">
           <input type="range" id="age-max" min="0" max="18" step="1" value="5">
@@ -1074,7 +1096,7 @@ footer a { color: var(--ink-3); text-decoration: underline; }
 </footer>
 
 <script>
-const FE_VERSION = '2026.0616.12';
+const FE_VERSION = '2026.0616.13';
 const IS_LOCAL = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
 const JSON_URL   = IS_LOCAL ? '/output/events.json'  : 'https://raw.githubusercontent.com/crajagop87/bay-area-kids-events/main/output/events.json';
 const HEALTH_URL = IS_LOCAL ? '/output/health.json'  : 'https://raw.githubusercontent.com/crajagop87/bay-area-kids-events/main/output/health.json';
@@ -1529,7 +1551,7 @@ const AGE_GROUP_RANGES = {
   kids: [4, 12], teens: [11, 18], family: [0, 18],
 };
 
-function updateAgeSlider() {
+function updateAgeSlider(isDragging) {
   const lo = activeAgeMin, hi = activeAgeMax;
   const fillLeft = (lo / 18) * 100;
   const fillRight = ((18 - hi) / 18) * 100;
@@ -1537,14 +1559,28 @@ function updateAgeSlider() {
   if (fill) {
     const safeLeft = lo === hi ? Math.max(0, fillLeft - 1.5) : fillLeft;
     const safeRight = lo === hi ? Math.max(0, fillRight - 1.5) : fillRight;
-    fill.style.setProperty('--fill-left', safeLeft + '%');
-    fill.style.setProperty('--fill-right', safeRight + '%');
-    // Elastic band: thinner as range stretches wider, snaps back to 6px
-    const span = hi - lo; // 0–18
-    const bandH = Math.max(2, 6 - Math.round((span / 18) * 4)); // 6px → 2px at full stretch
-    fill.style.setProperty('--band-h', `${bandH}px`);
-    // Shift fill vertically to stay centered on the 22px thumb track
-    fill.style.top = `${(22 - bandH) / 2}px`;
+    fill.style.left = safeLeft + '%';
+    fill.style.right = safeRight + '%';
+
+    const t = (hi - lo) / 18; // 0 = relaxed, 1 = max stretch
+    // Dramatic thinning: 8px relaxed → 1px fully stretched
+    const bandH = Math.max(1, Math.round(8 * (1 - t * 0.88)));
+    fill.style.height = `${bandH}px`;
+    fill.style.top = `calc(50% - ${bandH / 2}px)`;
+
+    // Color: calm teal → warm amber → strained red
+    const r = Math.round(34  + t * 220);
+    const g = Math.round(211 - t * 155);
+    const b = Math.round(238 - t * 230);
+    fill.style.background = `rgb(${r},${g},${b})`;
+
+    // Tension shadow: grows as band strains
+    if (t > 0.25) {
+      const intensity = Math.round((t - 0.25) / 0.75 * 6);
+      fill.style.boxShadow = `0 0 ${intensity}px rgba(${r},${g},${b},0.5)`;
+    } else {
+      fill.style.boxShadow = 'none';
+    }
   }
   const label = document.getElementById('age-range-label');
   if (label) label.textContent = (lo === 0 && hi === 18) ? ' all' : lo === hi ? ` age ${lo}` : ` ${lo}–${hi}`;
@@ -1553,18 +1589,30 @@ function updateAgeSlider() {
 (function initAgeSlider() {
   const minEl = document.getElementById('age-min');
   const maxEl = document.getElementById('age-max');
+  const fill  = document.getElementById('age-track-fill');
+
+  function snapRelease() {
+    if (!fill) return;
+    fill.classList.remove('snapping');
+    void fill.offsetWidth; // force reflow so animation restarts
+    fill.classList.add('snapping');
+    fill.addEventListener('animationend', () => fill.classList.remove('snapping'), { once: true });
+  }
+
   function sync() {
     let lo = +minEl.value, hi = +maxEl.value;
     if (lo > hi) { if (this === minEl) { lo = hi; minEl.value = lo; } else { hi = lo; maxEl.value = hi; } }
     activeAgeMin = lo; activeAgeMax = hi;
-    updateAgeSlider();
+    updateAgeSlider(true);
     render();
   }
-  // Keep last-touched handle on top so it stays grabbable
   minEl.addEventListener('pointerdown', () => { minEl.style.zIndex = 4; maxEl.style.zIndex = 2; });
   maxEl.addEventListener('pointerdown', () => { maxEl.style.zIndex = 4; minEl.style.zIndex = 2; });
   minEl.addEventListener('input', sync);
   maxEl.addEventListener('input', sync);
+  // Snap on release from either handle
+  minEl.addEventListener('pointerup', snapRelease);
+  maxEl.addEventListener('pointerup', snapRelease);
   updateAgeSlider();
 })();
 
