@@ -1011,7 +1011,7 @@ footer a { color: var(--ink-3); text-decoration: underline; }
       <div class="chip-group" id="area-presets">
         <button class="chip" data-preset="all">All</button>
         <button class="chip active" data-preset="Palo Alto">Palo Alto</button>
-        <button class="chip map-custom-area-btn" id="custom-area-btn" onclick="openMapFromArea()">📍 Custom</button>
+        <button class="chip map-custom-area-btn" id="custom-area-btn" onclick="openMapFromArea()">📍 Custom Map</button>
         <span id="location-chip-label" style="display:none"></span>
       </div>
     </div>
@@ -1451,7 +1451,7 @@ function updatePresetStyles() {
   const customBtn = document.getElementById('custom-area-btn');
   if (customBtn) {
     customBtn.classList.toggle('active', activePreset === 'custom');
-    customBtn.textContent = (activePreset === 'custom' && customSuburb) ? `📍 ${customSuburb}` : '📍 Custom';
+    customBtn.textContent = (activePreset === 'custom' && customSuburb) ? `📍 ${customSuburb}` : '📍 Custom Map';
   }
   // Feed suburb into the hidden span the sticky bar reads from
   const locLabel = document.getElementById('location-chip-label');
