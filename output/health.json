@@ -1,20 +1,20 @@
 {
-  "run_at": "2026-06-16T17:38:55.263224+00:00",
+  "run_at": "2026-06-17T05:23:37.370779+00:00",
   "window_days": 16,
-  "channels_ok": 57,
-  "channels_total": 57,
-  "raw_events": 859,
-  "deduped_events": 495,
+  "channels_ok": 58,
+  "channels_total": 58,
+  "raw_events": 891,
+  "deduped_events": 530,
   "channels": [
     {
       "source": "Palo Alto City Library",
       "status": "ok",
-      "count": 20
+      "count": 22
     },
     {
       "source": "San Mateo County Library",
       "status": "ok",
-      "count": 23
+      "count": 26
     },
     {
       "source": "San Jose Public Library",
@@ -24,7 +24,7 @@
     {
       "source": "Santa Clara County Library District",
       "status": "ok",
-      "count": 33
+      "count": 32
     },
     {
       "source": "San Francisco Public Library",
@@ -34,7 +34,7 @@
     {
       "source": "Oakland Public Library",
       "status": "ok",
-      "count": 27
+      "count": 28
     },
     {
       "source": "Berkeley Public Library",
@@ -49,37 +49,37 @@
     {
       "source": "Contra Costa County Library",
       "status": "ok",
-      "count": 38
+      "count": 40
     },
     {
       "source": "Alameda County Library",
       "status": "ok",
-      "count": 67
+      "count": 64
     },
     {
       "source": "Mountain View Public Library",
       "status": "ok",
-      "count": 24
+      "count": 28
     },
     {
       "source": "Sunnyvale Public Library",
       "status": "ok",
-      "count": 27
+      "count": 38
     },
     {
       "source": "San Mateo Public Library",
       "status": "ok",
-      "count": 2
+      "count": 20
     },
     {
       "source": "Eventbrite/Palo Alto",
       "status": "ok",
-      "count": 11
+      "count": 10
     },
     {
       "source": "Eventbrite/San Jose",
       "status": "ok",
-      "count": 12
+      "count": 11
     },
     {
       "source": "Eventbrite/Mountain View",
@@ -119,12 +119,12 @@
     {
       "source": "Eventbrite/Campbell",
       "status": "ok",
-      "count": 13
+      "count": 12
     },
     {
       "source": "Eventbrite/Los Gatos",
       "status": "ok",
-      "count": 13
+      "count": 12
     },
     {
       "source": "Eventbrite/Saratoga",
@@ -134,12 +134,12 @@
     {
       "source": "Eventbrite/Milpitas",
       "status": "ok",
-      "count": 12
+      "count": 11
     },
     {
       "source": "Eventbrite/Santa Clara",
       "status": "ok",
-      "count": 12
+      "count": 11
     },
     {
       "source": "Eventbrite/Los Altos Hills",
@@ -234,12 +234,17 @@
     {
       "source": "Bay Area Kid Fun",
       "status": "ok",
-      "count": 47
+      "count": 42
     },
     {
       "source": "510 Families",
       "status": "ok",
       "count": 28
+    },
+    {
+      "source": "Bay Area Kids Go",
+      "status": "ok",
+      "count": 5
     },
     {
       "source": "Palo Alto Junior Museum & Zoo",
@@ -254,7 +259,7 @@
     {
       "source": "Hiller Aviation Museum",
       "status": "ok",
-      "count": 11
+      "count": 12
     },
     {
       "source": "Children's Discovery Museum SJ",
