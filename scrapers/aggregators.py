@@ -300,12 +300,90 @@ def scrape_510families(window_days: int = 16) -> list[dict]:
     return events
 
 
+# ---------------------------------------------------------------------------
+# Bay Area Kids Go
+# ---------------------------------------------------------------------------
+
+def scrape_bayareakidsgo(window_days: int = 60) -> list[dict]:
+    """Scrape events.bayareakidsgo.com — server-rendered HTML, no JS needed."""
+    base_url = "https://events.bayareakidsgo.com"
+    now = datetime.now(timezone.utc)
+    cutoff = now + timedelta(days=window_days)
+    events = []
+
+    try:
+        resp = requests.get(base_url, headers=HEADERS, timeout=20)
+        resp.raise_for_status()
+        soup = BeautifulSoup(resp.text, "html.parser")
+    except Exception as exc:
+        log.warning("Bay Area Kids Go fetch failed: %s", exc)
+        return []
+
+    # Each event card links to /events/<cuid> — CUIDs are ~25 chars of [a-z0-9]
+    # City/filter links are short slugs like /events/alameda — exclude those
+    for a in soup.find_all("a", href=re.compile(r"^/events/[a-z0-9]{15,}$")):
+        href = a["href"]
+        event_url = base_url + href
+
+        # Title: first heading inside the card
+        title_el = a.find(["h1", "h2", "h3", "h4", "h5", "strong", "b"])
+        title = title_el.get_text(strip=True) if title_el else ""
+        if not title:
+            # fallback: img alt text
+            img = a.find("img")
+            title = img.get("alt", "").strip() if img else ""
+        if not title or len(title) < 4:
+            continue
+        if ADULT_NOISE.search(title):
+            continue
+
+        # Date: look for text matching "Mon, Jun 18, 2026" or "Jun 18, 2026"
+        date_text = ""
+        for el in a.find_all(["p", "span", "div", "time"]):
+            t = el.get_text(strip=True)
+            if re.search(r"\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\b.*\d{4}", t):
+                date_text = t
+                break
+
+        start_dt = _parse_date_fuzzy(re.sub(r"^[A-Za-z]+,\s*", "", date_text)) if date_text else None
+
+        # Filter by date window
+        if start_dt and start_dt > cutoff:
+            continue
+
+        # City: last <p>/<span> in card that doesn't look like a date
+        city = "Bay Area"
+        for el in reversed(a.find_all(["p", "span"])):
+            t = el.get_text(strip=True)
+            if t and not re.search(r"\d{4}|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec|All day", t):
+                city = t
+                break
+
+        events.append(_base_event(
+            title=title,
+            start_dt=start_dt,
+            end_dt=None,
+            venue=city,
+            city=city,
+            county="Bay Area",
+            cost_label="Unknown",
+            cost_amt=0.0,
+            ticket_url=event_url,
+            source_name="Bay Area Kids Go",
+            source_url=base_url,
+        ))
+
+    log.info("Bay Area Kids Go: scraped %d events", len(events))
+    return events
+
+
 def scrape_all_aggregators(window_days: int = 16) -> tuple[list[dict], list[dict]]:
     all_events = []
     health = []
     for name, fn in [("Funcheap", scrape_funcheap),
                      ("Bay Area Kid Fun", scrape_bayareakidfun),
-                     ("510 Families", scrape_510families)]:
+                     ("510 Families", scrape_510families),
+                     ("Bay Area Kids Go", scrape_bayareakidsgo)]:
         try:
             events = fn(window_days)
             all_events.extend(events)
