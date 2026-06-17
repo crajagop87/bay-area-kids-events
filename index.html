@@ -216,31 +216,44 @@ input[type="date"]:focus { border-color: #fb923c; }
 }
 /* the elastic fill band */
 .age-track-fill {
-  position: absolute; left: 0; right: 0;
+  position: absolute;
   height: var(--band-h, 8px);
   top: calc(50% - var(--band-h, 8px) / 2);
   background: var(--band-color, #22d3ee);
-  border-radius: 2px; pointer-events: none;
-  transform-origin: center;
-  left: var(--fill-left, 0%); right: var(--fill-right, 0%);
+  border-radius: var(--band-radius, 3px);
+  pointer-events: none;
+  transform-origin: center center;
 }
-/* transition only when not dragging (snap release) */
-.age-track-fill.settling {
-  transition: height 0.05s, top 0.05s;
+/* vibration while dragging — JS sets animation-duration to control speed */
+@keyframes band-vibrate {
+  0%   { transform: scaleY(1)   skewY(0deg);  }
+  15%  { transform: scaleY(3.2) skewY(1.5deg); }
+  30%  { transform: scaleY(0.3) skewY(-1deg); }
+  45%  { transform: scaleY(2.6) skewY(0.8deg); }
+  60%  { transform: scaleY(0.5) skewY(-0.5deg); }
+  75%  { transform: scaleY(2)   skewY(0.3deg); }
+  88%  { transform: scaleY(0.7) skewY(0deg);  }
+  100% { transform: scaleY(1)   skewY(0deg);  }
 }
+.age-track-fill.vibrating {
+  animation: band-vibrate var(--vibe-dur, 0.12s) linear infinite;
+}
+/* snap on release */
 @keyframes age-band-snap {
   0%   { transform: scaleY(1); }
-  10%  { transform: scaleY(3.5); }
-  22%  { transform: scaleY(0.4); }
-  36%  { transform: scaleY(2.2); }
-  50%  { transform: scaleY(0.7); }
-  64%  { transform: scaleY(1.5); }
-  78%  { transform: scaleY(0.88); }
-  90%  { transform: scaleY(1.1); }
+  8%   { transform: scaleY(4.5) skewY(2deg); }
+  18%  { transform: scaleY(0.2) skewY(-1deg); }
+  30%  { transform: scaleY(3)   skewY(1deg); }
+  42%  { transform: scaleY(0.55) skewY(-0.5deg); }
+  55%  { transform: scaleY(2)   skewY(0.3deg); }
+  67%  { transform: scaleY(0.75); }
+  78%  { transform: scaleY(1.4); }
+  88%  { transform: scaleY(0.92); }
+  95%  { transform: scaleY(1.06); }
   100% { transform: scaleY(1); }
 }
 .age-track-fill.snapping {
-  animation: age-band-snap 0.55s cubic-bezier(0.36,0.07,0.19,0.97) forwards;
+  animation: age-band-snap 0.7s cubic-bezier(0.36,0.07,0.19,0.97) forwards;
 }
 .age-ticks { display: flex; justify-content: space-between; }
 .age-ticks span { font-size: 0.62rem; font-weight: 600; color: var(--ink-3); }
@@ -1096,7 +1109,7 @@ footer a { color: var(--ink-3); text-decoration: underline; }
 </footer>
 
 <script>
-const FE_VERSION = '2026.0616.13';
+const FE_VERSION = '2026.0616.14';;
 const IS_LOCAL = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
 const JSON_URL   = IS_LOCAL ? '/output/events.json'  : 'https://raw.githubusercontent.com/crajagop87/bay-area-kids-events/main/output/events.json';
 const HEALTH_URL = IS_LOCAL ? '/output/health.json'  : 'https://raw.githubusercontent.com/crajagop87/bay-area-kids-events/main/output/health.json';
@@ -1553,33 +1566,46 @@ const AGE_GROUP_RANGES = {
 
 function updateAgeSlider(isDragging) {
   const lo = activeAgeMin, hi = activeAgeMax;
-  const fillLeft = (lo / 18) * 100;
+  const fillLeft  = (lo / 18) * 100;
   const fillRight = ((18 - hi) / 18) * 100;
   const fill = document.getElementById('age-track-fill');
   if (fill) {
-    const safeLeft = lo === hi ? Math.max(0, fillLeft - 1.5) : fillLeft;
+    const safeLeft  = lo === hi ? Math.max(0, fillLeft - 1.5)  : fillLeft;
     const safeRight = lo === hi ? Math.max(0, fillRight - 1.5) : fillRight;
-    fill.style.left = safeLeft + '%';
+    fill.style.left  = safeLeft + '%';
     fill.style.right = safeRight + '%';
 
-    const t = (hi - lo) / 18; // 0 = relaxed, 1 = max stretch
-    // Dramatic thinning: 8px relaxed → 1px fully stretched
-    const bandH = Math.max(1, Math.round(8 * (1 - t * 0.88)));
+    const t = (hi - lo) / 18; // 0 = relaxed → 1 = max stretch
+
+    // Thinning: 8px relaxed → 1px fully stretched
+    const bandH = Math.max(1, 8 * (1 - t * 0.88));
     fill.style.height = `${bandH}px`;
     fill.style.top = `calc(50% - ${bandH / 2}px)`;
 
-    // Color: calm teal → warm amber → strained red
+    // Lens shape: oval ends get more pronounced as band thins
+    const radius = Math.round(t * 50);
+    fill.style.borderRadius = `${radius}%`;
+
+    // Color shift: teal → amber → red
     const r = Math.round(34  + t * 220);
     const g = Math.round(211 - t * 155);
     const b = Math.round(238 - t * 230);
     fill.style.background = `rgb(${r},${g},${b})`;
 
-    // Tension shadow: grows as band strains
-    if (t > 0.25) {
-      const intensity = Math.round((t - 0.25) / 0.75 * 6);
-      fill.style.boxShadow = `0 0 ${intensity}px rgba(${r},${g},${b},0.5)`;
-    } else {
-      fill.style.boxShadow = 'none';
+    // Glow: intensifies with tension
+    const glow = t > 0.2 ? Math.round((t - 0.2) / 0.8 * 10) : 0;
+    fill.style.boxShadow = glow > 0
+      ? `0 0 ${glow}px ${Math.round(glow/2)}px rgba(${r},${g},${b},0.55)`
+      : 'none';
+
+    // Blur at extreme stretch (vibrating so fast it blurs)
+    const blurPx = t > 0.7 ? ((t - 0.7) / 0.3) * 1.5 : 0;
+    fill.style.filter = blurPx > 0.1 ? `blur(${blurPx.toFixed(1)}px)` : 'none';
+
+    // Vibration speed while dragging: 140ms (gentle) → 45ms (frantic)
+    if (isDragging) {
+      const dur = (0.14 - t * 0.095).toFixed(3);
+      fill.style.setProperty('--vibe-dur', `${dur}s`);
     }
   }
   const label = document.getElementById('age-range-label');
@@ -1591,10 +1617,16 @@ function updateAgeSlider(isDragging) {
   const maxEl = document.getElementById('age-max');
   const fill  = document.getElementById('age-track-fill');
 
-  function snapRelease() {
+  function startVibrate() {
     if (!fill) return;
     fill.classList.remove('snapping');
-    void fill.offsetWidth; // force reflow so animation restarts
+    fill.classList.add('vibrating');
+  }
+
+  function snapRelease() {
+    if (!fill) return;
+    fill.classList.remove('vibrating');
+    void fill.offsetWidth;
     fill.classList.add('snapping');
     fill.addEventListener('animationend', () => fill.classList.remove('snapping'), { once: true });
   }
@@ -1606,13 +1638,17 @@ function updateAgeSlider(isDragging) {
     updateAgeSlider(true);
     render();
   }
-  minEl.addEventListener('pointerdown', () => { minEl.style.zIndex = 4; maxEl.style.zIndex = 2; });
-  maxEl.addEventListener('pointerdown', () => { maxEl.style.zIndex = 4; minEl.style.zIndex = 2; });
+
+  minEl.addEventListener('pointerdown', () => { minEl.style.zIndex = 4; maxEl.style.zIndex = 2; startVibrate(); });
+  maxEl.addEventListener('pointerdown', () => { maxEl.style.zIndex = 4; minEl.style.zIndex = 2; startVibrate(); });
   minEl.addEventListener('input', sync);
   maxEl.addEventListener('input', sync);
-  // Snap on release from either handle
   minEl.addEventListener('pointerup', snapRelease);
   maxEl.addEventListener('pointerup', snapRelease);
+  // Cancel if pointer leaves (e.g. fast drag off-screen)
+  window.addEventListener('pointerup', () => {
+    if (fill?.classList.contains('vibrating')) snapRelease();
+  });
   updateAgeSlider();
 })();
 
