@@ -1,30 +1,30 @@
 {
-  "run_at": "2026-06-17T16:53:15.250243+00:00",
+  "run_at": "2026-06-18T16:53:57.500041+00:00",
   "window_days": 16,
   "channels_ok": 60,
   "channels_total": 60,
-  "raw_events": 505,
-  "deduped_events": 484,
+  "raw_events": 483,
+  "deduped_events": 461,
   "channels": [
     {
       "source": "Palo Alto City Library",
       "status": "ok",
-      "count": 22
+      "count": 15
     },
     {
       "source": "San Mateo County Library",
       "status": "ok",
-      "count": 26
+      "count": 24
     },
     {
       "source": "San Jose Public Library",
       "status": "ok",
-      "count": 22
+      "count": 21
     },
     {
       "source": "Santa Clara County Library District",
       "status": "ok",
-      "count": 32
+      "count": 31
     },
     {
       "source": "San Francisco Public Library",
@@ -34,7 +34,7 @@
     {
       "source": "Oakland Public Library",
       "status": "ok",
-      "count": 28
+      "count": 22
     },
     {
       "source": "Berkeley Public Library",
@@ -49,12 +49,12 @@
     {
       "source": "Contra Costa County Library",
       "status": "ok",
-      "count": 40
+      "count": 38
     },
     {
       "source": "Alameda County Library",
       "status": "ok",
-      "count": 64
+      "count": 60
     },
     {
       "source": "Mountain View Public Library",
@@ -64,12 +64,12 @@
     {
       "source": "Sunnyvale Public Library",
       "status": "ok",
-      "count": 38
+      "count": 37
     },
     {
       "source": "San Mateo Public Library",
       "status": "ok",
-      "count": 21
+      "count": 20
     },
     {
       "source": "Eventbrite/Palo Alto",
@@ -259,7 +259,7 @@
     {
       "source": "CuriOdyssey",
       "status": "ok",
-      "count": 1
+      "count": 3
     },
     {
       "source": "Hiller Aviation Museum",
@@ -284,7 +284,7 @@
     {
       "source": "Midpeninsula Open Space",
       "status": "ok",
-      "count": 5
+      "count": 4
     },
     {
       "source": "Exploratorium",
@@ -294,12 +294,12 @@
     {
       "source": "Oakland Children's Fairyland",
       "status": "ok",
-      "count": 2
+      "count": 3
     },
     {
       "source": "Lawrence Hall of Science",
       "status": "ok",
-      "count": 2
+      "count": 3
     },
     {
       "source": "Los Altos Summer Concert Series",
