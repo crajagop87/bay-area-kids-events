@@ -1,10 +1,10 @@
 {
-  "run_at": "2026-06-18T16:53:57.500041+00:00",
+  "run_at": "2026-06-19T16:30:28.809625+00:00",
   "window_days": 16,
   "channels_ok": 60,
   "channels_total": 60,
-  "raw_events": 483,
-  "deduped_events": 461,
+  "raw_events": 463,
+  "deduped_events": 445,
   "channels": [
     {
       "source": "Palo Alto City Library",
@@ -24,7 +24,7 @@
     {
       "source": "Santa Clara County Library District",
       "status": "ok",
-      "count": 31
+      "count": 29
     },
     {
       "source": "San Francisco Public Library",
@@ -34,7 +34,7 @@
     {
       "source": "Oakland Public Library",
       "status": "ok",
-      "count": 22
+      "count": 20
     },
     {
       "source": "Berkeley Public Library",
@@ -49,12 +49,12 @@
     {
       "source": "Contra Costa County Library",
       "status": "ok",
-      "count": 38
+      "count": 32
     },
     {
       "source": "Alameda County Library",
       "status": "ok",
-      "count": 60
+      "count": 59
     },
     {
       "source": "Mountain View Public Library",
@@ -64,12 +64,12 @@
     {
       "source": "Sunnyvale Public Library",
       "status": "ok",
-      "count": 37
+      "count": 32
     },
     {
       "source": "San Mateo Public Library",
       "status": "ok",
-      "count": 20
+      "count": 19
     },
     {
       "source": "Eventbrite/Palo Alto",
@@ -244,17 +244,17 @@
     {
       "source": "Bay Area Kids Go",
       "status": "ok",
-      "count": 5
+      "count": 3
     },
     {
       "source": "Ronnie's Awesome List",
       "status": "ok",
-      "count": 19
+      "count": 18
     },
     {
       "source": "Palo Alto Junior Museum & Zoo",
       "status": "ok",
-      "count": 4
+      "count": 5
     },
     {
       "source": "CuriOdyssey",
@@ -304,7 +304,7 @@
     {
       "source": "Los Altos Summer Concert Series",
       "status": "ok",
-      "count": 2
+      "count": 1
     }
   ]
 }
