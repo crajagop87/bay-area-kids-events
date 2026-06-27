@@ -1,10 +1,10 @@
 {
-  "run_at": "2026-06-26T16:12:18.574540+00:00",
+  "run_at": "2026-06-27T15:12:56.614825+00:00",
   "window_days": 16,
   "channels_ok": 60,
   "channels_total": 60,
-  "raw_events": 429,
-  "deduped_events": 419,
+  "raw_events": 430,
+  "deduped_events": 420,
   "channels": [
     {
       "source": "Palo Alto City Library",
@@ -14,12 +14,12 @@
     {
       "source": "San Mateo County Library",
       "status": "ok",
-      "count": 26
+      "count": 28
     },
     {
       "source": "San Jose Public Library",
       "status": "ok",
-      "count": 21
+      "count": 22
     },
     {
       "source": "Santa Clara County Library District",
@@ -34,7 +34,7 @@
     {
       "source": "Oakland Public Library",
       "status": "ok",
-      "count": 23
+      "count": 21
     },
     {
       "source": "Berkeley Public Library",
@@ -54,7 +54,7 @@
     {
       "source": "Alameda County Library",
       "status": "ok",
-      "count": 50
+      "count": 49
     },
     {
       "source": "Mountain View Public Library",
@@ -64,7 +64,7 @@
     {
       "source": "Sunnyvale Public Library",
       "status": "ok",
-      "count": 33
+      "count": 32
     },
     {
       "source": "San Mateo Public Library",
@@ -254,7 +254,7 @@
     {
       "source": "Palo Alto Junior Museum & Zoo",
       "status": "ok",
-      "count": 5
+      "count": 6
     },
     {
       "source": "CuriOdyssey",
@@ -264,7 +264,7 @@
     {
       "source": "Hiller Aviation Museum",
       "status": "ok",
-      "count": 11
+      "count": 12
     },
     {
       "source": "Children's Discovery Museum SJ",
@@ -274,7 +274,7 @@
     {
       "source": "Cantor Arts Center",
       "status": "ok",
-      "count": 2
+      "count": 3
     },
     {
       "source": "Hidden Villa Farm",
@@ -284,7 +284,7 @@
     {
       "source": "Midpeninsula Open Space",
       "status": "ok",
-      "count": 5
+      "count": 4
     },
     {
       "source": "Exploratorium",
