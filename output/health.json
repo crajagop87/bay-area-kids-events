@@ -1,30 +1,30 @@
 {
-  "run_at": "2026-07-04T15:02:09.325346+00:00",
+  "run_at": "2026-07-05T15:09:27.991874+00:00",
   "window_days": 16,
   "channels_ok": 60,
   "channels_total": 60,
-  "raw_events": 498,
-  "deduped_events": 488,
+  "raw_events": 1406,
+  "deduped_events": 1305,
   "channels": [
     {
       "source": "Palo Alto City Library",
       "status": "ok",
-      "count": 15
+      "count": 25
     },
     {
       "source": "San Mateo County Library",
       "status": "ok",
-      "count": 28
+      "count": 226
     },
     {
       "source": "San Jose Public Library",
       "status": "ok",
-      "count": 29
+      "count": 232
     },
     {
       "source": "Santa Clara County Library District",
       "status": "ok",
-      "count": 33
+      "count": 171
     },
     {
       "source": "San Francisco Public Library",
@@ -34,7 +34,7 @@
     {
       "source": "Oakland Public Library",
       "status": "ok",
-      "count": 19
+      "count": 140
     },
     {
       "source": "Berkeley Public Library",
@@ -49,12 +49,12 @@
     {
       "source": "Contra Costa County Library",
       "status": "ok",
-      "count": 34
+      "count": 190
     },
     {
       "source": "Alameda County Library",
       "status": "ok",
-      "count": 53
+      "count": 135
     },
     {
       "source": "Mountain View Public Library",
@@ -64,12 +64,12 @@
     {
       "source": "Sunnyvale Public Library",
       "status": "ok",
-      "count": 26
+      "count": 27
     },
     {
       "source": "San Mateo Public Library",
       "status": "ok",
-      "count": 15
+      "count": 17
     },
     {
       "source": "Eventbrite/Palo Alto",
@@ -229,7 +229,7 @@
     {
       "source": "Funcheap",
       "status": "ok",
-      "count": 90
+      "count": 87
     },
     {
       "source": "Bay Area Kid Fun",
@@ -254,7 +254,7 @@
     {
       "source": "Palo Alto Junior Museum & Zoo",
       "status": "ok",
-      "count": 6
+      "count": 5
     },
     {
       "source": "CuriOdyssey",
@@ -284,7 +284,7 @@
     {
       "source": "Midpeninsula Open Space",
       "status": "ok",
-      "count": 5
+      "count": 6
     },
     {
       "source": "Exploratorium",
