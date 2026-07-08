@@ -1,10 +1,10 @@
 {
-  "run_at": "2026-07-07T16:26:51.770962+00:00",
+  "run_at": "2026-07-08T15:59:33.318936+00:00",
   "window_days": 16,
   "channels_ok": 60,
   "channels_total": 60,
-  "raw_events": 524,
-  "deduped_events": 503,
+  "raw_events": 533,
+  "deduped_events": 509,
   "channels": [
     {
       "source": "Palo Alto City Library",
@@ -14,17 +14,17 @@
     {
       "source": "San Mateo County Library",
       "status": "ok",
-      "count": 35
+      "count": 37
     },
     {
       "source": "San Jose Public Library",
       "status": "ok",
-      "count": 29
+      "count": 30
     },
     {
       "source": "Santa Clara County Library District",
       "status": "ok",
-      "count": 39
+      "count": 38
     },
     {
       "source": "San Francisco Public Library",
@@ -34,7 +34,7 @@
     {
       "source": "Oakland Public Library",
       "status": "ok",
-      "count": 23
+      "count": 25
     },
     {
       "source": "Berkeley Public Library",
@@ -49,7 +49,7 @@
     {
       "source": "Contra Costa County Library",
       "status": "ok",
-      "count": 41
+      "count": 44
     },
     {
       "source": "Alameda County Library",
@@ -64,7 +64,7 @@
     {
       "source": "Sunnyvale Public Library",
       "status": "ok",
-      "count": 28
+      "count": 31
     },
     {
       "source": "San Mateo Public Library",
@@ -244,7 +244,7 @@
     {
       "source": "Bay Area Kids Go",
       "status": "ok",
-      "count": 8
+      "count": 7
     },
     {
       "source": "Ronnie's Awesome List",
@@ -279,7 +279,7 @@
     {
       "source": "Hidden Villa Farm",
       "status": "ok",
-      "count": 5
+      "count": 4
     },
     {
       "source": "Midpeninsula Open Space",
@@ -304,7 +304,7 @@
     {
       "source": "Los Altos Summer Concert Series",
       "status": "ok",
-      "count": 2
+      "count": 3
     }
   ]
 }
