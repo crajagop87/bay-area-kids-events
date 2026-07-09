@@ -1,25 +1,25 @@
 {
-  "run_at": "2026-07-08T15:59:33.318936+00:00",
+  "run_at": "2026-07-09T16:24:29.543556+00:00",
   "window_days": 16,
   "channels_ok": 60,
   "channels_total": 60,
   "raw_events": 533,
-  "deduped_events": 509,
+  "deduped_events": 508,
   "channels": [
     {
       "source": "Palo Alto City Library",
       "status": "ok",
-      "count": 14
+      "count": 16
     },
     {
       "source": "San Mateo County Library",
       "status": "ok",
-      "count": 37
+      "count": 35
     },
     {
       "source": "San Jose Public Library",
       "status": "ok",
-      "count": 30
+      "count": 28
     },
     {
       "source": "Santa Clara County Library District",
@@ -34,7 +34,7 @@
     {
       "source": "Oakland Public Library",
       "status": "ok",
-      "count": 25
+      "count": 23
     },
     {
       "source": "Berkeley Public Library",
@@ -49,12 +49,12 @@
     {
       "source": "Contra Costa County Library",
       "status": "ok",
-      "count": 44
+      "count": 43
     },
     {
       "source": "Alameda County Library",
       "status": "ok",
-      "count": 58
+      "count": 55
     },
     {
       "source": "Mountain View Public Library",
@@ -64,12 +64,12 @@
     {
       "source": "Sunnyvale Public Library",
       "status": "ok",
-      "count": 31
+      "count": 30
     },
     {
       "source": "San Mateo Public Library",
       "status": "ok",
-      "count": 20
+      "count": 16
     },
     {
       "source": "Eventbrite/Palo Alto",
@@ -234,12 +234,12 @@
     {
       "source": "Bay Area Kid Fun",
       "status": "ok",
-      "count": 20
+      "count": 34
     },
     {
       "source": "510 Families",
       "status": "ok",
-      "count": 89
+      "count": 87
     },
     {
       "source": "Bay Area Kids Go",
@@ -279,7 +279,7 @@
     {
       "source": "Hidden Villa Farm",
       "status": "ok",
-      "count": 4
+      "count": 5
     },
     {
       "source": "Midpeninsula Open Space",
