@@ -1,10 +1,10 @@
 {
-  "run_at": "2026-07-10T16:22:02.452642+00:00",
+  "run_at": "2026-07-11T14:48:31.465381+00:00",
   "window_days": 16,
   "channels_ok": 60,
   "channels_total": 60,
-  "raw_events": 524,
-  "deduped_events": 501,
+  "raw_events": 525,
+  "deduped_events": 506,
   "channels": [
     {
       "source": "Palo Alto City Library",
@@ -19,7 +19,7 @@
     {
       "source": "San Jose Public Library",
       "status": "ok",
-      "count": 28
+      "count": 26
     },
     {
       "source": "Santa Clara County Library District",
@@ -254,7 +254,7 @@
     {
       "source": "Palo Alto Junior Museum & Zoo",
       "status": "ok",
-      "count": 5
+      "count": 6
     },
     {
       "source": "CuriOdyssey",
@@ -264,7 +264,7 @@
     {
       "source": "Hiller Aviation Museum",
       "status": "ok",
-      "count": 11
+      "count": 12
     },
     {
       "source": "Children's Discovery Museum SJ",
@@ -274,7 +274,7 @@
     {
       "source": "Cantor Arts Center",
       "status": "ok",
-      "count": 2
+      "count": 3
     },
     {
       "source": "Hidden Villa Farm",
