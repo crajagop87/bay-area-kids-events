@@ -1,10 +1,10 @@
 {
-  "run_at": "2026-07-11T14:48:31.465381+00:00",
+  "run_at": "2026-07-12T14:51:48.883559+00:00",
   "window_days": 16,
   "channels_ok": 60,
   "channels_total": 60,
-  "raw_events": 525,
-  "deduped_events": 506,
+  "raw_events": 869,
+  "deduped_events": 540,
   "channels": [
     {
       "source": "Palo Alto City Library",
@@ -14,17 +14,17 @@
     {
       "source": "San Mateo County Library",
       "status": "ok",
-      "count": 31
+      "count": 32
     },
     {
       "source": "San Jose Public Library",
       "status": "ok",
-      "count": 26
+      "count": 27
     },
     {
       "source": "Santa Clara County Library District",
       "status": "ok",
-      "count": 37
+      "count": 35
     },
     {
       "source": "San Francisco Public Library",
@@ -34,7 +34,7 @@
     {
       "source": "Oakland Public Library",
       "status": "ok",
-      "count": 23
+      "count": 22
     },
     {
       "source": "Berkeley Public Library",
@@ -49,12 +49,12 @@
     {
       "source": "Contra Costa County Library",
       "status": "ok",
-      "count": 38
+      "count": 47
     },
     {
       "source": "Alameda County Library",
       "status": "ok",
-      "count": 53
+      "count": 54
     },
     {
       "source": "Mountain View Public Library",
@@ -64,172 +64,172 @@
     {
       "source": "Sunnyvale Public Library",
       "status": "ok",
-      "count": 29
+      "count": 30
     },
     {
       "source": "San Mateo Public Library",
       "status": "ok",
-      "count": 16
+      "count": 17
     },
     {
       "source": "Eventbrite/Palo Alto",
       "status": "ok",
-      "count": 0
+      "count": 9
     },
     {
       "source": "Eventbrite/San Jose",
       "status": "ok",
-      "count": 0
+      "count": 11
     },
     {
       "source": "Eventbrite/Mountain View",
       "status": "ok",
-      "count": 0
+      "count": 12
     },
     {
       "source": "Eventbrite/Sunnyvale",
       "status": "ok",
-      "count": 0
+      "count": 11
     },
     {
       "source": "Eventbrite/San Mateo",
       "status": "ok",
-      "count": 0
+      "count": 9
     },
     {
       "source": "Eventbrite/Redwood City",
       "status": "ok",
-      "count": 0
+      "count": 8
     },
     {
       "source": "Eventbrite/Menlo Park",
       "status": "ok",
-      "count": 0
+      "count": 10
     },
     {
       "source": "Eventbrite/Cupertino",
       "status": "ok",
-      "count": 0
+      "count": 12
     },
     {
       "source": "Eventbrite/Los Altos",
       "status": "ok",
-      "count": 0
+      "count": 11
     },
     {
       "source": "Eventbrite/Campbell",
       "status": "ok",
-      "count": 0
+      "count": 11
     },
     {
       "source": "Eventbrite/Los Gatos",
       "status": "ok",
-      "count": 0
+      "count": 12
     },
     {
       "source": "Eventbrite/Saratoga",
       "status": "ok",
-      "count": 0
+      "count": 10
     },
     {
       "source": "Eventbrite/Milpitas",
       "status": "ok",
-      "count": 0
+      "count": 13
     },
     {
       "source": "Eventbrite/Santa Clara",
       "status": "ok",
-      "count": 0
+      "count": 11
     },
     {
       "source": "Eventbrite/Los Altos Hills",
       "status": "ok",
-      "count": 0
+      "count": 10
     },
     {
       "source": "Eventbrite/Burlingame",
       "status": "ok",
-      "count": 0
+      "count": 9
     },
     {
       "source": "Eventbrite/Foster City",
       "status": "ok",
-      "count": 0
+      "count": 9
     },
     {
       "source": "Eventbrite/San Carlos",
       "status": "ok",
-      "count": 0
+      "count": 8
     },
     {
       "source": "Eventbrite/Belmont",
       "status": "ok",
-      "count": 0
+      "count": 8
     },
     {
       "source": "Eventbrite/San Bruno",
       "status": "ok",
-      "count": 0
+      "count": 9
     },
     {
       "source": "Eventbrite/Millbrae",
       "status": "ok",
-      "count": 0
+      "count": 9
     },
     {
       "source": "Eventbrite/Half Moon Bay",
       "status": "ok",
-      "count": 0
+      "count": 8
     },
     {
       "source": "Eventbrite/San Francisco",
       "status": "ok",
-      "count": 0
+      "count": 6
     },
     {
       "source": "Eventbrite/Oakland",
       "status": "ok",
-      "count": 0
+      "count": 11
     },
     {
       "source": "Eventbrite/Berkeley",
       "status": "ok",
-      "count": 0
+      "count": 11
     },
     {
       "source": "Eventbrite/Fremont",
       "status": "ok",
-      "count": 0
+      "count": 12
     },
     {
       "source": "Eventbrite/Hayward",
       "status": "ok",
-      "count": 0
+      "count": 11
     },
     {
       "source": "Eventbrite/Walnut Creek",
       "status": "ok",
-      "count": 0
+      "count": 11
     },
     {
       "source": "Eventbrite/Pleasanton",
       "status": "ok",
-      "count": 0
+      "count": 11
     },
     {
       "source": "Eventbrite/Dublin",
       "status": "ok",
-      "count": 0
+      "count": 12
     },
     {
       "source": "Eventbrite/Santa Cruz",
       "status": "ok",
-      "count": 0
+      "count": 14
     },
     {
       "source": "Funcheap",
       "status": "ok",
-      "count": 86
+      "count": 87
     },
     {
       "source": "Bay Area Kid Fun",
@@ -244,7 +244,7 @@
     {
       "source": "Bay Area Kids Go",
       "status": "ok",
-      "count": 8
+      "count": 6
     },
     {
       "source": "Ronnie's Awesome List",
@@ -254,12 +254,12 @@
     {
       "source": "Palo Alto Junior Museum & Zoo",
       "status": "ok",
-      "count": 6
+      "count": 5
     },
     {
       "source": "CuriOdyssey",
       "status": "ok",
-      "count": 1
+      "count": 16
     },
     {
       "source": "Hiller Aviation Museum",
@@ -279,17 +279,17 @@
     {
       "source": "Hidden Villa Farm",
       "status": "ok",
-      "count": 5
+      "count": 4
     },
     {
       "source": "Midpeninsula Open Space",
       "status": "ok",
-      "count": 4
+      "count": 1
     },
     {
       "source": "Exploratorium",
       "status": "ok",
-      "count": 0
+      "count": 5
     },
     {
       "source": "Oakland Children's Fairyland",
