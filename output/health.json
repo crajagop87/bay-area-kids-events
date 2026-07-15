@@ -1,10 +1,10 @@
 {
-  "run_at": "2026-07-14T15:20:37.246635+00:00",
+  "run_at": "2026-07-15T15:23:51.699480+00:00",
   "window_days": 16,
   "channels_ok": 60,
   "channels_total": 60,
-  "raw_events": 576,
-  "deduped_events": 527,
+  "raw_events": 578,
+  "deduped_events": 530,
   "channels": [
     {
       "source": "Palo Alto City Library",
@@ -14,7 +14,7 @@
     {
       "source": "San Mateo County Library",
       "status": "ok",
-      "count": 34
+      "count": 36
     },
     {
       "source": "San Jose Public Library",
@@ -24,7 +24,7 @@
     {
       "source": "Santa Clara County Library District",
       "status": "ok",
-      "count": 38
+      "count": 39
     },
     {
       "source": "San Francisco Public Library",
@@ -34,7 +34,7 @@
     {
       "source": "Oakland Public Library",
       "status": "ok",
-      "count": 27
+      "count": 29
     },
     {
       "source": "Berkeley Public Library",
@@ -49,12 +49,12 @@
     {
       "source": "Contra Costa County Library",
       "status": "ok",
-      "count": 59
+      "count": 62
     },
     {
       "source": "Alameda County Library",
       "status": "ok",
-      "count": 55
+      "count": 47
     },
     {
       "source": "Mountain View Public Library",
@@ -69,7 +69,7 @@
     {
       "source": "San Mateo Public Library",
       "status": "ok",
-      "count": 21
+      "count": 19
     },
     {
       "source": "Eventbrite/Palo Alto",
@@ -229,12 +229,12 @@
     {
       "source": "Funcheap",
       "status": "ok",
-      "count": 88
+      "count": 87
     },
     {
       "source": "Bay Area Kid Fun",
       "status": "ok",
-      "count": 44
+      "count": 45
     },
     {
       "source": "510 Families",
@@ -284,7 +284,7 @@
     {
       "source": "Midpeninsula Open Space",
       "status": "ok",
-      "count": 0
+      "count": 3
     },
     {
       "source": "Exploratorium",
@@ -304,7 +304,7 @@
     {
       "source": "Los Altos Summer Concert Series",
       "status": "ok",
-      "count": 2
+      "count": 3
     }
   ]
 }
