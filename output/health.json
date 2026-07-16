@@ -1,25 +1,25 @@
 {
-  "run_at": "2026-07-15T15:23:51.699480+00:00",
+  "run_at": "2026-07-16T15:29:08.033509+00:00",
   "window_days": 16,
   "channels_ok": 60,
   "channels_total": 60,
-  "raw_events": 578,
-  "deduped_events": 530,
+  "raw_events": 568,
+  "deduped_events": 520,
   "channels": [
     {
       "source": "Palo Alto City Library",
       "status": "ok",
-      "count": 19
+      "count": 21
     },
     {
       "source": "San Mateo County Library",
       "status": "ok",
-      "count": 36
+      "count": 34
     },
     {
       "source": "San Jose Public Library",
       "status": "ok",
-      "count": 21
+      "count": 19
     },
     {
       "source": "Santa Clara County Library District",
@@ -34,7 +34,7 @@
     {
       "source": "Oakland Public Library",
       "status": "ok",
-      "count": 29
+      "count": 27
     },
     {
       "source": "Berkeley Public Library",
@@ -49,12 +49,12 @@
     {
       "source": "Contra Costa County Library",
       "status": "ok",
-      "count": 62
+      "count": 60
     },
     {
       "source": "Alameda County Library",
       "status": "ok",
-      "count": 47
+      "count": 44
     },
     {
       "source": "Mountain View Public Library",
@@ -64,12 +64,12 @@
     {
       "source": "Sunnyvale Public Library",
       "status": "ok",
-      "count": 33
+      "count": 32
     },
     {
       "source": "San Mateo Public Library",
       "status": "ok",
-      "count": 19
+      "count": 17
     },
     {
       "source": "Eventbrite/Palo Alto",
@@ -279,12 +279,12 @@
     {
       "source": "Hidden Villa Farm",
       "status": "ok",
-      "count": 5
+      "count": 4
     },
     {
       "source": "Midpeninsula Open Space",
       "status": "ok",
-      "count": 3
+      "count": 4
     },
     {
       "source": "Exploratorium",
@@ -294,12 +294,12 @@
     {
       "source": "Oakland Children's Fairyland",
       "status": "ok",
-      "count": 3
+      "count": 4
     },
     {
       "source": "Lawrence Hall of Science",
       "status": "ok",
-      "count": 0
+      "count": 1
     },
     {
       "source": "Los Altos Summer Concert Series",
