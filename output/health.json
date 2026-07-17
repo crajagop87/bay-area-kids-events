@@ -1,25 +1,25 @@
 {
-  "run_at": "2026-07-16T15:29:08.033509+00:00",
+  "run_at": "2026-07-17T15:10:02.624582+00:00",
   "window_days": 16,
   "channels_ok": 60,
   "channels_total": 60,
-  "raw_events": 568,
-  "deduped_events": 520,
+  "raw_events": 494,
+  "deduped_events": 450,
   "channels": [
     {
       "source": "Palo Alto City Library",
       "status": "ok",
-      "count": 21
+      "count": 23
     },
     {
       "source": "San Mateo County Library",
       "status": "ok",
-      "count": 34
+      "count": 31
     },
     {
       "source": "San Jose Public Library",
       "status": "ok",
-      "count": 19
+      "count": 16
     },
     {
       "source": "Santa Clara County Library District",
@@ -49,12 +49,12 @@
     {
       "source": "Contra Costa County Library",
       "status": "ok",
-      "count": 60
+      "count": 53
     },
     {
       "source": "Alameda County Library",
       "status": "ok",
-      "count": 44
+      "count": 43
     },
     {
       "source": "Mountain View Public Library",
@@ -64,7 +64,7 @@
     {
       "source": "Sunnyvale Public Library",
       "status": "ok",
-      "count": 32
+      "count": 28
     },
     {
       "source": "San Mateo Public Library",
@@ -239,12 +239,12 @@
     {
       "source": "510 Families",
       "status": "ok",
-      "count": 87
+      "count": 27
     },
     {
       "source": "Bay Area Kids Go",
       "status": "ok",
-      "count": 6
+      "count": 8
     },
     {
       "source": "Ronnie's Awesome List",
@@ -254,7 +254,7 @@
     {
       "source": "Palo Alto Junior Museum & Zoo",
       "status": "ok",
-      "count": 4
+      "count": 5
     },
     {
       "source": "CuriOdyssey",
@@ -284,7 +284,7 @@
     {
       "source": "Midpeninsula Open Space",
       "status": "ok",
-      "count": 4
+      "count": 3
     },
     {
       "source": "Exploratorium",
@@ -294,7 +294,7 @@
     {
       "source": "Oakland Children's Fairyland",
       "status": "ok",
-      "count": 4
+      "count": 5
     },
     {
       "source": "Lawrence Hall of Science",
@@ -304,7 +304,7 @@
     {
       "source": "Los Altos Summer Concert Series",
       "status": "ok",
-      "count": 3
+      "count": 2
     }
   ]
 }
