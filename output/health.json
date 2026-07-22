@@ -1,10 +1,10 @@
 {
-  "run_at": "2026-07-21T15:40:09.123341+00:00",
+  "run_at": "2026-07-22T15:29:01.415238+00:00",
   "window_days": 16,
   "channels_ok": 60,
   "channels_total": 60,
-  "raw_events": 487,
-  "deduped_events": 439,
+  "raw_events": 470,
+  "deduped_events": 422,
   "channels": [
     {
       "source": "Palo Alto City Library",
@@ -14,7 +14,7 @@
     {
       "source": "San Mateo County Library",
       "status": "ok",
-      "count": 35
+      "count": 36
     },
     {
       "source": "San Jose Public Library",
@@ -24,7 +24,7 @@
     {
       "source": "Santa Clara County Library District",
       "status": "ok",
-      "count": 37
+      "count": 36
     },
     {
       "source": "San Francisco Public Library",
@@ -49,12 +49,12 @@
     {
       "source": "Contra Costa County Library",
       "status": "ok",
-      "count": 60
+      "count": 59
     },
     {
       "source": "Alameda County Library",
       "status": "ok",
-      "count": 39
+      "count": 32
     },
     {
       "source": "Mountain View Public Library",
@@ -64,7 +64,7 @@
     {
       "source": "Sunnyvale Public Library",
       "status": "ok",
-      "count": 27
+      "count": 26
     },
     {
       "source": "San Mateo Public Library",
@@ -234,7 +234,7 @@
     {
       "source": "Bay Area Kid Fun",
       "status": "ok",
-      "count": 45
+      "count": 36
     },
     {
       "source": "510 Families",
@@ -284,7 +284,7 @@
     {
       "source": "Midpeninsula Open Space",
       "status": "ok",
-      "count": 0
+      "count": 1
     },
     {
       "source": "Exploratorium",
