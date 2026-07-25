@@ -1,15 +1,15 @@
 {
-  "run_at": "2026-07-24T15:22:10.315677+00:00",
+  "run_at": "2026-07-25T14:58:27.986627+00:00",
   "window_days": 16,
   "channels_ok": 60,
   "channels_total": 60,
-  "raw_events": 426,
-  "deduped_events": 391,
+  "raw_events": 428,
+  "deduped_events": 395,
   "channels": [
     {
       "source": "Palo Alto City Library",
       "status": "ok",
-      "count": 20
+      "count": 19
     },
     {
       "source": "San Mateo County Library",
@@ -24,7 +24,7 @@
     {
       "source": "Santa Clara County Library District",
       "status": "ok",
-      "count": 32
+      "count": 34
     },
     {
       "source": "San Francisco Public Library",
@@ -49,12 +49,12 @@
     {
       "source": "Contra Costa County Library",
       "status": "ok",
-      "count": 52
+      "count": 49
     },
     {
       "source": "Alameda County Library",
       "status": "ok",
-      "count": 28
+      "count": 30
     },
     {
       "source": "Mountain View Public Library",
@@ -254,7 +254,7 @@
     {
       "source": "Palo Alto Junior Museum & Zoo",
       "status": "ok",
-      "count": 5
+      "count": 6
     },
     {
       "source": "CuriOdyssey",
@@ -274,7 +274,7 @@
     {
       "source": "Cantor Arts Center",
       "status": "ok",
-      "count": 2
+      "count": 3
     },
     {
       "source": "Hidden Villa Farm",
