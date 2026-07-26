@@ -1,15 +1,15 @@
 {
-  "run_at": "2026-07-25T14:58:27.986627+00:00",
+  "run_at": "2026-07-26T15:01:31.656289+00:00",
   "window_days": 16,
   "channels_ok": 60,
   "channels_total": 60,
-  "raw_events": 428,
-  "deduped_events": 395,
+  "raw_events": 419,
+  "deduped_events": 380,
   "channels": [
     {
       "source": "Palo Alto City Library",
       "status": "ok",
-      "count": 19
+      "count": 15
     },
     {
       "source": "San Mateo County Library",
@@ -24,7 +24,7 @@
     {
       "source": "Santa Clara County Library District",
       "status": "ok",
-      "count": 34
+      "count": 32
     },
     {
       "source": "San Francisco Public Library",
@@ -54,7 +54,7 @@
     {
       "source": "Alameda County Library",
       "status": "ok",
-      "count": 30
+      "count": 32
     },
     {
       "source": "Mountain View Public Library",
@@ -64,12 +64,12 @@
     {
       "source": "Sunnyvale Public Library",
       "status": "ok",
-      "count": 23
+      "count": 21
     },
     {
       "source": "San Mateo Public Library",
       "status": "ok",
-      "count": 14
+      "count": 16
     },
     {
       "source": "Eventbrite/Palo Alto",
@@ -244,7 +244,7 @@
     {
       "source": "Bay Area Kids Go",
       "status": "ok",
-      "count": 8
+      "count": 6
     },
     {
       "source": "Ronnie's Awesome List",
@@ -254,7 +254,7 @@
     {
       "source": "Palo Alto Junior Museum & Zoo",
       "status": "ok",
-      "count": 6
+      "count": 5
     },
     {
       "source": "CuriOdyssey",
@@ -279,7 +279,7 @@
     {
       "source": "Hidden Villa Farm",
       "status": "ok",
-      "count": 6
+      "count": 5
     },
     {
       "source": "Midpeninsula Open Space",
@@ -294,7 +294,7 @@
     {
       "source": "Oakland Children's Fairyland",
       "status": "ok",
-      "count": 4
+      "count": 3
     },
     {
       "source": "Lawrence Hall of Science",
