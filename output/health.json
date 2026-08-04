@@ -1,10 +1,10 @@
 {
-  "run_at": "2026-08-03T16:19:13.180679+00:00",
+  "run_at": "2026-08-04T16:09:21.131548+00:00",
   "window_days": 16,
   "channels_ok": 60,
   "channels_total": 60,
-  "raw_events": 464,
-  "deduped_events": 437,
+  "raw_events": 521,
+  "deduped_events": 492,
   "channels": [
     {
       "source": "Palo Alto City Library",
@@ -19,12 +19,12 @@
     {
       "source": "San Jose Public Library",
       "status": "ok",
-      "count": 11
+      "count": 12
     },
     {
       "source": "Santa Clara County Library District",
       "status": "ok",
-      "count": 36
+      "count": 39
     },
     {
       "source": "San Francisco Public Library",
@@ -34,7 +34,7 @@
     {
       "source": "Oakland Public Library",
       "status": "ok",
-      "count": 26
+      "count": 25
     },
     {
       "source": "Berkeley Public Library",
@@ -54,7 +54,7 @@
     {
       "source": "Alameda County Library",
       "status": "ok",
-      "count": 41
+      "count": 45
     },
     {
       "source": "Mountain View Public Library",
@@ -69,7 +69,7 @@
     {
       "source": "San Mateo Public Library",
       "status": "ok",
-      "count": 16
+      "count": 19
     },
     {
       "source": "Eventbrite/Palo Alto",
@@ -239,7 +239,7 @@
     {
       "source": "510 Families",
       "status": "ok",
-      "count": 78
+      "count": 122
     },
     {
       "source": "Bay Area Kids Go",
@@ -284,7 +284,7 @@
     {
       "source": "Midpeninsula Open Space",
       "status": "ok",
-      "count": 6
+      "count": 9
     },
     {
       "source": "Exploratorium",
