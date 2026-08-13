@@ -1,30 +1,30 @@
 {
-  "run_at": "2026-08-12T14:52:31.730883+00:00",
+  "run_at": "2026-08-13T14:52:10.721417+00:00",
   "window_days": 16,
   "channels_ok": 60,
   "channels_total": 60,
-  "raw_events": 462,
-  "deduped_events": 432,
+  "raw_events": 444,
+  "deduped_events": 412,
   "channels": [
     {
       "source": "Palo Alto City Library",
       "status": "ok",
-      "count": 8
+      "count": 9
     },
     {
       "source": "San Mateo County Library",
       "status": "ok",
-      "count": 25
+      "count": 24
     },
     {
       "source": "San Jose Public Library",
       "status": "ok",
-      "count": 21
+      "count": 20
     },
     {
       "source": "Santa Clara County Library District",
       "status": "ok",
-      "count": 39
+      "count": 38
     },
     {
       "source": "San Francisco Public Library",
@@ -49,12 +49,12 @@
     {
       "source": "Contra Costa County Library",
       "status": "ok",
-      "count": 40
+      "count": 35
     },
     {
       "source": "Alameda County Library",
       "status": "ok",
-      "count": 51
+      "count": 45
     },
     {
       "source": "Mountain View Public Library",
@@ -64,12 +64,12 @@
     {
       "source": "Sunnyvale Public Library",
       "status": "ok",
-      "count": 15
+      "count": 16
     },
     {
       "source": "San Mateo Public Library",
       "status": "ok",
-      "count": 22
+      "count": 20
     },
     {
       "source": "Eventbrite/Palo Alto",
@@ -234,12 +234,12 @@
     {
       "source": "Bay Area Kid Fun",
       "status": "ok",
-      "count": 24
+      "count": 25
     },
     {
       "source": "510 Families",
       "status": "ok",
-      "count": 59
+      "count": 56
     },
     {
       "source": "Bay Area Kids Go",
@@ -279,12 +279,12 @@
     {
       "source": "Hidden Villa Farm",
       "status": "ok",
-      "count": 7
+      "count": 6
     },
     {
       "source": "Midpeninsula Open Space",
       "status": "ok",
-      "count": 8
+      "count": 7
     },
     {
       "source": "Exploratorium",
