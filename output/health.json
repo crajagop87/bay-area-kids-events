@@ -1,30 +1,30 @@
 {
-  "run_at": "2026-08-26T14:39:06.120599+00:00",
+  "run_at": "2026-08-27T23:30:32.967734+00:00",
   "window_days": 16,
   "channels_ok": 60,
   "channels_total": 60,
-  "raw_events": 462,
-  "deduped_events": 442,
+  "raw_events": 440,
+  "deduped_events": 420,
   "channels": [
     {
       "source": "Palo Alto City Library",
       "status": "ok",
-      "count": 17
+      "count": 20
     },
     {
       "source": "San Mateo County Library",
       "status": "ok",
-      "count": 26
+      "count": 19
     },
     {
       "source": "San Jose Public Library",
       "status": "ok",
-      "count": 25
+      "count": 22
     },
     {
       "source": "Santa Clara County Library District",
       "status": "ok",
-      "count": 33
+      "count": 27
     },
     {
       "source": "San Francisco Public Library",
@@ -34,7 +34,7 @@
     {
       "source": "Oakland Public Library",
       "status": "ok",
-      "count": 26
+      "count": 22
     },
     {
       "source": "Berkeley Public Library",
@@ -49,12 +49,12 @@
     {
       "source": "Contra Costa County Library",
       "status": "ok",
-      "count": 35
+      "count": 33
     },
     {
       "source": "Alameda County Library",
       "status": "ok",
-      "count": 34
+      "count": 31
     },
     {
       "source": "Mountain View Public Library",
@@ -64,12 +64,12 @@
     {
       "source": "Sunnyvale Public Library",
       "status": "ok",
-      "count": 30
+      "count": 38
     },
     {
       "source": "San Mateo Public Library",
       "status": "ok",
-      "count": 26
+      "count": 22
     },
     {
       "source": "Eventbrite/Palo Alto",
@@ -239,12 +239,12 @@
     {
       "source": "510 Families",
       "status": "ok",
-      "count": 29
+      "count": 27
     },
     {
       "source": "Bay Area Kids Go",
       "status": "ok",
-      "count": 18
+      "count": 17
     },
     {
       "source": "Ronnie's Awesome List",
@@ -264,7 +264,7 @@
     {
       "source": "Hiller Aviation Museum",
       "status": "ok",
-      "count": 12
+      "count": 11
     },
     {
       "source": "Children's Discovery Museum SJ",
