@@ -1,10 +1,10 @@
 {
-  "run_at": "2026-08-27T23:30:32.967734+00:00",
+  "run_at": "2026-08-28T23:21:42.831882+00:00",
   "window_days": 16,
   "channels_ok": 60,
   "channels_total": 60,
-  "raw_events": 440,
-  "deduped_events": 420,
+  "raw_events": 495,
+  "deduped_events": 481,
   "channels": [
     {
       "source": "Palo Alto City Library",
@@ -14,12 +14,12 @@
     {
       "source": "San Mateo County Library",
       "status": "ok",
-      "count": 19
+      "count": 18
     },
     {
       "source": "San Jose Public Library",
       "status": "ok",
-      "count": 22
+      "count": 23
     },
     {
       "source": "Santa Clara County Library District",
@@ -34,7 +34,7 @@
     {
       "source": "Oakland Public Library",
       "status": "ok",
-      "count": 22
+      "count": 21
     },
     {
       "source": "Berkeley Public Library",
@@ -49,12 +49,12 @@
     {
       "source": "Contra Costa County Library",
       "status": "ok",
-      "count": 33
+      "count": 32
     },
     {
       "source": "Alameda County Library",
       "status": "ok",
-      "count": 31
+      "count": 34
     },
     {
       "source": "Mountain View Public Library",
@@ -229,7 +229,7 @@
     {
       "source": "Funcheap",
       "status": "ok",
-      "count": 87
+      "count": 88
     },
     {
       "source": "Bay Area Kid Fun",
@@ -239,12 +239,12 @@
     {
       "source": "510 Families",
       "status": "ok",
-      "count": 27
+      "count": 77
     },
     {
       "source": "Bay Area Kids Go",
       "status": "ok",
-      "count": 17
+      "count": 13
     },
     {
       "source": "Ronnie's Awesome List",
@@ -254,12 +254,12 @@
     {
       "source": "Palo Alto Junior Museum & Zoo",
       "status": "ok",
-      "count": 4
+      "count": 5
     },
     {
       "source": "CuriOdyssey",
       "status": "ok",
-      "count": 5
+      "count": 7
     },
     {
       "source": "Hiller Aviation Museum",
@@ -279,12 +279,12 @@
     {
       "source": "Hidden Villa Farm",
       "status": "ok",
-      "count": 13
+      "count": 16
     },
     {
       "source": "Midpeninsula Open Space",
       "status": "ok",
-      "count": 5
+      "count": 6
     },
     {
       "source": "Exploratorium",
