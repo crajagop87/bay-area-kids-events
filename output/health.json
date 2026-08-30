@@ -1,10 +1,10 @@
 {
-  "run_at": "2026-08-29T17:28:22.426083+00:00",
+  "run_at": "2026-08-30T17:52:05.844506+00:00",
   "window_days": 16,
   "channels_ok": 60,
   "channels_total": 60,
-  "raw_events": 493,
-  "deduped_events": 482,
+  "raw_events": 508,
+  "deduped_events": 485,
   "channels": [
     {
       "source": "Palo Alto City Library",
@@ -19,12 +19,12 @@
     {
       "source": "San Jose Public Library",
       "status": "ok",
-      "count": 23
+      "count": 22
     },
     {
       "source": "Santa Clara County Library District",
       "status": "ok",
-      "count": 27
+      "count": 31
     },
     {
       "source": "San Francisco Public Library",
@@ -34,7 +34,7 @@
     {
       "source": "Oakland Public Library",
       "status": "ok",
-      "count": 21
+      "count": 20
     },
     {
       "source": "Berkeley Public Library",
@@ -54,7 +54,7 @@
     {
       "source": "Alameda County Library",
       "status": "ok",
-      "count": 33
+      "count": 37
     },
     {
       "source": "Mountain View Public Library",
@@ -64,7 +64,7 @@
     {
       "source": "Sunnyvale Public Library",
       "status": "ok",
-      "count": 37
+      "count": 40
     },
     {
       "source": "San Mateo Public Library",
@@ -229,7 +229,7 @@
     {
       "source": "Funcheap",
       "status": "ok",
-      "count": 87
+      "count": 88
     },
     {
       "source": "Bay Area Kid Fun",
@@ -244,7 +244,7 @@
     {
       "source": "Bay Area Kids Go",
       "status": "ok",
-      "count": 12
+      "count": 16
     },
     {
       "source": "Ronnie's Awesome List",
@@ -254,7 +254,7 @@
     {
       "source": "Palo Alto Junior Museum & Zoo",
       "status": "ok",
-      "count": 6
+      "count": 5
     },
     {
       "source": "CuriOdyssey",
@@ -264,7 +264,7 @@
     {
       "source": "Hiller Aviation Museum",
       "status": "ok",
-      "count": 11
+      "count": 9
     },
     {
       "source": "Children's Discovery Museum SJ",
@@ -279,7 +279,7 @@
     {
       "source": "Hidden Villa Farm",
       "status": "ok",
-      "count": 15
+      "count": 13
     },
     {
       "source": "Midpeninsula Open Space",
@@ -294,7 +294,7 @@
     {
       "source": "Oakland Children's Fairyland",
       "status": "ok",
-      "count": 1
+      "count": 7
     },
     {
       "source": "Lawrence Hall of Science",
