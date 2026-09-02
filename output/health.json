@@ -1,15 +1,15 @@
 {
-  "run_at": "2026-09-01T17:32:07.064323+00:00",
+  "run_at": "2026-09-02T17:33:37.523818+00:00",
   "window_days": 16,
   "channels_ok": 60,
   "channels_total": 60,
-  "raw_events": 541,
-  "deduped_events": 516,
+  "raw_events": 550,
+  "deduped_events": 525,
   "channels": [
     {
       "source": "Palo Alto City Library",
       "status": "ok",
-      "count": 23
+      "count": 24
     },
     {
       "source": "San Mateo County Library",
@@ -19,12 +19,12 @@
     {
       "source": "San Jose Public Library",
       "status": "ok",
-      "count": 29
+      "count": 31
     },
     {
       "source": "Santa Clara County Library District",
       "status": "ok",
-      "count": 36
+      "count": 37
     },
     {
       "source": "San Francisco Public Library",
@@ -34,7 +34,7 @@
     {
       "source": "Oakland Public Library",
       "status": "ok",
-      "count": 25
+      "count": 22
     },
     {
       "source": "Berkeley Public Library",
@@ -49,12 +49,12 @@
     {
       "source": "Contra Costa County Library",
       "status": "ok",
-      "count": 33
+      "count": 38
     },
     {
       "source": "Alameda County Library",
       "status": "ok",
-      "count": 43
+      "count": 50
     },
     {
       "source": "Mountain View Public Library",
@@ -64,12 +64,12 @@
     {
       "source": "Sunnyvale Public Library",
       "status": "ok",
-      "count": 43
+      "count": 45
     },
     {
       "source": "San Mateo Public Library",
       "status": "ok",
-      "count": 25
+      "count": 22
     },
     {
       "source": "Eventbrite/Palo Alto",
@@ -229,7 +229,7 @@
     {
       "source": "Funcheap",
       "status": "ok",
-      "count": 88
+      "count": 87
     },
     {
       "source": "Bay Area Kid Fun",
@@ -239,7 +239,7 @@
     {
       "source": "510 Families",
       "status": "ok",
-      "count": 77
+      "count": 76
     },
     {
       "source": "Bay Area Kids Go",
@@ -279,7 +279,7 @@
     {
       "source": "Hidden Villa Farm",
       "status": "ok",
-      "count": 14
+      "count": 13
     },
     {
       "source": "Midpeninsula Open Space",
