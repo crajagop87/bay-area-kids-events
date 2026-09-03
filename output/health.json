@@ -1,20 +1,20 @@
 {
-  "run_at": "2026-09-02T17:33:37.523818+00:00",
+  "run_at": "2026-09-03T17:28:00.583346+00:00",
   "window_days": 16,
   "channels_ok": 60,
   "channels_total": 60,
-  "raw_events": 550,
-  "deduped_events": 525,
+  "raw_events": 531,
+  "deduped_events": 506,
   "channels": [
     {
       "source": "Palo Alto City Library",
       "status": "ok",
-      "count": 24
+      "count": 25
     },
     {
       "source": "San Mateo County Library",
       "status": "ok",
-      "count": 21
+      "count": 20
     },
     {
       "source": "San Jose Public Library",
@@ -24,7 +24,7 @@
     {
       "source": "Santa Clara County Library District",
       "status": "ok",
-      "count": 37
+      "count": 34
     },
     {
       "source": "San Francisco Public Library",
@@ -34,7 +34,7 @@
     {
       "source": "Oakland Public Library",
       "status": "ok",
-      "count": 22
+      "count": 19
     },
     {
       "source": "Berkeley Public Library",
@@ -49,12 +49,12 @@
     {
       "source": "Contra Costa County Library",
       "status": "ok",
-      "count": 38
+      "count": 33
     },
     {
       "source": "Alameda County Library",
       "status": "ok",
-      "count": 50
+      "count": 46
     },
     {
       "source": "Mountain View Public Library",
@@ -64,7 +64,7 @@
     {
       "source": "Sunnyvale Public Library",
       "status": "ok",
-      "count": 45
+      "count": 43
     },
     {
       "source": "San Mateo Public Library",
@@ -244,7 +244,7 @@
     {
       "source": "Bay Area Kids Go",
       "status": "ok",
-      "count": 18
+      "count": 19
     },
     {
       "source": "Ronnie's Awesome List",
@@ -279,12 +279,12 @@
     {
       "source": "Hidden Villa Farm",
       "status": "ok",
-      "count": 13
+      "count": 15
     },
     {
       "source": "Midpeninsula Open Space",
       "status": "ok",
-      "count": 9
+      "count": 10
     },
     {
       "source": "Exploratorium",
@@ -294,7 +294,7 @@
     {
       "source": "Oakland Children's Fairyland",
       "status": "ok",
-      "count": 7
+      "count": 1
     },
     {
       "source": "Lawrence Hall of Science",
