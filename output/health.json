@@ -1,20 +1,20 @@
 {
-  "run_at": "2026-09-04T17:20:15.158447+00:00",
+  "run_at": "2026-09-05T16:29:38.663173+00:00",
   "window_days": 16,
   "channels_ok": 60,
   "channels_total": 60,
-  "raw_events": 527,
-  "deduped_events": 508,
+  "raw_events": 532,
+  "deduped_events": 514,
   "channels": [
     {
       "source": "Palo Alto City Library",
       "status": "ok",
-      "count": 24
+      "count": 23
     },
     {
       "source": "San Mateo County Library",
       "status": "ok",
-      "count": 19
+      "count": 20
     },
     {
       "source": "San Jose Public Library",
@@ -24,7 +24,7 @@
     {
       "source": "Santa Clara County Library District",
       "status": "ok",
-      "count": 36
+      "count": 35
     },
     {
       "source": "San Francisco Public Library",
@@ -54,7 +54,7 @@
     {
       "source": "Alameda County Library",
       "status": "ok",
-      "count": 47
+      "count": 48
     },
     {
       "source": "Mountain View Public Library",
@@ -64,12 +64,12 @@
     {
       "source": "Sunnyvale Public Library",
       "status": "ok",
-      "count": 39
+      "count": 38
     },
     {
       "source": "San Mateo Public Library",
       "status": "ok",
-      "count": 22
+      "count": 23
     },
     {
       "source": "Eventbrite/Palo Alto",
@@ -229,7 +229,7 @@
     {
       "source": "Funcheap",
       "status": "ok",
-      "count": 87
+      "count": 86
     },
     {
       "source": "Bay Area Kid Fun",
@@ -254,17 +254,17 @@
     {
       "source": "Palo Alto Junior Museum & Zoo",
       "status": "ok",
-      "count": 5
+      "count": 6
     },
     {
       "source": "CuriOdyssey",
       "status": "ok",
-      "count": 6
+      "count": 5
     },
     {
       "source": "Hiller Aviation Museum",
       "status": "ok",
-      "count": 11
+      "count": 12
     },
     {
       "source": "Children's Discovery Museum SJ",
@@ -274,17 +274,17 @@
     {
       "source": "Cantor Arts Center",
       "status": "ok",
-      "count": 2
+      "count": 3
     },
     {
       "source": "Hidden Villa Farm",
       "status": "ok",
-      "count": 18
+      "count": 19
     },
     {
       "source": "Midpeninsula Open Space",
       "status": "ok",
-      "count": 8
+      "count": 11
     },
     {
       "source": "Exploratorium",
