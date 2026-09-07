@@ -1,30 +1,30 @@
 {
-  "run_at": "2026-09-06T16:40:28.724893+00:00",
+  "run_at": "2026-09-07T18:33:05.514157+00:00",
   "window_days": 16,
   "channels_ok": 60,
   "channels_total": 60,
-  "raw_events": 523,
-  "deduped_events": 507,
+  "raw_events": 557,
+  "deduped_events": 538,
   "channels": [
     {
       "source": "Palo Alto City Library",
       "status": "ok",
-      "count": 21
+      "count": 24
     },
     {
       "source": "San Mateo County Library",
       "status": "ok",
-      "count": 21
+      "count": 25
     },
     {
       "source": "San Jose Public Library",
       "status": "ok",
-      "count": 28
+      "count": 31
     },
     {
       "source": "Santa Clara County Library District",
       "status": "ok",
-      "count": 31
+      "count": 36
     },
     {
       "source": "San Francisco Public Library",
@@ -34,7 +34,7 @@
     {
       "source": "Oakland Public Library",
       "status": "ok",
-      "count": 18
+      "count": 25
     },
     {
       "source": "Berkeley Public Library",
@@ -49,12 +49,12 @@
     {
       "source": "Contra Costa County Library",
       "status": "ok",
-      "count": 29
+      "count": 30
     },
     {
       "source": "Alameda County Library",
       "status": "ok",
-      "count": 51
+      "count": 58
     },
     {
       "source": "Mountain View Public Library",
@@ -64,12 +64,12 @@
     {
       "source": "Sunnyvale Public Library",
       "status": "ok",
-      "count": 39
+      "count": 43
     },
     {
       "source": "San Mateo Public Library",
       "status": "ok",
-      "count": 23
+      "count": 27
     },
     {
       "source": "Eventbrite/Palo Alto",
@@ -229,7 +229,7 @@
     {
       "source": "Funcheap",
       "status": "ok",
-      "count": 87
+      "count": 88
     },
     {
       "source": "Bay Area Kid Fun",
@@ -244,7 +244,7 @@
     {
       "source": "Bay Area Kids Go",
       "status": "ok",
-      "count": 19
+      "count": 20
     },
     {
       "source": "Ronnie's Awesome List",
@@ -254,17 +254,17 @@
     {
       "source": "Palo Alto Junior Museum & Zoo",
       "status": "ok",
-      "count": 5
+      "count": 4
     },
     {
       "source": "CuriOdyssey",
       "status": "ok",
-      "count": 3
+      "count": 2
     },
     {
       "source": "Hiller Aviation Museum",
       "status": "ok",
-      "count": 12
+      "count": 11
     },
     {
       "source": "Children's Discovery Museum SJ",
@@ -274,17 +274,17 @@
     {
       "source": "Cantor Arts Center",
       "status": "ok",
-      "count": 3
+      "count": 2
     },
     {
       "source": "Hidden Villa Farm",
       "status": "ok",
-      "count": 17
+      "count": 18
     },
     {
       "source": "Midpeninsula Open Space",
       "status": "ok",
-      "count": 10
+      "count": 7
     },
     {
       "source": "Exploratorium",
