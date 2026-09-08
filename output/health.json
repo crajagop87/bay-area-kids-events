@@ -1,30 +1,30 @@
 {
-  "run_at": "2026-09-07T18:33:05.514157+00:00",
+  "run_at": "2026-09-08T17:42:06.460151+00:00",
   "window_days": 16,
   "channels_ok": 60,
   "channels_total": 60,
-  "raw_events": 557,
-  "deduped_events": 538,
+  "raw_events": 538,
+  "deduped_events": 520,
   "channels": [
     {
       "source": "Palo Alto City Library",
       "status": "ok",
-      "count": 24
+      "count": 27
     },
     {
       "source": "San Mateo County Library",
       "status": "ok",
-      "count": 25
+      "count": 28
     },
     {
       "source": "San Jose Public Library",
       "status": "ok",
-      "count": 31
+      "count": 33
     },
     {
       "source": "Santa Clara County Library District",
       "status": "ok",
-      "count": 36
+      "count": 37
     },
     {
       "source": "San Francisco Public Library",
@@ -34,7 +34,7 @@
     {
       "source": "Oakland Public Library",
       "status": "ok",
-      "count": 25
+      "count": 27
     },
     {
       "source": "Berkeley Public Library",
@@ -49,12 +49,12 @@
     {
       "source": "Contra Costa County Library",
       "status": "ok",
-      "count": 30
+      "count": 28
     },
     {
       "source": "Alameda County Library",
       "status": "ok",
-      "count": 58
+      "count": 60
     },
     {
       "source": "Mountain View Public Library",
@@ -64,7 +64,7 @@
     {
       "source": "Sunnyvale Public Library",
       "status": "ok",
-      "count": 43
+      "count": 46
     },
     {
       "source": "San Mateo Public Library",
@@ -234,12 +234,12 @@
     {
       "source": "Bay Area Kid Fun",
       "status": "ok",
-      "count": 27
+      "count": 42
     },
     {
       "source": "510 Families",
       "status": "ok",
-      "count": 76
+      "count": 26
     },
     {
       "source": "Bay Area Kids Go",
@@ -259,7 +259,7 @@
     {
       "source": "CuriOdyssey",
       "status": "ok",
-      "count": 2
+      "count": 3
     },
     {
       "source": "Hiller Aviation Museum",
@@ -284,7 +284,7 @@
     {
       "source": "Midpeninsula Open Space",
       "status": "ok",
-      "count": 7
+      "count": 9
     },
     {
       "source": "Exploratorium",
@@ -299,7 +299,7 @@
     {
       "source": "Lawrence Hall of Science",
       "status": "ok",
-      "count": 2
+      "count": 1
     },
     {
       "source": "Los Altos Summer Concert Series",
