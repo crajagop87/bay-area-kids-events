@@ -1,15 +1,15 @@
 {
-  "run_at": "2026-09-11T17:28:31.628716+00:00",
+  "run_at": "2026-09-12T16:41:16.803592+00:00",
   "window_days": 16,
   "channels_ok": 60,
   "channels_total": 60,
-  "raw_events": 516,
-  "deduped_events": 504,
+  "raw_events": 518,
+  "deduped_events": 506,
   "channels": [
     {
       "source": "Palo Alto City Library",
       "status": "ok",
-      "count": 27
+      "count": 25
     },
     {
       "source": "San Mateo County Library",
@@ -19,12 +19,12 @@
     {
       "source": "San Jose Public Library",
       "status": "ok",
-      "count": 26
+      "count": 27
     },
     {
       "source": "Santa Clara County Library District",
       "status": "ok",
-      "count": 41
+      "count": 40
     },
     {
       "source": "San Francisco Public Library",
@@ -54,7 +54,7 @@
     {
       "source": "Alameda County Library",
       "status": "ok",
-      "count": 64
+      "count": 63
     },
     {
       "source": "Mountain View Public Library",
@@ -64,7 +64,7 @@
     {
       "source": "Sunnyvale Public Library",
       "status": "ok",
-      "count": 43
+      "count": 44
     },
     {
       "source": "San Mateo Public Library",
@@ -234,7 +234,7 @@
     {
       "source": "Bay Area Kid Fun",
       "status": "ok",
-      "count": 42
+      "count": 43
     },
     {
       "source": "510 Families",
@@ -244,7 +244,7 @@
     {
       "source": "Bay Area Kids Go",
       "status": "ok",
-      "count": 16
+      "count": 17
     },
     {
       "source": "Ronnie's Awesome List",
@@ -254,7 +254,7 @@
     {
       "source": "Palo Alto Junior Museum & Zoo",
       "status": "ok",
-      "count": 5
+      "count": 6
     },
     {
       "source": "CuriOdyssey",
@@ -264,7 +264,7 @@
     {
       "source": "Hiller Aviation Museum",
       "status": "ok",
-      "count": 11
+      "count": 12
     },
     {
       "source": "Children's Discovery Museum SJ",
@@ -274,12 +274,12 @@
     {
       "source": "Cantor Arts Center",
       "status": "ok",
-      "count": 2
+      "count": 3
     },
     {
       "source": "Hidden Villa Farm",
       "status": "ok",
-      "count": 15
+      "count": 13
     },
     {
       "source": "Midpeninsula Open Space",
@@ -299,7 +299,7 @@
     {
       "source": "Lawrence Hall of Science",
       "status": "ok",
-      "count": 1
+      "count": 2
     },
     {
       "source": "Los Altos Summer Concert Series",
