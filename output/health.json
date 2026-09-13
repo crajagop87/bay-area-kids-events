@@ -1,15 +1,15 @@
 {
-  "run_at": "2026-09-12T16:41:16.803592+00:00",
+  "run_at": "2026-09-13T17:11:36.284958+00:00",
   "window_days": 16,
   "channels_ok": 60,
   "channels_total": 60,
   "raw_events": 518,
-  "deduped_events": 506,
+  "deduped_events": 505,
   "channels": [
     {
       "source": "Palo Alto City Library",
       "status": "ok",
-      "count": 25
+      "count": 24
     },
     {
       "source": "San Mateo County Library",
@@ -19,12 +19,12 @@
     {
       "source": "San Jose Public Library",
       "status": "ok",
-      "count": 27
+      "count": 26
     },
     {
       "source": "Santa Clara County Library District",
       "status": "ok",
-      "count": 40
+      "count": 43
     },
     {
       "source": "San Francisco Public Library",
@@ -34,7 +34,7 @@
     {
       "source": "Oakland Public Library",
       "status": "ok",
-      "count": 24
+      "count": 22
     },
     {
       "source": "Berkeley Public Library",
@@ -49,12 +49,12 @@
     {
       "source": "Contra Costa County Library",
       "status": "ok",
-      "count": 25
+      "count": 24
     },
     {
       "source": "Alameda County Library",
       "status": "ok",
-      "count": 63
+      "count": 66
     },
     {
       "source": "Mountain View Public Library",
@@ -69,7 +69,7 @@
     {
       "source": "San Mateo Public Library",
       "status": "ok",
-      "count": 22
+      "count": 23
     },
     {
       "source": "Eventbrite/Palo Alto",
@@ -244,7 +244,7 @@
     {
       "source": "Bay Area Kids Go",
       "status": "ok",
-      "count": 17
+      "count": 19
     },
     {
       "source": "Ronnie's Awesome List",
@@ -254,17 +254,17 @@
     {
       "source": "Palo Alto Junior Museum & Zoo",
       "status": "ok",
-      "count": 6
+      "count": 5
     },
     {
       "source": "CuriOdyssey",
       "status": "ok",
-      "count": 3
+      "count": 2
     },
     {
       "source": "Hiller Aviation Museum",
       "status": "ok",
-      "count": 12
+      "count": 11
     },
     {
       "source": "Children's Discovery Museum SJ",
@@ -279,7 +279,7 @@
     {
       "source": "Hidden Villa Farm",
       "status": "ok",
-      "count": 13
+      "count": 12
     },
     {
       "source": "Midpeninsula Open Space",
