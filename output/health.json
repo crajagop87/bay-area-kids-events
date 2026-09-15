@@ -1,30 +1,30 @@
 {
-  "run_at": "2026-09-14T18:59:14.462061+00:00",
+  "run_at": "2026-09-15T17:53:47.607474+00:00",
   "window_days": 16,
   "channels_ok": 60,
   "channels_total": 60,
-  "raw_events": 541,
-  "deduped_events": 528,
+  "raw_events": 545,
+  "deduped_events": 527,
   "channels": [
     {
       "source": "Palo Alto City Library",
       "status": "ok",
-      "count": 26
+      "count": 27
     },
     {
       "source": "San Mateo County Library",
       "status": "ok",
-      "count": 29
+      "count": 31
     },
     {
       "source": "San Jose Public Library",
       "status": "ok",
-      "count": 28
+      "count": 26
     },
     {
       "source": "Santa Clara County Library District",
       "status": "ok",
-      "count": 46
+      "count": 44
     },
     {
       "source": "San Francisco Public Library",
@@ -34,7 +34,7 @@
     {
       "source": "Oakland Public Library",
       "status": "ok",
-      "count": 30
+      "count": 32
     },
     {
       "source": "Berkeley Public Library",
@@ -49,12 +49,12 @@
     {
       "source": "Contra Costa County Library",
       "status": "ok",
-      "count": 25
+      "count": 24
     },
     {
       "source": "Alameda County Library",
       "status": "ok",
-      "count": 70
+      "count": 69
     },
     {
       "source": "Mountain View Public Library",
@@ -64,12 +64,12 @@
     {
       "source": "Sunnyvale Public Library",
       "status": "ok",
-      "count": 45
+      "count": 49
     },
     {
       "source": "San Mateo Public Library",
       "status": "ok",
-      "count": 26
+      "count": 24
     },
     {
       "source": "Eventbrite/Palo Alto",
@@ -234,7 +234,7 @@
     {
       "source": "Bay Area Kid Fun",
       "status": "ok",
-      "count": 43
+      "count": 47
     },
     {
       "source": "510 Families",
@@ -244,7 +244,7 @@
     {
       "source": "Bay Area Kids Go",
       "status": "ok",
-      "count": 19
+      "count": 18
     },
     {
       "source": "Ronnie's Awesome List",
