@@ -1,10 +1,10 @@
 {
-  "run_at": "2026-09-26T17:34:57.987969+00:00",
+  "run_at": "2026-09-27T18:01:16.700921+00:00",
   "window_days": 16,
   "channels_ok": 60,
   "channels_total": 60,
-  "raw_events": 501,
-  "deduped_events": 488,
+  "raw_events": 506,
+  "deduped_events": 485,
   "channels": [
     {
       "source": "Palo Alto City Library",
@@ -14,7 +14,7 @@
     {
       "source": "San Mateo County Library",
       "status": "ok",
-      "count": 28
+      "count": 26
     },
     {
       "source": "San Jose Public Library",
@@ -24,7 +24,7 @@
     {
       "source": "Santa Clara County Library District",
       "status": "ok",
-      "count": 36
+      "count": 35
     },
     {
       "source": "San Francisco Public Library",
@@ -34,7 +34,7 @@
     {
       "source": "Oakland Public Library",
       "status": "ok",
-      "count": 25
+      "count": 23
     },
     {
       "source": "Berkeley Public Library",
@@ -49,12 +49,12 @@
     {
       "source": "Contra Costa County Library",
       "status": "ok",
-      "count": 14
+      "count": 17
     },
     {
       "source": "Alameda County Library",
       "status": "ok",
-      "count": 66
+      "count": 70
     },
     {
       "source": "Mountain View Public Library",
@@ -64,12 +64,12 @@
     {
       "source": "Sunnyvale Public Library",
       "status": "ok",
-      "count": 39
+      "count": 43
     },
     {
       "source": "San Mateo Public Library",
       "status": "ok",
-      "count": 21
+      "count": 22
     },
     {
       "source": "Eventbrite/Palo Alto",
@@ -244,7 +244,7 @@
     {
       "source": "Bay Area Kids Go",
       "status": "ok",
-      "count": 16
+      "count": 17
     },
     {
       "source": "Ronnie's Awesome List",
@@ -254,7 +254,7 @@
     {
       "source": "Palo Alto Junior Museum & Zoo",
       "status": "ok",
-      "count": 6
+      "count": 5
     },
     {
       "source": "CuriOdyssey",
@@ -284,7 +284,7 @@
     {
       "source": "Midpeninsula Open Space",
       "status": "ok",
-      "count": 2
+      "count": 0
     },
     {
       "source": "Exploratorium",
