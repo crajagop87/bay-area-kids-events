@@ -1,15 +1,15 @@
 {
-  "run_at": "2026-10-06T19:16:46.774991+00:00",
+  "run_at": "2026-10-07T19:40:58.503699+00:00",
   "window_days": 16,
   "channels_ok": 60,
   "channels_total": 60,
-  "raw_events": 617,
-  "deduped_events": 600,
+  "raw_events": 610,
+  "deduped_events": 589,
   "channels": [
     {
       "source": "Palo Alto City Library",
       "status": "ok",
-      "count": 32
+      "count": 31
     },
     {
       "source": "San Mateo County Library",
@@ -19,12 +19,12 @@
     {
       "source": "San Jose Public Library",
       "status": "ok",
-      "count": 33
+      "count": 32
     },
     {
       "source": "Santa Clara County Library District",
       "status": "ok",
-      "count": 39
+      "count": 40
     },
     {
       "source": "San Francisco Public Library",
@@ -34,7 +34,7 @@
     {
       "source": "Oakland Public Library",
       "status": "ok",
-      "count": 22
+      "count": 18
     },
     {
       "source": "Berkeley Public Library",
@@ -49,12 +49,12 @@
     {
       "source": "Contra Costa County Library",
       "status": "ok",
-      "count": 29
+      "count": 28
     },
     {
       "source": "Alameda County Library",
       "status": "ok",
-      "count": 80
+      "count": 81
     },
     {
       "source": "Mountain View Public Library",
@@ -64,7 +64,7 @@
     {
       "source": "Sunnyvale Public Library",
       "status": "ok",
-      "count": 46
+      "count": 47
     },
     {
       "source": "San Mateo Public Library",
@@ -239,7 +239,7 @@
     {
       "source": "510 Families",
       "status": "ok",
-      "count": 84
+      "count": 86
     },
     {
       "source": "Bay Area Kids Go",
@@ -259,7 +259,7 @@
     {
       "source": "CuriOdyssey",
       "status": "ok",
-      "count": 2
+      "count": 1
     },
     {
       "source": "Hiller Aviation Museum",
@@ -279,12 +279,12 @@
     {
       "source": "Hidden Villa Farm",
       "status": "ok",
-      "count": 12
+      "count": 10
     },
     {
       "source": "Midpeninsula Open Space",
       "status": "ok",
-      "count": 9
+      "count": 7
     },
     {
       "source": "Exploratorium",
