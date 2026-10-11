@@ -1,10 +1,10 @@
 {
-  "run_at": "2026-10-10T18:11:54.868722+00:00",
+  "run_at": "2026-10-11T18:34:58.325427+00:00",
   "window_days": 16,
   "channels_ok": 60,
   "channels_total": 60,
-  "raw_events": 525,
-  "deduped_events": 509,
+  "raw_events": 533,
+  "deduped_events": 511,
   "channels": [
     {
       "source": "Palo Alto City Library",
@@ -14,17 +14,17 @@
     {
       "source": "San Mateo County Library",
       "status": "ok",
-      "count": 36
+      "count": 35
     },
     {
       "source": "San Jose Public Library",
       "status": "ok",
-      "count": 32
+      "count": 30
     },
     {
       "source": "Santa Clara County Library District",
       "status": "ok",
-      "count": 41
+      "count": 45
     },
     {
       "source": "San Francisco Public Library",
@@ -34,7 +34,7 @@
     {
       "source": "Oakland Public Library",
       "status": "ok",
-      "count": 14
+      "count": 13
     },
     {
       "source": "Berkeley Public Library",
@@ -49,12 +49,12 @@
     {
       "source": "Contra Costa County Library",
       "status": "ok",
-      "count": 28
+      "count": 30
     },
     {
       "source": "Alameda County Library",
       "status": "ok",
-      "count": 75
+      "count": 82
     },
     {
       "source": "Mountain View Public Library",
@@ -64,12 +64,12 @@
     {
       "source": "Sunnyvale Public Library",
       "status": "ok",
-      "count": 42
+      "count": 44
     },
     {
       "source": "San Mateo Public Library",
       "status": "ok",
-      "count": 25
+      "count": 26
     },
     {
       "source": "Eventbrite/Palo Alto",
@@ -229,7 +229,7 @@
     {
       "source": "Funcheap",
       "status": "ok",
-      "count": 90
+      "count": 89
     },
     {
       "source": "Bay Area Kid Fun",
@@ -254,7 +254,7 @@
     {
       "source": "Palo Alto Junior Museum & Zoo",
       "status": "ok",
-      "count": 6
+      "count": 5
     },
     {
       "source": "CuriOdyssey",
@@ -264,7 +264,7 @@
     {
       "source": "Hiller Aviation Museum",
       "status": "ok",
-      "count": 10
+      "count": 9
     },
     {
       "source": "Children's Discovery Museum SJ",
@@ -294,7 +294,7 @@
     {
       "source": "Oakland Children's Fairyland",
       "status": "ok",
-      "count": 5
+      "count": 4
     },
     {
       "source": "Lawrence Hall of Science",
