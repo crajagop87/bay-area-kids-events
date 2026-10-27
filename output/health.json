@@ -1,10 +1,10 @@
 {
-  "run_at": "2026-10-26T19:41:40.516877+00:00",
+  "run_at": "2026-10-27T19:10:24.719894+00:00",
   "window_days": 16,
   "channels_ok": 60,
   "channels_total": 60,
-  "raw_events": 513,
-  "deduped_events": 505,
+  "raw_events": 501,
+  "deduped_events": 494,
   "channels": [
     {
       "source": "Palo Alto City Library",
@@ -14,17 +14,17 @@
     {
       "source": "San Mateo County Library",
       "status": "ok",
-      "count": 32
+      "count": 33
     },
     {
       "source": "San Jose Public Library",
       "status": "ok",
-      "count": 32
+      "count": 30
     },
     {
       "source": "Santa Clara County Library District",
       "status": "ok",
-      "count": 60
+      "count": 58
     },
     {
       "source": "San Francisco Public Library",
@@ -34,7 +34,7 @@
     {
       "source": "Oakland Public Library",
       "status": "ok",
-      "count": 19
+      "count": 20
     },
     {
       "source": "Berkeley Public Library",
@@ -54,7 +54,7 @@
     {
       "source": "Alameda County Library",
       "status": "ok",
-      "count": 83
+      "count": 78
     },
     {
       "source": "Mountain View Public Library",
@@ -64,12 +64,12 @@
     {
       "source": "Sunnyvale Public Library",
       "status": "ok",
-      "count": 42
+      "count": 41
     },
     {
       "source": "San Mateo Public Library",
       "status": "ok",
-      "count": 27
+      "count": 25
     },
     {
       "source": "Eventbrite/Palo Alto",
@@ -234,7 +234,7 @@
     {
       "source": "Bay Area Kid Fun",
       "status": "ok",
-      "count": 41
+      "count": 40
     },
     {
       "source": "510 Families",
@@ -259,7 +259,7 @@
     {
       "source": "CuriOdyssey",
       "status": "ok",
-      "count": 4
+      "count": 5
     },
     {
       "source": "Hiller Aviation Museum",
@@ -284,7 +284,7 @@
     {
       "source": "Midpeninsula Open Space",
       "status": "ok",
-      "count": 8
+      "count": 6
     },
     {
       "source": "Exploratorium",
