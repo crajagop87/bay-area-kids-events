@@ -1,10 +1,10 @@
 {
-  "run_at": "2026-10-30T18:57:00.829283+00:00",
+  "run_at": "2026-10-31T18:07:17.646483+00:00",
   "window_days": 16,
   "channels_ok": 60,
   "channels_total": 60,
-  "raw_events": 669,
-  "deduped_events": 653,
+  "raw_events": 681,
+  "deduped_events": 662,
   "channels": [
     {
       "source": "Palo Alto City Library",
@@ -14,7 +14,7 @@
     {
       "source": "San Mateo County Library",
       "status": "ok",
-      "count": 27
+      "count": 26
     },
     {
       "source": "San Jose Public Library",
@@ -24,7 +24,7 @@
     {
       "source": "Santa Clara County Library District",
       "status": "ok",
-      "count": 55
+      "count": 51
     },
     {
       "source": "San Francisco Public Library",
@@ -49,12 +49,12 @@
     {
       "source": "Contra Costa County Library",
       "status": "ok",
-      "count": 24
+      "count": 27
     },
     {
       "source": "Alameda County Library",
       "status": "ok",
-      "count": 71
+      "count": 72
     },
     {
       "source": "Mountain View Public Library",
@@ -64,7 +64,7 @@
     {
       "source": "Sunnyvale Public Library",
       "status": "ok",
-      "count": 42
+      "count": 41
     },
     {
       "source": "San Mateo Public Library",
@@ -239,7 +239,7 @@
     {
       "source": "510 Families",
       "status": "ok",
-      "count": 199
+      "count": 213
     },
     {
       "source": "Bay Area Kids Go",
@@ -254,17 +254,17 @@
     {
       "source": "Palo Alto Junior Museum & Zoo",
       "status": "ok",
-      "count": 5
+      "count": 6
     },
     {
       "source": "CuriOdyssey",
       "status": "ok",
-      "count": 6
+      "count": 5
     },
     {
       "source": "Hiller Aviation Museum",
       "status": "ok",
-      "count": 10
+      "count": 8
     },
     {
       "source": "Children's Discovery Museum SJ",
@@ -274,7 +274,7 @@
     {
       "source": "Cantor Arts Center",
       "status": "ok",
-      "count": 2
+      "count": 3
     },
     {
       "source": "Hidden Villa Farm",
@@ -284,7 +284,7 @@
     {
       "source": "Midpeninsula Open Space",
       "status": "ok",
-      "count": 6
+      "count": 7
     },
     {
       "source": "Exploratorium",
