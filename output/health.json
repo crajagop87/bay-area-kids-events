@@ -1,20 +1,20 @@
 {
-  "run_at": "2026-11-02T22:33:42.632273+00:00",
+  "run_at": "2026-11-03T20:22:53.084256+00:00",
   "window_days": 16,
   "channels_ok": 60,
   "channels_total": 60,
-  "raw_events": 730,
-  "deduped_events": 697,
+  "raw_events": 743,
+  "deduped_events": 716,
   "channels": [
     {
       "source": "Palo Alto City Library",
       "status": "ok",
-      "count": 19
+      "count": 20
     },
     {
       "source": "San Mateo County Library",
       "status": "ok",
-      "count": 33
+      "count": 36
     },
     {
       "source": "San Jose Public Library",
@@ -24,7 +24,7 @@
     {
       "source": "Santa Clara County Library District",
       "status": "ok",
-      "count": 58
+      "count": 62
     },
     {
       "source": "San Francisco Public Library",
@@ -34,7 +34,7 @@
     {
       "source": "Oakland Public Library",
       "status": "ok",
-      "count": 22
+      "count": 24
     },
     {
       "source": "Berkeley Public Library",
@@ -49,7 +49,7 @@
     {
       "source": "Contra Costa County Library",
       "status": "ok",
-      "count": 32
+      "count": 31
     },
     {
       "source": "Alameda County Library",
@@ -64,12 +64,12 @@
     {
       "source": "Sunnyvale Public Library",
       "status": "ok",
-      "count": 43
+      "count": 42
     },
     {
       "source": "San Mateo Public Library",
       "status": "ok",
-      "count": 24
+      "count": 27
     },
     {
       "source": "Eventbrite/Palo Alto",
@@ -259,7 +259,7 @@
     {
       "source": "CuriOdyssey",
       "status": "ok",
-      "count": 3
+      "count": 4
     },
     {
       "source": "Hiller Aviation Museum",
@@ -279,12 +279,12 @@
     {
       "source": "Hidden Villa Farm",
       "status": "ok",
-      "count": 17
+      "count": 16
     },
     {
       "source": "Midpeninsula Open Space",
       "status": "ok",
-      "count": 8
+      "count": 10
     },
     {
       "source": "Exploratorium",
