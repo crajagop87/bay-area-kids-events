@@ -1,30 +1,30 @@
 {
-  "run_at": "2026-11-04T20:38:52.368878+00:00",
+  "run_at": "2026-11-05T20:54:31.677622+00:00",
   "window_days": 16,
   "channels_ok": 60,
   "channels_total": 60,
-  "raw_events": 640,
-  "deduped_events": 615,
+  "raw_events": 637,
+  "deduped_events": 610,
   "channels": [
     {
       "source": "Palo Alto City Library",
       "status": "ok",
-      "count": 20
+      "count": 21
     },
     {
       "source": "San Mateo County Library",
       "status": "ok",
-      "count": 31
+      "count": 28
     },
     {
       "source": "San Jose Public Library",
       "status": "ok",
-      "count": 34
+      "count": 35
     },
     {
       "source": "Santa Clara County Library District",
       "status": "ok",
-      "count": 64
+      "count": 63
     },
     {
       "source": "San Francisco Public Library",
@@ -34,7 +34,7 @@
     {
       "source": "Oakland Public Library",
       "status": "ok",
-      "count": 22
+      "count": 19
     },
     {
       "source": "Berkeley Public Library",
@@ -49,12 +49,12 @@
     {
       "source": "Contra Costa County Library",
       "status": "ok",
-      "count": 26
+      "count": 27
     },
     {
       "source": "Alameda County Library",
       "status": "ok",
-      "count": 78
+      "count": 75
     },
     {
       "source": "Mountain View Public Library",
@@ -234,7 +234,7 @@
     {
       "source": "Bay Area Kid Fun",
       "status": "ok",
-      "count": 25
+      "count": 23
     },
     {
       "source": "510 Families",
@@ -259,7 +259,7 @@
     {
       "source": "CuriOdyssey",
       "status": "ok",
-      "count": 4
+      "count": 6
     },
     {
       "source": "Hiller Aviation Museum",
@@ -279,12 +279,12 @@
     {
       "source": "Hidden Villa Farm",
       "status": "ok",
-      "count": 15
+      "count": 17
     },
     {
       "source": "Midpeninsula Open Space",
       "status": "ok",
-      "count": 10
+      "count": 12
     },
     {
       "source": "Exploratorium",
