@@ -1,10 +1,10 @@
 {
-  "run_at": "2026-11-08T18:37:00.849394+00:00",
+  "run_at": "2026-11-09T23:14:57.635620+00:00",
   "window_days": 16,
   "channels_ok": 60,
   "channels_total": 60,
-  "raw_events": 569,
-  "deduped_events": 540,
+  "raw_events": 591,
+  "deduped_events": 557,
   "channels": [
     {
       "source": "Palo Alto City Library",
@@ -14,17 +14,17 @@
     {
       "source": "San Mateo County Library",
       "status": "ok",
-      "count": 26
+      "count": 33
     },
     {
       "source": "San Jose Public Library",
       "status": "ok",
-      "count": 34
+      "count": 36
     },
     {
       "source": "Santa Clara County Library District",
       "status": "ok",
-      "count": 55
+      "count": 56
     },
     {
       "source": "San Francisco Public Library",
@@ -34,7 +34,7 @@
     {
       "source": "Oakland Public Library",
       "status": "ok",
-      "count": 16
+      "count": 21
     },
     {
       "source": "Berkeley Public Library",
@@ -49,12 +49,12 @@
     {
       "source": "Contra Costa County Library",
       "status": "ok",
-      "count": 25
+      "count": 26
     },
     {
       "source": "Alameda County Library",
       "status": "ok",
-      "count": 77
+      "count": 79
     },
     {
       "source": "Mountain View Public Library",
@@ -64,12 +64,12 @@
     {
       "source": "Sunnyvale Public Library",
       "status": "ok",
-      "count": 36
+      "count": 35
     },
     {
       "source": "San Mateo Public Library",
       "status": "ok",
-      "count": 25
+      "count": 31
     },
     {
       "source": "Eventbrite/Palo Alto",
@@ -254,7 +254,7 @@
     {
       "source": "Palo Alto Junior Museum & Zoo",
       "status": "ok",
-      "count": 5
+      "count": 4
     },
     {
       "source": "CuriOdyssey",
@@ -264,7 +264,7 @@
     {
       "source": "Hiller Aviation Museum",
       "status": "ok",
-      "count": 10
+      "count": 11
     },
     {
       "source": "Children's Discovery Museum SJ",
@@ -274,7 +274,7 @@
     {
       "source": "Cantor Arts Center",
       "status": "ok",
-      "count": 3
+      "count": 2
     },
     {
       "source": "Hidden Villa Farm",
