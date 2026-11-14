@@ -1,30 +1,30 @@
 {
-  "run_at": "2026-11-13T20:44:00.953669+00:00",
+  "run_at": "2026-11-14T18:55:20.586155+00:00",
   "window_days": 16,
   "channels_ok": 60,
   "channels_total": 60,
-  "raw_events": 479,
-  "deduped_events": 461,
+  "raw_events": 462,
+  "deduped_events": 442,
   "channels": [
     {
       "source": "Palo Alto City Library",
       "status": "ok",
-      "count": 16
+      "count": 13
     },
     {
       "source": "San Mateo County Library",
       "status": "ok",
-      "count": 34
+      "count": 32
     },
     {
       "source": "San Jose Public Library",
       "status": "ok",
-      "count": 30
+      "count": 27
     },
     {
       "source": "Santa Clara County Library District",
       "status": "ok",
-      "count": 49
+      "count": 42
     },
     {
       "source": "San Francisco Public Library",
@@ -34,7 +34,7 @@
     {
       "source": "Oakland Public Library",
       "status": "ok",
-      "count": 21
+      "count": 20
     },
     {
       "source": "Berkeley Public Library",
@@ -54,7 +54,7 @@
     {
       "source": "Alameda County Library",
       "status": "ok",
-      "count": 60
+      "count": 59
     },
     {
       "source": "Mountain View Public Library",
@@ -69,7 +69,7 @@
     {
       "source": "San Mateo Public Library",
       "status": "ok",
-      "count": 28
+      "count": 26
     },
     {
       "source": "Eventbrite/Palo Alto",
@@ -229,7 +229,7 @@
     {
       "source": "Funcheap",
       "status": "ok",
-      "count": 88
+      "count": 90
     },
     {
       "source": "Bay Area Kid Fun",
@@ -254,7 +254,7 @@
     {
       "source": "Palo Alto Junior Museum & Zoo",
       "status": "ok",
-      "count": 5
+      "count": 6
     },
     {
       "source": "CuriOdyssey",
@@ -264,7 +264,7 @@
     {
       "source": "Hiller Aviation Museum",
       "status": "ok",
-      "count": 11
+      "count": 9
     },
     {
       "source": "Children's Discovery Museum SJ",
@@ -274,7 +274,7 @@
     {
       "source": "Cantor Arts Center",
       "status": "ok",
-      "count": 2
+      "count": 3
     },
     {
       "source": "Hidden Villa Farm",
