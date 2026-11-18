@@ -1,10 +1,10 @@
 {
-  "run_at": "2026-11-17T21:59:15.054095+00:00",
+  "run_at": "2026-11-18T21:40:58.965638+00:00",
   "window_days": 16,
   "channels_ok": 60,
   "channels_total": 60,
-  "raw_events": 480,
-  "deduped_events": 462,
+  "raw_events": 454,
+  "deduped_events": 440,
   "channels": [
     {
       "source": "Palo Alto City Library",
@@ -14,17 +14,17 @@
     {
       "source": "San Mateo County Library",
       "status": "ok",
-      "count": 41
+      "count": 31
     },
     {
       "source": "San Jose Public Library",
       "status": "ok",
-      "count": 31
+      "count": 32
     },
     {
       "source": "Santa Clara County Library District",
       "status": "ok",
-      "count": 40
+      "count": 39
     },
     {
       "source": "San Francisco Public Library",
@@ -34,7 +34,7 @@
     {
       "source": "Oakland Public Library",
       "status": "ok",
-      "count": 21
+      "count": 18
     },
     {
       "source": "Berkeley Public Library",
@@ -49,12 +49,12 @@
     {
       "source": "Contra Costa County Library",
       "status": "ok",
-      "count": 22
+      "count": 21
     },
     {
       "source": "Alameda County Library",
       "status": "ok",
-      "count": 57
+      "count": 54
     },
     {
       "source": "Mountain View Public Library",
@@ -69,7 +69,7 @@
     {
       "source": "San Mateo Public Library",
       "status": "ok",
-      "count": 27
+      "count": 25
     },
     {
       "source": "Eventbrite/Palo Alto",
@@ -234,12 +234,12 @@
     {
       "source": "Bay Area Kid Fun",
       "status": "ok",
-      "count": 30
+      "count": 28
     },
     {
       "source": "510 Families",
       "status": "ok",
-      "count": 28
+      "count": 26
     },
     {
       "source": "Bay Area Kids Go",
@@ -279,12 +279,12 @@
     {
       "source": "Hidden Villa Farm",
       "status": "ok",
-      "count": 10
+      "count": 8
     },
     {
       "source": "Midpeninsula Open Space",
       "status": "ok",
-      "count": 7
+      "count": 6
     },
     {
       "source": "Exploratorium",
